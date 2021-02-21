@@ -26,17 +26,14 @@ Example using your package
 .. GENERATED FROM PYTHON SOURCE LINES 7-29
 
 
-
-
 .. rst-class:: sphx-glr-script-out
 
- Out:
+.. code-block:: pytb
 
- .. code-block:: none
-
-    Helper show method
-    Hello Maria!
-    Morning Damien!
+    Traceback (most recent call last):
+      File "/Users/cbit/Desktop/repositories/github/vital-oucru-clinical/main/examples/tutorial/plot_greetings_01.py", line 9, in <module>
+        from pkgname.utils.display import show
+    ModuleNotFoundError: No module named 'pkgname'
 
 
 
@@ -74,7 +71,7 @@ Example using your package
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.002 seconds)
+   **Total running time of the script:** ( 0 minutes  0.003 seconds)
 
 
 .. _sphx_glr_download__examples_tutorial_plot_greetings_01.py:

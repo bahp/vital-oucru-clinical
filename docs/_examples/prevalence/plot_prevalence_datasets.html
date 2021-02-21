@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Prevalence per dataset &mdash; vital-oucru-clinical 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Yearly monthly prevalence" href="plot_prevalence_monthly.html" />
+    <link rel="prev" title="Prevalence" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> vital-oucru-clinical
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/setup.html">Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The tutorial gallery</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Prevalence</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Prevalence per dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_prevalence_monthly.html">Yearly monthly prevalence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_prevalence_overall.html">Overall monthly prevalence</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">vital-oucru-clinical</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Prevalence</a> &raquo;</li>
+        
+      <li>Prevalence per dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_examples/prevalence/plot_prevalence_datasets.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-prevalence-plot-prevalence-datasets-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="prevalence-per-dataset">
+<span id="sphx-glr-examples-prevalence-plot-prevalence-datasets-py"></span><h1>Prevalence per dataset<a class="headerlink" href="#prevalence-per-dataset" title="Permalink to this headline">¶</a></h1>
+<p>Example using your package</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>At the moment a the assumption is that if the pcr_dengue_serotype
+is present then the patient had dengue. Otherwise, the patient did
+not suffer dengue. However, the following things should be considered:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Not all datasets had pcr_dengue_serotype variable</p></li>
+<li><p>The serology results and/or clinical notes need to be incorporated.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img alt="Monthly prevalence (%) by dataset" class="sphx-glr-multi-img" src="../../_images/sphx_glr_plot_prevalence_datasets_001.png" />
+</li>
+<li><img alt="Monthly #Patients by dataset" class="sphx-glr-multi-img" src="../../_images/sphx_glr_plot_prevalence_datasets_002.png" />
+</li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Patients:
+                    date dsource pcr_dengue_serotype  dengue  month  year
+study_no
+06dx-06DXA001 2009-09-01    06dx              DENV-1       1      9  2009
+06dx-06DXA002 2009-08-31    06dx              DENV-1       1      8  2009
+06dx-06DXA004 2009-08-10    06dx              DENV-1       1      8  2009
+06dx-06DXA005 2009-09-04    06dx              DENV-1       1      9  2009
+06dx-06DXA006 2009-09-01    06dx              DENV-2       1      9  2009
+...                  ...     ...                 ...     ...    ...   ...
+md-995        2003-07-28      md              DENV-2       1      7  2003
+md-996        2003-07-25      md                &lt;LOD       0      7  2003
+md-997        2003-07-28      md                &lt;LOD       0      7  2003
+md-998        2003-07-29      md                &lt;LOD       0      7  2003
+md-999        2003-07-29      md              DENV-4       1      7  2003
+
+[15657 rows x 6 columns]
+
+Table
+          date dsource  prevalence  n_patients
+0   1999-07-31      df   16.666667           6
+1   1999-08-31      df   42.857143           7
+2   1999-09-30      df    0.000000           3
+3   1999-10-31      df   42.857143           7
+4   1999-11-30      df    0.000000           4
+..         ...     ...         ...         ...
+396 2014-09-30    13dx   15.555556          45
+397 2014-10-31    13dx   25.581395          43
+398 2014-11-30    13dx   40.000000          35
+399 2014-12-31    13dx   33.333333          15
+400 2019-04-30    13dx  100.000000           1
+
+[401 rows x 4 columns]
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+ <span class="kn">import</span> <span class="nn">calendar</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+ <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+ <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+ <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+ <span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+
+ <span class="c1"># Configure</span>
+ <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="p">{</span>
+     <span class="s2">&quot;ytick.major.size&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+     <span class="s2">&quot;ytick.minor.size&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+     <span class="s1">&#39;grid.linestyle&#39;</span><span class="p">:</span> <span class="s1">&#39;--&#39;</span>
+ <span class="p">})</span>
+
+ <span class="c1"># Seaborn</span>
+ <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Methods</span>
+ <span class="c1"># ---------------------------------</span>
+ <span class="k">def</span> <span class="nf">dengue_interpretation</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Defines dengue interpretation.</span>
+
+<span class="sd">     .. note: It is a case of dengue if there is a pcr_dengue_serotype.</span>
+
+<span class="sd">     .. warning: Assumming that if no pcr_dengue_serotype then a case</span>
+<span class="sd">                 of no dengue, but might be that the datasets do not</span>
+<span class="sd">                 have such column!</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+
+     <span class="c1"># Define map</span>
+     <span class="n">serotype_map</span> <span class="o">=</span> <span class="p">{</span>
+         <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">:</span> <span class="s1">&#39;Negative&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;&lt;LOD&#39;</span><span class="p">:</span> <span class="s1">&#39;Negative&#39;</span>
+     <span class="p">}</span>
+
+     <span class="c1"># Create binary variable dengue</span>
+     <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dengue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pcr_dengue_serotype</span>
+     <span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dengue</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
+     <span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dengue</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;&lt;LOD&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">})</span>
+     <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">),</span> <span class="s1">&#39;dengue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+     <span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dengue</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+     <span class="c1"># Return</span>
+     <span class="k">return</span> <span class="n">data</span>
+
+
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Constants</span>
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># The data filepath</span>
+ <span class="c1"># The data filepath</span>
+ <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../../resources/data/20210601-v0.1/combined/combined_tidy.csv&#39;</span>
+
+ <span class="c1"># Features</span>
+ <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;study_no&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;date&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;dsource&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">]</span>
+
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Main</span>
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Read data</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                          <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span>
+                          <span class="n">usecols</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+
+ <span class="c1"># Format</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">()</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+
+ <span class="c1"># These datasets do not have pcr_dengue_serotype.</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">data</span><span class="o">.</span><span class="n">dsource</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;01nva&#39;</span><span class="p">,</span> <span class="s1">&#39;42dx&#39;</span><span class="p">])]</span>
+
+ <span class="c1"># Define positive dengue</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">dengue_interpretation</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+ <span class="c1"># Overall outcome for patient</span>
+ <span class="n">patients</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;study_no&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+ <span class="n">patients</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+ <span class="n">patients</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+
+ <span class="c1"># Show</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Patients:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">patients</span><span class="p">)</span>
+
+
+ <span class="k">def</span> <span class="nf">prevalence</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+
+ <span class="n">aux</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> \
+     <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">),</span> <span class="s1">&#39;dsource&#39;</span><span class="p">])</span> \
+     <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">prevalence</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;dengue&#39;</span><span class="p">,</span> <span class="n">prevalence</span><span class="p">),</span>
+          <span class="n">n_patients</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;study_no&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="c1"># Show</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Table&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">aux</span><span class="p">)</span>
+
+
+ <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+         <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+
+ <span class="c1"># Create palette</span>
+ <span class="n">pal</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">rot</span><span class="o">=-.</span><span class="mi">25</span><span class="p">,</span> <span class="n">light</span><span class="o">=.</span><span class="mi">7</span><span class="p">)</span>
+
+
+ <span class="c1"># ---------------------------</span>
+ <span class="c1"># Plot prevalence</span>
+ <span class="c1"># ---------------------------</span>
+ <span class="c1"># Create facetgrid</span>
+ <span class="n">g1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">aux</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s1">&#39;dsource&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;dsource&#39;</span><span class="p">,</span>
+     <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">pal</span><span class="p">)</span>
+
+ <span class="c1"># Plot lines</span>
+ <span class="n">g1</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;prevalence&quot;</span><span class="p">)</span>
+
+ <span class="c1"># Configure axes</span>
+ <span class="n">g1</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+ <span class="n">g1</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="s2">&quot;dsource&quot;</span><span class="p">)</span>
+ <span class="n">g1</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;prevalence&quot;</span><span class="p">)</span>
+
+ <span class="c1"># Configure axes</span>
+ <span class="n">g1</span><span class="o">.</span><span class="n">set_titles</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+ <span class="n">g1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+ <span class="n">g1</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">g1</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+
+ <span class="c1"># Configure ticks</span>
+ <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+ <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">YearLocator</span><span class="p">())</span>
+ <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">))</span>
+ <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">))</span>
+
+ <span class="c1"># Suptitle</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Monthly prevalence (%) by dataset&#39;</span><span class="p">)</span>
+
+
+ <span class="c1"># ---------------------------</span>
+ <span class="c1"># Plot n_patients</span>
+ <span class="c1"># ---------------------------</span>
+ <span class="c1"># Create facetgrid</span>
+ <span class="n">g2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">aux</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s1">&#39;dsource&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;dsource&#39;</span><span class="p">,</span>
+     <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">pal</span><span class="p">)</span>
+
+ <span class="c1"># Plot lines</span>
+ <span class="n">g2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;n_patients&quot;</span><span class="p">)</span>
+
+ <span class="c1"># Plot extra</span>
+ <span class="n">g2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+ <span class="n">g2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="s2">&quot;dsource&quot;</span><span class="p">)</span>
+ <span class="n">g2</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;n_patients&quot;</span><span class="p">)</span>
+
+ <span class="c1"># Configure axes</span>
+ <span class="n">g2</span><span class="o">.</span><span class="n">set_titles</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+ <span class="n">g2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+ <span class="n">g2</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">g2</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+
+ <span class="c1"># Configure ticks</span>
+ <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+ <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">YearLocator</span><span class="p">())</span>
+ <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">))</span>
+ <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">))</span>
+
+ <span class="c1"># Sup title</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Monthly #Patients by dataset&#39;</span><span class="p">)</span>
+
+ <span class="c1"># Show</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.544 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-prevalence-plot-prevalence-datasets-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/5d80132dfdec8e2325a958f74e6fc1cf/plot_prevalence_datasets.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_prevalence_datasets.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/5f4ba5615c23d0be1d1b84d7383c0cd7/plot_prevalence_datasets.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_prevalence_datasets.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_prevalence_monthly.html" class="btn btn-neutral float-right" title="Yearly monthly prevalence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Prevalence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2021, &lt;Full name&gt;
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
