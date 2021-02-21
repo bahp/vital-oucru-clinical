@@ -19,6 +19,7 @@ Welcome to fyp2020-username's documentation!
    :hidden:
 
    _examples/tutorial/index
+   _examples/prevalence/index
 
 Indices and tables
 ==================

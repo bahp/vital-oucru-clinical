@@ -17,9 +17,9 @@ sys.path.insert(0, os.path.abspath('../../fyp2020-username/'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'fyp2020-username'
+project = 'vital-oucru-clinical'
 copyright = '2021, <Full name>'
-author = '<Full name>'
+author = 'Bernard Hernandez'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
@@ -67,9 +67,9 @@ from sphinx_gallery.sorting import FileNameSortKey
 # Configuration for sphinx_gallery
 sphinx_gallery_conf = {
     # path to your example scripts
-    'examples_dirs': ['../../examples/tutorial'],
+    'examples_dirs': ['../../examples/prevalence'],
     # path to where to save gallery generated output
-    'gallery_dirs': ['../source/_examples/tutorial'],
+    'gallery_dirs': ['../source/_examples/prevalence'],
     # Other
     'line_numbers': True,
     'download_all_examples': False,
