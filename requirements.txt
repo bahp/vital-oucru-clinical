@@ -1,5 +1,7 @@
 pytest==6.2.1
 Sphinx
-sphinx-rtd-theme
+sphinx-rtd-themedir
 sphinx-gallery
 matplotlib
+pandas
+seaborn
