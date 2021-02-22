@@ -11,7 +11,6 @@ Example using your package
                - Not all datasets had pcr_dengue_serotype variable
                - The serology results and/or clinical notes need to be incorporated.
 """
-
 # Libraries
 import calendar
 import pandas as pd
@@ -19,12 +18,8 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Libraries
-import calendar
-import pandas as pd
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
+# DataBlend library
+from datablend.core.repair.correctors import oucru_dengue_interpretation_feature
 
 # Seaborn
 sns.set_theme(style="whitegrid")
@@ -33,31 +28,8 @@ sns.set_theme(style="whitegrid")
 # ---------------------------------
 # Methods
 # ---------------------------------
-def dengue_interpretation(data):
-    """Defines dengue interpretation.
-
-    .. note: It is a case of dengue if there is a pcr_dengue_serotype.
-
-    .. warning: Assumming that if no pcr_dengue_serotype then a case
-                of no dengue, but might be that the datasets do not
-                have such column!
-    """
-
-    # Define map
-    serotype_map = {
-        pd.NA: 'Negative',
-        '<LOD': 'Negative'
-    }
-
-    # Create binary variable dengue
-    data['dengue'] = data.pcr_dengue_serotype
-    data.dengue = data.dengue.fillna('0')
-    data.dengue = data.dengue.replace({'<LOD': '0'})
-    data.loc[~(data.dengue == '0'), 'dengue'] = '1'
-    data.dengue = data.dengue.astype(int)
-
-    # Return
-    return data
+def prevalence(x):
+    return (np.sum(x) / len(x)) * 100
 
 
 # ---------------------------------
@@ -71,7 +43,10 @@ path = '../../resources/data/20210601-v0.1/combined/combined_tidy.csv'
 features = ['study_no',
             'date',
             'dsource',
-            'pcr_dengue_serotype']
+            'pcr_dengue_serotype',
+            'ns1_interpretation',
+            'igm_interpretation',
+            'igg_interpretation']
 
 # ---------------------------------
 # Main
@@ -88,8 +63,11 @@ data = data[features]
 # These datasets do not have pcr_dengue_serotype.
 data = data[~data.dsource.isin(['01nva', '42dx'])]
 
-# Define positive dengue
-data = dengue_interpretation(data)
+# Add dengue interpretation
+data['dengue_interpretation'] = \
+    oucru_dengue_interpretation_feature(data,
+        pcr=True, ns1=True, igm=True,
+        paired_igm_igg=True, default=False)
 
 # Overall outcome for patient
 patients = data.groupby('study_no').max()
@@ -101,16 +79,12 @@ print("\nPatients:")
 print(patients)
 
 
-def prevalence(x):
-    return (np.sum(x) / len(x)) * 100
-
-
 # Compute prevalence
 # ------------------
 # Compute prevalence
 prevalence = patients.reset_index() \
     .groupby(by=['month', 'year']).agg( \
-        prevalence=('dengue', prevalence),
+        prevalence=('dengue_interpretation', prevalence),
         n_patients=('study_no', 'count'))
 
 # Drop extremes
@@ -121,14 +95,22 @@ prevalence = prevalence.reset_index()
 #prevalence = prevalence[idxs]
 
 # Format month
-prevalence.month = prevalence.month.apply(
-    lambda x: calendar.month_abbr[x])
+#prevalence.month = prevalence.month.apply(
+#    lambda x: calendar.month_abbr[x])
 
 # Create tables
 table_prevalence = pd.pivot_table(prevalence,
     index=['year'], values='prevalence', columns=['month'])
 table_npatients = pd.pivot_table(prevalence,
     index=['year'], values='n_patients', columns=['month'])
+
+# Month numbers to abbr
+def month_abbr(v):
+    return [calendar.month_abbr[x] for x in v]
+
+table_prevalence.columns = month_abbr(table_prevalence.columns)
+table_npatients.columns = month_abbr(table_npatients.columns)
+prevalence.month = month_abbr(prevalence.month)
 
 # Show
 print("\n")
@@ -240,6 +222,27 @@ ax[1].set(title="Number of patients (study) in HTD")
 
 # Adjust layout
 plt.tight_layout()
+
+# ----------------
+# Plot correlation
+# ----------------
+# Create figure
+f, ax = plt.subplots(1, 1, figsize=(4, 4))
+
+# Palette
+cmap = sns.diverging_palette(220, 10, as_cmap=True)
+
+# Mask
+mask = np.triu(np.ones_like(prevalence.corr(), dtype=np.bool))
+
+# Draw heatmap
+sns.heatmap(prevalence.corr()*100, cmap=cmap, center=0,
+    mask=mask, vmax=100, vmin=-100, square=True, linewidths=0.5,
+    cbar_kws={'shrink':.5}, annot=True, fmt=".0f",
+            annot_kws={"size": 10})
+
+# Configure axes
+ax.set(title="Correlation")
 
 # Show
 plt.show()
