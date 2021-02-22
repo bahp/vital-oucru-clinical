@@ -186,22 +186,24 @@ not suffer dengue. However, the following things should be considered:</p>
 </div>
 <img alt="Overall dengue prevalence in HTD" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_prevalence_overall_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Patients:
-                     date dsource pcr_dengue_serotype  dengue  month  year
-study_no
-01nva-003-1001 2020-06-13   01nva                &lt;NA&gt;       0      6  2020
-01nva-003-1002 2020-06-23   01nva                &lt;NA&gt;       0      6  2020
-01nva-003-1003 2020-07-04   01nva                &lt;NA&gt;       0      7  2020
-01nva-003-1004 2020-06-24   01nva                &lt;NA&gt;       0      6  2020
-01nva-003-1005 2020-07-22   01nva                &lt;NA&gt;       0      7  2020
-...                   ...     ...                 ...     ...    ...   ...
-md-995         2003-07-28      md              DENV-2       1      7  2003
-md-996         2003-07-25      md                &lt;LOD       0      7  2003
-md-997         2003-07-28      md                &lt;LOD       0      7  2003
-md-998         2003-07-29      md                &lt;LOD       0      7  2003
-md-999         2003-07-29      md              DENV-4       1      7  2003
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Applying... oucru_dengue_interpretation_feature.
 
-[16489 rows x 6 columns]
+Patients:
+                     date dsource pcr_dengue_serotype ns1_interpretation igm_interpretation igg_interpretation  dengue  dengue_interpretation  month  year
+study_no
+01nva-003-1001 2020-06-13   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      6  2020
+01nva-003-1002 2020-06-23   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      6  2020
+01nva-003-1003 2020-07-04   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2020
+01nva-003-1004 2020-06-24   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      6  2020
+01nva-003-1005 2020-07-22   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2020
+...                   ...     ...                 ...                ...                ...                ...     ...                    ...    ...   ...
+md-995         2003-07-28      md              DENV-2               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       1                   True      7  2003
+md-996         2003-07-25      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2003
+md-997         2003-07-28      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2003
+md-998         2003-07-29      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2003
+md-999         2003-07-29      md              DENV-4               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       1                   True      7  2003
+
+[16489 rows x 10 columns]
 
 Serotypes:
 dsource              06dx  13dx  32dx  d001    df  dr   fl    md  Total
@@ -220,26 +222,26 @@ Mixed                   0     0     0     0     9   0    0     8     17
 Total                 223  8099    72    95  1647  82  653  2078  12949
 
 Dengue:
-dsource  01nva  06dx  13dx  32dx  42dx  d001    df    dr   fl    md  Total
-dengue
-0          155   107  6041    24   664    54   510  1460  533  1424  10972
-1            0   223  2067    51     0    58  1209    82  207  1620   5517
-Total      155   330  8108    75   664   112  1719  1542  740  3044  16489
+dsource                01nva  06dx  13dx  32dx  42dx  d001    df    dr   fl    md  Total
+dengue_interpretation
+False                    155   107  5924     7   664    37   510  1458  107  1424  10393
+True                       0   223  2184    68     0    75  1209    84  633  1620   6096
+Total                    155   330  8108    75   664   112  1719  1542  740  3044  16489
 
 :
      prevalence  n_patients
-Jan   39.492386         985
-Feb   25.340136         588
-Mar   25.028571         875
-Apr   20.046620         858
-May   19.894180         945
-Jun   26.169707        1261
-Jul   40.526976        1594
-Aug   45.798817        1690
-Sep   42.697368        1520
-Oct   37.586207        1740
-Nov   36.103896        1925
-Dec   38.602724        1689
+Jan   42.994242        1042
+Feb   27.986907         611
+Mar   25.131996         947
+Apr   21.128319         904
+May   21.493441         991
+Jun   28.078078        1332
+Jul   42.660276        1669
+Aug   47.483221        1788
+Sep   44.047619        1596
+Oct   38.528139        1848
+Nov   38.107161        1997
+Dec   41.043084        1764
 </pre></div>
 </div>
 <div class="line-block">
@@ -389,12 +391,31 @@ Dec   38.602724        1689
 156
 157
 158
-159</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
  <span class="kn">import</span> <span class="nn">calendar</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
  <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+ <span class="c1"># DataBlend library</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">oucru_dengue_interpretation_feature</span>
 
  <span class="c1"># Seaborn</span>
  <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
@@ -411,6 +432,10 @@ Dec   38.602724        1689
      <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
      <span class="c1"># Return</span>
      <span class="k">return</span> <span class="n">df</span>
+
+
+ <span class="k">def</span> <span class="nf">prevalence</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
 
 
  <span class="k">def</span> <span class="nf">dengue_interpretation</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -450,7 +475,10 @@ Dec   38.602724        1689
  <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;study_no&#39;</span><span class="p">,</span>
              <span class="s1">&#39;date&#39;</span><span class="p">,</span>
              <span class="s1">&#39;dsource&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">]</span>
+             <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;ns1_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;igm_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;igg_interpretation&#39;</span><span class="p">]</span>
 
  <span class="c1"># ---------------------------------</span>
  <span class="c1"># Main</span>
@@ -467,6 +495,12 @@ Dec   38.602724        1689
  <span class="c1"># Define positive dengue</span>
  <span class="n">data</span> <span class="o">=</span> <span class="n">dengue_interpretation</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
+ <span class="c1"># Add dengue interpretation</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">]</span> <span class="o">=</span> \
+     <span class="n">oucru_dengue_interpretation_feature</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+         <span class="n">pcr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ns1</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">igm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">paired_igm_igg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
  <span class="c1"># Overall outcome for patient</span>
  <span class="n">patients</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;study_no&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
  <span class="n">patients</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
@@ -478,7 +512,7 @@ Dec   38.602724        1689
 
  <span class="c1"># Dengue interpretation count per dataset</span>
  <span class="n">dengue</span> <span class="o">=</span> <span class="n">add_totals</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>
-     <span class="n">patients</span><span class="o">.</span><span class="n">dengue</span><span class="p">,</span> <span class="n">patients</span><span class="o">.</span><span class="n">dsource</span><span class="p">))</span>
+     <span class="n">patients</span><span class="o">.</span><span class="n">dengue_interpretation</span><span class="p">,</span> <span class="n">patients</span><span class="o">.</span><span class="n">dsource</span><span class="p">))</span>
 
  <span class="c1"># Show</span>
  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Patients:&quot;</span><span class="p">)</span>
@@ -494,8 +528,8 @@ Dec   38.602724        1689
  <span class="n">idxs</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">dsource</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">serotypes</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
  <span class="c1"># Compute prevalence</span>
- <span class="n">prevalence</span> <span class="o">=</span> <span class="n">patients</span><span class="p">[</span><span class="n">idxs</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
-     <span class="n">prevalence</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;dengue&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span>
+ <span class="n">prevalence</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+     <span class="n">prevalence</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">,</span> <span class="n">prevalence</span><span class="p">),</span>
      <span class="n">n_patients</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;study_no&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">))</span>
 
  <span class="c1"># Add legible labels</span>
@@ -533,10 +567,10 @@ Dec   38.602724        1689
              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 
  <span class="c1"># Show</span>
- <span class="c1">#plt.show()</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.993 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.769 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-prevalence-plot-prevalence-overall-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ef8708862e9c5bb1af65e8462292ab7a/plot_prevalence_overall.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_prevalence_overall.py</span></code></a></p>

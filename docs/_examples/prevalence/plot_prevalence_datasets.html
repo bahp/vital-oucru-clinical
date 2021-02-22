@@ -192,22 +192,24 @@ not suffer dengue. However, the following things should be considered:</p>
 </li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Patients:
-                    date dsource pcr_dengue_serotype  dengue  month  year
-study_no
-06dx-06DXA001 2009-09-01    06dx              DENV-1       1      9  2009
-06dx-06DXA002 2009-08-31    06dx              DENV-1       1      8  2009
-06dx-06DXA004 2009-08-10    06dx              DENV-1       1      8  2009
-06dx-06DXA005 2009-09-04    06dx              DENV-1       1      9  2009
-06dx-06DXA006 2009-09-01    06dx              DENV-2       1      9  2009
-...                  ...     ...                 ...     ...    ...   ...
-md-995        2003-07-28      md              DENV-2       1      7  2003
-md-996        2003-07-25      md                &lt;LOD       0      7  2003
-md-997        2003-07-28      md                &lt;LOD       0      7  2003
-md-998        2003-07-29      md                &lt;LOD       0      7  2003
-md-999        2003-07-29      md              DENV-4       1      7  2003
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Applying... oucru_dengue_interpretation_feature.
 
-[15657 rows x 6 columns]
+Patients:
+                     date dsource pcr_dengue_serotype ns1_interpretation igm_interpretation igg_interpretation  dengue_interpretation  month  year
+study_no
+01nva-003-1001 2020-06-13   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      6  2020
+01nva-003-1002 2020-06-23   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      6  2020
+01nva-003-1003 2020-07-04   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2020
+01nva-003-1004 2020-06-24   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      6  2020
+01nva-003-1005 2020-07-22   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2020
+...                   ...     ...                 ...                ...                ...                ...                    ...    ...   ...
+md-995         2003-07-28      md              DENV-2               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                   True      7  2003
+md-996         2003-07-25      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2003
+md-997         2003-07-28      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2003
+md-998         2003-07-29      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2003
+md-999         2003-07-29      md              DENV-4               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                   True      7  2003
+
+[16476 rows x 9 columns]
 
 Table
           date dsource  prevalence  n_patients
@@ -217,13 +219,13 @@ Table
 3   1999-10-31      df   42.857143           7
 4   1999-11-30      df    0.000000           4
 ..         ...     ...         ...         ...
-396 2014-09-30    13dx   15.555556          45
-397 2014-10-31    13dx   25.581395          43
-398 2014-11-30    13dx   40.000000          35
-399 2014-12-31    13dx   33.333333          15
-400 2019-04-30    13dx  100.000000           1
+425 2020-09-30   01nva    0.000000          23
+426 2020-10-31   01nva    0.000000          29
+427 2020-11-30   01nva    0.000000          14
+428 2020-12-31   01nva    0.000000          12
+429 2021-01-31   01nva    0.000000          14
 
-[401 rows x 4 columns]
+[430 rows x 4 columns]
 </pre></div>
 </div>
 <div class="line-block">
@@ -389,23 +391,7 @@ Table
 172
 173
 174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+175</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
  <span class="kn">import</span> <span class="nn">calendar</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -413,12 +399,8 @@ Table
  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
  <span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
 
- <span class="c1"># Configure</span>
- <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="p">{</span>
-     <span class="s2">&quot;ytick.major.size&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-     <span class="s2">&quot;ytick.minor.size&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
-     <span class="s1">&#39;grid.linestyle&#39;</span><span class="p">:</span> <span class="s1">&#39;--&#39;</span>
- <span class="p">})</span>
+ <span class="c1"># DataBlend library</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">oucru_dengue_interpretation_feature</span>
 
  <span class="c1"># Seaborn</span>
  <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
@@ -427,31 +409,14 @@ Table
  <span class="c1"># ---------------------------------</span>
  <span class="c1"># Methods</span>
  <span class="c1"># ---------------------------------</span>
- <span class="k">def</span> <span class="nf">dengue_interpretation</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-     <span class="sd">&quot;&quot;&quot;Defines dengue interpretation.</span>
+ <span class="k">def</span> <span class="nf">prevalence</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
 
-<span class="sd">     .. note: It is a case of dengue if there is a pcr_dengue_serotype.</span>
-
-<span class="sd">     .. warning: Assumming that if no pcr_dengue_serotype then a case</span>
-<span class="sd">                 of no dengue, but might be that the datasets do not</span>
-<span class="sd">                 have such column!</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-
-     <span class="c1"># Define map</span>
-     <span class="n">serotype_map</span> <span class="o">=</span> <span class="p">{</span>
-         <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">:</span> <span class="s1">&#39;Negative&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;&lt;LOD&#39;</span><span class="p">:</span> <span class="s1">&#39;Negative&#39;</span>
-     <span class="p">}</span>
-
-     <span class="c1"># Create binary variable dengue</span>
-     <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dengue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pcr_dengue_serotype</span>
-     <span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dengue</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
-     <span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dengue</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;&lt;LOD&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">})</span>
-     <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">),</span> <span class="s1">&#39;dengue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-     <span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dengue</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-     <span class="c1"># Return</span>
-     <span class="k">return</span> <span class="n">data</span>
+ <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+         <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 
 
  <span class="c1"># ---------------------------------</span>
@@ -465,7 +430,10 @@ Table
  <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;study_no&#39;</span><span class="p">,</span>
              <span class="s1">&#39;date&#39;</span><span class="p">,</span>
              <span class="s1">&#39;dsource&#39;</span><span class="p">,</span>
-             <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">]</span>
+             <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;ns1_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;igm_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;igg_interpretation&#39;</span><span class="p">]</span>
 
  <span class="c1"># ---------------------------------</span>
  <span class="c1"># Main</span>
@@ -479,11 +447,11 @@ Table
  <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">()</span>
  <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
 
- <span class="c1"># These datasets do not have pcr_dengue_serotype.</span>
- <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">data</span><span class="o">.</span><span class="n">dsource</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;01nva&#39;</span><span class="p">,</span> <span class="s1">&#39;42dx&#39;</span><span class="p">])]</span>
-
- <span class="c1"># Define positive dengue</span>
- <span class="n">data</span> <span class="o">=</span> <span class="n">dengue_interpretation</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+ <span class="c1"># Add dengue interpretation</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">]</span> <span class="o">=</span> \
+     <span class="n">oucru_dengue_interpretation_feature</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+         <span class="n">pcr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ns1</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">igm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">paired_igm_igg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
  <span class="c1"># Overall outcome for patient</span>
  <span class="n">patients</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;study_no&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -494,34 +462,29 @@ Table
  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Patients:&quot;</span><span class="p">)</span>
  <span class="nb">print</span><span class="p">(</span><span class="n">patients</span><span class="p">)</span>
 
-
- <span class="k">def</span> <span class="nf">prevalence</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
-
-
+ <span class="c1"># Compute prevalence</span>
  <span class="n">aux</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> \
      <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">),</span> <span class="s1">&#39;dsource&#39;</span><span class="p">])</span> \
-     <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">prevalence</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;dengue&#39;</span><span class="p">,</span> <span class="n">prevalence</span><span class="p">),</span>
+     <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">prevalence</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">,</span> <span class="n">prevalence</span><span class="p">),</span>
           <span class="n">n_patients</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;study_no&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
  <span class="c1"># Show</span>
  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Table&quot;</span><span class="p">)</span>
  <span class="nb">print</span><span class="p">(</span><span class="n">aux</span><span class="p">)</span>
 
-
- <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
-         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
-         <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
-
  <span class="c1"># Create palette</span>
  <span class="n">pal</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">cubehelix_palette</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">rot</span><span class="o">=-.</span><span class="mi">25</span><span class="p">,</span> <span class="n">light</span><span class="o">=.</span><span class="mi">7</span><span class="p">)</span>
-
 
  <span class="c1"># ---------------------------</span>
  <span class="c1"># Plot prevalence</span>
  <span class="c1"># ---------------------------</span>
+ <span class="c1"># Configure</span>
+ <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="p">{</span>
+     <span class="s2">&quot;ytick.major.size&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+     <span class="s2">&quot;ytick.minor.size&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+     <span class="s1">&#39;grid.linestyle&#39;</span><span class="p">:</span> <span class="s1">&#39;--&#39;</span>
+ <span class="p">})</span>
+
  <span class="c1"># Create facetgrid</span>
  <span class="n">g1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">aux</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s1">&#39;dsource&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;dsource&#39;</span><span class="p">,</span>
      <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">pal</span><span class="p">)</span>
@@ -553,6 +516,13 @@ Table
  <span class="c1"># ---------------------------</span>
  <span class="c1"># Plot n_patients</span>
  <span class="c1"># ---------------------------</span>
+ <span class="c1"># Configure</span>
+ <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="p">{</span>
+     <span class="s2">&quot;ytick.major.size&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+     <span class="s2">&quot;ytick.minor.size&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+     <span class="s1">&#39;grid.linestyle&#39;</span><span class="p">:</span> <span class="s1">&#39;--&#39;</span>
+ <span class="p">})</span>
+
  <span class="c1"># Create facetgrid</span>
  <span class="n">g2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">aux</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s1">&#39;dsource&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;dsource&#39;</span><span class="p">,</span>
      <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">pal</span><span class="p">)</span>
@@ -584,7 +554,7 @@ Table
  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.544 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  13.116 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-prevalence-plot-prevalence-datasets-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5d80132dfdec8e2325a958f74e6fc1cf/plot_prevalence_datasets.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_prevalence_datasets.py</span></code></a></p>

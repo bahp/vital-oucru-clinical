@@ -19,6 +19,9 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# DataBlend library
+from datablend.core.repair.correctors import oucru_dengue_interpretation_feature
+
 # Seaborn
 sns.set_theme(style="whitegrid")
 
@@ -34,6 +37,10 @@ def add_totals(df):
     df = df.astype(int)
     # Return
     return df
+
+
+def prevalence(x):
+    return (np.sum(x) / len(x)) * 100
 
 
 def dengue_interpretation(data):
@@ -73,7 +80,10 @@ path = '../../resources/data/20212002-v0.2/combined/combined_tidy.csv'
 features = ['study_no',
             'date',
             'dsource',
-            'pcr_dengue_serotype']
+            'pcr_dengue_serotype',
+            'ns1_interpretation',
+            'igm_interpretation',
+            'igg_interpretation']
 
 # ---------------------------------
 # Main
@@ -90,6 +100,12 @@ data = data[features]
 # Define positive dengue
 data = dengue_interpretation(data)
 
+# Add dengue interpretation
+data['dengue_interpretation'] = \
+    oucru_dengue_interpretation_feature(data,
+        pcr=True, ns1=True, igm=True,
+        paired_igm_igg=True, default=False)
+
 # Overall outcome for patient
 patients = data.groupby('study_no').max()
 patients['month'] = patients.date.dt.month
@@ -101,7 +117,7 @@ serotypes = add_totals(pd.crosstab(
 
 # Dengue interpretation count per dataset
 dengue = add_totals(pd.crosstab(
-    patients.dengue, patients.dsource))
+    patients.dengue_interpretation, patients.dsource))
 
 # Show
 print("\nPatients:")
@@ -117,8 +133,8 @@ print(dengue)
 idxs = patients.dsource.isin(serotypes.columns)
 
 # Compute prevalence
-prevalence = patients[idxs].reset_index().groupby('month').agg(
-    prevalence=('dengue', lambda x: (np.sum(x) / len(x)) * 100),
+prevalence = patients.reset_index().groupby('month').agg(
+    prevalence=('dengue_interpretation', prevalence),
     n_patients=('study_no', 'count'))
 
 # Add legible labels
@@ -156,4 +172,4 @@ for i, (index, row) in enumerate(prevalence.iterrows()):
             color='black', ha="center", fontsize=8)
 
 # Show
-#plt.show()
+plt.show()

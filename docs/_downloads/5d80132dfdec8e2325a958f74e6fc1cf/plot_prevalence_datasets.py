@@ -20,12 +20,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
-# Configure
-sns.set_style("whitegrid", {
-    "ytick.major.size": 0.1,
-    "ytick.minor.size": 0.05,
-    'grid.linestyle': '--'
-})
+# DataBlend library
+from datablend.core.repair.correctors import oucru_dengue_interpretation_feature
 
 # Seaborn
 sns.set_theme(style="whitegrid")
@@ -34,31 +30,14 @@ sns.set_theme(style="whitegrid")
 # ---------------------------------
 # Methods
 # ---------------------------------
-def dengue_interpretation(data):
-    """Defines dengue interpretation.
+def prevalence(x):
+    return (np.sum(x) / len(x)) * 100
 
-    .. note: It is a case of dengue if there is a pcr_dengue_serotype.
-
-    .. warning: Assumming that if no pcr_dengue_serotype then a case
-                of no dengue, but might be that the datasets do not
-                have such column!
-    """
-
-    # Define map
-    serotype_map = {
-        pd.NA: 'Negative',
-        '<LOD': 'Negative'
-    }
-
-    # Create binary variable dengue
-    data['dengue'] = data.pcr_dengue_serotype
-    data.dengue = data.dengue.fillna('0')
-    data.dengue = data.dengue.replace({'<LOD': '0'})
-    data.loc[~(data.dengue == '0'), 'dengue'] = '1'
-    data.dengue = data.dengue.astype(int)
-
-    # Return
-    return data
+def label(x, color, label):
+    ax = plt.gca()
+    ax.text(0, .2, label, fontweight="bold",
+        color=color, ha="left", va="center",
+        transform=ax.transAxes)
 
 
 # ---------------------------------
@@ -72,7 +51,10 @@ path = '../../resources/data/20210601-v0.1/combined/combined_tidy.csv'
 features = ['study_no',
             'date',
             'dsource',
-            'pcr_dengue_serotype']
+            'pcr_dengue_serotype',
+            'ns1_interpretation',
+            'igm_interpretation',
+            'igg_interpretation']
 
 # ---------------------------------
 # Main
@@ -86,11 +68,11 @@ data = pd.read_csv(path, low_memory=False,
 data = data.convert_dtypes()
 data = data[features]
 
-# These datasets do not have pcr_dengue_serotype.
-data = data[~data.dsource.isin(['01nva', '42dx'])]
-
-# Define positive dengue
-data = dengue_interpretation(data)
+# Add dengue interpretation
+data['dengue_interpretation'] = \
+    oucru_dengue_interpretation_feature(data,
+        pcr=True, ns1=True, igm=True,
+        paired_igm_igg=True, default=False)
 
 # Overall outcome for patient
 patients = data.groupby('study_no').max()
@@ -101,34 +83,29 @@ patients['year'] = patients.date.dt.year
 print("\nPatients:")
 print(patients)
 
-
-def prevalence(x):
-    return (np.sum(x) / len(x)) * 100
-
-
+# Compute prevalence
 aux = patients.reset_index() \
     .groupby([pd.Grouper(key='date', freq='M'), 'dsource']) \
-    .agg(prevalence=('dengue', prevalence),
+    .agg(prevalence=('dengue_interpretation', prevalence),
          n_patients=('study_no', 'count')).reset_index()
 
 # Show
 print("\nTable")
 print(aux)
 
-
-def label(x, color, label):
-    ax = plt.gca()
-    ax.text(0, .2, label, fontweight="bold",
-        color=color, ha="left", va="center",
-        transform=ax.transAxes)
-
 # Create palette
 pal = sns.cubehelix_palette(10, rot=-.25, light=.7)
-
 
 # ---------------------------
 # Plot prevalence
 # ---------------------------
+# Configure
+sns.set_style("whitegrid", {
+    "ytick.major.size": 0.1,
+    "ytick.minor.size": 0.05,
+    'grid.linestyle': '--'
+})
+
 # Create facetgrid
 g1 = sns.FacetGrid(aux, row='dsource', hue='dsource',
     height=1, sharex=True, aspect=15, palette=pal)
@@ -160,6 +137,13 @@ plt.suptitle('Monthly prevalence (%) by dataset')
 # ---------------------------
 # Plot n_patients
 # ---------------------------
+# Configure
+sns.set_style("whitegrid", {
+    "ytick.major.size": 0.1,
+    "ytick.minor.size": 0.05,
+    'grid.linestyle': '--'
+})
+
 # Create facetgrid
 g2 = sns.FacetGrid(aux, row='dsource', hue='dsource',
     height=1, sharex=True, aspect=15, palette=pal)

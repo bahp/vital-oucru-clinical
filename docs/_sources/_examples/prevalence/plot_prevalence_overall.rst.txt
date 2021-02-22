@@ -30,7 +30,7 @@ Example using your package
                - Not all datasets had pcr_dengue_serotype variable
                - The serology results and/or clinical notes need to be incorporated.
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-159
+.. GENERATED FROM PYTHON SOURCE LINES 14-175
 
 
 
@@ -45,23 +45,24 @@ Example using your package
 
  .. code-block:: none
 
+    Applying... oucru_dengue_interpretation_feature.
 
     Patients:
-                         date dsource pcr_dengue_serotype  dengue  month  year
-    study_no                                                                  
-    01nva-003-1001 2020-06-13   01nva                <NA>       0      6  2020
-    01nva-003-1002 2020-06-23   01nva                <NA>       0      6  2020
-    01nva-003-1003 2020-07-04   01nva                <NA>       0      7  2020
-    01nva-003-1004 2020-06-24   01nva                <NA>       0      6  2020
-    01nva-003-1005 2020-07-22   01nva                <NA>       0      7  2020
-    ...                   ...     ...                 ...     ...    ...   ...
-    md-995         2003-07-28      md              DENV-2       1      7  2003
-    md-996         2003-07-25      md                <LOD       0      7  2003
-    md-997         2003-07-28      md                <LOD       0      7  2003
-    md-998         2003-07-29      md                <LOD       0      7  2003
-    md-999         2003-07-29      md              DENV-4       1      7  2003
+                         date dsource pcr_dengue_serotype ns1_interpretation igm_interpretation igg_interpretation  dengue  dengue_interpretation  month  year
+    study_no                                                                                                                                                  
+    01nva-003-1001 2020-06-13   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      6  2020
+    01nva-003-1002 2020-06-23   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      6  2020
+    01nva-003-1003 2020-07-04   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      7  2020
+    01nva-003-1004 2020-06-24   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      6  2020
+    01nva-003-1005 2020-07-22   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      7  2020
+    ...                   ...     ...                 ...                ...                ...                ...     ...                    ...    ...   ...
+    md-995         2003-07-28      md              DENV-2               <NA>               <NA>               <NA>       1                   True      7  2003
+    md-996         2003-07-25      md                <LOD               <NA>               <NA>               <NA>       0                  False      7  2003
+    md-997         2003-07-28      md                <LOD               <NA>               <NA>               <NA>       0                  False      7  2003
+    md-998         2003-07-29      md                <LOD               <NA>               <NA>               <NA>       0                  False      7  2003
+    md-999         2003-07-29      md              DENV-4               <NA>               <NA>               <NA>       1                   True      7  2003
 
-    [16489 rows x 6 columns]
+    [16489 rows x 10 columns]
 
     Serotypes:
     dsource              06dx  13dx  32dx  d001    df  dr   fl    md  Total
@@ -80,26 +81,26 @@ Example using your package
     Total                 223  8099    72    95  1647  82  653  2078  12949
 
     Dengue:
-    dsource  01nva  06dx  13dx  32dx  42dx  d001    df    dr   fl    md  Total
-    dengue                                                                    
-    0          155   107  6041    24   664    54   510  1460  533  1424  10972
-    1            0   223  2067    51     0    58  1209    82  207  1620   5517
-    Total      155   330  8108    75   664   112  1719  1542  740  3044  16489
+    dsource                01nva  06dx  13dx  32dx  42dx  d001    df    dr   fl    md  Total
+    dengue_interpretation                                                                   
+    False                    155   107  5924     7   664    37   510  1458  107  1424  10393
+    True                       0   223  2184    68     0    75  1209    84  633  1620   6096
+    Total                    155   330  8108    75   664   112  1719  1542  740  3044  16489
 
     :
          prevalence  n_patients
-    Jan   39.492386         985
-    Feb   25.340136         588
-    Mar   25.028571         875
-    Apr   20.046620         858
-    May   19.894180         945
-    Jun   26.169707        1261
-    Jul   40.526976        1594
-    Aug   45.798817        1690
-    Sep   42.697368        1520
-    Oct   37.586207        1740
-    Nov   36.103896        1925
-    Dec   38.602724        1689
+    Jan   42.994242        1042
+    Feb   27.986907         611
+    Mar   25.131996         947
+    Apr   21.128319         904
+    May   21.493441         991
+    Jun   28.078078        1332
+    Jul   42.660276        1669
+    Aug   47.483221        1788
+    Sep   44.047619        1596
+    Oct   38.528139        1848
+    Nov   38.107161        1997
+    Dec   41.043084        1764
 
 
 
@@ -119,6 +120,9 @@ Example using your package
     import seaborn as sns
     import matplotlib.pyplot as plt
 
+    # DataBlend library
+    from datablend.core.repair.correctors import oucru_dengue_interpretation_feature
+
     # Seaborn
     sns.set_theme(style="whitegrid")
 
@@ -134,6 +138,10 @@ Example using your package
         df = df.astype(int)
         # Return
         return df
+
+
+    def prevalence(x):
+        return (np.sum(x) / len(x)) * 100
 
 
     def dengue_interpretation(data):
@@ -173,7 +181,10 @@ Example using your package
     features = ['study_no',
                 'date',
                 'dsource',
-                'pcr_dengue_serotype']
+                'pcr_dengue_serotype',
+                'ns1_interpretation',
+                'igm_interpretation',
+                'igg_interpretation']
 
     # ---------------------------------
     # Main
@@ -190,6 +201,12 @@ Example using your package
     # Define positive dengue
     data = dengue_interpretation(data)
 
+    # Add dengue interpretation
+    data['dengue_interpretation'] = \
+        oucru_dengue_interpretation_feature(data,
+            pcr=True, ns1=True, igm=True,
+            paired_igm_igg=True, default=False)
+
     # Overall outcome for patient
     patients = data.groupby('study_no').max()
     patients['month'] = patients.date.dt.month
@@ -201,7 +218,7 @@ Example using your package
 
     # Dengue interpretation count per dataset
     dengue = add_totals(pd.crosstab(
-        patients.dengue, patients.dsource))
+        patients.dengue_interpretation, patients.dsource))
 
     # Show
     print("\nPatients:")
@@ -217,8 +234,8 @@ Example using your package
     idxs = patients.dsource.isin(serotypes.columns)
 
     # Compute prevalence
-    prevalence = patients[idxs].reset_index().groupby('month').agg(
-        prevalence=('dengue', lambda x: (np.sum(x) / len(x)) * 100),
+    prevalence = patients.reset_index().groupby('month').agg(
+        prevalence=('dengue_interpretation', prevalence),
         n_patients=('study_no', 'count'))
 
     # Add legible labels
@@ -256,11 +273,11 @@ Example using your package
                 color='black', ha="center", fontsize=8)
 
     # Show
-    #plt.show()
+    plt.show()
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.993 seconds)
+   **Total running time of the script:** ( 0 minutes  7.769 seconds)
 
 
 .. _sphx_glr_download__examples_prevalence_plot_prevalence_overall.py:
