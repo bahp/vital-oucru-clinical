@@ -1,0 +1,843 @@
+corrector:
+  groupby:
+    patient:
+      by: [study_no]
+
+features:
+
+  # ---------------------------
+  # Date
+  # ---------------------------
+  # .. note: It will be applied to the tidy structure because
+  #          date is a column of the DataFrame. However, it
+  #          will not be applied to the stack structure because
+  #          date is not within the 'columns' column values.
+  - name: date
+    transformations:
+      - dtype_correction: {dtype: datetime64}
+      - date_outliers_correction:
+          groupby: patient
+          max_days_to_median: 25
+          outliers_as_nat: True
+
+  # ---------------------------
+  # Demographics
+  # ---------------------------
+  - name: age
+    class: demographics
+    unit: year
+    dtype: Int64
+    range:
+      absolute: [0, 120, year]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0, 120]
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: gender
+    class: demographics
+    categories:
+      - Male
+      - Female
+    transformations:
+      - static_correction: {method: mode, groupby: patient}
+
+  - name: weight
+    class: demographics
+    unit: kg
+    range:
+      absolute: [0.5, 120, kg]
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+      - range_correction:
+          range: [0.5, 120]
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: height
+    class: demographics
+    unit: cm
+    range:
+      absolute: [50, 200, cm]
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+      - range_correction:
+          range: [30, 200]
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: anorexia
+    class: demographics
+    transformations:
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  - name: pregnant
+    class: demographics
+    transformations:
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  - name: diabetes
+    transformations:
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  - name: asthma
+    transformations:
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  - name: anemia
+    transformations:
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  - name: peptic_ulcer
+    transformations:
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  - name: chronic_hepatitis
+    transformations:
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  # ---------------
+  # Vital signs
+  # ---------------
+  - name: body_temperature
+    unit: celsius
+    ctype: vital sign
+    range:
+      absolute: [35, 43, celsius]
+      reference: [36, 37.5, celsius]
+      hypotermia: [10, 35, celsius]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - order_magnitude_correction:
+          range: [35, 43]
+          orders: [10, 100]
+      - range_correction:
+          range: [10, 45]
+
+  - name: respiratory_rate
+    unit: breath/minute
+    ctype: vital sign
+    range:
+      absolute: [10, 60, breath/minute]  # at rest
+      reference: [12, 25, breath/minute] # at rest
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [5, 200]
+
+  - name: pulse
+    unit: beat/minute
+    ctype: vital sign
+    range:
+      absolute: [50, 200, beat/minute]
+      reference: [60, 100, beat/minute] # at rest
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [50, 200]
+
+  - name: pulse_pressure
+    unit: mmHg
+    ctype: vital sign
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce} # Issue
+
+  - name: dbp
+    unit: mmHg
+    ctype: vital sign
+    range:
+      absolute: [40, 100, mmHg]
+      reference: [60, 80, mmHg]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [10, 100]
+
+  - name: sbp
+    unit: mmHg
+    ctype: vital sign
+    range:
+      absolute: [50, 200, mmHg]
+      reference: [90, 120, mmHg]
+    transformations:
+      - dtype_correction: {dtype: Float64}  # Issue
+      - range_correction:
+          range: [10, 200]
+
+  # ------------------
+  # Other examination
+  # ------------------
+  - name: bleeding_severe
+
+  - name: bleeding
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: bleeding_gi
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bleeding_gum
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bleeding_mucosal
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bleeding_nose
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bleeding_skin
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bleeding_urine
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bleeding_vaginal
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bleeding_vensite
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bleeding_other
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: abdominal_pain
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: abdominal_pain_level
+    transformation:
+      - dtype_correction: {dtype: Float64}
+
+  - name: abdominal_tenderness
+  - name: skin_clammy
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: skin_flush
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: skin_rash
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: diarrhoea
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: vomiting
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: vomiting_level
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
+  - name: jaundice
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: oedema_pulmonary
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: pleural_effusion
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: ascites
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: ascites_level
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
+  - name: petechiae
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bruising
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: respiratory_distress
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: pulse_status
+    categories:
+      Strong: 1,
+      Weak: 2,
+      Not done / Not detected: 8
+      Unknown: 9
+
+  - name: cough
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: chills
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: rales_crackles
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: headache
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: muscle_pain
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: breath
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: movement
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: restlessness
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: dehydration
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: agitated
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: dehydratation
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: perfusion
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: liver_acute
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: nasal_packing
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: gcs_verbal_response
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Int64}
+
+  - name: gcs_motor_response
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Int64}
+
+  - name: gcs_eye_movement
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Int64}
+
+  - name: cns_abnormal_signs
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: cns_abnormal
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: lathargy_severe # lethargy????
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: conjunctival_injection
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: hepatomegaly
+    transformations:
+      - dtype_correction: {dtype: boolean}
+  # ------------------
+  # Other
+  # ------------------
+  - name: crystalloid
+  - name: parental_fluid
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - static_correction: {method: max, groupby: patient}
+
+  # ------------------
+  # Laboratory Results
+  # ------------------
+  # Reference: http://www.scymed.com/en/smnxtb/smnxtb.htm
+  - name: albumin
+    unit: g/L                  # U/L=g/dL | SI=g/L | F=10
+    ctype: laboratory
+    range:
+      absolute: [0, 100, g/L]
+      ref1: [35, 55, g/L]      # wiki | scymed
+      ref2: [3.5, 4.8, g/dL]   # wiki
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0, 1000000000000] #[0, 100]
+
+  - name: alt
+    unit: U/L                   # U/L=U/L | SI=ukat/L | F=0.01667
+    ctype: laboratory
+    range:
+      absolute: [0, 9999, U/L]  # oucru
+      ref1: [5, 20, U/L]        # wiki
+      ref2: [7, 21, U/L]        # wiki
+      ref3: [8, 56, U/L]        # wiki
+      ref4: [10, 40, U/L]       # scymed
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0, 1000000000000] # [0, 9999]
+
+  - name: ast
+    unit: U/L                   # U/L=U/L | SI=ukat/L | F=0.01667
+    ctype: laboratory
+    range:
+      absolute: [0, 9999, U/L]  # oucru
+      ref_female: [6, 34, U/L]  # wiki  ref = ('gender', 'Female', [X, X, X])
+      ref_male: [8, 40, U/L]    # wiki
+      ref1: [10, 40, U/L]       # scymed
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0, 1000000000000] # [0, 9999]
+
+  - name: creatine_kinase
+    unit: U/L                    # U/L=U/L | SI=ukat/L | F=0.01667
+    ctype: laboratory
+    range:
+      absolute: [0, 9999, U/L]   # oucru
+      ref_male: [24, 174, U/L]   # wiki (U/L = ng/mL)
+      ref_female: [24, 200, U/L] # wiki (U/L = ng/mL)
+      ref1: [10, 90, U/L]        # scymed
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0, 1000000000000] # [0, 9999]
+
+  - name: haemoglobin
+    code: hgb                # U/L=g/dL | SI=g/L | C=10
+    unit: g/dL
+    ctype: laboratory
+    range:
+      absolute: [1, 30, g/dL]
+      ref1_male: [130, 162, g/L]
+      ref2_female: [120, 150, g/L]
+      ref3: [12, 18, g/dL]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0, 1000000000000] # [0.1, 50]
+
+  - name: lymphocytes
+    unit: u/L
+    ctype: laboratory
+    range:
+      ref_adult: [0.7, 3.5, gigacount/L] # 10^9/L wiki
+      ref_newborn: [2, 11, gigacount/L]  # 10^9/L wiki
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
+
+  - name: monocytes
+    unit: u/L
+    ctype: laboratory
+    range:
+      ref_adult: [0.1, 0.8, gigacount/L]   # 10^9/L wiki
+      ref_newborn: [0.4, 3.1, gigacount/L] # 10^9/L wiki
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
+
+  - name: neutrophils
+    unit: u/L
+    ctype: laboratory
+    range:
+      ref1: [2500, 8000, count/mm3]
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+
+  - name: haematocrit_percent
+    unit: percent
+    ctype: laboratory
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+      - range_correction:
+          range: [0, 100]
+
+  - name: lymphocytes_percent
+    unit: percent
+    ctype: laboratory
+    range:
+      ref1: [16, 33, percent] # percent of WBC wiki
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+      - range_correction:
+          range: [0, 100]
+
+  - name: monocytes_percent
+    unit: percent
+    ctype: laboratory
+    range:
+      ref1: [3, 7, percent] # percent of WBC wiki
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+      - range_correction:
+          range: [0, 100]
+
+  - name: neutrophils_percent
+    unit: percent
+    ctype: laboratory
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+      - range_correction:
+          range: [0, 100]
+
+  - name: plt
+    unit: kilocount/uL
+    ctype: laboratory
+    range:
+      absolute: [1, 1600, kilocount/uL]  #They are the same!
+      reference: [140, 350, gigacount/L]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0, 1000000000000] # [ , ]
+
+  - name: wbc
+    unit: kilocount/uL
+    ctype: laboratory
+    range:
+      absolute: [0.1, 50, kilocount/uL]
+      reference_adult: [3.5, 9.0, gigacount/L] # 0^9/L wiki
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+      - range_correction:
+          range: [0, 1000000000000] # [0.1, 50]
+
+  - name: sodium
+    unit: U/L       # U/L=mEq/L | SI=mmol/L | C=1
+    ctype: laboratory
+    range:
+      ref1: [136, 145, mEq/L]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
+  - name: creatinine
+    unit: mmol/L   # U/L=mg/dL | SI=mmol/L | C=88.42 # check BlenderTemplate!
+    ctype: laboratory
+    range:
+      ref1: [0.5, 1.5, mg/dL]
+      ref2: [50, 150, mmol/L]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
+  - name: rbc
+  - name: ffp
+
+  - name: urea   # blood urea
+    unit: mg/dL
+    ctype: laboratory
+    range:
+      ref1: [7, 20, mg/dL]
+      ref2: [2.5, 7.1, mmol/L]
+    transformations:
+      - range_correction:
+          range: [0, 1000000000000] # [0.5, 15]
+
+  - name: crp
+    unit: mg/L
+    ctype: laboratory
+    range:
+      ref1: [0, 10, mg/L]   # Normal
+      ref2: [10, 40, mg/L]  # pregnant, mild inflammation, viral infection
+      ref3: [40, 200, mg/L] # bacterial infection
+
+  - name: procalcitonin
+    unit: ng/mL
+    ctype: laboratory
+    range:
+      ref1: [0, 0.15, ng/mL] # normal
+
+  - name: potassium
+    ctype: laboratory
+
+  - name: bilirubin_direct
+    ctype: laboratory
+    range:
+      ref1: [0, 0.3, mg/dL]
+      ref2: [0, 5.1, umol/L]
+
+  - name: bilirubin_total
+    ctype: laboratory
+    range:
+      ref1: [0, 1.2, mg/dL]
+      ref2: [1.71, 20.5, umol/L]
+
+
+  # ---
+  # PCR
+  # ---
+  - name: pcr_dengue_reaction
+    ctype: PCR
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+  - name: pcr_dengue_load
+    unit: copies/mL
+    ctype: PCR
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+  - name: pcr_dengue_serotype
+    ctype: PCR
+    categories:
+      - <LOD
+      - DENV-1
+      - DENV-2
+      - DENV-3
+      - DENV-4
+      - Mixed
+    transformations:
+      - replace_correction:
+          to_replace: {
+            #'Empty': ~,
+            #'empty': ~,
+            #'NEG': '<LOD',
+            #'No Sample': ~,
+            #'No sample': ~
+          }
+      - static_correction: {method: mode, groupby: patient}
+
+  - name: pcr_dengue_interpretation
+    ctype: PCR
+    categories:
+      - Not Dengue
+      - Lab-confirmed Dengue
+      - Presumptive Dengue
+      - Acute Flavivirus
+      - Recent Flavivirus
+      - Inconclusive
+      - Other Inconclusive
+    transformations:
+      - static_correction: {method: mode, groupby: patient}
+
+  # -----------
+  # Serology
+  # -----------
+  - name: igm
+    unit: g/L
+    ctype: serology
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+  - name: igg
+    unit: g/L
+    ctype: serology
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+  - name: igm_interpretation
+    ctype: serology
+    categories:
+      - Positive
+      - Negative
+      - Equivocal
+
+  - name: igg_interpretation
+    ctype: serology
+    categories:
+      - Positive
+      - Negative
+      - Equivocal
+
+  - name: serology_interpretation
+    ctype: serology
+    categories:
+      - Primary
+      - Secondary
+      - Inconclusive
+
+  # --------
+  # Outcomes
+  # --------
+  - name: dengue_serology_interpretation
+  - name: dengue_pcr_interpretation
+  - name: dengue_interpretation
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: shock
+    description: Whether the patient suffered at least one shock during the stay
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  - name: shock_multiple
+    description: Whether the patient suffered multiple shocks during the stay
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  - name: outcome
+    categories:
+      - Full recovery
+      - Self discharge
+      - Transferred
+      - Died
+      - Unknown
+    transformations:
+      - static_correction: {method: mode, groupby: patient}
+
+  - name: icd_code
+    dtype: String
+    transformations:
+      - fillna_correction: {method: ffill, groupby: patient} # (review to fbfill)
+
+  # --------
+  # Events
+  # --------
+  - name: event_onset
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - unique_true_value_correction: {keep: first, groupby: patient}
+
+  - name: event_admission
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - unique_true_value_correction: {keep: first, groupby: patient}
+
+  - name: event_enrolment
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - unique_true_value_correction: {keep: first, groupby: patient}
+
+  - name: event_discharge
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - unique_true_value_correction: {keep: first, groupby: patient}
+
+  - name: event_death
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - unique_true_value_correction: {keep: first, groupby: patient}
+
+  - name: event_shock
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: event_followup
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: event_infusion
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: event_laboratory
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: event_ns1
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: event_pcr
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: event_sorology
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: event_ultrasound
+    transformations:
+      - dtype_correction: {dtype: boolean}

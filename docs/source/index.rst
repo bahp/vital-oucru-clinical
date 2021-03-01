@@ -11,6 +11,7 @@ Welcome to fyp2020-username's documentation!
    :hidden:
 
    tutorials/setup
+   datasets/overall
 
 
 .. toctree::

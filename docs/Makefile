@@ -21,7 +21,8 @@ help:
 
 # This is to create the documentation using html and moving it to
 # the documentation branch (gh-pages). Note that this could also be
-# implemented by changing the BUILDDIR variable. (add make clean html)
+# implemented by changing the BUILDDIR variable.
 github:
 	@make clean html
-	@cp -a build/html/ ../../gh-pages/docs
+	#@cp -a build/html/ ../../gh-pages/docs # unix systems
+	@xcopy build\html ..\..\gh-pages\docs\ /E /Y
