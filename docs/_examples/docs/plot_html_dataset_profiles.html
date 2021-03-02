@@ -278,7 +278,14 @@ to download the full example code</p>
 113
 114
 115
-116</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+116
+117
+118
+119
+120
+121
+122
+123</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
  <span class="kn">import</span> <span class="nn">warnings</span>
 
@@ -298,6 +305,8 @@ to download the full example code</p>
  <span class="c1"># Path with raw data.</span>
  <span class="n">path_data</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../../resources/data/20212002-v0.2/tidy&#39;</span><span class="p">)</span>
  <span class="n">path_report</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;../../docs/source/_static/datasets/&#39;</span><span class="p">)</span>
+ <span class="n">path_dataprep</span> <span class="o">=</span> <span class="n">path_report</span> <span class="o">/</span> <span class="s1">&#39;profile-dataprep&#39;</span>
+ <span class="n">path_pdprofile</span> <span class="o">=</span> <span class="n">path_report</span> <span class="o">/</span> <span class="s1">&#39;profile-pandas&#39;</span>
 
  <span class="c1"># Path where output HTML file should be stored.</span>
  <span class="n">outpath</span> <span class="o">=</span> <span class="s1">&#39;../../docs/source/_static/feature_count.html&#39;</span>
@@ -306,7 +315,12 @@ to download the full example code</p>
  <span class="n">PANDAS_PROFILE</span> <span class="o">=</span> <span class="kc">False</span>
  <span class="n">DATAPREP_PROFILE</span> <span class="o">=</span> <span class="kc">False</span>
 
-
+ <span class="c1"># ------------------------------</span>
+ <span class="c1"># Create paths</span>
+ <span class="c1"># ------------------------------</span>
+ <span class="c1"># Create paths if they dont exist</span>
+ <span class="n">path_dataprep</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">path_pdprofile</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
  <span class="c1"># ------------------------------</span>
  <span class="c1"># Load data</span>
@@ -339,15 +353,15 @@ to download the full example code</p>
          <span class="c1"># -------------------------</span>
          <span class="k">if</span> <span class="n">DATAPREP_PROFILE</span><span class="p">:</span>
              <span class="n">report</span> <span class="o">=</span> <span class="n">create_report</span><span class="p">(</span><span class="n">datavld</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
-             <span class="n">report</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/profile-dataprep/</span><span class="si">{1}</span><span class="s1">&#39;</span>
-                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path_report</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="p">))</span>
+             <span class="n">report</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">&#39;</span>
+                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path_dataprep</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="p">))</span>
 
          <span class="c1"># Generate pandas-profile report</span>
          <span class="c1"># ------------------------------</span>
          <span class="k">if</span> <span class="n">PANDAS_PROFILE</span><span class="p">:</span>
              <span class="n">profile</span> <span class="o">=</span> <span class="n">ProfileReport</span><span class="p">(</span><span class="n">datavld</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
-             <span class="n">profile</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/profile-pandas/</span><span class="si">{1}</span><span class="s1">.html&#39;</span>
-                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path_report</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="p">))</span>
+             <span class="n">profile</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">/</span><span class="si">{1}</span><span class="s1">.html&#39;</span>
+                 <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path_pdprofile</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">stem</span><span class="p">))</span>
 
      <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
          <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
@@ -390,7 +404,7 @@ to download the full example code</p>
 <span class="sd"> &quot;&quot;&quot;</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.786 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  4.232 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-docs-plot-html-dataset-profiles-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/a73cf99ce90e4313fac1b38cc1d05356/plot_html_dataset_profiles.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_html_dataset_profiles.py</span></code></a></p>
