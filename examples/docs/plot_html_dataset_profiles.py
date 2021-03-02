@@ -24,14 +24,22 @@ warnings.simplefilter("ignore")
 # Path with raw data.
 path_data = Path('../../resources/data/20212002-v0.2/tidy')
 path_report = Path('../../docs/source/_static/datasets/')
+path_dataprep = path_report / 'profile-dataprep'
+path_pdprofile = path_report / 'profile-pandas'
 
 # Path where output HTML file should be stored.
 outpath = '../../docs/source/_static/feature_count.html'
 
-REPORT_PARTIAL = True
-PANDAS_PROFILE = True
-DATAPREP_PROFILE = True
+REPORT_PARTIAL = False
+PANDAS_PROFILE = False
+DATAPREP_PROFILE = False
 
+# ------------------------------
+# Create paths
+# ------------------------------
+# Create paths if they dont exist
+path_dataprep.mkdir(parents=True, exist_ok=True)
+path_pdprofile.mkdir(parents=True, exist_ok=True)
 
 # ------------------------------
 # Load data
@@ -64,15 +72,15 @@ for path in sorted(list(path_data.glob('**/*.csv'))):
         # -------------------------
         if DATAPREP_PROFILE:
             report = create_report(datavld, title=title)
-            report.save('{0}/profile-dataprep/{1}'
-                .format(path_report, path.stem))
+            report.save('{0}/{1}'
+                .format(path_dataprep, path.stem))
 
         # Generate pandas-profile report
         # ------------------------------
         if PANDAS_PROFILE:
             profile = ProfileReport(datavld, title=title)
-            profile.to_file('{0}/profile-pandas/{1}.html'
-                .format(path_report, path.stem))
+            profile.to_file('{0}/{1}.html'
+                .format(path_pdprofile, path.stem))
 
     except Exception as e:
         print("Error", e)
