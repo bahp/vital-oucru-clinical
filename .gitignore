@@ -20,7 +20,9 @@
 
 # Sphinx docs
 docs/build
-docs/source/_*
+docs/source/_examples
+docs/source/_static/profile-dataprep
+docs/source/_static/profile-pandas
 
 # Folders with sensitive data
 
