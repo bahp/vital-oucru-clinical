@@ -84,13 +84,12 @@
               
             
             
-              <p class="caption"><span class="caption-text">Tutorial</span></p>
+              <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/setup.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/overall.html">The OUCRU datasets</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<p class="caption"><span class="caption-text">Galleries</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">The tutorial gallery</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Prevalence</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plot_prevalence_datasets.html">Prevalence per dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_prevalence_monthly.html">Yearly monthly prevalence</a></li>
@@ -189,21 +188,21 @@ not suffer dengue. However, the following things should be considered:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Applying... oucru_dengue_interpretation_feature.
 
 Patients:
-                     date dsource pcr_dengue_serotype ns1_interpretation igm_interpretation igg_interpretation  dengue  dengue_interpretation  month  year
+                     date dsource pcr_dengue_serotype ns1_interpretation igm_interpretation igg_interpretation  dengue_interpretation  month  year
 study_no
-01nva-003-1001 2020-06-13   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      6  2020
-01nva-003-1002 2020-06-23   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      6  2020
-01nva-003-1003 2020-07-04   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2020
-01nva-003-1004 2020-06-24   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      6  2020
-01nva-003-1005 2020-07-22   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2020
-...                   ...     ...                 ...                ...                ...                ...     ...                    ...    ...   ...
-md-995         2003-07-28      md              DENV-2               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       1                   True      7  2003
-md-996         2003-07-25      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2003
-md-997         2003-07-28      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2003
-md-998         2003-07-29      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       0                  False      7  2003
-md-999         2003-07-29      md              DENV-4               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;       1                   True      7  2003
+01nva-003-1001 2020-06-13   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      6  2020
+01nva-003-1002 2020-06-23   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      6  2020
+01nva-003-1003 2020-07-04   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2020
+01nva-003-1004 2020-06-24   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      6  2020
+01nva-003-1005 2020-07-22   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2020
+...                   ...     ...                 ...                ...                ...                ...                    ...    ...   ...
+md-995         2003-07-28      md              DENV-2               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                   True      7  2003
+md-996         2003-07-25      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2003
+md-997         2003-07-28      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2003
+md-998         2003-07-29      md                &lt;LOD               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                  False      7  2003
+md-999         2003-07-29      md              DENV-4               &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;                   True      7  2003
 
-[16489 rows x 10 columns]
+[16489 rows x 9 columns]
 
 Serotypes:
 dsource              06dx  13dx  32dx  d001    df  dr   fl    md  Total
@@ -380,34 +379,7 @@ Dec   41.043084        1764
 145
 146
 147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+148</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
  <span class="kn">import</span> <span class="nn">calendar</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -438,33 +410,6 @@ Dec   41.043084        1764
      <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
 
 
- <span class="k">def</span> <span class="nf">dengue_interpretation</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-     <span class="sd">&quot;&quot;&quot;Defines dengue interpretation.</span>
-
-<span class="sd">     .. note: It is a case of dengue if there is a pcr_dengue_serotype.</span>
-
-<span class="sd">     .. warning: Assumming that if no pcr_dengue_serotype then a case</span>
-<span class="sd">                 of no dengue, but might be that the datasets do not</span>
-<span class="sd">                 have such column!</span>
-<span class="sd">     &quot;&quot;&quot;</span>
-
-     <span class="c1"># Define map</span>
-     <span class="n">serotype_map</span> <span class="o">=</span> <span class="p">{</span>
-         <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">:</span> <span class="s1">&#39;Negative&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;&lt;LOD&#39;</span><span class="p">:</span> <span class="s1">&#39;Negative&#39;</span>
-     <span class="p">}</span>
-
-     <span class="c1"># Create binary variable dengue</span>
-     <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dengue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pcr_dengue_serotype</span>
-     <span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dengue</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span>
-     <span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dengue</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;&lt;LOD&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">})</span>
-     <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">),</span> <span class="s1">&#39;dengue&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
-     <span class="n">data</span><span class="o">.</span><span class="n">dengue</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dengue</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-
-     <span class="c1"># Return</span>
-     <span class="k">return</span> <span class="n">data</span>
-
-
  <span class="c1"># ---------------------------------</span>
  <span class="c1"># Constants</span>
  <span class="c1"># ---------------------------------</span>
@@ -493,7 +438,7 @@ Dec   41.043084        1764
  <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
 
  <span class="c1"># Define positive dengue</span>
- <span class="n">data</span> <span class="o">=</span> <span class="n">dengue_interpretation</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+ <span class="c1">#data = dengue_interpretation(data)</span>
 
  <span class="c1"># Add dengue interpretation</span>
  <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">]</span> <span class="o">=</span> \
@@ -570,7 +515,7 @@ Dec   41.043084        1764
  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.769 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.764 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-prevalence-plot-prevalence-overall-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ef8708862e9c5bb1af65e8462292ab7a/plot_prevalence_overall.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_prevalence_overall.py</span></code></a></p>

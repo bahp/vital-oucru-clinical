@@ -30,7 +30,7 @@ Example using your package
                - Not all datasets had pcr_dengue_serotype variable
                - The serology results and/or clinical notes need to be incorporated.
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-175
+.. GENERATED FROM PYTHON SOURCE LINES 14-148
 
 
 
@@ -48,21 +48,21 @@ Example using your package
     Applying... oucru_dengue_interpretation_feature.
 
     Patients:
-                         date dsource pcr_dengue_serotype ns1_interpretation igm_interpretation igg_interpretation  dengue  dengue_interpretation  month  year
-    study_no                                                                                                                                                  
-    01nva-003-1001 2020-06-13   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      6  2020
-    01nva-003-1002 2020-06-23   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      6  2020
-    01nva-003-1003 2020-07-04   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      7  2020
-    01nva-003-1004 2020-06-24   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      6  2020
-    01nva-003-1005 2020-07-22   01nva                <NA>               <NA>               <NA>               <NA>       0                  False      7  2020
-    ...                   ...     ...                 ...                ...                ...                ...     ...                    ...    ...   ...
-    md-995         2003-07-28      md              DENV-2               <NA>               <NA>               <NA>       1                   True      7  2003
-    md-996         2003-07-25      md                <LOD               <NA>               <NA>               <NA>       0                  False      7  2003
-    md-997         2003-07-28      md                <LOD               <NA>               <NA>               <NA>       0                  False      7  2003
-    md-998         2003-07-29      md                <LOD               <NA>               <NA>               <NA>       0                  False      7  2003
-    md-999         2003-07-29      md              DENV-4               <NA>               <NA>               <NA>       1                   True      7  2003
+                         date dsource pcr_dengue_serotype ns1_interpretation igm_interpretation igg_interpretation  dengue_interpretation  month  year
+    study_no                                                                                                                                          
+    01nva-003-1001 2020-06-13   01nva                <NA>               <NA>               <NA>               <NA>                  False      6  2020
+    01nva-003-1002 2020-06-23   01nva                <NA>               <NA>               <NA>               <NA>                  False      6  2020
+    01nva-003-1003 2020-07-04   01nva                <NA>               <NA>               <NA>               <NA>                  False      7  2020
+    01nva-003-1004 2020-06-24   01nva                <NA>               <NA>               <NA>               <NA>                  False      6  2020
+    01nva-003-1005 2020-07-22   01nva                <NA>               <NA>               <NA>               <NA>                  False      7  2020
+    ...                   ...     ...                 ...                ...                ...                ...                    ...    ...   ...
+    md-995         2003-07-28      md              DENV-2               <NA>               <NA>               <NA>                   True      7  2003
+    md-996         2003-07-25      md                <LOD               <NA>               <NA>               <NA>                  False      7  2003
+    md-997         2003-07-28      md                <LOD               <NA>               <NA>               <NA>                  False      7  2003
+    md-998         2003-07-29      md                <LOD               <NA>               <NA>               <NA>                  False      7  2003
+    md-999         2003-07-29      md              DENV-4               <NA>               <NA>               <NA>                   True      7  2003
 
-    [16489 rows x 10 columns]
+    [16489 rows x 9 columns]
 
     Serotypes:
     dsource              06dx  13dx  32dx  d001    df  dr   fl    md  Total
@@ -144,33 +144,6 @@ Example using your package
         return (np.sum(x) / len(x)) * 100
 
 
-    def dengue_interpretation(data):
-        """Defines dengue interpretation.
-
-        .. note: It is a case of dengue if there is a pcr_dengue_serotype.
-
-        .. warning: Assumming that if no pcr_dengue_serotype then a case
-                    of no dengue, but might be that the datasets do not
-                    have such column!
-        """
-
-        # Define map
-        serotype_map = {
-            pd.NA: 'Negative',
-            '<LOD': 'Negative'
-        }
-
-        # Create binary variable dengue
-        data['dengue'] = data.pcr_dengue_serotype
-        data.dengue = data.dengue.fillna('0')
-        data.dengue = data.dengue.replace({'<LOD': '0'})
-        data.loc[~(data.dengue == '0'), 'dengue'] = '1'
-        data.dengue = data.dengue.astype(int)
-
-        # Return
-        return data
-
-
     # ---------------------------------
     # Constants
     # ---------------------------------
@@ -199,7 +172,7 @@ Example using your package
     data = data[features]
 
     # Define positive dengue
-    data = dengue_interpretation(data)
+    #data = dengue_interpretation(data)
 
     # Add dengue interpretation
     data['dengue_interpretation'] = \
@@ -277,7 +250,7 @@ Example using your package
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.769 seconds)
+   **Total running time of the script:** ( 0 minutes  7.764 seconds)
 
 
 .. _sphx_glr_download__examples_prevalence_plot_prevalence_overall.py:

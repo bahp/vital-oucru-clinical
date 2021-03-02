@@ -237,11 +237,11 @@ Example using your package
 
 .. GENERATED FROM PYTHON SOURCE LINES 125-128
 
-Lets plot the boxplot with the monthly dengue prevalence per
+Lets plot the ``boxplot`` with the monthly dengue prevalence per
 year. In addition, let's add the prevalence values in a table
 below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 128-195
+.. GENERATED FROM PYTHON SOURCE LINES 128-152
 
 .. code-block:: default
    :lineno-start: 129
@@ -269,6 +269,34 @@ below.
     # Add a legend and informative axis label
     ax.set(xlabel="", ylabel="Prevalence (%)",
            title="Monthly dengue prevalence in HTD")
+
+
+
+
+.. image:: /_examples/prevalence/images/sphx_glr_plot_prevalence_monthly_001.png
+    :alt: Monthly dengue prevalence in HTD
+    :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+
+    [Text(0.5, 0.24999999999999467, ''), Text(30.75, 0.5, 'Prevalence (%)'), Text(0.5, 1.0, 'Monthly dengue prevalence in HTD')]
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 153-154
+
+Let's add the prevalence values in a ``table`` below.
+
+.. GENERATED FROM PYTHON SOURCE LINES 154-197
+
+.. code-block:: default
+   :lineno-start: 155
 
 
     # ----------------------
@@ -316,35 +344,24 @@ below.
 
 
 
-.. rst-class:: sphx-glr-horizontal
-
-
-    *
-
-      .. image:: /_examples/prevalence/images/sphx_glr_plot_prevalence_monthly_001.png
-          :alt: Monthly dengue prevalence in HTD
-          :class: sphx-glr-multi-img
-
-    *
-
-      .. image:: /_examples/prevalence/images/sphx_glr_plot_prevalence_monthly_002.png
-          :alt: Monthly dengue prevalence in HTD
-          :class: sphx-glr-multi-img
+.. image:: /_examples/prevalence/images/sphx_glr_plot_prevalence_monthly_002.png
+    :alt: Monthly dengue prevalence in HTD
+    :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 196-199
+.. GENERATED FROM PYTHON SOURCE LINES 198-201
 
-Lets plot the heatmaps with (i) the monthly dengue prevalence
+Lets plot the ``heatmaps`` with (i) the monthly dengue prevalence
 per year (ii) the number of patients with/without dengue used
 to compute such prevalence.
 
-.. GENERATED FROM PYTHON SOURCE LINES 199-248
+.. GENERATED FROM PYTHON SOURCE LINES 201-250
 
 .. code-block:: default
-   :lineno-start: 200
+   :lineno-start: 202
 
 
     # -----------------------
@@ -420,7 +437,7 @@ to compute such prevalence.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.671 seconds)
+   **Total running time of the script:** ( 0 minutes  9.686 seconds)
 
 
 .. _sphx_glr_download__examples_prevalence_plot_prevalence_monthly.py:

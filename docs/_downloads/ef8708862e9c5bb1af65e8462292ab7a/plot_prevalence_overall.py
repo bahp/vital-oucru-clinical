@@ -43,33 +43,6 @@ def prevalence(x):
     return (np.sum(x) / len(x)) * 100
 
 
-def dengue_interpretation(data):
-    """Defines dengue interpretation.
-
-    .. note: It is a case of dengue if there is a pcr_dengue_serotype.
-
-    .. warning: Assumming that if no pcr_dengue_serotype then a case
-                of no dengue, but might be that the datasets do not
-                have such column!
-    """
-
-    # Define map
-    serotype_map = {
-        pd.NA: 'Negative',
-        '<LOD': 'Negative'
-    }
-
-    # Create binary variable dengue
-    data['dengue'] = data.pcr_dengue_serotype
-    data.dengue = data.dengue.fillna('0')
-    data.dengue = data.dengue.replace({'<LOD': '0'})
-    data.loc[~(data.dengue == '0'), 'dengue'] = '1'
-    data.dengue = data.dengue.astype(int)
-
-    # Return
-    return data
-
-
 # ---------------------------------
 # Constants
 # ---------------------------------
@@ -98,7 +71,7 @@ data = data.convert_dtypes()
 data = data[features]
 
 # Define positive dengue
-data = dengue_interpretation(data)
+#data = dengue_interpretation(data)
 
 # Add dengue interpretation
 data['dengue_interpretation'] = \
