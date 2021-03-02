@@ -786,58 +786,71 @@ features:
   # Events
   # --------
   - name: event_onset
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
       - unique_true_value_correction: {keep: first, groupby: patient}
 
   - name: event_admission
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
       - unique_true_value_correction: {keep: first, groupby: patient}
 
   - name: event_enrolment
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
       - unique_true_value_correction: {keep: first, groupby: patient}
 
   - name: event_discharge
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
       - unique_true_value_correction: {keep: first, groupby: patient}
 
   - name: event_death
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
       - unique_true_value_correction: {keep: first, groupby: patient}
 
   - name: event_shock
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: event_followup
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: event_infusion
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: event_laboratory
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: event_ns1
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: event_pcr
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: event_sorology
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: event_ultrasound
+    ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
