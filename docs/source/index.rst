@@ -1,5 +1,5 @@
-Welcome to fyp2020-username's documentation!
-============================================
+Welcome to vital-oucru-clinical documentation!
+==============================================
 
 .. toctree::
    :maxdepth: 2
@@ -7,19 +7,17 @@ Welcome to fyp2020-username's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Tutorial
+   :caption: Introduction
    :hidden:
 
-   tutorials/setup
    datasets/overall
 
 
 .. toctree::
    :maxdepth: 2
-   :caption: Example Galleries
+   :caption: Galleries
    :hidden:
 
-   _examples/tutorial/index
    _examples/prevalence/index
 
 Indices and tables

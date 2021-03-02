@@ -122,7 +122,7 @@ print(table_npatients.round(0))
 
 
 ###############################################################
-# Lets plot the boxplot with the monthly dengue prevalence per
+# Lets plot the ``boxplot`` with the monthly dengue prevalence per
 # year. In addition, let's add the prevalence values in a table
 # below.
 
@@ -149,6 +149,8 @@ sns.despine(left=True, bottom=True)
 ax.set(xlabel="", ylabel="Prevalence (%)",
        title="Monthly dengue prevalence in HTD")
 
+###############################################################
+# Let's add the prevalence values in a ``table`` below.
 
 # ----------------------
 # Plot boxplot and table
@@ -192,8 +194,8 @@ ax.set(xlabel='', ylabel='Prevalence (%)', xticks=[],
 # Adjust subplots
 plt.subplots_adjust(left=0.2, bottom=0.6)
 
-###############################################################
-# Lets plot the heatmaps with (i) the monthly dengue prevalence
+###################################################################
+# Lets plot the ``heatmaps`` with (i) the monthly dengue prevalence
 # per year (ii) the number of patients with/without dengue used
 # to compute such prevalence.
 
