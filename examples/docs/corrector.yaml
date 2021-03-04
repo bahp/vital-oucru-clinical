@@ -24,9 +24,8 @@ features:
   # Demographics
   # ---------------------------
   - name: age
-    class: demographics
+    ctype: demographics
     unit: year
-    dtype: Int64
     range:
       absolute: [0, 120, year]
     transformations:
@@ -36,7 +35,7 @@ features:
       - fillna_correction: {method: fbfill, groupby: patient}
 
   - name: gender
-    class: demographics
+    ctype: demographics
     categories:
       - Male
       - Female
@@ -44,7 +43,7 @@ features:
       - static_correction: {method: mode, groupby: patient}
 
   - name: weight
-    class: demographics
+    ctype: demographics
     unit: kg
     range:
       absolute: [0.5, 120, kg]
@@ -55,7 +54,7 @@ features:
       - fillna_correction: {method: fbfill, groupby: patient}
 
   - name: height
-    class: demographics
+    ctype: demographics
     unit: cm
     range:
       absolute: [50, 200, cm]
@@ -65,42 +64,59 @@ features:
           range: [30, 200]
       - fillna_correction: {method: fbfill, groupby: patient}
 
+  - name: aids
+    ctype: comorbidities
+
   - name: anorexia
-    class: demographics
+    ctype: comorbidities
     transformations:
       - static_correction: {method: max, groupby: patient}
       - fillna_correction: {value: False}
 
   - name: pregnant
-    class: demographics
+    ctype: comorbidities
     transformations:
       - static_correction: {method: max, groupby: patient}
       - fillna_correction: {value: False}
 
   - name: diabetes
+    ctype: comorbidities
     transformations:
       - static_correction: {method: max, groupby: patient}
       - fillna_correction: {value: False}
 
   - name: asthma
+    ctype: comorbidities
     transformations:
       - static_correction: {method: max, groupby: patient}
       - fillna_correction: {value: False}
 
   - name: anemia
+    ctype: comorbidities
     transformations:
       - static_correction: {method: max, groupby: patient}
       - fillna_correction: {value: False}
 
   - name: peptic_ulcer
+    ctype: comorbidities
     transformations:
       - static_correction: {method: max, groupby: patient}
       - fillna_correction: {value: False}
 
   - name: chronic_hepatitis
+    ctype: comorbidities
     transformations:
       - static_correction: {method: max, groupby: patient}
       - fillna_correction: {value: False}
+
+  - name: chronic_pulmo
+    ctype: comorbidities
+
+  - name: coronary_heart_disease
+    ctype: comorbidities
+
+  - name: hypertension
+    ctype: comorbidities
 
   # ---------------
   # Vital signs
@@ -174,6 +190,8 @@ features:
   # Other examination
   # ------------------
   - name: bleeding_severe
+    ctype: examination
+    warning: Vallues 1, 2, False, True
 
   - name: bleeding
     ctype: examination
@@ -198,8 +216,14 @@ features:
       - dtype_correction: {dtype: boolean}
       - fillna_correction: {method: fbfill, groupby: patient}
 
+  - name: bleeding_mucosal_level
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
   - name: bleeding_nose
     ctype: examination
+    description: Technical names might include Epistaxis.
     transformations:
       - dtype_correction: {dtype: boolean}
       - fillna_correction: {method: fbfill, groupby: patient}
@@ -240,10 +264,17 @@ features:
       - fillna_correction: {method: fbfill, groupby: patient}
 
   - name: abdominal_pain_level
+    ctype: examination
     transformation:
       - dtype_correction: {dtype: Float64}
 
   - name: abdominal_tenderness
+    ctype: examination
+
+  - name: abdominal_distension
+    ctype: examination
+    warning: Bad V_0 and V_1 values!
+
   - name: skin_clammy
     transformations:
       - dtype_correction: {dtype: boolean}
@@ -260,11 +291,24 @@ features:
       - dtype_correction: {dtype: boolean}
       - fillna_correction: {method: fbfill, groupby: patient}
 
+  - name: abscess
+    ctype: examination
+    description: Can it be merged with skin?
+
+  - name: cyanosis
+    ctype: examination
+    description: Can it be merged with skin?
+
   - name: diarrhoea
     ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
       - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: diarrhoea_level
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Float64}
 
   - name: vomiting
     ctype: examination
@@ -279,6 +323,7 @@ features:
 
   - name: jaundice
     ctype: examination
+    description: yellowing of the skin
     transformations:
       - dtype_correction: {dtype: boolean}
       - fillna_correction: {method: fbfill, groupby: patient}
@@ -294,6 +339,16 @@ features:
     transformations:
       - dtype_correction: {dtype: boolean}
       - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: pleural_effusion_left
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: pleural_effusion_right
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
 
   - name: ascites
     ctype: examination
@@ -312,11 +367,20 @@ features:
       - dtype_correction: {dtype: boolean}
       - fillna_correction: {method: fbfill, groupby: patient}
 
+
+  - name: petechiae_level
+    ctype: examination
+
   - name: bruising
     ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
       - fillna_correction: {method: fbfill, groupby: patient}
+
+  - name: bruising_level
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Float64}
 
   - name: respiratory_distress
     ctype: examination
@@ -325,11 +389,12 @@ features:
       - fillna_correction: {method: fbfill, groupby: patient}
 
   - name: pulse_status
+    ctype: examination
     categories:
-      Strong: 1,
-      Weak: 2,
-      Not done / Not detected: 8
-      Unknown: 9
+      - Strong
+      - Weak
+      - Not done / Not detected
+      - Unknown
 
   - name: cough
     ctype: examination
@@ -351,9 +416,18 @@ features:
     transformations:
       - dtype_correction: {dtype: boolean}
 
+  - name: headache_level
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
   - name: muscle_pain
     transformations:
       - dtype_correction: {dtype: boolean}
+
+  - name: muscle_pain_level
+    transformations:
+      - dtype_correction: {dtype: Float64}
 
   - name: breath
     ctype: examination
@@ -372,15 +446,11 @@ features:
 
   - name: dehydration
     ctype: examination
+    description: Same as dehydratation, wrong use in the medical language.
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: agitated
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-
-  - name: dehydratation
     ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
@@ -397,21 +467,31 @@ features:
 
   - name: nasal_packing
     ctype: examination
+    warning: Could it be merged with bleeding_nose?
     transformations:
       - dtype_correction: {dtype: boolean}
 
+  - name: gcs
+    ctype: examination
+    description: The Glasgow Coma Scale (GCS) is a clinical scale used to reliably measure a person's
+                 level of consciusness after a brain injury. The GCS assess a person based on their
+                 ability to perform eye movements (eye), speak (verbal) and move their body (motor).
+
   - name: gcs_verbal_response
     ctype: examination
+    description: The Glasgow Comma Score for verbal response.
     transformations:
       - dtype_correction: {dtype: Int64}
 
   - name: gcs_motor_response
     ctype: examination
+    description: The overall Glasgow Comma Score for motor response.
     transformations:
       - dtype_correction: {dtype: Int64}
 
   - name: gcs_eye_movement
     ctype: examination
+    description: The overall Glasgow Comma Score for eye response.
     transformations:
       - dtype_correction: {dtype: Int64}
 
@@ -421,25 +501,41 @@ features:
       - dtype_correction: {dtype: boolean}
 
   - name: cns_abnormal
+    ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
 
-  - name: lathargy_severe # lethargy????
+
+  - name: lethargy
+    ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: conjunctival_injection
+    ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: hepatomegaly
+    ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
+
+
+  - name: joint_pain
+    ctype: examination
+
+  - name: joint_pain_level
+    ctype: examination
+
   # ------------------
   # Other
   # ------------------
   - name: crystalloid
+    ctype: examination
+
   - name: parental_fluid
+    ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
       - static_correction: {method: max, groupby: patient}
@@ -523,7 +619,6 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64}
 
-
   - name: monocytes
     unit: u/L
     ctype: laboratory
@@ -533,7 +628,6 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64}
 
-
   - name: neutrophils
     unit: u/L
     ctype: laboratory
@@ -541,7 +635,6 @@ features:
       ref1: [2500, 8000, count/mm3]
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
-
 
   - name: haematocrit_percent
     unit: percent
@@ -619,7 +712,18 @@ features:
       - dtype_correction: {dtype: Float64}
 
   - name: rbc
+    ctype: laboratory
+
   - name: ffp
+    ctype: laboratory
+
+  - name: glucose
+    unit: mmol/L
+    ctype: laboratory
+    range:
+      ref1: [0.0, 7.8, mmol/L]
+    transformations:
+      - dtype_correction: {dtype: Float64}
 
   - name: urea   # blood urea
     unit: mg/dL
@@ -647,6 +751,8 @@ features:
 
   - name: potassium
     ctype: laboratory
+    range:
+      ref1: [3.6, 5.2, mmol/L] # normal
 
   - name: bilirubin_direct
     ctype: laboratory
@@ -660,6 +766,21 @@ features:
       ref1: [0, 1.2, mg/dL]
       ref2: [1.71, 20.5, umol/L]
 
+  - name: ddimer
+    description: A D-Dimer value of 0.5 or greater is considered positive. Why
+                 does the dataset has values from 0 to 5?
+    ctype: laboratory
+
+  - name: fibrinogen
+    warning: Had a ,
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+  - name: aptt
+    ctype: laboratory
+    warning: Has a ',' value.
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
 
   # ---
   # PCR
@@ -686,16 +807,10 @@ features:
       - Mixed
     transformations:
       - replace_correction:
-          to_replace: {
-            #'Empty': ~,
-            #'empty': ~,
-            #'NEG': '<LOD',
-            #'No Sample': ~,
-            #'No sample': ~
-          }
+          to_replace: {}
       - static_correction: {method: mode, groupby: patient}
 
-  - name: pcr_dengue_interpretation
+  - name: pcr_dengue_interpretation                          # REVIEW
     ctype: PCR
     categories:
       - Not Dengue
@@ -714,12 +829,17 @@ features:
   - name: igm
     unit: g/L
     ctype: serology
+    description: Found mainly in blood and lymph fluid, this is the first antibody
+                 the body makes when it fights a new infection.
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
 
   - name: igg
     unit: g/L
     ctype: serology
+    description: This is the most common antibody. It's in blood and other body fluids,
+                 and protects against bacterial and viral infections. IgG can take time
+                 to form after an infection or immunization.
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
 
@@ -745,15 +865,76 @@ features:
       - Inconclusive
 
   # --------
+  # NS1
+  # --------
+  - name: ns1_concentration
+    ctype: NS1
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
+  - name: ns1_interpretation
+    ctype: NS1
+    transformations:
+      - replace_correction:
+            to_replace: { No sample: null }
+
+  - name: ns1_plasma_concentration
+    ctype: NS1
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+  - name: ns1_plasma_optical_density
+    ctype: NS1
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+  - name: ns1_plasma_interpretation
+    ctype: NS1
+    warning: Needs fixing!
+
+  - name: ns1_urine_concentration
+    ctype: NS1
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+  - name: ns1_urine_interpretation
+    ctype: NS1
+    transformations:
+      - replace_correction:
+          to_replace: {
+            Neg: Negative,
+            Pos: Positive,
+            pos: Positive,
+            neg: Negative,
+            Missing: null}
+
+  - name: ns1_urine_optical_density
+    ctype: NS1
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
+
+  - name: ns1_trip_control_interpretation
+    ctype: NS1
+
+  - name: ns1_trip_test_interpretation
+    ctype: NS1
+    warning: Should it be also Positive, Negative or Equivocal?
+
+  # --------
   # Outcomes
   # --------
-  - name: dengue_serology_interpretation
-  - name: dengue_pcr_interpretation
+  - name: dengue_serology_interpretation   # REVIEW
+    warning: What to do with this?
+
+  - name: dengue_pcr_interpretation        # REVIEW
+    warning: What to do with this?
+
   - name: dengue_interpretation
     transformations:
       - dtype_correction: {dtype: boolean}
 
   - name: shock
+    ctype: outcome
     description: Whether the patient suffered at least one shock during the stay
     transformations:
       - dtype_correction: {dtype: boolean}
@@ -761,6 +942,7 @@ features:
       - fillna_correction: {value: False}
 
   - name: shock_multiple
+    ctype: outcome
     description: Whether the patient suffered multiple shocks during the stay
     transformations:
       - dtype_correction: {dtype: boolean}
@@ -768,6 +950,7 @@ features:
       - fillna_correction: {value: False}
 
   - name: outcome
+    ctype: outcome
     categories:
       - Full recovery
       - Self discharge
@@ -778,7 +961,7 @@ features:
       - static_correction: {method: mode, groupby: patient}
 
   - name: icd_code
-    dtype: String
+    ctype: outcome
     transformations:
       - fillna_correction: {method: ffill, groupby: patient} # (review to fbfill)
 
@@ -787,6 +970,7 @@ features:
   # --------
   - name: event_onset
     ctype: event
+    description: Date of disease onset (first fever if not found)
     transformations:
       - dtype_correction: {dtype: boolean}
       - unique_true_value_correction: {keep: first, groupby: patient}
@@ -854,3 +1038,100 @@ features:
     ctype: event
     transformations:
       - dtype_correction: {dtype: boolean}
+
+  - name: event_cytokine
+    ctype: event
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+
+  # --------
+  # Support
+  # --------
+  - name: day_from_admission
+    ctype: utils
+    description: Day count from patient's admission
+
+  - name: day_from_enrolment
+    ctype: utils
+    description: Day count from patient's enrolment
+
+  - name: day_from_onset
+    ctype: utils
+    description: Day count from patient's onset
+
+  - name: dsource
+    ctype: utils
+    description: It describes the data source (e.g. study 06dx).
+
+  - name: study_no
+    ctype: utils
+    description: Patient ID number during the study.
+
+
+  # ---------
+  #
+  # ---------
+  - name: echymosis
+    ctype: examination
+    warning: Error, it should be merged with ecchymosis.
+
+  - name: ecchymosis
+    ctype: examination
+    description: A discoloration of the skin resulting from bleeding underneath,
+                 typically caused by bruising.
+    warning: Could it be merged with bruising?
+
+  - name: effusion
+    ctype: examination
+
+  - name: epistaxis
+    ctype: examination
+    description: Bleeding from the nose, caused by damage to the blood vessels of
+                 the nasal mucosa.
+    warning: Could it be merged with bleeding_nose?
+
+  - name: gum_packing
+    ctype: examination
+    warning: Could it be merged with bleeding_gum?
+
+  - name: heart_sound_abnormal
+
+  - name: hematemesis
+    description: Hematemesis is the vomiting of blood. The source is generally the upper gastrointestinal
+                 tract, typically above the suspensory muscle of duodenum. Patients can easily confuse it
+                 with hemoptysis (coughing up blood), although the latter is more common. Hematemesis "is
+                 always an important sign".
+    warning: Could it be merged with vomiting? Is it the same?
+
+  - name: hematuria
+    description: Hematuria is the presence of blood in a person's urine.
+    warning: Could it be merged with bleeding_urine?
+
+
+  - name: igg_indirect_interpretation
+    warning: what is this? paired? only igg?
+
+  - name: melaena
+    description: the production of dark sticky faeces containing partly digested blood, as a result of
+                 internal bleeding or the swallowing of blood.
+
+  - name: meningism
+    warning: meningitis?
+
+  - name: myocardial_infarction
+
+  - name: nausea
+    warning: somewhere to merge with?
+
+  - name: neurology
+    warning: neurology_abnormal? cns_abnormal? cerebro?
+
+  - name: packing_nose
+    warning: nose_packing
+
+  - name: rehydration
+    warning: dehydration
+
+  - name: restlesness
+    warning: fix! restlessness

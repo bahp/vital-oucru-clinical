@@ -14,140 +14,94 @@ from datablend.core.validation.reports import report_tidy_feature_count_per_data
 # ---------------------------------
 # Methods
 # ---------------------------------
-#c = pd.io.json.json_normalize(b, 'transformations', 'name')
-#print(c)
+def create_dataframe(data):
+    """Creates the DataFrame.
+
+    Parameters
+    ----------
+    data: pd.DataFrame
+
+    Returns
+    -------
+    pd.DataFrame
+        Counts per datasets.
+    """
+
+    # Copy just in case
+    count = data.copy(deep=True)
+
+    # Feature count
+    count = report_tidy_feature_count_per_dataset(count)
+
+    # Format
+    count = count.fillna('-')
+    count = count.applymap(str)
+    count = count.reset_index()
+    count.columns = count.columns.droplevel(1)
+    count = count.rename(columns={'index': 'name'})
+    count = count.set_index('name')
+    count = count.reset_index()
+    count.columns.name = None
+
+    # Return
+    return count
+
 
 # ---------------------------------
 # Constants
 # ---------------------------------
-# HTML
-HTML = """
-    <html>
-    <head>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css"/>
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.3.2/css/fixedColumns.dataTables.min.css"/>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
-    
-    
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
-   <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.3.2/js/dataTables.fixedColumns.min.js"></script>
-    
-    <style>
-    
-        td.details-control {
-        background: url('./arrow_right.jpg') no-repeat center center;
-            cursor: pointer;
-        }
-        tr.shown td.details-control {
-            background: url('./arrow_down.jpg') no-repeat center center;
-        }
-        
-    </style>
+# Path with data
+path_data = '../../resources/data/20210304-v0.4/'
+path_data+= 'combined/combined_tidy.csv'
 
+# Path to load the HTML table template
+path_html_template = './template_features_count.html'
 
+# Path to save the HTML file
+path_html_tables = '../../docs/source/_static/datasets/html-tables/'
 
-    </head>
-    <body>
+# File name
+filename = 'features_count.html'
 
-    %s
+# Columns to include
+columns = ['name',
+           'dtype',
+           'unit',
+           'code',
+           'ctype',
+           'categories',
+           'description',
+           'unique',
+           'transformations',
+           'range']
 
-    <script>
-    
-        $(document).ready(function() {
-      
-            /* Create table */
-            var table = $('#example').DataTable({
-                 dom: 'Bfrtip',
-                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ],
-                "scrollY": "600px",
-                "scrollX": true,
-                "scrollCollapse": true,
-                "paging": false,
-                "autoWidth": true,
-                "fixedColumns": {
-                    leftColumns: 1,
-                    rightColumns: 1
-                }
-            });
-        });
-      
-    </script>
-
-    </body>"""
-
-
-a = 1
-# Path where the corrector is
-filepath = './corrector.yaml'
-
-# Path where output HTML file should be stored.
-outpath = '../../docs/source/_static/feature_count.html'
-
-# Path where data is
-path = '../../resources/data/20212002-v0.2/combined/combined_tidy.csv'
-
-
+# ---------------------------------
+# Main
+# ---------------------------------
 # Load
-tidy = pd.read_csv(path,
-                   index_col=0,
-                   parse_dates=['date'],
-                   low_memory=False)
+data = pd.read_csv(path_data,
+    index_col=0, parse_dates=['date'],
+    low_memory=False)
 
 
-"""
-# Create report
-report = {
-    'corrections':      corrections_summary(tidy),
-    'counts':           report_tidy_feature_count_per_dataset(tidy),
-    'dtypes':           report_tidy_dtypes_per_dataset(tidy),
-    'units':            report_stack_units_per_dataset(stack),
-    'units_undefined':  report_undefined_units(stack.unit.unique(), ureg),
-    'units_duplicated': report_stack_duplicated_units(stack),
-    'count_feature':    report_stack_feature_count(stack, cpid='study_no'),
-    'count_date':       report_stack_date_count(stack, cpid='study_no'),
-    'stay':             report_stack_stay(stack, cpid='study_no')
-}
-"""
+# Create describe
+describe = create_dataframe(data)
 
-# Feature count
-count = report_tidy_feature_count_per_dataset(tidy)
-
-# Format
-count = count.fillna('-')
-count = count.applymap(str)
-count = count.reset_index()
-
-print(count)
-
-count.columns = count.columns.droplevel(1)
-count = count.rename(columns={'index': 'name'})
-count = count.set_index('name')
-count = count.reset_index()
-count.columns.name = None
 
 # Create HTML for table
-html_table = count.to_html(table_id='example',
-                           classes='display',
-                           border=0,
-                           index=False)
+html_table = describe.to_html(table_id='example',
+     classes='display', border=0, index=False)
 
-print(count)
-print(count.index)
-print(count.columns)
+# Create full HTML path
+path_html_output = path_html_tables + filename
 
-# Write text to file
-f = open(outpath, "w")
-f.write(HTML % html_table)
-f.close()
+# Load template and save HTML table file
+with open(path_html_template, 'r') as template, \
+     open(path_html_output, "w+") as table:
+
+    # Save HTML table file
+    table.write(template.read() % html_table)
+    table.close()
+    template.close()
+
+a = 1
