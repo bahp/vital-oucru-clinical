@@ -5,12 +5,12 @@
 
 Computation times
 =================
-**00:17.449** total execution time for **_examples_prevalence** files:
+**00:25.349** total execution time for **_examples_prevalence** files:
 
 +----------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_prevalence_plot_prevalence_monthly.py` (``plot_prevalence_monthly.py``)   | 00:09.686 | 0.0 MB |
+| :ref:`sphx_glr__examples_prevalence_plot_prevalence_datasets.py` (``plot_prevalence_datasets.py``) | 00:10.321 | 0.0 MB |
 +----------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_prevalence_plot_prevalence_overall.py` (``plot_prevalence_overall.py``)   | 00:07.764 | 0.0 MB |
+| :ref:`sphx_glr__examples_prevalence_plot_prevalence_monthly.py` (``plot_prevalence_monthly.py``)   | 00:08.571 | 0.0 MB |
 +----------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_prevalence_plot_prevalence_datasets.py` (``plot_prevalence_datasets.py``) | 00:00.000 | 0.0 MB |
+| :ref:`sphx_glr__examples_prevalence_plot_prevalence_overall.py` (``plot_prevalence_overall.py``)   | 00:06.457 | 0.0 MB |
 +----------------------------------------------------------------------------------------------------+-----------+--------+

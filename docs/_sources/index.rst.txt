@@ -10,7 +10,7 @@ Welcome to vital-oucru-clinical documentation!
    :caption: Introduction
    :hidden:
 
-   datasets/overall
+   datasets/overview
 
 
 .. toctree::
