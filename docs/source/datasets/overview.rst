@@ -30,8 +30,8 @@ within the Hospital for Tropical Diseases (HTD) in Ho Chi Minh City, Vietnam.
     06dx    2009-2011 Effect of steroid in Dengue                         75
     13dx    2010-2014 Diagnostic accuracy of NS1                          5729
     32dx    2013-2016 Intravascular volume assessment (CRI)
-    42dx
-    d001
+    42dx    2017-2018 Clinical features of DSS in pregnant women?
+    d001    2011
     01nva   2020-2021
     ======= ========= ================================================= ========
 
@@ -129,14 +129,14 @@ Description of features
 
 The list of features available in the aggregated dataset is included in the
 table below. Please note that some features might not be available across
-all of datasets yet that information will be provided in subsequent sections.
+all datasets yet that information will be provided in subsequent sections.
 
 The following table includes:
 
   - **name:** the name of the feature
   - **dtype:** the data type of the feature
   - **unit:** the unit of the feature (if applicable)
-  - **code:**
+  - **code:** the code of the feature (if applicable)
   - **ctype:** the class type of the feature
   - **description:**: brief description of the feature
   - **categories**: The list of allowed categories
@@ -159,7 +159,7 @@ The following table includes:
 
 .. raw:: html
 
-    <iframe src="../_static/corrector.html"
+    <iframe src="../_static/datasets/html-tables/features_description_combined.html"
             frameborder="0"
             scrolling="no"
             height="750px;"
@@ -182,7 +182,7 @@ an the corresponding study. At the end of the table a variable denoted
 
 .. raw:: html
 
-    <iframe src="../_static/feature_count.html"
+    <iframe src="../_static/datasets/html-tables/features_count.html"
             frameborder="0"
             scrolling="no"
             height="750px;"
@@ -313,29 +313,209 @@ List of datasets
 The df dataset
 --------------
 
+.. warning:: Important things to consider...
+
+The trial was a ``single-center``, ``randomized``, ``doubleblind`` comparison of an isotonic crystalloid solution
+(Ringer’s lactate) and two isotonic colloid solutions (6 percent dextran 70 [dextran] and 6 percent
+hydroxyethyl starch 200/0.5 [starch]) for emergency resuscitation of ``children`` with ``dengue shock syndrome``.
+The children were stratified according to pulse pressure at admission, a marker of the severity of the
+vascular leak. No children in the group with severe shock received a crystalloid because of concerns
+about the potential development of critical fluid overload without access to advanced respiratory support.
+The study took place in the pediatric intensive care unit at the Hospital for Tropical Diseases in Ho
+Chi Minh City, Vietnam. The ethics and science committee of the hospital approved the protocol.
+
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_df.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
+
 The md dataset
 --------------
+
+.. warning:: Important things to consider...
+
+A ``prospective observational study`` of ``children`` hospitalized with ``suspected dengue`` at the HTD
+in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
+any child aged between 5 and 15 years admitted to the paediatric dengue ward at HTD with
+clinically suspected dengue, whose parent/guardian gave written informed consent for them to
+be enrolled in the study following detailed explanation by a trained study doctor. Consecutive
+suspected dengue cases identified during the morning ward round were approached by study
+staff as potential participants; commencing on Monday morning the process continued until
+up to 10 suspected dengue cases had been enrolled for that week. Of note, the paediatric dengue
+ward is responsible for managing children with uncomplicated illness only, and HTD
+policy dictates that any child who develops DSS or about whom there is concern (typically
+development of warning signs necessitating monitoring more frequently than 4–6 hourly) is
+transferred to the Paediatric Intensive Care Unit (PICU). During the study period all children
+admitted to PICU with DSS were recruited into a concurrent pediatric cohort
+
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_md.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
 
 The dr dataset
 --------------
 
+We conducted a ``prospective descriptive`` study of ``febrile
+children``, aged 5–15 years, attending two ``primary`` health care
+clinics in Ho Chi Minh City, Vietnam. Clinic A is a single-handed
+practice run by a senior paediatrician, while Clinic B is the walk-in
+paediatric clinic at District 8 Hospital. This study forms one part of
+a large community study on dengue, the clinical aspects of which
+have been described previously, but briefly all children presenting
+with fever and clinically suspected dengue to either clinic were
+eligible for enrolment following written informed consent [14].
+Recruitment was targeted towards patients presenting during the
+early febrile period, ideally within the first 72 hours from fever
+onset, although patients presenting up to 96 hours from fever onset
+could be enrolled. Patients were seen daily until afebrile for two
+consecutive days, with detailed clinical information recorded in a
+standard format and a 1 ml EDTA blood sample obtained for
+clinical (haematocrit estimation and platelet count) and diagnostic
+purposes, together with a random urine sample. Clinic physicians
+were responsible for all management decisions; if hospitalization
+was considered necessary the children were admitted to HTD and
+the daily assessments continued, following the same protocol as the
+outpatient subjects. Patients were invited to attend for review 2–4
+weeks from illness onset.
+
+Illness day 1 was defined as the day of reported fever onset.
+Defervescence day was defined as the first day with no history of
+fever since the previous day’s visit and with a measured
+temperature #37.5uC in the clinic. The following outcomes were
+summarised from the daily assessments: the platelet nadir between
+days 3–8 of illness; the presence or absence of skin and/or mucosal
+bleeding; the percentage hemoconcentration, defined as the
+percentage increase in haematocrit comparing the maximum
+value recorded between days 3–8 of illness, to a baseline value
+taken as the lowest result obtained on or before illness day 2 or
+after day 14, or a local population value matched for age and sex if
+no individual baseline was available [14].
+
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_dr.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
+
 The d001 dataset
 ----------------
+
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_d001.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
 
 The 06dx dataset
 ----------------
 
+We performed a randomized, placebo-controlled, partially blinded trial of early corticosteroid
+therapy in Vietnamese children and young adults with suspected dengue virus infection. The study
+took place on designated infectious diseases wards at the Hospital for Tropical Diseases of Ho
+Chi Minh City, with approval from the Ethical Committee of the Ministry of Health of Vietnam and
+the Oxford Tropical Research Ethics Committee.
+
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_06dx.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
+
 The 13dx dataset
 ----------------
+
+Recruitment occurred in the public sector outpatient departments of Children’s Hospital No. 1
+(HCMC), Children’s Hospital No. 2 (HCMC), The Hospital for Tropical Diseases (HCMC),
+Tien Giang Provincial Hospital, Dong Nai Children’s Hospital, Binh Duong Provincial Hospital and Long
+An Provincial Hospital. These outpatient departments function as primary care
+providers to their local communities. A patient presenting to one of the study sites was eligible
+for enrolment if they met the following inclusion criteria—a) fever at presentation (or history
+of fever) and less than 72 hours of symptom history, b) in the attending physicians opinion
+dengue was a possible diagnosis, c) 1–15 years of age inclusive, d) accompanying family member or
+guardian had a mobile phone and e) written informed consent for the child to participate was provided
+by the parent/guardian. Patients were excluded if- a) the attending physician
+believed they were unlikely to be able to attend follow-up or b) the attending physician believed
+another (non-dengue) diagnosis was more likely. Patient enrolment occurred consecutively
+during normal clinical hours on weekdays without restriction. All patients were enrolled into
+the study before the attending physician received the results of any routine laboratory tests.
+
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_13dx.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
 
 The 32dx dataset
 ----------------
 
+We performed a STROBE-compliant [18] prospective observational study at the National Hospital for Tropical Diseases
+(NHTD), Hanoi, Vietnam, between June 2013 and February
+2014. Ethical approval was obtained from the Oxford Tropical
+Research Ethics Committee and the Ethics Review Committee
+at NHTD, and written informed consent was obtained from
+all participants or the parents/guardians of children.
+Adults and children >5 years of age with a clinical diagnosis
+of possible dengue were eligible for enrollment into either of 2
+study arms. In the outpatient arm, participants presenting within 72 hours of fever onset could be enrolled if no alternative
+cause for the fever was identified [19]. For the inpatient arm,
+any patient admitted to NHTD with suspected dengue with
+warning signs or severe dengue was eligible [3]. All patients
+were reviewed daily until fully recovered and afebrile, or for
+up to 6 days after enrollment. Standardized clinical information
+was recorded daily, including findings of detailed clinical examination and hemodynamic assessment. A complete blood cell
+count was performed daily, with additional samples obtained
+for a biochemical profile and dengue diagnostics at enrollment,
+at defervescence, and at a follow-up visit 10–14 days after illness
+onset. Any outpatient requiring admission continued to be followed up daily in hospital, with the indication for admission
+documented, and all management interventions were recorded.
+Additional investigations, including ultrasonography and/or
+chest radiology, were performed if clinically indicated.
+
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_32dx.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
+
+
 The 42dx dataset
 ----------------
 
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_42dx.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
+
 The 01nva dataset
 -----------------
+
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_01nva.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
 
 
 .. |pdf-lam2013| image:: ../_static/pdf-icon.png
