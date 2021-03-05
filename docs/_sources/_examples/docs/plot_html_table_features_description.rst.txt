@@ -21,7 +21,7 @@
 Datasets Description
 ====================
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-165
+.. GENERATED FROM PYTHON SOURCE LINES 6-172
 
 
 
@@ -35,6 +35,7 @@ Datasets Description
 
     # Libraries
     import yaml
+    import json
     import pandas as pd
 
     # ---------------------------------
@@ -75,6 +76,8 @@ Datasets Description
         describe['unique'] = aux.applymap(str) \
             .agg(lambda x: sorted(list(x.unique())))
 
+        # Sort without nan? convert nan to something??
+
         # Remove those with too much information
         describe.loc[describe['nunique'] > 1000, 'unique'] = None
 
@@ -83,6 +86,8 @@ Datasets Description
             how='left', left_index=True, right_on='name')
 
         # Format
+        #describe.range = describe.range.apply(f)
+        #describe.range = describe.range.apply(json.dumps)
         describe = describe.fillna('-')
         describe = describe.applymap(str)
         describe = describe.reset_index()
@@ -95,7 +100,7 @@ Datasets Description
     # Constants
     # ---------------------------------
     # Path with data
-    path_data = '../../resources/data/20210304-v0.4/'
+    path_data = '../../resources/data/20210305-v0.5/'
     path_data+= 'combined/combined_tidy.csv'
 
     # Path with yaml configuration
@@ -132,7 +137,7 @@ Datasets Description
 
     # Read yaml configuration
     features = pd.DataFrame( \
-        yaml.load(open(path_yaml, 'r'),
+        yaml.load(open(path_yaml, 'r', encoding='utf8'),
             Loader=yaml.FullLoader)['features'])
 
     # Create describe
@@ -150,7 +155,7 @@ Datasets Description
     path_html_output = path_html_tables + filename % 'combined'
 
     # Load template and save HTML table file
-    with open(path_html_template, 'r') as template, \
+    with open(path_html_template, 'r', encoding='utf8') as template, \
          open(path_html_output, "w+", encoding='utf8') as table:
 
         # Create html
@@ -185,7 +190,7 @@ Datasets Description
                                           border=0)
 
             # Load template and save HTML table file
-            with open(path_html_template, 'r') as template, \
+            with open(path_html_template, 'r', encoding='utf8') as template, \
                  open(path_html_output, "w+", encoding='utf8') as table:
 
                 # Save HTML table file
@@ -193,9 +198,11 @@ Datasets Description
                 table.close()
                 template.close()
 
+    a = 13
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  37.766 seconds)
+   **Total running time of the script:** ( 0 minutes  37.111 seconds)
 
 
 .. _sphx_glr_download__examples_docs_plot_html_table_features_description.py:

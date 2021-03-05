@@ -135,7 +135,7 @@ Example using your package
     # ---------------------------------
     # The data filepath
     # The data filepath
-    path = '../../resources/data/20210601-v0.1/combined/combined_tidy.csv'
+    path = '../../resources/data/20210106-v0.1/combined/combined_tidy.csv'
 
     # Features
     features = ['study_no',
@@ -266,7 +266,7 @@ Example using your package
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.321 seconds)
+   **Total running time of the script:** ( 0 minutes  10.588 seconds)
 
 
 .. _sphx_glr_download__examples_prevalence_plot_prevalence_datasets.py:

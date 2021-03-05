@@ -89,6 +89,8 @@
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../datasets/overview.html">The OUCRU datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/cleaning.html">The cleaning process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/todo.html">Changelog</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Galleries</span></p>
 <ul>
@@ -325,8 +327,16 @@ to download the full example code</p>
 <span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
-<span class="normal">165</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
  <span class="kn">import</span> <span class="nn">yaml</span>
+ <span class="kn">import</span> <span class="nn">json</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
  <span class="c1"># ---------------------------------</span>
@@ -367,6 +377,8 @@ to download the full example code</p>
      <span class="n">describe</span><span class="p">[</span><span class="s1">&#39;unique&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">aux</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> \
          <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unique</span><span class="p">())))</span>
 
+     <span class="c1"># Sort without nan? convert nan to something??</span>
+
      <span class="c1"># Remove those with too much information</span>
      <span class="n">describe</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">describe</span><span class="p">[</span><span class="s1">&#39;nunique&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;unique&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -375,6 +387,8 @@ to download the full example code</p>
          <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
 
      <span class="c1"># Format</span>
+     <span class="c1">#describe.range = describe.range.apply(f)</span>
+     <span class="c1">#describe.range = describe.range.apply(json.dumps)</span>
      <span class="n">describe</span> <span class="o">=</span> <span class="n">describe</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
      <span class="n">describe</span> <span class="o">=</span> <span class="n">describe</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
      <span class="n">describe</span> <span class="o">=</span> <span class="n">describe</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
@@ -387,7 +401,7 @@ to download the full example code</p>
  <span class="c1"># Constants</span>
  <span class="c1"># ---------------------------------</span>
  <span class="c1"># Path with data</span>
- <span class="n">path_data</span> <span class="o">=</span> <span class="s1">&#39;../../resources/data/20210304-v0.4/&#39;</span>
+ <span class="n">path_data</span> <span class="o">=</span> <span class="s1">&#39;../../resources/data/20210305-v0.5/&#39;</span>
  <span class="n">path_data</span><span class="o">+=</span> <span class="s1">&#39;combined/combined_tidy.csv&#39;</span>
 
  <span class="c1"># Path with yaml configuration</span>
@@ -424,7 +438,7 @@ to download the full example code</p>
 
  <span class="c1"># Read yaml configuration</span>
  <span class="n">features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> \
-     <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">path_yaml</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">),</span>
+     <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">path_yaml</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">),</span>
          <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)[</span><span class="s1">&#39;features&#39;</span><span class="p">])</span>
 
  <span class="c1"># Create describe</span>
@@ -442,7 +456,7 @@ to download the full example code</p>
  <span class="n">path_html_output</span> <span class="o">=</span> <span class="n">path_html_tables</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">%</span> <span class="s1">&#39;combined&#39;</span>
 
  <span class="c1"># Load template and save HTML table file</span>
- <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_html_template</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">template</span><span class="p">,</span> \
+ <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_html_template</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">template</span><span class="p">,</span> \
       <span class="nb">open</span><span class="p">(</span><span class="n">path_html_output</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">table</span><span class="p">:</span>
 
      <span class="c1"># Create html</span>
@@ -477,16 +491,18 @@ to download the full example code</p>
                                        <span class="n">border</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
          <span class="c1"># Load template and save HTML table file</span>
-         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_html_template</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">template</span><span class="p">,</span> \
+         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_html_template</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">template</span><span class="p">,</span> \
               <span class="nb">open</span><span class="p">(</span><span class="n">path_html_output</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">table</span><span class="p">:</span>
 
              <span class="c1"># Save HTML table file</span>
              <span class="n">table</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">template</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">%</span> <span class="n">html_table</span><span class="p">)</span>
              <span class="n">table</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
              <span class="n">template</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+ <span class="n">a</span> <span class="o">=</span> <span class="mi">13</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  37.766 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  37.111 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-docs-plot-html-table-features-description-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/b937e9d5cd093a3500eaede509dab81e/plot_html_table_features_description.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_html_table_features_description.py</span></code></a></p>

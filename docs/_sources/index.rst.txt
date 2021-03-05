@@ -11,6 +11,8 @@ Welcome to vital-oucru-clinical documentation!
    :hidden:
 
    datasets/overview
+   datasets/cleaning
+   datasets/todo
 
 
 .. toctree::

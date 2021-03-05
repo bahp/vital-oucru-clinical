@@ -96,7 +96,7 @@
       <td>datetime64[ns]</td>
       <td>-</td>
       <td>-</td>
-      <td>-</td>
+      <td>utils</td>
       <td>-</td>
       <td>-</td>
       <td>-</td>
@@ -168,7 +168,7 @@
       <td>-</td>
       <td>examination</td>
       <td>-</td>
-      <td>-</td>
+      <td>Ascites is the abnormal buildup of fluid in the abdomen. Technically, it is more than 25 ml of fluid in the peritoneal cavity, although volumes greater than one liter may occur. Symptoms may include increased abdominal size, increased weight, abdominal discomfort, and shortness of breath.</td>
       <td>['&lt;NA&gt;', 'False', 'True']</td>
       <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
       <td>-</td>
@@ -242,7 +242,7 @@
       <td>['&lt;NA&gt;', 'True']</td>
       <td>-</td>
       <td>-</td>
-      <td>Vallues 1, 2, False, True</td>
+      <td>There are values 1, 2, False, True. Bleeding severity has changed considerably along the studies. It would be wiser to define the severity based on the bleeding subcategories.</td>
     </tr>
     <tr>
       <th>13</th>
@@ -450,7 +450,7 @@
       <td>-</td>
       <td>-</td>
       <td>['100', '101', '102', '103', '104', '105', '106', '107', '108', '109', '110', '111', '112', '113', '114', '115', '116', '117', '118', '119', '120', '121', '122', '123', '124', '125', '126', '127', '128', '129', '130', '131', '132', '133', '134', '135', '136', '137', '138', '139', '140', '141', '142', '143', '144', '145', '146', '147', '148', '149', '150', '151', '152', '153', '154', '155', '156', '157', '158', '159', '160', '161', '162', '163', '164', '165', '166', '167', '168', '169', '170', '171', '172', '173', '174', '175', '176', '179', '183', '58', '60', '61', '62', '63', '64', '65', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '&lt;NA&gt;']</td>
-      <td>[{'dtype_correction': {'dtype': 'Float64', 'errors': 'coerce'}}, {'range_correction': {'range': [30, 200]}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64', 'errors': 'coerce'}}, {'range_correction': {'range': [20, 200]}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
       <td>{'absolute': [50, 200, 'cm']}</td>
       <td>-</td>
     </tr>
@@ -490,7 +490,7 @@
       <td>-</td>
       <td>examination</td>
       <td>-</td>
-      <td>-</td>
+      <td>Pleural effusion, sometimes referred to as "water on the lungs", is the build-up of excess fluid between the layers of the pleura outside the lungs.</td>
       <td>['&lt;NA&gt;', 'False', 'True']</td>
       <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
       <td>-</td>
@@ -536,7 +536,7 @@
       <td>['&lt;NA&gt;', 'True']</td>
       <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
       <td>-</td>
-      <td>-</td>
+      <td>Can this feature be computed from respiratory_rate? If so, respiratory_distress would pass from appearing in 6 datasets to appear in 9. The respiratory rate appears in 7.</td>
     </tr>
     <tr>
       <th>34</th>
@@ -672,7 +672,7 @@
       <td>-</td>
       <td>-</td>
       <td>-</td>
-      <td>-</td>
+      <td>Computed from method ... 'method'.</td>
       <td>['++++', '++-+', '+-++', '+-+-', '+-+?', '+---', '+?++', '-+++', '-+-+', '-+-?', '-+?+', '--++', '--+-', '--+?', '---+', '----', '---?', '--?+', '--?-', '-?++', '-?+-', '-?-+', '-??+', '-??-', '&lt;NA&gt;', '?+++', '?+-+', '?-++', '?-+-', '?-+?', '?---', '?-?-', '??++', '??--']</td>
       <td>-</td>
       <td>-</td>
@@ -728,7 +728,7 @@
       <td>-</td>
       <td>utils</td>
       <td>-</td>
-      <td>Day count from patient's enrolment</td>
+      <td>Day count from patient's enrolment (computed from event_enrolment)</td>
       <td>['-1', '-10', '-118', '-120', '-148', '-153', '-17', '-176', '-177', '-179', '-181', '-182', '-184', '-187', '-190', '-2', '-203', '-206', '-207', '-208', '-209', '-210', '-236', '-237', '-24', '-25', '-26', '-266', '-27', '-29', '-293', '-3', '-30', '-303', '-31', '-356', '-358', '-360', '-362', '-365', '-366', '-4', '-41', '-4382', '-4383', '-4748', '-53', '-57', '-59', '-6', '-61', '-7', '-8', '-84', '-86', '-88', '-89', '0', '1', '10', '101', '104', '1044', '1076', '11', '110', '118', '12', '123', '13', '14', '145', '148', '15', '16', '168', '17', '175', '177', '18', '189', '19', '199', '2', '20', '205', '207', '21', '22', '23', '230', '236', '237', '24', '25', '2558', '2561', '26', '264', '27', '271', '275', '28', '29', '2922', '2924', '294', '295', '3', '30', '306', '31', '32', '3290', '33', '34', '342', '35', '36', '365', '366', '37', '38', '380', '39', '4', '40', '405', '41', '414', '417', '42', '420', '43', '47', '48', '49', '5', '50', '51', '52', '526', '54', '540', '548', '55', '56', '57', '59', '6', '60', '61', '62', '63', '67', '68', '69', '7', '70', '71', '72', '745', '77', '797', '8', '85', '87', '88', '89', '9', '906', '92', '969', '&lt;NA&gt;']</td>
       <td>-</td>
       <td>-</td>
@@ -742,7 +742,7 @@
       <td>-</td>
       <td>utils</td>
       <td>-</td>
-      <td>Day count from patient's admission</td>
+      <td>Day count from patient's admission (computed from event_admission)</td>
       <td>['-1', '-10', '-110', '-117', '-118', '-119', '-121', '-123', '-17', '-177', '-178', '-180', '-181', '-182', '-183', '-185', '-187', '-190', '-2', '-206', '-207', '-208', '-209', '-210', '-211', '-2181', '-238', '-24', '-25', '-2551', '-2552', '-2553', '-2554', '-2555', '-2556', '-2557', '-2558', '-2559', '-2561', '-26', '-268', '-269', '-27', '-270', '-271', '-272', '-273', '-275', '-277', '-2913', '-2916', '-2917', '-2918', '-2919', '-2920', '-2921', '-2922', '-2923', '-2924', '-2926', '-3', '-3279', '-3282', '-3283', '-3284', '-3286', '-3287', '-3288', '-3289', '-3290', '-3291', '-3293', '-357', '-359', '-360', '-362', '-365', '-4', '-4382', '-4383', '-4387', '-5', '-53', '-57', '-6', '-60', '-7', '-8', '0', '1', '10', '101', '104', '1044', '1076', '109', '11', '115', '12', '13', '14', '143', '147', '148', '15', '152', '153', '155', '156', '157', '158', '16', '160', '161', '166', '17', '18', '189', '19', '197', '2', '20', '205', '21', '22', '228', '23', '24', '25', '26', '27', '271', '28', '29', '292', '293', '3', '30', '31', '32', '33', '34', '342', '35', '36', '363', '364', '365', '367', '368', '369', '37', '371', '38', '389', '39', '392', '4', '40', '41', '42', '43', '45', '46', '47', '48', '49', '5', '50', '51', '52', '524', '540', '548', '55', '56', '57', '59', '6', '60', '61', '62', '67', '68', '69', '7', '70', '71', '72', '745', '77', '796', '8', '81', '82', '85', '89', '9', '90', '902', '969', '&lt;NA&gt;']</td>
       <td>-</td>
       <td>-</td>
@@ -756,11 +756,11 @@
       <td>-</td>
       <td>utils</td>
       <td>-</td>
-      <td>Day count from patient's onset</td>
+      <td>Day count from patient's onset (compute from event_onset)</td>
       <td>['-1', '-10', '-117', '-118', '-145', '-146', '-15', '-152', '-174', '-175', '-176', '-177', '-179', '-180', '-181', '-182', '-183', '-185', '-188', '-2', '-201', '-204', '-205', '-206', '-207', '-208', '-209', '-23', '-234', '-235', '-24', '-263', '-264', '-266', '-27', '-28', '-29', '-290', '-291', '-3', '-302', '-355', '-356', '-357', '-359', '-362', '-363', '-364', '-365', '-39', '-4', '-4379', '-4380', '-4381', '-4746', '-4747', '-5', '-52', '-55', '-56', '-57', '-58', '-6', '-60', '-7', '-8', '-81', '-83', '-85', '-87', '-88', '0', '1', '10', '102', '1045', '105', '1077', '11', '113', '119', '12', '120', '121', '123', '13', '14', '147', '149', '15', '150', '16', '17', '170', '178', '179', '18', '180', '189', '19', '2', '20', '201', '205', '207', '208', '209', '21', '210', '22', '23', '232', '238', '24', '240', '25', '2561', '26', '264', '265', '266', '267', '27', '274', '277', '28', '29', '2922', '2923', '2926', '296', '297', '3', '30', '308', '31', '32', '3291', '3293', '33', '34', '345', '35', '36', '367', '368', '369', '37', '38', '380', '39', '4', '40', '407', '41', '414', '415', '417', '418', '42', '421', '43', '44', '45', '46', '49', '5', '50', '51', '527', '53', '54', '541', '550', '56', '57', '58', '59', '6', '60', '62', '65', '66', '7', '70', '72', '73', '74', '747', '75', '79', '8', '800', '86', '87', '88', '89', '9', '90', '909', '93', '970', '&lt;NA&gt;']</td>
       <td>-</td>
       <td>-</td>
-      <td>-</td>
+      <td>There should not be any negative value!</td>
     </tr>
     <tr>
       <th>50</th>
@@ -802,7 +802,7 @@
       <td>['&lt;NA&gt;', 'False', 'True']</td>
       <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
       <td>-</td>
-      <td>-</td>
+      <td>How come 01nva does not have overall bleeding? Note that it does have bleeding in various locations (and bleeding other).</td>
     </tr>
     <tr>
       <th>53</th>
@@ -938,7 +938,7 @@
       <td>-</td>
       <td>examination</td>
       <td>-</td>
-      <td>yellowing of the skin</td>
+      <td>Jaundice is when your skin and the whites of your eyes turn yellow. It can be a sign of something serious, such as liver disease.</td>
       <td>['&lt;NA&gt;', 'False', 'True']</td>
       <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
       <td>-</td>
@@ -1030,7 +1030,7 @@
     </tr>
     <tr>
       <th>69</th>
-      <td>agitated</td>
+      <td>restlessness</td>
       <td>boolean</td>
       <td>-</td>
       <td>-</td>
@@ -1044,6 +1044,20 @@
     </tr>
     <tr>
       <th>70</th>
+      <td>agitated</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>71</th>
       <td>anorexia</td>
       <td>boolean</td>
       <td>-</td>
@@ -1057,7 +1071,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>71</th>
+      <th>72</th>
       <td>bleeding_gi</td>
       <td>boolean</td>
       <td>-</td>
@@ -1071,7 +1085,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>72</th>
+      <th>73</th>
       <td>bleeding_urine</td>
       <td>boolean</td>
       <td>-</td>
@@ -1085,7 +1099,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>73</th>
+      <th>74</th>
       <td>bleeding_vensite</td>
       <td>boolean</td>
       <td>-</td>
@@ -1099,7 +1113,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>74</th>
+      <th>75</th>
       <td>care_type</td>
       <td>string</td>
       <td>-</td>
@@ -1113,7 +1127,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>75</th>
+      <th>76</th>
       <td>cns_abnormal_signs</td>
       <td>boolean</td>
       <td>-</td>
@@ -1124,10 +1138,10 @@
       <td>['&lt;NA&gt;', 'False', 'True']</td>
       <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
       <td>-</td>
-      <td>-</td>
+      <td>Could it be merged with cns_abnormal?</td>
     </tr>
     <tr>
-      <th>76</th>
+      <th>77</th>
       <td>compression</td>
       <td>boolean</td>
       <td>-</td>
@@ -1141,7 +1155,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>77</th>
+      <th>78</th>
       <td>conjunctival_injection</td>
       <td>boolean</td>
       <td>-</td>
@@ -1155,7 +1169,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>78</th>
+      <th>79</th>
       <td>creatine_kinase</td>
       <td>Float64</td>
       <td>U/L</td>
@@ -1169,7 +1183,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>79</th>
+      <th>80</th>
       <td>cryoprecipitate</td>
       <td>boolean</td>
       <td>-</td>
@@ -1183,21 +1197,21 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>80</th>
+      <th>81</th>
       <td>dehydration</td>
       <td>boolean</td>
       <td>-</td>
       <td>-</td>
       <td>examination</td>
       <td>-</td>
-      <td>Same as dehydratation, wrong use in the medical language.</td>
+      <td>In physiology, dehydration is a deficit of total body water, with an accompanying disruption of metabolic processes. It is the same as dehydratation, wrong use in the medical language.</td>
       <td>['&lt;NA&gt;', 'False', 'True']</td>
       <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
       <td>-</td>
       <td>-</td>
     </tr>
     <tr>
-      <th>81</th>
+      <th>82</th>
       <td>ffp</td>
       <td>boolean</td>
       <td>-</td>
@@ -1211,7 +1225,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>82</th>
+      <th>83</th>
       <td>gcs_eye_movement</td>
       <td>Int64</td>
       <td>-</td>
@@ -1225,7 +1239,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>83</th>
+      <th>84</th>
       <td>gcs_low</td>
       <td>boolean</td>
       <td>-</td>
@@ -1239,7 +1253,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>84</th>
+      <th>85</th>
       <td>gcs_motor_response</td>
       <td>Int64</td>
       <td>-</td>
@@ -1253,7 +1267,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>85</th>
+      <th>86</th>
       <td>gcs_verbal_response</td>
       <td>Int64</td>
       <td>-</td>
@@ -1265,20 +1279,6 @@
       <td>[{'dtype_correction': {'dtype': 'Int64'}}]</td>
       <td>-</td>
       <td>-</td>
-    </tr>
-    <tr>
-      <th>86</th>
-      <td>gum_packing</td>
-      <td>boolean</td>
-      <td>-</td>
-      <td>-</td>
-      <td>examination</td>
-      <td>-</td>
-      <td>-</td>
-      <td>['&lt;NA&gt;', 'False', 'True']</td>
-      <td>-</td>
-      <td>-</td>
-      <td>Could it be merged with bleeding_gum?</td>
     </tr>
     <tr>
       <th>87</th>
@@ -1422,20 +1422,6 @@
     </tr>
     <tr>
       <th>97</th>
-      <td>nasal_packing</td>
-      <td>boolean</td>
-      <td>-</td>
-      <td>-</td>
-      <td>examination</td>
-      <td>-</td>
-      <td>-</td>
-      <td>['&lt;NA&gt;', 'False', 'True']</td>
-      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
-      <td>-</td>
-      <td>Could it be merged with bleeding_nose?</td>
-    </tr>
-    <tr>
-      <th>98</th>
       <td>neutrophils</td>
       <td>Float64</td>
       <td>u/L</td>
@@ -1449,12 +1435,12 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>99</th>
+      <th>98</th>
       <td>ns1_platelia_interpretation</td>
       <td>string</td>
       <td>-</td>
       <td>-</td>
-      <td>-</td>
+      <td>NS1</td>
       <td>-</td>
       <td>-</td>
       <td>['&lt;NA&gt;', 'Equivocal', 'Negative', 'Positive']</td>
@@ -1463,7 +1449,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>100</th>
+      <th>99</th>
       <td>ns1_trip_control_interpretation</td>
       <td>boolean</td>
       <td>-</td>
@@ -1477,7 +1463,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>101</th>
+      <th>100</th>
       <td>ns1_trip_test_interpretation</td>
       <td>boolean</td>
       <td>-</td>
@@ -1488,10 +1474,38 @@
       <td>['&lt;NA&gt;', 'False', 'True']</td>
       <td>-</td>
       <td>-</td>
-      <td>Should it be also Positive, Negative or Equivocal?</td>
+      <td>As it is an interpretation, should it be Positive, Negative or Equivocal?</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>packing_gum</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>-</td>
+      <td>-</td>
+      <td>Could it be merged with bleeding_gum?</td>
     </tr>
     <tr>
       <th>102</th>
+      <td>packing_nose</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>Could it be merged with bleeding_nose?</td>
+    </tr>
+    <tr>
+      <th>103</th>
       <td>pcr_dengue_interpretation</td>
       <td>string</td>
       <td>-</td>
@@ -1505,7 +1519,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>103</th>
+      <th>104</th>
       <td>perfusion</td>
       <td>boolean</td>
       <td>-</td>
@@ -1519,7 +1533,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>104</th>
+      <th>105</th>
       <td>platelet_no</td>
       <td>Int64</td>
       <td>-</td>
@@ -1533,7 +1547,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>105</th>
+      <th>106</th>
       <td>platelets</td>
       <td>boolean</td>
       <td>-</td>
@@ -1547,7 +1561,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>106</th>
+      <th>107</th>
       <td>pulse_status</td>
       <td>string</td>
       <td>-</td>
@@ -1561,7 +1575,7 @@
       <td>-</td>
     </tr>
     <tr>
-      <th>107</th>
+      <th>108</th>
       <td>rbc</td>
       <td>boolean</td>
       <td>-</td>
@@ -1572,21 +1586,7 @@
       <td>['&lt;NA&gt;', 'False', 'True']</td>
       <td>-</td>
       <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <th>108</th>
-      <td>restlessness</td>
-      <td>boolean</td>
-      <td>-</td>
-      <td>-</td>
-      <td>examination</td>
-      <td>-</td>
-      <td>-</td>
-      <td>['&lt;NA&gt;', 'False', 'True']</td>
-      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
-      <td>-</td>
-      <td>-</td>
+      <td>What does it mean a Red Blood Cells value True?</td>
     </tr>
     <tr>
       <th>109</th>
@@ -1653,14 +1653,33 @@ function format ( d ) {
     if (d.transformations != '-') {
         html_transformations += '<tr>'
         html_transformations += '<td> Transformations: </td>'
-        html_transformations += '<td>' + d.transformations + '</td>'
+        html_transformations += '<td>'
+
+
+        var tf = d.transformations.slice(1, -1).replace('}, {', '}|{').split('|')
+
+        $.each(tf, function(index, value) {
+        	html_transformations += value + '<br>'
+        });
+
+        html_transformations += '</td>'
     }
 
     html_range = ''
     if (d.range != '-') {
         html_range += '<tr>'
         html_range += '<td> Ranges: </td>'
-        html_range += '<td>' + d.range + '</td>'
+        html_range += '<td>' + dt.range
+
+        /*$.each($.parseJSON(d.range),
+          function(index, value) {
+             var min = value[0]
+            var max = value[1]
+            var unit = value[2]
+            html_range += '{0}: [{1}, {2}, {3}] <br>'.format(index, min, max, unit)
+        });*/
+
+        html_range += '<td>'
     }
 
     // Extra information
@@ -1677,13 +1696,22 @@ function format ( d ) {
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
             html_description +
             html_categories +
-            html_unique +
             html_transformations +
             html_range +
             html_warning +
             html_extra +
+            html_unique
     '</table>';
 }
+
+
+ String.prototype.format = function() {
+      a = this;
+      for (k in arguments) {
+        a = a.replace("{" + k + "}", arguments[k])
+      }
+      return a
+    }
 
   $(document).ready(function() {
 

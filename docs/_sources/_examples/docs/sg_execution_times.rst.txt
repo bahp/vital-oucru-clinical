@@ -5,12 +5,12 @@
 
 Computation times
 =================
-**00:44.328** total execution time for **_examples_docs** files:
+**00:43.445** total execution time for **_examples_docs** files:
 
 +----------------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_docs_plot_html_table_features_description.py` (``plot_html_table_features_description.py``) | 00:37.766 | 0.0 MB |
+| :ref:`sphx_glr__examples_docs_plot_html_table_features_description.py` (``plot_html_table_features_description.py``) | 00:37.111 | 0.0 MB |
 +----------------------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_docs_plot_html_table_features_count.py` (``plot_html_table_features_count.py``)             | 00:06.563 | 0.0 MB |
+| :ref:`sphx_glr__examples_docs_plot_html_table_features_count.py` (``plot_html_table_features_count.py``)             | 00:06.334 | 0.0 MB |
 +----------------------------------------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr__examples_docs_plot_html_dataset_profiles.py` (``plot_html_dataset_profiles.py``)                     | 00:00.000 | 0.0 MB |
 +----------------------------------------------------------------------------------------------------------------------+-----------+--------+
