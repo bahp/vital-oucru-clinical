@@ -18,11 +18,14 @@
 # PyCharm folder
 .idea
 
+# Resources
+resources
+
 # Sphinx docs
 docs/build
 docs/source/_examples
-docs/source/_static/profile-dataprep
-docs/source/_static/profile-pandas
+docs/source/_static/datasets/profile-dataprep
+docs/source/_static/datasets/profile-pandas
 
 # Folders with sensitive data
 
