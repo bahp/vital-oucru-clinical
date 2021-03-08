@@ -6,6 +6,7 @@ Datasets Description
 
 # Libraries
 import yaml
+import json
 import pandas as pd
 
 # ---------------------------------
@@ -46,6 +47,8 @@ def create_dataframe(data, features):
     describe['unique'] = aux.applymap(str) \
         .agg(lambda x: sorted(list(x.unique())))
 
+    # Sort without nan? convert nan to something??
+
     # Remove those with too much information
     describe.loc[describe['nunique'] > 1000, 'unique'] = None
 
@@ -54,6 +57,8 @@ def create_dataframe(data, features):
         how='left', left_index=True, right_on='name')
 
     # Format
+    #describe.range = describe.range.apply(f)
+    #describe.range = describe.range.apply(json.dumps)
     describe = describe.fillna('-')
     describe = describe.applymap(str)
     describe = describe.reset_index()
@@ -66,7 +71,7 @@ def create_dataframe(data, features):
 # Constants
 # ---------------------------------
 # Path with data
-path_data = '../../resources/data/20210304-v0.4/'
+path_data = '../../resources/data/20210305-v0.5/'
 path_data+= 'combined/combined_tidy.csv'
 
 # Path with yaml configuration
@@ -103,7 +108,7 @@ data = pd.read_csv(path_data,
 
 # Read yaml configuration
 features = pd.DataFrame( \
-    yaml.load(open(path_yaml, 'r'),
+    yaml.load(open(path_yaml, 'r', encoding='utf8'),
         Loader=yaml.FullLoader)['features'])
 
 # Create describe
@@ -121,7 +126,7 @@ describe.to_csv('test.csv')
 path_html_output = path_html_tables + filename % 'combined'
 
 # Load template and save HTML table file
-with open(path_html_template, 'r') as template, \
+with open(path_html_template, 'r', encoding='utf8') as template, \
      open(path_html_output, "w+", encoding='utf8') as table:
 
     # Create html
@@ -156,10 +161,12 @@ if COMPUTE:
                                       border=0)
 
         # Load template and save HTML table file
-        with open(path_html_template, 'r') as template, \
+        with open(path_html_template, 'r', encoding='utf8') as template, \
              open(path_html_output, "w+", encoding='utf8') as table:
 
             # Save HTML table file
             table.write(template.read() % html_table)
             table.close()
             template.close()
+
+a = 13

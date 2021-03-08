@@ -6,19 +6,42 @@ corrector:
 features:
 
   # ---------------------------
-  # Date
+  # Utils
   # ---------------------------
   # .. note: It will be applied to the tidy structure because
   #          date is a column of the DataFrame. However, it
   #          will not be applied to the stack structure because
   #          date is not within the 'columns' column values.
   - name: date
+    ctype: utils
     transformations:
       - dtype_correction: {dtype: datetime64}
       - date_outliers_correction:
           groupby: patient
           max_days_to_median: 25
           outliers_as_nat: True
+
+  - name: day_from_admission
+    ctype: utils
+    description: Day count from patient's admission (computed from event_admission)
+
+  - name: day_from_enrolment
+    ctype: utils
+    description: Day count from patient's enrolment (computed from event_enrolment)
+
+  - name: day_from_onset
+    ctype: utils
+    warning: There should not be any negative value!
+    description: Day count from patient's onset (compute from event_onset)
+
+  - name: dsource
+    ctype: utils
+    description: It describes the data source (e.g. study 06dx).
+
+  - name: study_no
+    ctype: utils
+    description: Patient ID number during the study.
+
 
   # ---------------------------
   # Demographics
@@ -30,8 +53,7 @@ features:
       absolute: [0, 120, year]
     transformations:
       - dtype_correction: {dtype: Float64}
-      - range_correction:
-          range: [0, 120]
+      - range_correction: {range: [0, 120]}
       - fillna_correction: {method: fbfill, groupby: patient}
 
   - name: gender
@@ -49,8 +71,7 @@ features:
       absolute: [0.5, 120, kg]
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
-      - range_correction:
-          range: [0.5, 120]
+      - range_correction: {range: [0.5, 120]}
       - fillna_correction: {method: fbfill, groupby: patient}
 
   - name: height
@@ -60,10 +81,12 @@ features:
       absolute: [50, 200, cm]
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
-      - range_correction:
-          range: [30, 200]
+      - range_correction: {range: [20, 200]}
       - fillna_correction: {method: fbfill, groupby: patient}
 
+  # --------------------
+  # Comorbidities
+  # --------------------
   - name: aids
     ctype: comorbidities
 
@@ -186,15 +209,33 @@ features:
       - range_correction:
           range: [10, 200]
 
-  # ------------------
-  # Other examination
-  # ------------------
+  - name: spo2_percent
+    unit: percent
+    ctype: vital sign
+    range:
+      normal: [95, 100, percent]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0, 100]
+    description: Oxygen saturation is the fraction of oxygen-saturated hemoglobin relative to total
+                 hemoglobin in the blood. The human body requires and regulates a very precise and
+                 specific balance of oxygen in the blood. Normal arterial blood oxygen saturation
+                 levels in humans are 95–100 percent.
+
+  # ----------------------
+  # Examination - Bleeding
+  # ----------------------
   - name: bleeding_severe
     ctype: examination
-    warning: Vallues 1, 2, False, True
+    warning: There are values 1, 2, False, True. Bleeding severity has changed considerably
+             along the studies. It would be wiser to define the severity based on the
+             bleeding subcategories.
 
   - name: bleeding
     ctype: examination
+    warning: How come 01nva does not have overall bleeding? Note that it does have
+             bleeding in various locations (and bleeding other).
     transformations:
       - dtype_correction: {dtype: boolean}
 
@@ -257,6 +298,50 @@ features:
     transformations:
       - dtype_correction: {dtype: boolean}
 
+  - name: epistaxis
+    ctype: examination
+    warning: Could it be merged with bleeding_nose?
+    description: Bleeding from the nose, caused by damage to the blood vessels of
+                 the nasal mucosa.
+
+  - name: packing_gum
+    ctype: examination
+    warning: Could it be merged with bleeding_gum?
+
+  - name: packing_nose
+    ctype: examination
+    warning: Could it be merged with bleeding_nose?
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: hematemesis
+    warning: Could it be merged with vomiting? Does vomiting means vomiting blood?
+    description: Hematemesis is the vomiting of blood. The source is generally the upper gastrointestinal
+                 tract, typically above the suspensory muscle of duodenum. Patients can easily confuse it
+                 with hemoptysis (coughing up blood), although the latter is more common. Hematemesis "is
+                 always an important sign".
+
+  - name: hematuria
+    warning: Could it be merged with bleeding_urine?
+    description: Hematuria is the presence of blood in a person's urine.
+
+  - name: hematoma
+    ctype: examination
+    description: A hematoma, also spelled haematoma, or blood suffusion is a localized bleeding
+                 outside of blood vessels, due to either disease or trauma including injury or
+                 surgery and may involve blood continuing to seep from broken capillaries.
+
+  - name: haemorrhage
+    ctype: examination
+    description: An escape of blood from a ruptured blood vessel.
+
+  - name: melaena
+    description: The production of dark sticky faeces containing partly digested blood, as a
+                 result of internal bleeding or the swallowing of blood.
+
+  # -----------------------
+  # Examination - abdominal
+  # -----------------------
   - name: abdominal_pain
     ctype: examination
     transformations:
@@ -273,8 +358,27 @@ features:
 
   - name: abdominal_distension
     ctype: examination
-    warning: Bad V_0 and V_1 values!
 
+  - name: ascites
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+    description: Ascites is the abnormal buildup of fluid in the abdomen. Technically,
+                 it is more than 25 ml of fluid in the peritoneal cavity, although volumes
+                 greater than one liter may occur. Symptoms may include increased abdominal
+                 size, increased weight, abdominal discomfort, and shortness of breath.
+
+  - name: ascites_level
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Float64}
+    warning: Appears only in 06dx and has only None or 1. Therefore, it could
+             interpreted as the presence of ascites (boolean).
+
+  # ------------------
+  # Examination - Skin
+  # ------------------
   - name: skin_clammy
     transformations:
       - dtype_correction: {dtype: boolean}
@@ -293,12 +397,112 @@ features:
 
   - name: abscess
     ctype: examination
-    description: Can it be merged with skin?
+    warning: Can it be merged with some sort of skin feature?
+    description: An abscess is a collection of pus that has built up within the tissue
+                 of the body (usually skin). Signs and symptoms of abscesses include
+                 redness, pain, warmth, and swelling. The swelling may feel fluid-filled
+                 when pressed. The area of redness often extends beyond the swelling.
 
   - name: cyanosis
     ctype: examination
-    description: Can it be merged with skin?
+    warning: Can it be merged with some sort of skin feature?
+    description: Cyanosis refers to a bluish cast to the skin and mucous membranes. Peripheral
+                 cyanosis is when there is a bluish discoloration to your hands or feet. It's
+                 usually caused by low oxygen levels in the red blood cells or problems getting
+                 oxygenated blood to your body.
 
+  - name: jaundice
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+    description: Jaundice is when your skin and the whites of your eyes turn yellow.
+                 It can be a sign of something serious, such as liver disease.
+
+  - name: petechiae
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+    description: Petechiae are tiny purple, red, or brown spots on the skin. They
+                 usually appear on your arms, legs, stomach, and buttocks. You might
+                 also find them inside your mouth or on your eyelids.
+
+  - name: petechiae_level
+    ctype: examination
+
+  - name: bruising
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+    warning: Could it be merged with hematoma or viceversa?
+    description: A bruise, or contusion, appears on the skin due to trauma. Examples of
+                 trauma are a cut or a blow to an area of the body. The injury causes tiny
+                 blood vessels called capillaries to burst. Blood gets trapped below the
+                 skin's surface, which causes a bruise.
+
+  - name: bruising_level
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: Float64}
+
+  - name: ecchymosis
+    ctype: examination
+    warning: Could it be merged with bruising?
+    description: A discoloration of the skin resulting from bleeding underneath,
+                 typically caused by bruising.
+
+  # ----------------
+  # Lungs
+  # ----------------
+  - name: pleural_effusion
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+    description: Pleural effusion, sometimes referred to as "water on the lungs",
+                 is the build-up of excess fluid between the layers of the pleura
+                 outside the lungs.
+
+  - name: pleural_effusion_left
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+    description: Pleural effusion located on the left lung.
+
+  - name: pleural_effusion_right
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+    description: Pleural effusion located on the right lung.
+
+  - name: rales_crackles
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+    warning: Can it be merge or used with chest_sound_left and chest_sound_right?
+    description: Crackles are also known as alveolar rales and are the sounds heard in a
+                 lung field that has fluid in the small airways. The sound crackles create
+                 are fine, short, high-pitched, intermittently crackling sounds. The cause
+                 of crackles can be from air passing through fluid, pus or mucus
+
+  - name: respiratory_distress
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - fillna_correction: {method: fbfill, groupby: patient}
+    warning: Can this feature be computed from respiratory_rate? If so, respiratory_distress
+             would pass from appearing in 6 datasets to appear in 9. The respiratory rate
+             appears in 7.
+
+  - name: chest_indrawing
+  - name: chest_sound_left
+  - name: chest_sound_right
+
+  # -------------------
+  # Examination - Other
+  # -------------------
   - name: diarrhoea
     ctype: examination
     transformations:
@@ -321,12 +525,9 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64}
 
-  - name: jaundice
+  - name: oedema
     ctype: examination
-    description: yellowing of the skin
-    transformations:
-      - dtype_correction: {dtype: boolean}
-      - fillna_correction: {method: fbfill, groupby: patient}
+    warning: Set as combination of any oedema (similar to bleeding).
 
   - name: oedema_pulmonary
     ctype: examination
@@ -334,59 +535,14 @@ features:
       - dtype_correction: {dtype: boolean}
       - fillna_correction: {method: fbfill, groupby: patient}
 
-  - name: pleural_effusion
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-      - fillna_correction: {method: fbfill, groupby: patient}
+  - name: rhinitis
+    warning: Could it be merged with runny_nose?
+    description: Rhinitis is inflammation and swelling of the mucous membrane of the nose,
+                 characterized by a runny nose and stuffiness and usually caused by the common
+                 cold or a seasonal allergy. Colds and allergies are the most common causes of
+                 rhinitis. Symptoms of rhinitis include a runny nose, sneezing, and stuffines
 
-  - name: pleural_effusion_left
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-
-  - name: pleural_effusion_right
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-
-  - name: ascites
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-      - fillna_correction: {method: fbfill, groupby: patient}
-
-  - name: ascites_level
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: Float64}
-
-  - name: petechiae
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-      - fillna_correction: {method: fbfill, groupby: patient}
-
-
-  - name: petechiae_level
-    ctype: examination
-
-  - name: bruising
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-      - fillna_correction: {method: fbfill, groupby: patient}
-
-  - name: bruising_level
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: Float64}
-
-  - name: respiratory_distress
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-      - fillna_correction: {method: fbfill, groupby: patient}
+  - name: runny_nose
 
   - name: pulse_status
     ctype: examination
@@ -402,11 +558,6 @@ features:
       - dtype_correction: {dtype: boolean}
 
   - name: chills
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-
-  - name: rales_crackles
     ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
@@ -429,11 +580,6 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64}
 
-  - name: breath
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-
   - name: movement
     ctype: examination
     transformations:
@@ -441,12 +587,6 @@ features:
 
   - name: restlessness
     ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-
-  - name: dehydration
-    ctype: examination
-    description: Same as dehydratation, wrong use in the medical language.
     transformations:
       - dtype_correction: {dtype: boolean}
 
@@ -460,17 +600,38 @@ features:
     transformations:
       - dtype_correction: {dtype: boolean}
 
-  - name: liver_acute
+  - name: lethargy
     ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
 
-  - name: nasal_packing
+  - name: conjunctival_injection
     ctype: examination
-    warning: Could it be merged with bleeding_nose?
     transformations:
       - dtype_correction: {dtype: boolean}
 
+  - name: hepatomegaly
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
+  - name: joint_pain
+    ctype: examination
+
+  - name: joint_pain_level
+    ctype: examination
+
+  - name: dehydration
+    ctype: examination
+    transformations:
+      - dtype_correction: {dtype: boolean}
+    description: In physiology, dehydration is a deficit of total body water, with
+                 an accompanying disruption of metabolic processes. It is the same
+                 as dehydratation, wrong use in the medical language.
+
+  # ------------------
+  # Neurology (CNS)
+  # ------------------
   - name: gcs
     ctype: examination
     description: The Glasgow Coma Scale (GCS) is a clinical scale used to reliably measure a person's
@@ -497,6 +658,7 @@ features:
 
   - name: cns_abnormal_signs
     ctype: examination
+    warning: Could it be merged with cns_abnormal?
     transformations:
       - dtype_correction: {dtype: boolean}
 
@@ -506,30 +668,17 @@ features:
       - dtype_correction: {dtype: boolean}
 
 
-  - name: lethargy
+  # ------------------
+  # Examination - Liver
+  # ------------------
+  - name: liver_acute
     ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
 
-  - name: conjunctival_injection
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-
-  - name: hepatomegaly
-    ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
-
-
-  - name: joint_pain
-    ctype: examination
-
-  - name: joint_pain_level
-    ctype: examination
 
   # ------------------
-  # Other
+  # Fluids
   # ------------------
   - name: crystalloid
     ctype: examination
@@ -713,6 +862,7 @@ features:
 
   - name: rbc
     ctype: laboratory
+    warning: What does it mean a Red Blood Cells value True?
 
   - name: ffp
     ctype: laboratory
@@ -772,13 +922,13 @@ features:
     ctype: laboratory
 
   - name: fibrinogen
-    warning: Had a ,
+    warning: 1. Had a ',' value | Solved.
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
 
   - name: aptt
     ctype: laboratory
-    warning: Has a ',' value.
+    warning: Has ',' values | Corrected.
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
 
@@ -787,6 +937,7 @@ features:
   # ---
   - name: pcr_dengue_reaction
     ctype: PCR
+    warning: What are the units of a PCR reaction?
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
 
@@ -829,19 +980,19 @@ features:
   - name: igm
     unit: g/L
     ctype: serology
-    description: Found mainly in blood and lymph fluid, this is the first antibody
-                 the body makes when it fights a new infection.
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
+    description: Found mainly in blood and lymph fluid, this is the first antibody
+                 the body makes when it fights a new infection.
 
   - name: igg
     unit: g/L
     ctype: serology
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
     description: This is the most common antibody. It's in blood and other body fluids,
                  and protects against bacterial and viral infections. IgG can take time
                  to form after an infection or immunization.
-    transformations:
-      - dtype_correction: {dtype: Float64, errors: coerce}
 
   - name: igm_interpretation
     ctype: serology
@@ -874,6 +1025,10 @@ features:
 
   - name: ns1_interpretation
     ctype: NS1
+    categories:
+      - Positive
+      - Negative
+      - Equivocal
     transformations:
       - replace_correction:
             to_replace: { No sample: null }
@@ -890,7 +1045,23 @@ features:
 
   - name: ns1_plasma_interpretation
     ctype: NS1
-    warning: Needs fixing!
+    categories:
+      - Positive
+      - Negative
+      - Equivocal
+    transformations:
+      - replace_correction:
+          to_replace: {
+            Missing: null,
+            'Equivocal?': Equivocal,
+            Neg: Negative,
+            Pos: Positive,
+            neg: Negative,
+            pos: Positive
+          }
+    warning: What about 'Equivocal,neg'? If we want to keep both then it needs to be
+             corrected through the DataBlend configuration files. Otherwise, it can
+             just be set to positive in the replace_correction.
 
   - name: ns1_urine_concentration
     ctype: NS1
@@ -899,6 +1070,10 @@ features:
 
   - name: ns1_urine_interpretation
     ctype: NS1
+    categories:
+      - Positive
+      - Negative
+      - Equivocal
     transformations:
       - replace_correction:
           to_replace: {
@@ -918,7 +1093,10 @@ features:
 
   - name: ns1_trip_test_interpretation
     ctype: NS1
-    warning: Should it be also Positive, Negative or Equivocal?
+    warning: As it is an interpretation, should it be Positive, Negative or Equivocal?
+
+  - name: ns1_platelia_interpretation
+    ctype: NS1
 
   # --------
   # Outcomes
@@ -1045,93 +1223,93 @@ features:
       - dtype_correction: {dtype: boolean}
 
 
-  # --------
-  # Support
-  # --------
-  - name: day_from_admission
-    ctype: utils
-    description: Day count from patient's admission
-
-  - name: day_from_enrolment
-    ctype: utils
-    description: Day count from patient's enrolment
-
-  - name: day_from_onset
-    ctype: utils
-    description: Day count from patient's onset
-
-  - name: dsource
-    ctype: utils
-    description: It describes the data source (e.g. study 06dx).
-
-  - name: study_no
-    ctype: utils
-    description: Patient ID number during the study.
-
-
   # ---------
-  #
+  # To review
   # ---------
-  - name: echymosis
-    ctype: examination
-    warning: Error, it should be merged with ecchymosis.
-
-  - name: ecchymosis
-    ctype: examination
-    description: A discoloration of the skin resulting from bleeding underneath,
-                 typically caused by bruising.
-    warning: Could it be merged with bruising?
-
   - name: effusion
     ctype: examination
 
-  - name: epistaxis
-    ctype: examination
-    description: Bleeding from the nose, caused by damage to the blood vessels of
-                 the nasal mucosa.
-    warning: Could it be merged with bleeding_nose?
-
-  - name: gum_packing
-    ctype: examination
-    warning: Could it be merged with bleeding_gum?
-
   - name: heart_sound_abnormal
-
-  - name: hematemesis
-    description: Hematemesis is the vomiting of blood. The source is generally the upper gastrointestinal
-                 tract, typically above the suspensory muscle of duodenum. Patients can easily confuse it
-                 with hemoptysis (coughing up blood), although the latter is more common. Hematemesis "is
-                 always an important sign".
-    warning: Could it be merged with vomiting? Is it the same?
-
-  - name: hematuria
-    description: Hematuria is the presence of blood in a person's urine.
-    warning: Could it be merged with bleeding_urine?
-
-
   - name: igg_indirect_interpretation
-    warning: what is this? paired? only igg?
-
-  - name: melaena
-    description: the production of dark sticky faeces containing partly digested blood, as a result of
-                 internal bleeding or the swallowing of blood.
+    warning: What is this? Is it paired_igm_igg serology? why does it mention only igg?
 
   - name: meningism
-    warning: meningitis?
+    warning: Is this meningitis?
 
   - name: myocardial_infarction
 
   - name: nausea
-    warning: somewhere to merge with?
+    warning: Can this be merged with sometiong? appetite_lost?
 
   - name: neurology
-    warning: neurology_abnormal? cns_abnormal? cerebro?
-
-  - name: packing_nose
-    warning: nose_packing
+    warning: Can it be merged with neurology_abnormal?
+             Can it be merged with cns_abnormal?
+             Can it be merged with cns_abnormal_signs?
+             Can it be merged with cerebro?
 
   - name: rehydration
-    warning: dehydration
+    warning: Is this dehydration? Seen in 32dx and 43dx.
 
   - name: restlesness
     warning: fix! restlessness
+
+  # --------------------
+  # Computed features
+  # --------------------
+  - name: serology_paired
+    description: Computed from method ... 'method'.
+
+  # True, False?
+  - name: dengue_interpretation
+    description:
+
+
+  # --------------------
+  # Unknon features
+  # --------------------
+  - name: hemi
+    warning: What does this feature represent?
+
+  - name: rest_paint
+    warning: What does this feature represent?
+
+  - name: restro_pain
+    warning: What does this feature represent?
+
+  - name: slivel
+    warning: What does this feature represent?
+             Can it be merged with other feature?
+
+  - name: blood_fluid
+    warning: Review and implement!
+
+  - name: cerebro
+    warning: What does this feature represent?
+             Can it be merged with cns_abnormal?
+             Can it be merged with neurology_abnormal?
+
+  - name: chrocomp
+    warning: What does this feature represent?
+             Which are the chronic complications?
+             Remember other chronic_hepatitis or chronic_pulmo...?
+
+  - name: localsign
+    warning: What kind of local sign? See below.
+
+  - name: liver_size
+    warning: Rename to liver_palpation_size.
+
+  - name: msolidtur
+    warning: What does this feature represent?
+
+  - name: reshock
+    warning: What does this feature represent?
+
+  - name: srdeficien
+    warning: What does this feature represent?
+
+  - name: ultrasound
+    warning: Review! Only in one study though...
+
+  - name: dos
+    warning: Day of sample. Ignore, to be removed.

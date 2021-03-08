@@ -24,15 +24,15 @@ within the Hospital for Tropical Diseases (HTD) in Ho Chi Minh City, Vietnam.
     ======= ========= ================================================= ========
     Name    Period     Aim                                              Patients
     ======= ========= ================================================= ========
-    df      1999-2009 Describe clinical features of ``DSS`` in children   1719
-    md      2001-2009 Describe clinical features of ``NSD`` in children   3044
-    dr      2005-2008 Describe clinical features of ``NSD`` in children   1165
-    06dx    2009-2011 Effect of steroid in Dengue                         75
-    13dx    2010-2014 Diagnostic accuracy of NS1                          5729
-    32dx    2013-2016 Intravascular volume assessment (CRI)
-    42dx    2017-2018 Clinical features of DSS in pregnant women?
-    d001    2011
-    01nva   2020-2021
+    df      1999-2009 Describe clinical features of ``DSS`` in children 1719
+    md      2001-2009 Describe clinical features of ``NSD`` in children 3044
+    dr      2005-2008 Describe clinical features of ``NSD`` in children 1542
+    06dx    2009-2011 Effect of steroid in Dengue                       330
+    13dx    2010-2014 Diagnostic accuracy of NS1                        8108
+    32dx    2013-2016 Intravascular volume assessment (CRI)             75
+    42dx    2017-2018 Clinical features of DSS in pregnant women?       664
+    d001    2011                                                        112
+    01nva   2020-2021 Clinical features of Dengue patients (wearables)  155
     ======= ========= ================================================= ========
 
 
@@ -153,7 +153,11 @@ The following table includes:
     Remember you can:
 
          - ``reorder`` by any column.
-         - ``search`` using the searchbox to filter by any column.
+         - ``search`` using the searchbox to filter by any column. This box allows
+            you to search by the name of the feature (e.g. bleeding will show all
+            features including bleeding) but in addition it will return any feature
+            that contains such word in its description. For instance, you can use
+            it to find skin, lung, chest, blood/bleeding related features.
          - ``explore`` more information through the + dropdown.
          - ``export`` the table to any of the available formats.
 
@@ -316,7 +320,7 @@ The df dataset
 .. warning:: Important things to consider...
 
 The trial was a ``single-center``, ``randomized``, ``doubleblind`` comparison of an isotonic crystalloid solution
-(Ringer’s lactate) and two isotonic colloid solutions (6 percent dextran 70 [dextran] and 6 percent
+(Ringer’s lactate) and two isotonic colloid solutions (6% dextran 70 [dextran] and 6%
 hydroxyethyl starch 200/0.5 [starch]) for emergency resuscitation of ``children`` with ``dengue shock syndrome``.
 The children were stratified according to pulse pressure at admission, a marker of the severity of the
 vascular leak. No children in the group with severe shock received a crystalloid because of concerns
@@ -332,10 +336,27 @@ Chi Minh City, Vietnam. The ethics and science committee of the hospital approve
             height="750px;"
             width="100%"></iframe>
 
+The fl dataset
+--------------
+
+
+.. raw:: html
+
+    <iframe src="../_static/datasets/html-tables/features_description_fl.html"
+            frameborder="0"
+            scrolling="no"
+            height="750px;"
+            width="100%"></iframe>
+
+
 The md dataset
 --------------
 
 .. warning:: Important things to consider...
+
+            - Does it include multiple shock information.
+            - No PCR date available?
+            - ETC
 
 A ``prospective observational study`` of ``children`` hospitalized with ``suspected dengue`` at the HTD
 in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
@@ -508,6 +529,23 @@ The 42dx dataset
 
 The 01nva dataset
 -----------------
+
+.. warning:: Fluids- and treatments- related worksheets have not been cleaned yet.
+
+.. warning::
+
+    The excel worksheet 'ED' does not have other than the entered time. However,
+    this entered time might not be the exact time that events happend because in
+    other worksheets there is an additional time (e.g. date_sample) and the
+    entered time.
+
+    The excel worksheet 'DIS'....
+
+       - Can DATEASSES be interpreted as date_discharge?
+       - Is NS1 and IGM an interpretation of both results? Would it be possible
+         to include the values of this tests individually? For instance the
+         igm_interpretation and igg_interpretation to compute both the single
+         and the paired interpreations.
 
 .. raw:: html
 
