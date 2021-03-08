@@ -71,7 +71,7 @@ def create_dataframe(data, features):
 # Constants
 # ---------------------------------
 # Path with data
-path_data = '../../resources/data/20210305-v0.5/'
+path_data = '../../resources/data/20210308-v0.6/'
 path_data+= 'combined/combined_tidy.csv'
 
 # Path with yaml configuration
@@ -169,4 +169,4 @@ if COMPUTE:
             table.close()
             template.close()
 
-a = 13
+a = 18
