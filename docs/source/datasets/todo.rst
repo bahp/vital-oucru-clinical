@@ -130,3 +130,13 @@ Pending ...
 
   - Do check levels (e.g. abdominal_pain, abdominal_pain_level) and whether
     this were levels or days. Oh dear!
+
+  - ``Fever``: This value has been collected in many different types, sometimes
+    just the presence of fever was recorded, sometimes the body temperature was
+    recorded and sometimes both have been recorded. To ensure that all values
+    are consistent:
+
+    - if body_temperature > 37.5 then create event_fever for that date.
+    - if body_temperature < 37.5 there might still be an event_fever, note
+      that temperature values are just collected once per day. I assume then
+      keep both.

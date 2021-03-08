@@ -473,6 +473,11 @@ another (non-dengue) diagnosis was more likely. Patient enrolment occurred conse
 during normal clinical hours on weekdays without restriction. All patients were enrolled into
 the study before the attending physician received the results of any routine laboratory tests.
 
+.. warning::
+
+    - It does not have ``event_death``.
+    - Does it have enough laboratory? Is these data only for those admitted?
+
 .. raw:: html
 
     <iframe src="../_static/datasets/html-tables/features_description_13dx.html"
@@ -481,31 +486,25 @@ the study before the attending physician received the results of any routine lab
             height="750px;"
             width="100%"></iframe>
 
+
+
 The 32dx dataset
 ----------------
 
-We performed a STROBE-compliant [18] prospective observational study at the National Hospital for Tropical Diseases
-(NHTD), Hanoi, Vietnam, between June 2013 and February
-2014. Ethical approval was obtained from the Oxford Tropical
-Research Ethics Committee and the Ethics Review Committee
-at NHTD, and written informed consent was obtained from
-all participants or the parents/guardians of children.
-Adults and children >5 years of age with a clinical diagnosis
-of possible dengue were eligible for enrollment into either of 2
-study arms. In the outpatient arm, participants presenting within 72 hours of fever onset could be enrolled if no alternative
-cause for the fever was identified [19]. For the inpatient arm,
-any patient admitted to NHTD with suspected dengue with
-warning signs or severe dengue was eligible [3]. All patients
-were reviewed daily until fully recovered and afebrile, or for
-up to 6 days after enrollment. Standardized clinical information
-was recorded daily, including findings of detailed clinical examination and hemodynamic assessment. A complete blood cell
-count was performed daily, with additional samples obtained
-for a biochemical profile and dengue diagnostics at enrollment,
-at defervescence, and at a follow-up visit 10–14 days after illness
-onset. Any outpatient requiring admission continued to be followed up daily in hospital, with the indication for admission
-documented, and all management interventions were recorded.
-Additional investigations, including ultrasonography and/or
-chest radiology, were performed if clinically indicated.
+We performed a STROBE-compliant prospective observational study at the National Hospital for Tropical Diseases
+(NHTD), Hanoi, Vietnam, between June 2013 and February 2014. Ethical approval was obtained from the Oxford Tropical
+Research Ethics Committee and the Ethics Review Committee at NHTD, and written informed consent was obtained from
+all participants or the parents/guardians of children. Adults and children >5 years of age with a clinical diagnosis
+of possible dengue were eligible for enrollment into either of 2 study arms. In the outpatient arm, participants
+presenting within 72 hours of fever onset could be enrolled if no alternative cause for the fever was identified.
+For the inpatient arm, any patient admitted to NHTD with suspected dengue with warning signs or severe dengue was
+eligible. All patients were reviewed daily until fully recovered and afebrile, or for up to 6 days after enrollment.
+Standardized clinical information was recorded daily, including findings of detailed clinical examination and
+hemodynamic assessment. A complete blood cell count was performed daily, with additional samples obtained
+for a biochemical profile and dengue diagnostics at enrollment, at defervescence, and at a follow-up visit 10–14
+days after illness onset. Any outpatient requiring admission continued to be followed up daily in hospital, with
+the indication for admission documented, and all management interventions were recorded. Additional investigations,
+including ultrasonography and/or chest radiology, were performed if clinically indicated.
 
 .. raw:: html
 
@@ -529,6 +528,10 @@ The 42dx dataset
 
 The 01nva dataset
 -----------------
+
+.. warning::
+
+    - Is there any ``PCR``? ``Serology``? ``NS1``?
 
 .. warning:: Fluids- and treatments- related worksheets have not been cleaned yet.
 
