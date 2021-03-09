@@ -47,10 +47,13 @@ def create_dataframe(data, features):
     describe['unique'] = aux.applymap(str) \
         .agg(lambda x: sorted(list(x.unique())))
 
+
     # Sort without nan? convert nan to something??
 
     # Remove those with too much information
     describe.loc[describe['nunique'] > 1000, 'unique'] = None
+
+    # Show also nunique (otherwise we might think they do not have values!)
 
     # Merge with yaml information
     describe = describe.merge(features,
@@ -71,7 +74,7 @@ def create_dataframe(data, features):
 # Constants
 # ---------------------------------
 # Path with data
-path_data = '../../resources/data/20210308-v0.6/'
+path_data = '../../resources/data/20210309-v0.7/'
 path_data+= 'combined/combined_tidy.csv'
 
 # Path with yaml configuration
@@ -95,6 +98,7 @@ columns = ['name',
            'categories',
            'description',
            'unique',
+           'nunique',
            'transformations',
            'range',
            'warning']
@@ -169,4 +173,4 @@ if COMPUTE:
             table.close()
             template.close()
 
-a = 18
+a = 877691231

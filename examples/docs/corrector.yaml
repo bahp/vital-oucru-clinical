@@ -14,12 +14,12 @@ features:
   #          date is not within the 'columns' column values.
   - name: date
     ctype: utils
-    transformations:
-      - dtype_correction: {dtype: datetime64}
-      - date_outliers_correction:
-          groupby: patient
-          max_days_to_median: 25
-          outliers_as_nat: True
+    #transformations:
+    #  - dtype_correction: {dtype: datetime64}
+    #  - date_outliers_correction:
+    #      groupby: patient
+    #      max_days_to_median: 25
+    #      outliers_as_nat: True
 
   - name: day_from_admission
     ctype: utils
@@ -295,8 +295,13 @@ features:
 
   - name: bleeding_other
     ctype: examination
-    transformations:
-      - dtype_correction: {dtype: boolean}
+    warning: careful, it is a mix of boolean and string
+    #transformations:
+    #  - dtype_correction: {dtype: boolean}
+
+  - name: bleeding_other_description
+    warning: Define as bleeding_description.
+      It is in vietnamese.
 
   - name: epistaxis
     ctype: examination
@@ -1259,10 +1264,6 @@ features:
   - name: serology_paired
     description: Computed from method ... 'method'.
 
-  # True, False?
-  - name: dengue_interpretation
-    description:
-
 
   # --------------------
   # Unknon features
@@ -1313,3 +1314,173 @@ features:
 
   - name: dos
     warning: Day of sample. Ignore, to be removed.
+
+  - name: contissue
+    warning: Any significant past medical connective issue.
+             Can it be merged with any other feature?
+
+  - name: crt
+    warning: Cardiac Resyncrhonization Therapy
+
+  - name: able_to_drink
+    warning: What to do with this variable?
+
+  - name: appetite_list
+    warning: What to do with this variable?
+
+  - name: area_type@
+    warning: Merge with ....?
+
+  - name: behaviour
+    warning: What to do with this variable? It should be boolean (all 1).
+
+  - name: bleeding_mucosal_description
+    warning: Define as bleeding_description.
+
+  - name: bleeding_mucosal_specification
+    warning: Define as bleeding_description.
+
+  - name: bleeding_site
+    warning: Define as bleeding_description.
+
+  - name: bleeding_weird
+    warning: Define as bleeding_description.
+
+  - name: blood_pressure_down
+    warning: Is this dyastolic blood pressure?
+
+  - name: blood_pressure_up
+    warning: Is this systolic blood pressure?
+
+  - name: care_type
+    warning: Merge with other features.
+             admitted_hospital rename (1 as 'Hospital')
+             what are level 1, level 2 and level 3?
+
+  - name: cns_abnormal_description
+    warning: Merge with cnsother
+
+  - name: day
+    warning: Remove from DataBlend
+
+  - name: ddi_test
+    warning: Is numeric but has '<0.5' and '>=0.8'
+
+  - name: ddimer
+    warning: Is numeric but has ',' and ',1.0'
+
+  - name: admission_from_hospital_date
+    warning: Remove from DataBlend!
+
+  - name: final_diag
+    warning: diagnosis_final
+
+  - name: diagnosis
+    warning: diagnosis_final
+
+  - name: diagnosic_admission
+    warning: diagnosis_admission
+
+  - name: discharge_status
+    warning: what is the meaning of this encoding?
+
+  - name: extremities
+    warning: What does this feature and its encoding represents?
+
+  - name: fever
+    warning: Think overlapping with event_fever and body_temperature
+
+  - name: from_adm
+    warning: It is the day from admission, remove from DataBlend
+
+  - name: heart_sound_abnormal_desc
+    warning: Could it be merged with heart_sound_description?
+
+  - name: heart_sound_description
+    warning: It has V_1 value!
+
+  - name: historical
+    warning: What does this feature represent?
+
+  - name: historical_desc
+    warning: It has V_1, ..., V_3 values!
+
+  - name: hospital_admitted
+    warning: What does this value represent?
+             Maybe hospital names encoded?
+
+  - name: hs_concentration
+    warning: What does this value represent?
+
+  - name: immune status
+    warning: Merge with below (if content matches)
+
+  - name: immune_status
+    warning: Merge
+
+  - name: indirect_elisa
+    warning: Is this the igm_igg_single? igm_igg_paired?
+
+  - name: indirect_elisa
+    warning: Is this the igm_igg_single? igm_igg_paired?
+             Are these the Positive, Negative, Equivocal codes?
+
+  - name: lung
+    warning: Related with lung_details.
+
+  - name: lung_details
+    warning: It is in vietnamese
+
+  - name: lymphadenopathy_specification
+    warning: What is the encode for 1?
+
+  - name: malignancy
+    warning: What does this feature represent?
+
+  - name: meche
+    warning: What does this feature represent?
+
+  - name: no_symptoms
+    warning: Ignore?
+
+  - name: occupation
+    warning: Merge with... job.
+
+  - name: oxygen
+    warning: Review if it can be merged with oxygen_mask?
+
+  - name: painful
+    warning: what is painful? adbominal pain? join pain?
+
+  - name: place
+    warning: It still has 'V_0', ..., 'V_4' values!
+
+  - name: pleural_effusion_side
+    warning: Don't know if it refers to left/right. If so,
+             what is the encoding? If not, what other things
+             might 2 and 3 be enconding?
+
+  - name: reason
+    warning: reason for what?
+
+  - name: respiratory_desc
+    warning: It still has V_1 and V_2 values!
+
+  - name: retro_pain
+    warning: What pain is this?
+
+  - name: skidney
+    warning: What does this feature represent?
+
+  - name: skin_describe
+    warning: merge with skin_description
+
+  - name: skin_reash_description
+    warning: fix name
+
+  - name: ventilation
+    warning: Be careful with ventilation (True and Fals)
+             and ventilation_type (canula, ncpap, ...)
+
+  - name: ward
+    warning: Merge with ward_admitted below?
