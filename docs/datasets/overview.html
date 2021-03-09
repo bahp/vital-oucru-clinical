@@ -111,8 +111,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#useful-definitions">Useful definitions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#defining-complications">Defining complications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#defining-dengue-interpretation">Defining dengue interpretation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-a-complication">What is a complication?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dengue-interpretation">Dengue interpretation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serology-interpretation">Serology interpretation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#single-igm-igg">single igm_igg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#paired-igm-igg">paired igm_igg</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -212,8 +217,8 @@ within the Hospital for Tropical Diseases (HTD) in Ho Chi Minh City, Vietnam.</p
 </ul>
 </div></blockquote>
 </div>
-<table class="colwidths-given docutils align-default" id="id3">
-<caption><span class="caption-text">Overview of clinical study aims</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">Overview of clinical study aims</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 7%" />
 <col style="width: 10%" />
@@ -243,32 +248,46 @@ within the Hospital for Tropical Diseases (HTD) in Ho Chi Minh City, Vietnam.</p
 <td><p>Describe clinical features of <code class="docutils literal notranslate"><span class="pre">NSD</span></code> in children</p></td>
 <td><p>1542</p></td>
 </tr>
-<tr class="row-odd"><td><p>06dx</p></td>
+<tr class="row-odd"><td><p>fl</p></td>
+<td><p>xxxx-xxxx</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>06dx</p></td>
 <td><p>2009-2011</p></td>
 <td><p>Effect of steroid in Dengue</p></td>
 <td><p>330</p></td>
 </tr>
-<tr class="row-even"><td><p>13dx</p></td>
+<tr class="row-odd"><td><p>13dx</p></td>
 <td><p>2010-2014</p></td>
 <td><p>Diagnostic accuracy of NS1</p></td>
 <td><p>8108</p></td>
 </tr>
-<tr class="row-odd"><td><p>32dx</p></td>
+<tr class="row-even"><td><p>32dx</p></td>
 <td><p>2013-2016</p></td>
 <td><p>Intravascular volume assessment (CRI)</p></td>
 <td><p>75</p></td>
 </tr>
-<tr class="row-even"><td><p>42dx</p></td>
+<tr class="row-odd"><td><p>42dx</p></td>
 <td><p>2017-2018</p></td>
 <td><p>Clinical features of DSS in pregnant women?</p></td>
 <td><p>664</p></td>
 </tr>
-<tr class="row-odd"><td><p>d001</p></td>
+<tr class="row-even"><td><p>d001</p></td>
 <td><p>2011</p></td>
-<td></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
 <td><p>112</p></td>
 </tr>
-<tr class="row-even"><td><p>01nva</p></td>
+<tr class="row-odd"><td><p>01nva</p></td>
 <td><p>2020-2021</p></td>
 <td><p>Clinical features of Dengue patients (wearables)</p></td>
 <td><p>155</p></td>
@@ -281,8 +300,8 @@ years using the data collected in at least one of the previously described
 studies. The columns describe the dataset used (name), the title of the
 manuscript, the year in which it was published and a reference to the full
 manuscript for download as pdf.</p>
-<table class="colwidths-given docutils align-default" id="id4">
-<caption><span class="caption-text">Published manuscripts</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">Published manuscripts</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 8%" />
 <col style="width: 66%" />
@@ -407,15 +426,12 @@ all datasets yet that information will be provided in subsequent sections.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">reorder</span></code> by any column.</p></li>
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">search</span></code> using the searchbox to filter by any column. This box allows</dt><dd><p>you to search by the name of the feature (e.g. bleeding will show all
+<li><p><code class="docutils literal notranslate"><span class="pre">search</span></code> using the searchbox to filter by any column. This box allows
+you to search by the name of the feature (e.g. bleeding will show all
 features including bleeding) but in addition it will return any feature
 that contains such word in its description. For instance, you can use
-it to find skin, lung, chest, blood/bleeding related features.</p>
-</dd>
-</dl>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">explore</span></code> more information through the + dropdown.</p></li>
+it to find skin, lung, chest, blood/bleeding related features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">explore</span></code> more information through the dropdown button (+).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">export</span></code> the table to any of the available formats.</p></li>
 </ul>
 </div></blockquote>
@@ -453,8 +469,8 @@ single patient on a given day.</p>
 to be uploaded to standard git. To solve this issue use
 git-large-files.</p>
 </div>
-<table class="colwidths-given docutils align-default" id="id5">
-<caption><span class="caption-text">Links to detailed information for each dataset</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">Links to detailed information for each dataset</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 23%" />
 <col style="width: 38%" />
@@ -531,16 +547,17 @@ git-large-files.</p>
 <h3>The df dataset<a class="headerlink" href="#the-df-dataset" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Important things to consider…</p>
+<p>Things to highlight.</p>
 </div>
-<p>The trial was a <code class="docutils literal notranslate"><span class="pre">single-center</span></code>, <code class="docutils literal notranslate"><span class="pre">randomized</span></code>, <code class="docutils literal notranslate"><span class="pre">doubleblind</span></code> comparison of an isotonic crystalloid solution
-(Ringer’s lactate) and two isotonic colloid solutions (6% dextran 70 [dextran] and 6%
-hydroxyethyl starch 200/0.5 [starch]) for emergency resuscitation of <code class="docutils literal notranslate"><span class="pre">children</span></code> with <code class="docutils literal notranslate"><span class="pre">dengue</span> <span class="pre">shock</span> <span class="pre">syndrome</span></code>.
-The children were stratified according to pulse pressure at admission, a marker of the severity of the
-vascular leak. No children in the group with severe shock received a crystalloid because of concerns
-about the potential development of critical fluid overload without access to advanced respiratory support.
-The study took place in the pediatric intensive care unit at the Hospital for Tropical Diseases in Ho
-Chi Minh City, Vietnam. The ethics and science committee of the hospital approved the protocol.</p>
+<p>The trial was a <code class="docutils literal notranslate"><span class="pre">single-center</span></code>, <code class="docutils literal notranslate"><span class="pre">randomized</span></code>, <code class="docutils literal notranslate"><span class="pre">doubleblind</span></code> comparison of an isotonic
+crystalloid solution (Ringer’s lactate) and two isotonic colloid solutions (6% dextran 70
+[dextran] and 6% hydroxyethyl starch 200/0.5 [starch]) for emergency resuscitation of
+<code class="docutils literal notranslate"><span class="pre">children</span></code> with <code class="docutils literal notranslate"><span class="pre">dengue</span> <span class="pre">shock</span> <span class="pre">syndrome</span></code>. The children were stratified according to pulse
+pressure at admission, a marker of the severity of the vascular leak. No children in the group
+with severe shock received a crystalloid because of concerns about the potential development of
+critical fluid overload without access to advanced respiratory support. The study took place
+in the pediatric intensive care unit at the Hospital for Tropical Diseases in Ho Chi Minh City,
+Vietnam. The ethics and science committee of the hospital approved the protocol.</p>
 <iframe src="../_static/datasets/html-tables/features_description_df.html"
         frameborder="0"
         scrolling="no"
@@ -548,6 +565,10 @@ Chi Minh City, Vietnam. The ethics and science committee of the hospital approve
         width="100%"></iframe></div>
 <div class="section" id="the-fl-dataset">
 <h3>The fl dataset<a class="headerlink" href="#the-fl-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Things to highlight.</p>
+</div>
 <iframe src="../_static/datasets/html-tables/features_description_fl.html"
         frameborder="0"
         scrolling="no"
@@ -558,14 +579,9 @@ Chi Minh City, Vietnam. The ethics and science committee of the hospital approve
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Important things to consider…</p>
-<ul class="simple">
-<li><p>Does it include multiple shock information.</p></li>
-<li><p>No PCR date available?</p></li>
-<li><p>ETC</p></li>
-</ul>
 </div>
-<p>A <code class="docutils literal notranslate"><span class="pre">prospective</span> <span class="pre">observational</span> <span class="pre">study</span></code> of <code class="docutils literal notranslate"><span class="pre">children</span></code> hospitalized with <code class="docutils literal notranslate"><span class="pre">suspected</span> <span class="pre">dengue</span></code> at the HTD
-in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
+<p>A <code class="docutils literal notranslate"><span class="pre">prospective</span> <span class="pre">observational</span> <span class="pre">study</span></code> of <code class="docutils literal notranslate"><span class="pre">children</span></code> hospitalized with <code class="docutils literal notranslate"><span class="pre">suspected</span> <span class="pre">dengue</span></code> at
+the HTD in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
 any child aged between 5 and 15 years admitted to the paediatric dengue ward at HTD with
 clinically suspected dengue, whose parent/guardian gave written informed consent for them to
 be enrolled in the study following detailed explanation by a trained study doctor. Consecutive
@@ -584,6 +600,10 @@ admitted to PICU with DSS were recruited into a concurrent pediatric cohort</p>
         width="100%"></iframe></div>
 <div class="section" id="the-dr-dataset">
 <h3>The dr dataset<a class="headerlink" href="#the-dr-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Important things to consider…</p>
+</div>
 <p>We conducted a <code class="docutils literal notranslate"><span class="pre">prospective</span> <span class="pre">descriptive</span></code> study of <code class="docutils literal notranslate"><span class="pre">febrile</span>
 <span class="pre">children</span></code>, aged 5–15 years, attending two <code class="docutils literal notranslate"><span class="pre">primary</span></code> health care
 clinics in Ho Chi Minh City, Vietnam. Clinic A is a single-handed
@@ -625,6 +645,10 @@ no individual baseline was available [14].</p>
         width="100%"></iframe></div>
 <div class="section" id="the-d001-dataset">
 <h3>The d001 dataset<a class="headerlink" href="#the-d001-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Important things to consider…</p>
+</div>
 <iframe src="../_static/datasets/html-tables/features_description_d001.html"
         frameborder="0"
         scrolling="no"
@@ -632,11 +656,15 @@ no individual baseline was available [14].</p>
         width="100%"></iframe></div>
 <div class="section" id="the-06dx-dataset">
 <h3>The 06dx dataset<a class="headerlink" href="#the-06dx-dataset" title="Permalink to this headline">¶</a></h3>
-<p>We performed a randomized, placebo-controlled, partially blinded trial of early corticosteroid
-therapy in Vietnamese children and young adults with suspected dengue virus infection. The study
-took place on designated infectious diseases wards at the Hospital for Tropical Diseases of Ho
-Chi Minh City, with approval from the Ethical Committee of the Ministry of Health of Vietnam and
-the Oxford Tropical Research Ethics Committee.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Important things to consider…</p>
+</div>
+<p>We performed a <code class="docutils literal notranslate"><span class="pre">randomized</span></code>, <code class="docutils literal notranslate"><span class="pre">placebo-controlled</span></code>, <code class="docutils literal notranslate"><span class="pre">partially</span> <span class="pre">blinded</span></code> trial of early
+corticosteroid therapy in Vietnamese children and young adults with suspected dengue virus
+infection. The study took place on designated infectious diseases wards at the Hospital for
+Tropical Diseases of Ho Chi Minh City, with approval from the Ethical Committee of the
+Ministry of Health of Vietnam and the Oxford Tropical Research Ethics Committee.</p>
 <iframe src="../_static/datasets/html-tables/features_description_06dx.html"
         frameborder="0"
         scrolling="no"
@@ -644,6 +672,10 @@ the Oxford Tropical Research Ethics Committee.</p>
         width="100%"></iframe></div>
 <div class="section" id="the-13dx-dataset">
 <h3>The 13dx dataset<a class="headerlink" href="#the-13dx-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Important things to consider…</p>
+</div>
 <p>Recruitment occurred in the public sector outpatient departments of Children’s Hospital No. 1
 (HCMC), Children’s Hospital No. 2 (HCMC), The Hospital for Tropical Diseases (HCMC),
 Tien Giang Provincial Hospital, Dong Nai Children’s Hospital, Binh Duong Provincial Hospital and Long
@@ -665,28 +697,24 @@ the study before the attending physician received the results of any routine lab
         width="100%"></iframe></div>
 <div class="section" id="the-32dx-dataset">
 <h3>The 32dx dataset<a class="headerlink" href="#the-32dx-dataset" title="Permalink to this headline">¶</a></h3>
-<p>We performed a STROBE-compliant [18] prospective observational study at the National Hospital for Tropical Diseases
-(NHTD), Hanoi, Vietnam, between June 2013 and February
-2014. Ethical approval was obtained from the Oxford Tropical
-Research Ethics Committee and the Ethics Review Committee
-at NHTD, and written informed consent was obtained from
-all participants or the parents/guardians of children.
-Adults and children &gt;5 years of age with a clinical diagnosis
-of possible dengue were eligible for enrollment into either of 2
-study arms. In the outpatient arm, participants presenting within 72 hours of fever onset could be enrolled if no alternative
-cause for the fever was identified [19]. For the inpatient arm,
-any patient admitted to NHTD with suspected dengue with
-warning signs or severe dengue was eligible [3]. All patients
-were reviewed daily until fully recovered and afebrile, or for
-up to 6 days after enrollment. Standardized clinical information
-was recorded daily, including findings of detailed clinical examination and hemodynamic assessment. A complete blood cell
-count was performed daily, with additional samples obtained
-for a biochemical profile and dengue diagnostics at enrollment,
-at defervescence, and at a follow-up visit 10–14 days after illness
-onset. Any outpatient requiring admission continued to be followed up daily in hospital, with the indication for admission
-documented, and all management interventions were recorded.
-Additional investigations, including ultrasonography and/or
-chest radiology, were performed if clinically indicated.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Important things to consider…</p>
+</div>
+<p>We performed a STROBE-compliant prospective observational study at the National Hospital for Tropical Diseases
+(NHTD), Hanoi, Vietnam, between June 2013 and February 2014. Ethical approval was obtained from the Oxford Tropical
+Research Ethics Committee and the Ethics Review Committee at NHTD, and written informed consent was obtained from
+all participants or the parents/guardians of children. Adults and children &gt;5 years of age with a clinical diagnosis
+of possible dengue were eligible for enrollment into either of 2 study arms. In the outpatient arm, participants
+presenting within 72 hours of fever onset could be enrolled if no alternative cause for the fever was identified.
+For the inpatient arm, any patient admitted to NHTD with suspected dengue with warning signs or severe dengue was
+eligible. All patients were reviewed daily until fully recovered and afebrile, or for up to 6 days after enrollment.
+Standardized clinical information was recorded daily, including findings of detailed clinical examination and
+hemodynamic assessment. A complete blood cell count was performed daily, with additional samples obtained
+for a biochemical profile and dengue diagnostics at enrollment, at defervescence, and at a follow-up visit 10–14
+days after illness onset. Any outpatient requiring admission continued to be followed up daily in hospital, with
+the indication for admission documented, and all management interventions were recorded. Additional investigations,
+including ultrasonography and/or chest radiology, were performed if clinically indicated.</p>
 <iframe src="../_static/datasets/html-tables/features_description_32dx.html"
         frameborder="0"
         scrolling="no"
@@ -694,6 +722,10 @@ chest radiology, were performed if clinically indicated.</p>
         width="100%"></iframe></div>
 <div class="section" id="the-42dx-dataset">
 <h3>The 42dx dataset<a class="headerlink" href="#the-42dx-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Important things to consider…</p>
+</div>
 <iframe src="../_static/datasets/html-tables/features_description_42dx.html"
         frameborder="0"
         scrolling="no"
@@ -703,24 +735,10 @@ chest radiology, were performed if clinically indicated.</p>
 <h3>The 01nva dataset<a class="headerlink" href="#the-01nva-dataset" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Fluids- and treatments- related worksheets have not been cleaned yet.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The excel worksheet ‘ED’ does not have other than the entered time. However,
-this entered time might not be the exact time that events happend because in
-other worksheets there is an additional time (e.g. date_sample) and the
-entered time.</p>
-<p>The excel worksheet ‘DIS’….</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Can DATEASSES be interpreted as date_discharge?</p></li>
-<li><p>Is NS1 and IGM an interpretation of both results? Would it be possible
-to include the values of this tests individually? For instance the
-igm_interpretation and igg_interpretation to compute both the single
-and the paired interpreations.</p></li>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FLUIDS</span></code> related information has not been extracted yet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREATMENT</span></code> related information has not been extracted yet.</p></li>
 </ul>
-</div></blockquote>
 </div>
 <iframe src="../_static/datasets/html-tables/features_description_01nva.html"
         frameborder="0"
@@ -730,11 +748,237 @@ and the paired interpreations.</p></li>
 </div>
 <div class="section" id="useful-definitions">
 <h2>Useful definitions<a class="headerlink" href="#useful-definitions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="defining-complications">
-<h3>Defining complications<a class="headerlink" href="#defining-complications" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-is-a-complication">
+<h3>What is a complication?<a class="headerlink" href="#what-is-a-complication" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>The main complications are ….</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>shock</p></li>
+<li><p>jaundice</p></li>
+<li><p>ascites</p></li>
+<li><p>any other?</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
 </div>
-<div class="section" id="defining-dengue-interpretation">
-<h3>Defining dengue interpretation<a class="headerlink" href="#defining-dengue-interpretation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="dengue-interpretation">
+<h3>Dengue interpretation<a class="headerlink" href="#dengue-interpretation" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Write introduction and includes link to code and method documentation.</p>
+</div>
+<p>The dengue definition is as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>positive NS1 point of care assay</p></li>
+<li><p>positive reverse transcriptase polymerase chain reaction (RT-PCR)</p></li>
+<li><p>positive dengue IgM through acute serology</p></li>
+<li><p>seroconversion of either single or paired IgM or IgG samples</p></li>
+</ul>
+</div></blockquote>
+<p>And it is implemented in the following method (link to docs).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">oucru_dengue_interpretation_feature</span><span class="p">(</span><span class="n">tidy</span><span class="p">,</span>
+        <span class="n">pcr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ns1</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">igm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">serology</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">single_igm_igg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">paired_igm_igg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="serology-interpretation">
+<h3>Serology interpretation<a class="headerlink" href="#serology-interpretation" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><blockquote>
+<div><div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Write introduction and includes link to code and method documentation.</p>
+</div>
+<ul class="simple">
+<li><p>First igm, igg columns represent 1st sample</p></li>
+<li><p>Second igm, igg columns represent 2nd sample</p></li>
+</ul>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">Overview of serology outcomes from igm and igg</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>igm</p></th>
+<th class="head"><p>igg</p></th>
+<th class="head"><p>igm</p></th>
+<th class="head"><p>igg</p></th>
+<th class="head"><p>single</p></th>
+<th class="head"><p>paired</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>Inconclusive</p></td>
+<td><p>Not Dengue</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>Inconclusive</p></td>
+<td><p>Primary</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>Inconclusive</p></td>
+<td><p>Primary</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>Inconclusive</p></td>
+<td><p>Primary</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>Inconclusive</p></td>
+<td><p>Inconclusive</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>Inconclusive</p></td>
+<td><p>Secondary*</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>Inconclusive</p></td>
+<td><p>Inconclusive</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>Inconclusive</p></td>
+<td><p>Secondary*</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>Primary</p></td>
+<td><p>Inconclusive</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>Primary</p></td>
+<td><p>Secondary*</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>Primary</p></td>
+<td><p>Inconclusive</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>Primary</p></td>
+<td><p>Secondary*</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>‐</p></td>
+<td><p>Secondary</p></td>
+<td><p>Inconclusive</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>+</p></td>
+<td><p>Secondary</p></td>
+<td><p>Secondary*</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>‐</p></td>
+<td><p>Secondary</p></td>
+<td><p>Inconclusive</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>+</p></td>
+<td><p>Secondary</p></td>
+<td><p>Secondary*</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>where</p>
+<blockquote>
+<div><ul class="simple">
+<li><ul>
+<li><p>indicates significant increase in igg |</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> indicates inconclusive because igg should be + by now |</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> indicates it is odd and maybe hovering around the threshold |</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span></code> keep it as single outcome. |</p></li>
+</ul>
+</div></blockquote>
+<p>And it is implemented in the following method (link to docs).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">oucru_serology_interpretation_feature</span><span class="p">(</span><span class="n">tidy</span><span class="p">,</span>
+        <span class="n">serology_single</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">serology_paired</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">serology_interpretation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inconsistencies</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="section" id="single-igm-igg">
+<h4>single igm_igg<a class="headerlink" href="#single-igm-igg" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="paired-igm-igg">
+<h4>paired igm_igg<a class="headerlink" href="#paired-igm-igg" title="Permalink to this headline">¶</a></h4>
+</div>
 </div>
 </div>
 </div>

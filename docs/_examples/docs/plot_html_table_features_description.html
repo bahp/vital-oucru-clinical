@@ -334,7 +334,11 @@ to download the full example code</p>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
-<span class="normal">172</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
  <span class="kn">import</span> <span class="nn">yaml</span>
  <span class="kn">import</span> <span class="nn">json</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -377,10 +381,13 @@ to download the full example code</p>
      <span class="n">describe</span><span class="p">[</span><span class="s1">&#39;unique&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">aux</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> \
          <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">unique</span><span class="p">())))</span>
 
+
      <span class="c1"># Sort without nan? convert nan to something??</span>
 
      <span class="c1"># Remove those with too much information</span>
      <span class="n">describe</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">describe</span><span class="p">[</span><span class="s1">&#39;nunique&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">,</span> <span class="s1">&#39;unique&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+     <span class="c1"># Show also nunique (otherwise we might think they do not have values!)</span>
 
      <span class="c1"># Merge with yaml information</span>
      <span class="n">describe</span> <span class="o">=</span> <span class="n">describe</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">features</span><span class="p">,</span>
@@ -401,7 +408,7 @@ to download the full example code</p>
  <span class="c1"># Constants</span>
  <span class="c1"># ---------------------------------</span>
  <span class="c1"># Path with data</span>
- <span class="n">path_data</span> <span class="o">=</span> <span class="s1">&#39;../../resources/data/20210305-v0.5/&#39;</span>
+ <span class="n">path_data</span> <span class="o">=</span> <span class="s1">&#39;../../resources/data/20210309-v0.7/&#39;</span>
  <span class="n">path_data</span><span class="o">+=</span> <span class="s1">&#39;combined/combined_tidy.csv&#39;</span>
 
  <span class="c1"># Path with yaml configuration</span>
@@ -425,6 +432,7 @@ to download the full example code</p>
             <span class="s1">&#39;categories&#39;</span><span class="p">,</span>
             <span class="s1">&#39;description&#39;</span><span class="p">,</span>
             <span class="s1">&#39;unique&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;nunique&#39;</span><span class="p">,</span>
             <span class="s1">&#39;transformations&#39;</span><span class="p">,</span>
             <span class="s1">&#39;range&#39;</span><span class="p">,</span>
             <span class="s1">&#39;warning&#39;</span><span class="p">]</span>
@@ -499,10 +507,10 @@ to download the full example code</p>
              <span class="n">table</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
              <span class="n">template</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
- <span class="n">a</span> <span class="o">=</span> <span class="mi">13</span>
+ <span class="n">a</span> <span class="o">=</span> <span class="mi">877691231</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  37.111 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  46.449 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-docs-plot-html-table-features-description-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/b937e9d5cd093a3500eaede509dab81e/plot_html_table_features_description.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_html_table_features_description.py</span></code></a></p>

@@ -47,7 +47,7 @@ def prevalence(x):
 # Constants
 # ---------------------------------
 # The data filepath
-path = '../../resources/data/20210220-v0.2/combined/combined_tidy.csv'
+path = '../../resources/data/20210309-v0.7/combined/combined_tidy.csv'
 
 # Features
 features = ['study_no',

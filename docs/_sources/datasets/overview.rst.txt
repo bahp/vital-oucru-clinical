@@ -27,11 +27,12 @@ within the Hospital for Tropical Diseases (HTD) in Ho Chi Minh City, Vietnam.
     df      1999-2009 Describe clinical features of ``DSS`` in children 1719
     md      2001-2009 Describe clinical features of ``NSD`` in children 3044
     dr      2005-2008 Describe clinical features of ``NSD`` in children 1542
+    fl      xxxx-xxxx -                                                 -
     06dx    2009-2011 Effect of steroid in Dengue                       330
     13dx    2010-2014 Diagnostic accuracy of NS1                        8108
     32dx    2013-2016 Intravascular volume assessment (CRI)             75
     42dx    2017-2018 Clinical features of DSS in pregnant women?       664
-    d001    2011                                                        112
+    d001    2011      -                                                 112
     01nva   2020-2021 Clinical features of Dengue patients (wearables)  155
     ======= ========= ================================================= ========
 
@@ -154,11 +155,11 @@ The following table includes:
 
          - ``reorder`` by any column.
          - ``search`` using the searchbox to filter by any column. This box allows
-            you to search by the name of the feature (e.g. bleeding will show all
-            features including bleeding) but in addition it will return any feature
-            that contains such word in its description. For instance, you can use
-            it to find skin, lung, chest, blood/bleeding related features.
-         - ``explore`` more information through the + dropdown.
+           you to search by the name of the feature (e.g. bleeding will show all
+           features including bleeding) but in addition it will return any feature
+           that contains such word in its description. For instance, you can use
+           it to find skin, lung, chest, blood/bleeding related features.
+         - ``explore`` more information through the dropdown button (+).
          - ``export`` the table to any of the available formats.
 
 .. raw:: html
@@ -317,16 +318,17 @@ List of datasets
 The df dataset
 --------------
 
-.. warning:: Important things to consider...
+.. warning:: Things to highlight.
 
-The trial was a ``single-center``, ``randomized``, ``doubleblind`` comparison of an isotonic crystalloid solution
-(Ringer’s lactate) and two isotonic colloid solutions (6% dextran 70 [dextran] and 6%
-hydroxyethyl starch 200/0.5 [starch]) for emergency resuscitation of ``children`` with ``dengue shock syndrome``.
-The children were stratified according to pulse pressure at admission, a marker of the severity of the
-vascular leak. No children in the group with severe shock received a crystalloid because of concerns
-about the potential development of critical fluid overload without access to advanced respiratory support.
-The study took place in the pediatric intensive care unit at the Hospital for Tropical Diseases in Ho
-Chi Minh City, Vietnam. The ethics and science committee of the hospital approved the protocol.
+The trial was a ``single-center``, ``randomized``, ``doubleblind`` comparison of an isotonic
+crystalloid solution (Ringer’s lactate) and two isotonic colloid solutions (6% dextran 70
+[dextran] and 6% hydroxyethyl starch 200/0.5 [starch]) for emergency resuscitation of
+``children`` with ``dengue shock syndrome``. The children were stratified according to pulse
+pressure at admission, a marker of the severity of the vascular leak. No children in the group
+with severe shock received a crystalloid because of concerns about the potential development of
+critical fluid overload without access to advanced respiratory support. The study took place
+in the pediatric intensive care unit at the Hospital for Tropical Diseases in Ho Chi Minh City,
+Vietnam. The ethics and science committee of the hospital approved the protocol.
 
 .. raw:: html
 
@@ -336,9 +338,12 @@ Chi Minh City, Vietnam. The ethics and science committee of the hospital approve
             height="750px;"
             width="100%"></iframe>
 
+
+
 The fl dataset
 --------------
 
+.. warning:: Things to highlight.
 
 .. raw:: html
 
@@ -349,17 +354,14 @@ The fl dataset
             width="100%"></iframe>
 
 
+
 The md dataset
 --------------
 
 .. warning:: Important things to consider...
 
-            - Does it include multiple shock information.
-            - No PCR date available?
-            - ETC
-
-A ``prospective observational study`` of ``children`` hospitalized with ``suspected dengue`` at the HTD
-in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
+A ``prospective observational study`` of ``children`` hospitalized with ``suspected dengue`` at
+the HTD in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
 any child aged between 5 and 15 years admitted to the paediatric dengue ward at HTD with
 clinically suspected dengue, whose parent/guardian gave written informed consent for them to
 be enrolled in the study following detailed explanation by a trained study doctor. Consecutive
@@ -382,6 +384,8 @@ admitted to PICU with DSS were recruited into a concurrent pediatric cohort
 
 The dr dataset
 --------------
+
+.. warning:: Important things to consider...
 
 We conducted a ``prospective descriptive`` study of ``febrile
 children``, aged 5–15 years, attending two ``primary`` health care
@@ -427,8 +431,12 @@ no individual baseline was available [14].
             height="750px;"
             width="100%"></iframe>
 
+
+
 The d001 dataset
 ----------------
+
+.. warning:: Important things to consider...
 
 .. raw:: html
 
@@ -438,14 +446,18 @@ The d001 dataset
             height="750px;"
             width="100%"></iframe>
 
+
+
 The 06dx dataset
 ----------------
 
-We performed a randomized, placebo-controlled, partially blinded trial of early corticosteroid
-therapy in Vietnamese children and young adults with suspected dengue virus infection. The study
-took place on designated infectious diseases wards at the Hospital for Tropical Diseases of Ho
-Chi Minh City, with approval from the Ethical Committee of the Ministry of Health of Vietnam and
-the Oxford Tropical Research Ethics Committee.
+.. warning:: Important things to consider...
+
+We performed a ``randomized``, ``placebo-controlled``, ``partially blinded`` trial of early
+corticosteroid therapy in Vietnamese children and young adults with suspected dengue virus
+infection. The study took place on designated infectious diseases wards at the Hospital for
+Tropical Diseases of Ho Chi Minh City, with approval from the Ethical Committee of the
+Ministry of Health of Vietnam and the Oxford Tropical Research Ethics Committee.
 
 .. raw:: html
 
@@ -455,8 +467,12 @@ the Oxford Tropical Research Ethics Committee.
             height="750px;"
             width="100%"></iframe>
 
+
+
 The 13dx dataset
 ----------------
+
+.. warning:: Important things to consider...
 
 Recruitment occurred in the public sector outpatient departments of Children’s Hospital No. 1
 (HCMC), Children’s Hospital No. 2 (HCMC), The Hospital for Tropical Diseases (HCMC),
@@ -481,31 +497,28 @@ the study before the attending physician received the results of any routine lab
             height="750px;"
             width="100%"></iframe>
 
+
+
+
 The 32dx dataset
 ----------------
 
-We performed a STROBE-compliant [18] prospective observational study at the National Hospital for Tropical Diseases
-(NHTD), Hanoi, Vietnam, between June 2013 and February
-2014. Ethical approval was obtained from the Oxford Tropical
-Research Ethics Committee and the Ethics Review Committee
-at NHTD, and written informed consent was obtained from
-all participants or the parents/guardians of children.
-Adults and children >5 years of age with a clinical diagnosis
-of possible dengue were eligible for enrollment into either of 2
-study arms. In the outpatient arm, participants presenting within 72 hours of fever onset could be enrolled if no alternative
-cause for the fever was identified [19]. For the inpatient arm,
-any patient admitted to NHTD with suspected dengue with
-warning signs or severe dengue was eligible [3]. All patients
-were reviewed daily until fully recovered and afebrile, or for
-up to 6 days after enrollment. Standardized clinical information
-was recorded daily, including findings of detailed clinical examination and hemodynamic assessment. A complete blood cell
-count was performed daily, with additional samples obtained
-for a biochemical profile and dengue diagnostics at enrollment,
-at defervescence, and at a follow-up visit 10–14 days after illness
-onset. Any outpatient requiring admission continued to be followed up daily in hospital, with the indication for admission
-documented, and all management interventions were recorded.
-Additional investigations, including ultrasonography and/or
-chest radiology, were performed if clinically indicated.
+.. warning:: Important things to consider...
+
+We performed a STROBE-compliant prospective observational study at the National Hospital for Tropical Diseases
+(NHTD), Hanoi, Vietnam, between June 2013 and February 2014. Ethical approval was obtained from the Oxford Tropical
+Research Ethics Committee and the Ethics Review Committee at NHTD, and written informed consent was obtained from
+all participants or the parents/guardians of children. Adults and children >5 years of age with a clinical diagnosis
+of possible dengue were eligible for enrollment into either of 2 study arms. In the outpatient arm, participants
+presenting within 72 hours of fever onset could be enrolled if no alternative cause for the fever was identified.
+For the inpatient arm, any patient admitted to NHTD with suspected dengue with warning signs or severe dengue was
+eligible. All patients were reviewed daily until fully recovered and afebrile, or for up to 6 days after enrollment.
+Standardized clinical information was recorded daily, including findings of detailed clinical examination and
+hemodynamic assessment. A complete blood cell count was performed daily, with additional samples obtained
+for a biochemical profile and dengue diagnostics at enrollment, at defervescence, and at a follow-up visit 10–14
+days after illness onset. Any outpatient requiring admission continued to be followed up daily in hospital, with
+the indication for admission documented, and all management interventions were recorded. Additional investigations,
+including ultrasonography and/or chest radiology, were performed if clinically indicated.
 
 .. raw:: html
 
@@ -516,8 +529,13 @@ chest radiology, were performed if clinically indicated.
             width="100%"></iframe>
 
 
+
+
+
 The 42dx dataset
 ----------------
+
+.. warning:: Important things to consider...
 
 .. raw:: html
 
@@ -527,25 +545,16 @@ The 42dx dataset
             height="750px;"
             width="100%"></iframe>
 
+
+
+
 The 01nva dataset
 -----------------
 
-.. warning:: Fluids- and treatments- related worksheets have not been cleaned yet.
-
 .. warning::
 
-    The excel worksheet 'ED' does not have other than the entered time. However,
-    this entered time might not be the exact time that events happend because in
-    other worksheets there is an additional time (e.g. date_sample) and the
-    entered time.
-
-    The excel worksheet 'DIS'....
-
-       - Can DATEASSES be interpreted as date_discharge?
-       - Is NS1 and IGM an interpretation of both results? Would it be possible
-         to include the values of this tests individually? For instance the
-         igm_interpretation and igg_interpretation to compute both the single
-         and the paired interpreations.
+        - ``FLUIDS`` related information has not been extracted yet.
+        - ``TREATMENT`` related information has not been extracted yet.
 
 .. raw:: html
 
@@ -554,6 +563,11 @@ The 01nva dataset
             scrolling="no"
             height="750px;"
             width="100%"></iframe>
+
+
+
+
+
 
 
 .. |pdf-lam2013| image:: ../_static/pdf-icon.png
@@ -626,9 +640,101 @@ The 01nva dataset
 Useful definitions
 ******************
 
-Defining complications
-----------------------
+What is a complication?
+-----------------------
 
-Defining dengue interpretation
-------------------------------
+    The main complications are ....
+
+       - shock
+       - jaundice
+       - ascites
+       - any other?
+
+Dengue interpretation
+---------------------
+
+    .. todo:: Write introduction and includes link to code and method documentation.
+
+
+    The dengue definition is as follows:
+
+        - positive NS1 point of care assay
+        - positive reverse transcriptase polymerase chain reaction (RT-PCR)
+        - positive dengue IgM through acute serology
+        - seroconversion of either single or paired IgM or IgG samples
+
+    And it is implemented in the following method (link to docs).
+
+    .. code::
+
+        oucru_dengue_interpretation_feature(tidy,
+                pcr=True, ns1=True, igm=True, serology=True,
+                single_igm_igg=True, paired_igm_igg=True,
+                default=False, verbose=10):
+
+
+Serology interpretation
+-----------------------
+
+     .. todo:: Write introduction and includes link to code and method documentation.
+
+     .. include:: <isonum.txt>
+
+     - First igm, igg columns represent 1st sample
+     - Second igm, igg columns represent 2nd sample
+
+     .. table:: Overview of serology outcomes from igm and igg
+         :widths: 5 5 5 5 10 10 5
+
+         ======== ========= ======== ========= ============= ============= =====
+         igm      igg       igm      igg       single        paired        notes
+         ======== ========= ======== ========= ============= ============= =====
+         |hyphen| |hyphen|  |hyphen| |hyphen|  Inconclusive  Not Dengue
+         |hyphen| |hyphen|  |hyphen| |plus|    Inconclusive  Primary
+         |hyphen| |hyphen|  |plus|   |hyphen|  Inconclusive  Primary       ``1``
+         |hyphen| |hyphen|  |plus|   |plus|    Inconclusive  Primary
+
+         |hyphen| |plus|    |hyphen| |hyphen|  Inconclusive  Inconclusive  ``3``
+         |hyphen| |plus|    |hyphen| |plus|    Inconclusive  Secondary*
+         |hyphen| |plus|    |plus|   |hyphen|  Inconclusive  Inconclusive  ``3``
+         |hyphen| |plus|    |plus|   |plus|    Inconclusive  Secondary*
+
+         |plus|   |hyphen|  |hyphen| |hyphen|  Primary       Inconclusive
+         |plus|   |hyphen|  |hyphen| |plus|    Primary       Secondary*
+         |plus|   |hyphen|  |plus|   |hyphen|  Primary       Inconclusive  ``1``
+         |plus|   |hyphen|  |plus|   |plus|    Primary       Secondary*
+
+         |plus|   |plus|    |hyphen| |hyphen|  Secondary     Inconclusive  ``2``
+         |plus|   |plus|    |hyphen| |plus|    Secondary     Secondary*
+         |plus|   |plus|    |plus|   |hyphen|  Secondary     Inconclusive
+         |plus|   |plus|    |plus|   |plus|    Secondary     Secondary*
+         ======== ========= ======== ========= ============= ============= =====
+
+
+    where
+
+        - * indicates significant increase in igg |
+        - ``1`` indicates inconclusive because igg should be |plus| by now |
+        - ``2`` indicates it is odd and maybe hovering around the threshold |
+        - ``3`` keep it as single outcome. |
+
+
+    And it is implemented in the following method (link to docs).
+
+    .. code::
+
+        oucru_serology_interpretation_feature(tidy,
+                serology_single=True, serology_paired=True,
+                serology_interpretation=True,
+                inconsistencies='coerce',
+                verbose=0):
+
+single igm_igg
+~~~~~~~~~~~~~~
+
+paired igm_igg
+~~~~~~~~~~~~~~
+
+.. include:: ../../../../../../README.rst
+  :start-after: inclusion-marker-do-not-remove
 

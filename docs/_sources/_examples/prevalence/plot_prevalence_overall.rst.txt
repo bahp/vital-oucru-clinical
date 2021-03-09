@@ -54,13 +54,13 @@ Example using your package
     01nva-003-1002 2020-06-23   01nva                <NA>               <NA>               <NA>               <NA>                  False      6  2020
     01nva-003-1003 2020-07-04   01nva                <NA>               <NA>               <NA>               <NA>                  False      7  2020
     01nva-003-1004 2020-06-24   01nva                <NA>               <NA>               <NA>               <NA>                  False      6  2020
-    01nva-003-1005 2020-07-22   01nva                <NA>               <NA>               <NA>               <NA>                  False      7  2020
+    01nva-003-1005 2020-07-25   01nva                <NA>               <NA>               <NA>               <NA>                  False      7  2020
     ...                   ...     ...                 ...                ...                ...                ...                    ...    ...   ...
-    md-995         2003-07-28      md              DENV-2               <NA>               <NA>               <NA>                   True      7  2003
-    md-996         2003-07-25      md                <LOD               <NA>               <NA>               <NA>                  False      7  2003
-    md-997         2003-07-28      md                <LOD               <NA>               <NA>               <NA>                  False      7  2003
-    md-998         2003-07-29      md                <LOD               <NA>               <NA>               <NA>                  False      7  2003
-    md-999         2003-07-29      md              DENV-4               <NA>               <NA>               <NA>                   True      7  2003
+    md-995         2003-08-27      md              DENV-2               <NA>               <NA>           Positive                   True      8  2003
+    md-996         2003-07-29      md                <LOD               <NA>               <NA>           Positive                  False      7  2003
+    md-997         2003-08-30      md                <LOD               <NA>               <NA>           Positive                  False      8  2003
+    md-998         2003-08-29      md                <LOD               <NA>               <NA>           Positive                  False      8  2003
+    md-999         2003-08-29      md              DENV-4               <NA>               <NA>           Positive                   True      8  2003
 
     [16489 rows x 9 columns]
 
@@ -68,39 +68,41 @@ Example using your package
     dsource              06dx  13dx  32dx  d001    df  dr   fl    md  Total
     pcr_dengue_serotype                                                    
     <LOD                    0  6032    21    37   438   0  446   458   7432
-    DENV-1                136   826    12    23   675  47  108   942   2769
-    DENV-1,DENV-2           0     7     0     2     0   3    0     0     12
-    DENV-1,DENV-3           0     1     0     1     0   0    0     0      2
-    DENV-1,DENV-4           0     6     0     1     0   0    0     0      7
+    DENV-1                136   840    12    23   675  47  108   942   2783
+    DENV-1,DENV-2           0     0     0     2     4   3    0     0      9
+    DENV-1,DENV-3           0     0     0     1     1   0    0     0      2
+    DENV-1,DENV-4           0     0     0     1     1   0    0     0      2
     DENV-2                 57   453    10    23   367  24   65   437   1436
     DENV-2,DENV-3           0     0     0     0     0   1    0     0      1
-    DENV-3                 23   197    16     4    48   6   30   184    508
-    DENV-3,DENV-4           0     1     0     0     0   0    0     0      1
-    DENV-4                  7   576    13     4   110   1    4    49    764
-    Mixed                   0     0     0     0     9   0    0     8     17
-    Total                 223  8099    72    95  1647  82  653  2078  12949
+    DENV-2,DENV-4           0     0     0     0     3   0    0     0      3
+    DENV-3                 23   198    16     4    48   6   30   184    509
+    DENV-4                  7   576    13     4   109   1    4    49    763
+    Mixed                   0     0     0     0     0   0    0     8      8
+    Not done                0     0     0     0    69   0    0     0     69
+    Unknown                 0     0     0     0     3   0    0     0      3
+    Total                 223  8099    72    95  1718  82  653  2078  13020
 
     Dengue:
     dsource                01nva  06dx  13dx  32dx  42dx  d001    df    dr   fl    md  Total
     dengue_interpretation                                                                   
-    False                    155   107  5924     7   664    37   510  1458  107  1424  10393
-    True                       0   223  2184    68     0    75  1209    84  633  1620   6096
+    False                    110   107  5924     7   664    37   511  1436  107  1424  10327
+    True                      45   223  2184    68     0    75  1208   106  633  1620   6162
     Total                    155   330  8108    75   664   112  1719  1542  740  3044  16489
 
     :
          prevalence  n_patients
-    Jan   42.994242        1042
-    Feb   27.986907         611
-    Mar   25.131996         947
-    Apr   21.128319         904
-    May   21.493441         991
-    Jun   28.078078        1332
-    Jul   42.660276        1669
-    Aug   47.483221        1788
-    Sep   44.047619        1596
-    Oct   38.528139        1848
-    Nov   38.107161        1997
-    Dec   41.043084        1764
+    Jan   42.966194         917
+    Feb   26.619965         571
+    Mar   24.588235         850
+    Apr   19.672131         854
+    May   21.265560         964
+    Jun   28.940986        1237
+    Jul   41.401274        1570
+    Aug   45.942921        1787
+    Sep   45.254557        1591
+    Oct   39.287671        1825
+    Nov   39.323274        2187
+    Dec   42.509363        2136
 
 
 
@@ -148,7 +150,7 @@ Example using your package
     # Constants
     # ---------------------------------
     # The data filepath
-    path = '../../resources/data/20210220-v0.2/combined/combined_tidy.csv'
+    path = '../../resources/data/20210309-v0.7/combined/combined_tidy.csv'
 
     # Features
     features = ['study_no',
@@ -250,7 +252,7 @@ Example using your package
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.307 seconds)
+   **Total running time of the script:** ( 0 minutes  7.516 seconds)
 
 
 .. _sphx_glr_download__examples_prevalence_plot_prevalence_overall.py:

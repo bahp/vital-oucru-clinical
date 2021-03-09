@@ -80,7 +80,7 @@ Datasets Description
     # Constants
     # ---------------------------------
     # Path with data
-    path_data = '../../resources/data/20210305-v0.5/'
+    path_data = '../../resources/data/20210309-v0.7/'
     path_data+= 'combined/combined_tidy.csv'
 
     # Path to load the HTML table template
@@ -133,11 +133,11 @@ Datasets Description
         table.close()
         template.close()
 
-    a = 13
+    a = 84
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  6.334 seconds)
+   **Total running time of the script:** ( 0 minutes  8.682 seconds)
 
 
 .. _sphx_glr_download__examples_docs_plot_html_table_features_count.py:

@@ -21,7 +21,7 @@
 Datasets Description
 ====================
 
-.. GENERATED FROM PYTHON SOURCE LINES 6-172
+.. GENERATED FROM PYTHON SOURCE LINES 6-176
 
 
 
@@ -76,10 +76,13 @@ Datasets Description
         describe['unique'] = aux.applymap(str) \
             .agg(lambda x: sorted(list(x.unique())))
 
+
         # Sort without nan? convert nan to something??
 
         # Remove those with too much information
         describe.loc[describe['nunique'] > 1000, 'unique'] = None
+
+        # Show also nunique (otherwise we might think they do not have values!)
 
         # Merge with yaml information
         describe = describe.merge(features,
@@ -100,7 +103,7 @@ Datasets Description
     # Constants
     # ---------------------------------
     # Path with data
-    path_data = '../../resources/data/20210305-v0.5/'
+    path_data = '../../resources/data/20210309-v0.7/'
     path_data+= 'combined/combined_tidy.csv'
 
     # Path with yaml configuration
@@ -124,6 +127,7 @@ Datasets Description
                'categories',
                'description',
                'unique',
+               'nunique',
                'transformations',
                'range',
                'warning']
@@ -198,11 +202,11 @@ Datasets Description
                 table.close()
                 template.close()
 
-    a = 13
+    a = 877691231
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  37.111 seconds)
+   **Total running time of the script:** ( 0 minutes  46.449 seconds)
 
 
 .. _sphx_glr_download__examples_docs_plot_html_table_features_description.py:
