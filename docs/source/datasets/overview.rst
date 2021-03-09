@@ -155,11 +155,11 @@ The following table includes:
 
          - ``reorder`` by any column.
          - ``search`` using the searchbox to filter by any column. This box allows
-            you to search by the name of the feature (e.g. bleeding will show all
-            features including bleeding) but in addition it will return any feature
-            that contains such word in its description. For instance, you can use
-            it to find skin, lung, chest, blood/bleeding related features.
-         - ``explore`` more information through the + dropdown.
+           you to search by the name of the feature (e.g. bleeding will show all
+           features including bleeding) but in addition it will return any feature
+           that contains such word in its description. For instance, you can use
+           it to find skin, lung, chest, blood/bleeding related features.
+         - ``explore`` more information through the dropdown button (+).
          - ``export`` the table to any of the available formats.
 
 .. raw:: html
@@ -318,16 +318,17 @@ List of datasets
 The df dataset
 --------------
 
-.. warning:: Important things to consider...
+.. warning:: Things to highlight.
 
-The trial was a ``single-center``, ``randomized``, ``doubleblind`` comparison of an isotonic crystalloid solution
-(Ringer’s lactate) and two isotonic colloid solutions (6% dextran 70 [dextran] and 6%
-hydroxyethyl starch 200/0.5 [starch]) for emergency resuscitation of ``children`` with ``dengue shock syndrome``.
-The children were stratified according to pulse pressure at admission, a marker of the severity of the
-vascular leak. No children in the group with severe shock received a crystalloid because of concerns
-about the potential development of critical fluid overload without access to advanced respiratory support.
-The study took place in the pediatric intensive care unit at the Hospital for Tropical Diseases in Ho
-Chi Minh City, Vietnam. The ethics and science committee of the hospital approved the protocol.
+The trial was a ``single-center``, ``randomized``, ``doubleblind`` comparison of an isotonic
+crystalloid solution (Ringer’s lactate) and two isotonic colloid solutions (6% dextran 70
+[dextran] and 6% hydroxyethyl starch 200/0.5 [starch]) for emergency resuscitation of
+``children`` with ``dengue shock syndrome``. The children were stratified according to pulse
+pressure at admission, a marker of the severity of the vascular leak. No children in the group
+with severe shock received a crystalloid because of concerns about the potential development of
+critical fluid overload without access to advanced respiratory support. The study took place
+in the pediatric intensive care unit at the Hospital for Tropical Diseases in Ho Chi Minh City,
+Vietnam. The ethics and science committee of the hospital approved the protocol.
 
 .. raw:: html
 
@@ -338,23 +339,11 @@ Chi Minh City, Vietnam. The ethics and science committee of the hospital approve
             width="100%"></iframe>
 
 
-.. warning:: The excel worksheet ``DF`` (???) ...
-
-    - Need to clarify when things happend, there are various dates (admission, enrolment)
-      etc and all the features are collected here. Need to know what date is associated
-      to each feature.
-
-    - Needs reviewing
-
-    - What is hemo, hemo2
-    - What is D1, d2.
-
-    - new_xxxx but stil with date_admission date... shame.
-    - no follow up date.
 
 The fl dataset
 --------------
 
+.. warning:: Things to highlight.
 
 .. raw:: html
 
@@ -365,27 +354,14 @@ The fl dataset
             width="100%"></iframe>
 
 
-.. warning:: The excel worksheet ``FL_CLINICAL_SUM` (PCR):
-
-      - It has vomit his, vomit exam and vomit. should they be assigned
-        to date_onset, date_admission and date_enrolment? swap enrolment
-        and admission?
-
-      - Needs to be revisited
-
-- Not finished!
 
 The md dataset
 --------------
 
 .. warning:: Important things to consider...
 
-            - Does it include multiple shock information.
-            - No PCR date available?
-            - ETC
-
-A ``prospective observational study`` of ``children`` hospitalized with ``suspected dengue`` at the HTD
-in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
+A ``prospective observational study`` of ``children`` hospitalized with ``suspected dengue`` at
+the HTD in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
 any child aged between 5 and 15 years admitted to the paediatric dengue ward at HTD with
 clinically suspected dengue, whose parent/guardian gave written informed consent for them to
 be enrolled in the study following detailed explanation by a trained study doctor. Consecutive
@@ -406,48 +382,10 @@ admitted to PICU with DSS were recruited into a concurrent pediatric cohort
             height="750px;"
             width="100%"></iframe>
 
-.. warning:: The excel worksheet ``MD_lab`` (laboratory):
-
-      - What is from_adm? probably day_from_admission?
-
-.. warning:: The excel worksheet ``MD_clinical`` (clinical):
-
-      - day_ill with respect to date_admission? date_enrolment? date_fever?
-
-      - bleeding contains categories (No, skin only and mucosal) wich have
-        just been converted to booleans. However, not sure what date to
-        use. Since it is a compound we are not retrieving it as we have
-        the subcategories (Skin, mucosal).
-
-      - what is d2shock?
-
-      - Do the variables sigbled, sigbled_s, bleed_hos, overload refer to the admission or to the discharge?
-
-.. warning:: The excel worksheet ``MD_PCR` (PCR):
-
-      - Only extracting the summart columns serotype and viremia.
-
-.. warning:: The excel worksheet ``MD_Tien_hist` :
-
-      - Ignore, such data looks like it is already in the second sheet (CLINICAL).
-
-.. warning:: The excel worksheet ``MD_Tien_exam` :
-
-      - Ignore, such data looks like it is already in the second sheet (CLINICAL).
-
-.. warning:: The excel worksheet ``MD_Tien_DRvalue` :
-
-      - Ignore, such data looks like it is already in the PCR sheet.
-      - It has (6100 rows!, while clinical only 3000)
-      - IT is missing a day.
-
-.. warning:: The excel worksheet ``MD_Tien_invest` :
-
-      - Ignore, such data looks like it is already in the second sheet (CLINICAL).
-      - It has 3400 rows while clinical has 3020 aprox)
-
 The dr dataset
 --------------
+
+.. warning:: Important things to consider...
 
 We conducted a ``prospective descriptive`` study of ``febrile
 children``, aged 5–15 years, attending two ``primary`` health care
@@ -493,16 +431,12 @@ no individual baseline was available [14].
             height="750px;"
             width="100%"></iframe>
 
-.. warning:: The excel worksheet ``DR1_2232_ENROL` (PCR):
 
-      - Needs reviewing.
-
-.. warning:: The excel worksheet ``NEGATIVE_LIST_STUDY` (PCR):
-
-      - The day of ilness not clear whether to assign to date_fu or date_fever
 
 The d001 dataset
 ----------------
+
+.. warning:: Important things to consider...
 
 .. raw:: html
 
@@ -513,118 +447,17 @@ The d001 dataset
             width="100%"></iframe>
 
 
-.. warning:: The excel worksheet ``D001_CLINICAL` (PCR):
-
-      - The day of ilness not clear whether to assign to date_admission or date_enrolment
-      - No categories specified for outcome 1, 2, 3, 4
-
-.. warning:: The excel worksheet ``D001_LAB` (PCR):
-       - Is the inmue status related with the serology secondary thus meaning that had
-         dengue before?
-
-.. warning:: The excel worksheet ``D001_SERO_DATA` (PCR):
-       - Probably needs reviewing. Only basic extracted.
-       - It has bad dates because times given by day of illness and no reference date.
-
-
-.. warning:: The excel worksheet ``D001_SERO_DATA_INMUNE` (PCR):
-       - Probably needs reviewing. Only basic extracted.
-       - It has bad dates because times given by day of illness and no reference date.
-
-.. warning:: The excel worksheet ``D001_SERO_DEMO` (PCR):
-       - Repeated from first sheet.
-
 
 The 06dx dataset
 ----------------
 
-We performed a randomized, placebo-controlled, partially blinded trial of early corticosteroid
-therapy in Vietnamese children and young adults with suspected dengue virus infection. The study
-took place on designated infectious diseases wards at the Hospital for Tropical Diseases of Ho
-Chi Minh City, with approval from the Ethical Committee of the Ministry of Health of Vietnam and
-the Oxford Tropical Research Ethics Committee.
+.. warning:: Important things to consider...
 
-
-.. note::
-
-  - Bleeding severity (1 - only skin, 2 mild mucosal +/- skin and 3 severe either mucosal or skin)
-
-.. warning::
-
-   - What does ``SCR`` stand for?
-
-   - In ``HIST`` (history) ...
-
-      - One date has a bad time format (24:00 should be 00:00).
-      - The date of fever has been used for all the history symptoms.
-
-
-.. warning:: The excel worksheet ``SCR`` (???) ...
-
-      - Has ``Pregnant`` and ``PregnancyPos``. All the values for both are 2,
-        which assume is False (based on other datasets). However, it has been
-        collected that they might actually represent only those who were
-        pregnant?
-
-.. warning:: The excel worksheet ``HIST`` (History) ...
-
-      - Has ``Dayillness``. Should this be matche with date_admission or
-        date_enrolment to get the date of onset of symptoms?
-
-      - Has ``HeartSound`` with all values as 1. Then because the variable
-        ``HeartSoundDesc`` is all blank, a value of 1 in HeartSound means
-        that the heart sound was normal (heart_sound_abnormal; 1:False, 2:True).
-
-      - Has ``CNS`` with all values as 1. Then because the variable
-        ``CNSDesc`` is all blank, a value of 1 in CNS means
-        that the CNS was normal (cns_abnormal; 1:False, 2:True).
-
-      - Has ``Diagnosis`` which also appears in ``SUM`` as final diagnosis?
-
-.. warning:: The excel worksheet ``SUM`` (Summary) ...
-
-      - It is not being extracted yet.
-
-.. warning:: The excel worksheet ``AE`` (???) ...
-
-      - It is not being extracted yet.
-
-.. warning:: The excel worksheet ``EVO`` (???) ...
-
-      - What is ``Pulse20`` and how it relates with ``MaxPulse``?
-
-      - What is ``Heart`` and ``HeartDetails``? The ``Heart`` variable
-        has boolean values (1, 2) amd heart details is in Vietnamese with
-        values such as fast. Could it be heart_sound_abnormal? Note that
-        the ``HeartDetails`` values NHANH appears with both 1 and 2.
-
-      - What is ``Lung`` and ``LungDetails``? Could it be chest_sound or
-        chest_sound_right and chest_sound_left?
-
-      - What does the ``R`` mean in ascites, ascitesR, jaundice, jaundiceR,
-        vomiting, vomitingR, abdopain, abdopainR? At the moment assume level.
-
-.. warning:: The excel worksheet ``ULTRA`` (Ultrasound) ...
-
-      - Has ``side`` probably referred to ``PleuralEffusion` with values 2
-        and 3. However, there is no conversion to know which one refers to
-        left and which one to right.
-
-      - Because these variables are collected from an ultrasound, should
-        they be renamed different (e.g. ultrasound_ascites) compared to
-        others in which they are suspected but not verified with ultrasound?
-
-.. warning:: The excel worksheet ``MGMT`` (Management) ...
-
-      - It is not being extracted yet.
-
-.. warning:: The excel worksheet ``DRUG`` (Drug) ...
-
-      - It is not being extracted yet.
-
-.. warning:: The excel worksheet ``FU`` (Follow-up) ...
-
-      - Needs revision.
+We performed a ``randomized``, ``placebo-controlled``, ``partially blinded`` trial of early
+corticosteroid therapy in Vietnamese children and young adults with suspected dengue virus
+infection. The study took place on designated infectious diseases wards at the Hospital for
+Tropical Diseases of Ho Chi Minh City, with approval from the Ethical Committee of the
+Ministry of Health of Vietnam and the Oxford Tropical Research Ethics Committee.
 
 .. raw:: html
 
@@ -636,13 +469,10 @@ the Oxford Tropical Research Ethics Committee.
 
 
 
-
-
-
-
-
 The 13dx dataset
 ----------------
+
+.. warning:: Important things to consider...
 
 Recruitment occurred in the public sector outpatient departments of Children’s Hospital No. 1
 (HCMC), Children’s Hospital No. 2 (HCMC), The Hospital for Tropical Diseases (HCMC),
@@ -659,34 +489,6 @@ another (non-dengue) diagnosis was more likely. Patient enrolment occurred conse
 during normal clinical hours on weekdays without restriction. All patients were enrolled into
 the study before the attending physician received the results of any routine laboratory tests.
 
-.. note::
-
-    - I could not find ``event_death``? There is the option if using the outcome ('Died') and
-      the date of discharge. But this is still pending on having such information in
-      the dataset (check).
-
-    - Does it have enough laboratory? Is these data only for those admitted?
-
-.. warning:: The excel worksheet ``ENROL`` (enrolment):
-
-    - For those variables with Hist used DateIllness for the others DateEnrolment.
-
-.. warning:: The excel worksheet ``DAILY`` (daily):
-
-    - has ``StudyDay`` which probably counts from enrolment (different from DayIllness)
-    - has ``NoSymp``, what is this?
-
-.. warning:: The excel worksheet ``INPFU`` (...?):
-
-    - has ``SignCNS`` which is similar to ``CNS``. I think ``CNS`` is either ``SignCNS``
-      or ``LowerGCS`` which is calculated with the other glasgow comma score related
-      columns.
-
-.. warning:: The excel worksheet ``SEROLOGY`` (serology):
-
-    - what is ``DateIllness`` and ``SampleDOI``? Is DateIllness the event_onset?
-      Never mind, they are all blank values.
-
 .. raw:: html
 
     <iframe src="../_static/datasets/html-tables/features_description_13dx.html"
@@ -698,13 +500,10 @@ the study before the attending physician received the results of any routine lab
 
 
 
-
-
-
-
-
 The 32dx dataset
 ----------------
+
+.. warning:: Important things to consider...
 
 We performed a STROBE-compliant prospective observational study at the National Hospital for Tropical Diseases
 (NHTD), Hanoi, Vietnam, between June 2013 and February 2014. Ethical approval was obtained from the Oxford Tropical
@@ -729,58 +528,14 @@ including ultrasonography and/or chest radiology, were performed if clinically i
             height="750px;"
             width="100%"></iframe>
 
-.. note::
-
-      - No DayIllness
-
-.. warning:: The excel worksheet ``HIS`` (history) ...
-
-      - The ``Other`` is boolean. It represents other comorbidities and
-        these are specified in the ``Detail`` variable.
-
-      - Assumed ``DateFever`` as ``event_onset``.
 
 
-.. warning:: The excel worksheet ``HIS`` (history) ...
-
-      - Has ``HeartSound`` with all values as 1. Then because the variable
-        ``HeartSoundDesc`` is all blank, a value of 1 in HeartSound means
-        that the heart sound was normal (heart_sound_abnormal; 1:False, 2:True).
-
-      - Assumed ``ifPal1`` refers to liver_palpation_size
-
-      - ASsumed ``ifPal2`` refers to spleen_palpation_size.
-
-
-.. warning:: The excel worksheet ``EVO`` (evolution) ...
-
-      - Assumed that ``IsFever`` refers to whether the patient has fever
-        on such date and therefore recorded as ``event_fever``.
-
-.. warning:: The excel worksheet ``SUM`` (summary) ...
-
-      - Not extracted yet.
-
-.. warning:: The excel worksheet ``LAB`` (summary) ...
-
-      - StudyDay probably refers to date_admission (or date_enrolment).
-
-.. warning:: The excel worksheet ``FU`` (follow up) ...
-
-      - DayFinalAss (only values from 2 to 4.
-      - Not extracted yet.
-
-.. warning:: The excel worksheet ``NS1`` (ns1)...
-
-      - It is completely empty.
-
-.. warning:: The excel worksheet ``LAB_DIAGNOSIS`` (ns1)...
-
-      - Contains data that mostly can be extracted from other tabs.
 
 
 The 42dx dataset
 ----------------
+
+.. warning:: Important things to consider...
 
 .. raw:: html
 
@@ -792,13 +547,6 @@ The 42dx dataset
 
 
 
-.. warning::
-
-    - Needs thorough reporting as the others.
-
-
-
-
 
 The 01nva dataset
 -----------------
@@ -807,64 +555,6 @@ The 01nva dataset
 
         - ``FLUIDS`` related information has not been extracted yet.
         - ``TREATMENT`` related information has not been extracted yet.
-
-.. warning:: The excel worksheet ``DM``...
-
-        - stands for ...? DM =
-
-.. warning:: The excel worksheet ``HIST`` (History) ...
-
-        - Has the following fever related columns (``FEVERDTC``, ``FEVERTIME`` and ``FEVERDAY``).
-          What does ``FEVERDAY`` represent with respect to the others? Note that ``FEVERDAY`` has
-          (almost) always a value whereas the others are only filled for a few of the patients. In
-          addition, fever day is only missing in some cells when fever day is actually available...?
-
-          In general, it looks like these columns might match the equation (date_fever + day_fever =
-          date_admission) but there are some cases in which it does not (e.g. ...):
-
-                - 003-2232 - fever 12/12/20 - day fever 5 - admission 12/15/20
-
-        - Most of the date columns are not available in all the rows (patients) except for the
-          ``date_gemonitor`` and ``enteredtime``. Therefore, how can I assign a date to the
-          vital signs collected and/or the day of fever? Ideally day of fever or day of admission
-          but they are often missing. At the moment copied admission from ED worksheet because
-          the ``enteredtime`` time in many occasions has delays (e.g. ED worksheet).
-
-        - The admission date from the worksheets ``HIST`` and ``ED`` does not match.
-        - The GE monitors have ``date_start`` but not ``date_end`` (maybe because it is ongoing?)
-
-        - Has entered time which ...
-
-            003-1101 - enteredtime 6/05/20
-
-.. warning:: The excel worksheet ``ED`` (Emergency Deparment)...
-
-        - has ``NS1AG``. Any form of getting the igm/igg date, value and interpretation?
-          Also it has the values 'NA', 'Pos', 'Neg', 1 and 2. I have assumed that 1 also
-          represents 'Positive' and 2 represents 'Negative'. What is AG?
-
-.. warning:: The excel worksheet ``ES`` (??????) ...
-
-        - does not have other date column than ``enteredtime``. However, this ``enteredtime``
-        might not be the exact time in which the events happened. In other worksheets the
-        ``enteredtime`` columns show some delay and there are additional date columns such
-        as date_sample. Anyways at the moment assume such column as the right time.
-
-.. warning:: The excel worksheet ``CLI`` (Clinical)...
-
-       - Remember to double check that all date_start entries have date_end.
-
-.. warning:: The excel worksheet ``DIS`` (Discharge)...
-
-       - Can ``DATEASSES`` be interpreted as date_discharge?
-       - has ``NS1IGM``. Any form of getting the igm/igg date, value and interpretation? Is
-         this NS1 representing both IGM/IGM single/paired results? For instance the
-         igm_interpretation and igg_interpretation would be useful to compute both the single
-         and the paired interpretations.
-
-.. warning:: The excel worksheet ``DAY`` ...
-
-       - has the column ``DAY``. Is it day from admission? day from enrolment? day from onset?
 
 .. raw:: html
 
@@ -950,9 +640,101 @@ The 01nva dataset
 Useful definitions
 ******************
 
-Defining complications
-----------------------
+What is a complication?
+-----------------------
 
-Defining dengue interpretation
-------------------------------
+    The main complications are ....
+
+       - shock
+       - jaundice
+       - ascites
+       - any other?
+
+Dengue interpretation
+---------------------
+
+    .. todo:: Write introduction and includes link to code and method documentation.
+
+
+    The dengue definition is as follows:
+
+        - positive NS1 point of care assay
+        - positive reverse transcriptase polymerase chain reaction (RT-PCR)
+        - positive dengue IgM through acute serology
+        - seroconversion of either single or paired IgM or IgG samples
+
+    And it is implemented in the following method (link to docs).
+
+    .. code::
+
+        oucru_dengue_interpretation_feature(tidy,
+                pcr=True, ns1=True, igm=True, serology=True,
+                single_igm_igg=True, paired_igm_igg=True,
+                default=False, verbose=10):
+
+
+Serology interpretation
+-----------------------
+
+     .. todo:: Write introduction and includes link to code and method documentation.
+
+     .. include:: <isonum.txt>
+
+     - First igm, igg columns represent 1st sample
+     - Second igm, igg columns represent 2nd sample
+
+     .. table:: Overview of serology outcomes from igm and igg
+         :widths: 5 5 5 5 10 10 5
+
+         ======== ========= ======== ========= ============= ============= =====
+         igm      igg       igm      igg       single        paired        notes
+         ======== ========= ======== ========= ============= ============= =====
+         |hyphen| |hyphen|  |hyphen| |hyphen|  Inconclusive  Not Dengue
+         |hyphen| |hyphen|  |hyphen| |plus|    Inconclusive  Primary
+         |hyphen| |hyphen|  |plus|   |hyphen|  Inconclusive  Primary       ``1``
+         |hyphen| |hyphen|  |plus|   |plus|    Inconclusive  Primary
+
+         |hyphen| |plus|    |hyphen| |hyphen|  Inconclusive  Inconclusive  ``3``
+         |hyphen| |plus|    |hyphen| |plus|    Inconclusive  Secondary*
+         |hyphen| |plus|    |plus|   |hyphen|  Inconclusive  Inconclusive  ``3``
+         |hyphen| |plus|    |plus|   |plus|    Inconclusive  Secondary*
+
+         |plus|   |hyphen|  |hyphen| |hyphen|  Primary       Inconclusive
+         |plus|   |hyphen|  |hyphen| |plus|    Primary       Secondary*
+         |plus|   |hyphen|  |plus|   |hyphen|  Primary       Inconclusive  ``1``
+         |plus|   |hyphen|  |plus|   |plus|    Primary       Secondary*
+
+         |plus|   |plus|    |hyphen| |hyphen|  Secondary     Inconclusive  ``2``
+         |plus|   |plus|    |hyphen| |plus|    Secondary     Secondary*
+         |plus|   |plus|    |plus|   |hyphen|  Secondary     Inconclusive
+         |plus|   |plus|    |plus|   |plus|    Secondary     Secondary*
+         ======== ========= ======== ========= ============= ============= =====
+
+
+    where
+
+        - * indicates significant increase in igg |
+        - ``1`` indicates inconclusive because igg should be |plus| by now |
+        - ``2`` indicates it is odd and maybe hovering around the threshold |
+        - ``3`` keep it as single outcome. |
+
+
+    And it is implemented in the following method (link to docs).
+
+    .. code::
+
+        oucru_serology_interpretation_feature(tidy,
+                serology_single=True, serology_paired=True,
+                serology_interpretation=True,
+                inconsistencies='coerce',
+                verbose=0):
+
+single igm_igg
+~~~~~~~~~~~~~~
+
+paired igm_igg
+~~~~~~~~~~~~~~
+
+.. include:: ../../../../../../README.rst
+  :start-after: inclusion-marker-do-not-remove
 
