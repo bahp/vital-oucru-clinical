@@ -32,7 +32,7 @@ def script_00(data, threshold=10):
     for i, df in data.groupby('dsource'):
 
         # Compute the counts
-        count = df.day_from_admission.value_counts()
+        count = df.day_from_illness.value_counts()
 
         # Indexes
         idxs = count.index.values > 10
@@ -40,6 +40,8 @@ def script_00(data, threshold=10):
         # Count the number of occurrences
         print("Total outliers for %8s: %s" %
               (i, np.sum(count[idxs])))
+        print(count)
+        print("\n\n")
         #print(count[idxs].sort_index())
 
 
@@ -116,7 +118,7 @@ def script_01(data, data32):
 # Constants
 # ---------------------------------
 # The data filepath
-path = '../../resources/data/20210106-v0.1/combined/combined_tidy.csv'
+path = '../../resources/data/20210309-v0.7/combined/combined_tidy.csv'
 
 # Path
 path2 = '../../../../datablend/main/examples/oucru/oucru-full/'
@@ -128,7 +130,8 @@ columns = ['day_from_admission',
            'day_from_onset',
            'study_no',
            'date',
-           'event_admission']
+           'event_admission',
+           'day_from_illness']
 
 # ---------------------------------
 # Main
@@ -146,22 +149,23 @@ data = pd.read_csv(path,
              'dsource',
              'study_no',
              'event_admission',
-             'day_from_admission'],
+             'day_from_illness'],
     low_memory=False,
     parse_dates=['date'])
 
 # ---------
 # Read 32DX
 # ---------
+"""
 # Read data
 data32 = pd.read_csv(path2,
     usecols=['date',
              'study_no',
              'event_admission',
-             'day_from_admission'],
+             'day_from_illness'],
     parse_dates=['date'],
     low_memory=False)
-
+"""
 
 # Run scripts
 script_00(data)
