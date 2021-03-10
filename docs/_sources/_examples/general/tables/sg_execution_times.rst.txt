@@ -1,0 +1,16 @@
+
+:orphan:
+
+.. _sphx_glr__examples_general_tables_sg_execution_times:
+
+Computation times
+=================
+**00:11.265** total execution time for **_examples_general_tables** files:
+
++--------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_tables_plot_table_shock.py` (``plot_table_shock.py``)                 | 00:11.265 | 0.0 MB |
++--------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_tables_plot_table_complications.py` (``plot_table_complications.py``) | 00:00.000 | 0.0 MB |
++--------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_tables_plot_table_dengue.py` (``plot_table_dengue.py``)               | 00:00.000 | 0.0 MB |
++--------------------------------------------------------------------------------------------------------+-----------+--------+

@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr__examples_general_tables_by_dsource_sg_execution_times:
+
+Computation times
+=================
+**00:12.666** total execution time for **_examples_general_tables_by_dsource** files:
+
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_tables_by_dsource_plot_table_dsource_shock.py` (``plot_table_dsource_shock.py``) | 00:12.666 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------------+-----------+--------+

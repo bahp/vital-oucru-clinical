@@ -11,7 +11,25 @@ Versions
 - v0.0.2
 
 
-Pending ...
+v0.0.6
+~~~~~~
+
+v0.0.5
+~~~~~~
+
+v0.0.4
+~~~~~~
+
+v0.0.3
+~~~~~~
+
+v0.0.2
+~~~~~~
+
+v0.0.1
+~~~~~~
+
+future ...
 -----------
 
 .. note:: This can also be included from github issues. Here for simplicity atm.
@@ -114,6 +132,7 @@ Pending ...
     formats? and also giving error and had to use coerce?
 
   - Related with shocks:
+
      If event_shock count == 1: shock = 1
      If event_shock count >= 1: shock = 1 / shock_multiple = 1
      There are also two weird variables, shock_no and shock_time. This

@@ -93,14 +93,23 @@
 <li class="toctree-l1"><a class="reference internal" href="overview.html">The OUCRU datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cleaning.html">The cleaning process</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#versions">Versions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pending">Pending …</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#versions">Versions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#v0-0-6">v0.0.6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-0-5">v0.0.5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-0-4">v0.0.4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-0-3">v0.0.3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-0-2">v0.0.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#v0-0-1">v0.0.1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#future">future …</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Galleries</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/prevalence/index.html">Prevalence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/general/tables/index.html">Decriptive Tables</a></li>
 </ul>
 
             
@@ -177,9 +186,27 @@
 <li><p>v0.0.3</p></li>
 <li><p>v0.0.2</p></li>
 </ul>
+<div class="section" id="v0-0-6">
+<h3>v0.0.6<a class="headerlink" href="#v0-0-6" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="pending">
-<h2>Pending …<a class="headerlink" href="#pending" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="v0-0-5">
+<h3>v0.0.5<a class="headerlink" href="#v0-0-5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="v0-0-4">
+<h3>v0.0.4<a class="headerlink" href="#v0-0-4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="v0-0-3">
+<h3>v0.0.3<a class="headerlink" href="#v0-0-3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="v0-0-2">
+<h3>v0.0.2<a class="headerlink" href="#v0-0-2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="v0-0-1">
+<h3>v0.0.1<a class="headerlink" href="#v0-0-1" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="future">
+<h2>future …<a class="headerlink" href="#future" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This can also be included from github issues. Here for simplicity atm.</p>
@@ -274,7 +301,7 @@ the DeathDate and DeathTime is filled for all the records.</p></li>
 </div>
 <div class="admonition-todo admonition" id="id7">
 <p class="admonition-title">Todo</p>
-<ul class="simple">
+<ul>
 <li><p>There should not be any date after event_death.</p></li>
 <li><p>There can be data after event_discharge (because of the follow ups).</p></li>
 <li><p>If outcome is ‘Full Recovery’ then we can set up the event_discharge
@@ -290,13 +317,13 @@ Thus, have a thorough look at this. There are date errors in the data,
 think how to address this issues or just discard such patients. Maybe
 remove my day cleaner? There was also one data with marge datetime
 formats? and also giving error and had to use coerce?</p></li>
-<li><dl class="simple">
-<dt>Related with shocks:</dt><dd><p>If event_shock count == 1: shock = 1
+<li><p>Related with shocks:</p>
+<blockquote>
+<div><p>If event_shock count == 1: shock = 1
 If event_shock count &gt;= 1: shock = 1 / shock_multiple = 1
 There are also two weird variables, shock_no and shock_time. This
 could also be used to increase the accuracy of the shock tracking.</p>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 <li><p>event_onset &lt; event_admission
 event_admission &lt; event_discharge
@@ -311,7 +338,7 @@ this were levels or days. Oh dear!</p></li>
 just the presence of fever was recorded, sometimes the body temperature was
 recorded and sometimes both have been recorded. To ensure that all values
 are consistent:</p>
-<ul>
+<ul class="simple">
 <li><p>if body_temperature &gt; 37.5 then create event_fever for that date.</p></li>
 <li><p>if body_temperature &lt; 37.5 there might still be an event_fever, note
 that temperature values are just collected once per day. I assume then

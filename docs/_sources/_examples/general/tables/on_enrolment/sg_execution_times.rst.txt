@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr__examples_general_tables_on_enrolment_sg_execution_times:
+
+Computation times
+=================
+**00:05.938** total execution time for **_examples_general_tables_on_enrolment** files:
+
++-----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_tables_on_enrolment_plot_table_shock.py` (``plot_table_shock.py``) | 00:05.938 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------+-----------+--------+

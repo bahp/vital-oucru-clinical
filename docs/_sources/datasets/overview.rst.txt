@@ -37,7 +37,11 @@ within the Hospital for Tropical Diseases (HTD) in Ho Chi Minh City, Vietnam.
     ======= ========= ================================================= ========
 
 
-``DSS`` - Dengue Shock Syndrome | ``NSD`` - Non Severe Dengue | ``CRI`` -
+where:
+
+    - ``DSS`` is Dengue Shock Syndrome |
+    - ``NSD`` is Non Severe Dengue |
+    - ``CRI`` is ... |
 
 
 The table below includes the manuscripts that have been published along the
@@ -677,13 +681,15 @@ Serology interpretation
 -----------------------
 
      .. todo:: Write introduction and includes link to code and method documentation.
+     .. todo:: Primary, first time it has Dengue.
+               Secondary, patient had dengue before.
 
      .. include:: <isonum.txt>
 
      - First igm, igg columns represent 1st sample
      - Second igm, igg columns represent 2nd sample
 
-     .. table:: Overview of serology outcomes from igm and igg
+     .. table:: Overview of serology interpretations from igm and igg
          :widths: 5 5 5 5 10 10 5
 
          ======== ========= ======== ========= ============= ============= =====
@@ -734,7 +740,3 @@ single igm_igg
 
 paired igm_igg
 ~~~~~~~~~~~~~~
-
-.. include:: ../../../../../../README.rst
-  :start-after: inclusion-marker-do-not-remove
-

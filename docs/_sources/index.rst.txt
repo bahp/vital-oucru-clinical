@@ -21,6 +21,7 @@ Welcome to vital-oucru-clinical documentation!
    :hidden:
 
    _examples/prevalence/index
+   _examples/general/tables/index
 
 Indices and tables
 ==================
