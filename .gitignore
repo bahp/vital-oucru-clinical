@@ -26,7 +26,6 @@ docs/build
 docs/source/_examples
 docs/source/_static/datasets/profile-dataprep
 docs/source/_static/datasets/profile-pandas
-docs/source/_static/datasets/html-tables
 
 # Folders with sensitive data
 
