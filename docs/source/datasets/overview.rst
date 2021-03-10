@@ -27,17 +27,21 @@ within the Hospital for Tropical Diseases (HTD) in Ho Chi Minh City, Vietnam.
     df      1999-2009 Describe clinical features of ``DSS`` in children 1719
     md      2001-2009 Describe clinical features of ``NSD`` in children 3044
     dr      2005-2008 Describe clinical features of ``NSD`` in children 1542
-    fl      xxxx-xxxx -                                                 -
+    fl      xxxx-xxxx
     06dx    2009-2011 Effect of steroid in Dengue                       330
     13dx    2010-2014 Diagnostic accuracy of NS1                        8108
     32dx    2013-2016 Intravascular volume assessment (CRI)             75
     42dx    2017-2018 Clinical features of DSS in pregnant women?       664
-    d001    2011      -                                                 112
+    d001    2011                                                        112
     01nva   2020-2021 Clinical features of Dengue patients (wearables)  155
     ======= ========= ================================================= ========
 
 
-``DSS`` - Dengue Shock Syndrome | ``NSD`` - Non Severe Dengue | ``CRI`` -
+where:
+
+    - ``DSS`` is Dengue Shock Syndrome |
+    - ``NSD`` is Non Severe Dengue |
+    - ``CRI`` is ... |
 
 
 The table below includes the manuscripts that have been published along the
@@ -677,13 +681,15 @@ Serology interpretation
 -----------------------
 
      .. todo:: Write introduction and includes link to code and method documentation.
+     .. todo:: Primary, first time it has Dengue.
+               Secondary, patient had dengue before.
 
      .. include:: <isonum.txt>
 
      - First igm, igg columns represent 1st sample
      - Second igm, igg columns represent 2nd sample
 
-     .. table:: Overview of serology outcomes from igm and igg
+     .. table:: Overview of serology interpretations from igm and igg
          :widths: 5 5 5 5 10 10 5
 
          ======== ========= ======== ========= ============= ============= =====
@@ -734,7 +740,3 @@ single igm_igg
 
 paired igm_igg
 ~~~~~~~~~~~~~~
-
-.. include:: ../../../../../../README.rst
-  :start-after: inclusion-marker-do-not-remove
-

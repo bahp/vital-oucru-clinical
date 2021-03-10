@@ -69,11 +69,13 @@ sphinx_gallery_conf = {
     # path to your example scripts
     'examples_dirs': [
         '../../examples/docs',
-        '../../examples/prevalence'],
+        '../../examples/prevalence',
+        '../../examples/general/tables'],
     # path to where to save gallery generated output
     'gallery_dirs': [
         '../source/_examples/docs',
-        '../source/_examples/prevalence'],
+        '../source/_examples/prevalence',
+        '../source/_examples/general/tables'],
     # Other
     'line_numbers': True,
     'download_all_examples': False,
