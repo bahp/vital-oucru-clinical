@@ -110,7 +110,7 @@ groupby = ['shock_type']
 # Non normal
 nonnormal = ['age', 'plt', 'wbc', 'albumin',
              'ast', 'haematocrit_percent',
-             'alt', 'day_from_illness', 'pulse']
+             'alt', 'pulse']
 
 # Rename labels.
 rename = {

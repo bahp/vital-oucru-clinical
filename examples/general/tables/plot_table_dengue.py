@@ -76,6 +76,7 @@ data['dengue_interpretation'] = \
 data['fluid_accumulation'] = \
     data.pleural_effusion | data.ascites
 
+"""
 # Columns to keep
 keep1 = keep_nunique_ge(data, th=1000)
 keep2 = keep_pmissing_le(data, th=50)
@@ -117,7 +118,7 @@ print(mytable.tabulate(tablefmt="fancy_grid"))
 
 import sys
 sys.exit()
-
+"""
 
 # --------
 # TableOne

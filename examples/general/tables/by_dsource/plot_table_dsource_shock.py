@@ -8,7 +8,7 @@ by dsource and shock_type
 
 ########################################
 # .. raw:: html
-#     :file: ../../../_static/datasets/html-tables/tableone_dsource_shock_type.html
+#     :file: ../../../../_static/datasets/html-tables/tableone_dsource_shock_type.html
 #
 # |
 # |
@@ -57,7 +57,7 @@ def shock_type_faeture(tidy, default='No Shock'):
 # Constants
 # ---------------------------------
 # The data filepath
-path = '../../../resources/data/20210309-v0.7/combined/combined_tidy.csv'
+path = '../../../../resources/data/20210309-v0.7/combined/combined_tidy.csv'
 
 # ---------------------------------
 # Main
@@ -140,7 +140,7 @@ for i, df in data.groupby('dsource'):
 
 
 # Configuration
-PATH = '../../../docs/source/_static/'
+PATH = '../../../../docs/source/_static/'
 PATH+= 'datasets/html-tables/{0}.html'
 NAME = 'tableone_dsource_shock_type'
 
