@@ -322,7 +322,7 @@ List of datasets
 The df dataset
 --------------
 
-.. warning:: Things to highlight.
+.. note:: No published manuscripts.
 
 The trial was a ``single-center``, ``randomized``, ``doubleblind`` comparison of an isotonic
 crystalloid solution (Ringer’s lactate) and two isotonic colloid solutions (6% dextran 70
@@ -347,7 +347,7 @@ Vietnam. The ethics and science committee of the hospital approved the protocol.
 The fl dataset
 --------------
 
-.. warning:: Things to highlight.
+.. note:: No published manuscripts.
 
 .. raw:: html
 
@@ -362,7 +362,9 @@ The fl dataset
 The md dataset
 --------------
 
-.. warning:: Important things to consider...
+.. note:: ...
+
+**Title**: Inpatient-based study examining prognostic factors during the febrile phase
 
 A ``prospective observational study`` of ``children`` hospitalized with ``suspected dengue`` at
 the HTD in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
@@ -378,6 +380,17 @@ development of warning signs necessitating monitoring more frequently than 4–6
 transferred to the Paediatric Intensive Care Unit (PICU). During the study period all children
 admitted to PICU with DSS were recruited into a concurrent pediatric cohort
 
+.. Dengue diagnosis:
+   Diagnosis of dengue is confirmed by detection of dengue virus (DENV) RNA in plasma by reverse
+   transcriptase polymerase chain reaction (RT-PCR) at enrolment, or by seroconversion on IgM and
+   IgG capture ELISA on paired enrolment and early convalescent specimens (Dengue Duo IgM and IgG
+   Capture ELISA, PanBio, Australia) or in-house methods7.
+
+.. Outcomes:
+   The development of shock– the most common manifestation of severe dengue in this population was
+   the primary endpoint. This was defined as narrow pulse pressure (≤ 20 mmHg) or hypotension for
+   age with evidence of impaired peripheral perfusion8.
+
 .. raw:: html
 
     <iframe src="../_static/datasets/html-tables/features_description_md.html"
@@ -386,46 +399,50 @@ admitted to PICU with DSS were recruited into a concurrent pediatric cohort
             height="750px;"
             width="100%"></iframe>
 
+
 The dr dataset
 --------------
 
-.. warning:: Important things to consider...
+.. note:: ...
 
-We conducted a ``prospective descriptive`` study of ``febrile
-children``, aged 5–15 years, attending two ``primary`` health care
-clinics in Ho Chi Minh City, Vietnam. Clinic A is a single-handed
-practice run by a senior paediatrician, while Clinic B is the walk-in
-paediatric clinic at District 8 Hospital. This study forms one part of
-a large community study on dengue, the clinical aspects of which
-have been described previously, but briefly all children presenting
-with fever and clinically suspected dengue to either clinic were
-eligible for enrolment following written informed consent [14].
-Recruitment was targeted towards patients presenting during the
-early febrile period, ideally within the first 72 hours from fever
-onset, although patients presenting up to 96 hours from fever onset
-could be enrolled. Patients were seen daily until afebrile for two
-consecutive days, with detailed clinical information recorded in a
-standard format and a 1 ml EDTA blood sample obtained for
-clinical (haematocrit estimation and platelet count) and diagnostic
-purposes, together with a random urine sample. Clinic physicians
-were responsible for all management decisions; if hospitalization
-was considered necessary the children were admitted to HTD and
-the daily assessments continued, following the same protocol as the
-outpatient subjects. Patients were invited to attend for review 2–4
-weeks from illness onset.
+**Title**: Acute dengue in paediatric populations
 
-Illness day 1 was defined as the day of reported fever onset.
-Defervescence day was defined as the first day with no history of
-fever since the previous day’s visit and with a measured
-temperature #37.5uC in the clinic. The following outcomes were
-summarised from the daily assessments: the platelet nadir between
-days 3–8 of illness; the presence or absence of skin and/or mucosal
-bleeding; the percentage hemoconcentration, defined as the
-percentage increase in haematocrit comparing the maximum
-value recorded between days 3–8 of illness, to a baseline value
-taken as the lowest result obtained on or before illness day 2 or
-after day 14, or a local population value matched for age and sex if
-no individual baseline was available [14].
+We conducted a ``prospective descriptive`` study of ``febrile children``, aged 5–15 years,
+attending two ``primary`` health care clinics in Ho Chi Minh City, Vietnam. Clinic A is a
+single-handed practice run by a senior paediatrician, while Clinic B is the walk-in
+paediatric clinic at District 8 Hospital. This study forms one part of a large community
+study on dengue, the clinical aspects of which have been described previously, but briefly
+all children presenting with fever and clinically suspected dengue to either clinic were
+eligible for enrolment following written informed consent. Recruitment was targeted towards
+patients presenting during the early febrile period, ideally within the first 72 hours from
+fever onset, although patients presenting up to 96 hours from fever onset could be enrolled.
+Patients were seen daily until afebrile for two consecutive days, with detailed clinical
+information recorded in a standard format and a 1 ml EDTA blood sample obtained for clinical
+(haematocrit estimation and platelet count) and diagnostic purposes, together with a random
+urine sample. Clinic physicians were responsible for all management decisions; if hospitalization
+was considered necessary the children were admitted to HTD and the daily assessments continued,
+following the same protocol as the outpatient subjects. Patients were invited to attend for
+review 2–4 weeks from illness onset.
+
+Illness day 1 was defined as the day of reported fever onset. Defervescence day was defined as
+the first day with no history of fever since the previous day’s visit and with a measured
+temperature #37.5uC in the clinic. The following outcomes were summarised from the daily
+assessments: the platelet nadir between days 3–8 of illness; the presence or absence of skin
+and/or mucosal bleeding; the percentage hemoconcentration, defined as the percentage increase in
+haematocrit comparing the maximum value recorded between days 3–8 of illness, to a baseline value
+taken as the lowest result obtained on or before illness day 2 or after day 14, or a local
+population value matched for age and sex if no individual baseline was available.
+
+.. Dengue diagnosis:
+   Diagnosis of dengue is confirmed by detection of DENV-RNA in plasma by reverse transcriptase
+   polymerase chain reaction (RT-PCR) at enrolment, or by seroconversion on IgM and IgG capture
+   ELISA on paired enrolment and early convalescent specimens (Dengue Duo IgM and IgG Capture
+   ELISA, PanBio, Australia) or in-house methods7.
+
+.. Outcomes:
+   World Health Organisation (WHO) 1997  dengue guideline definitions of dengue shock syndrome (DSS)
+   and dengue haemorrhagic fever (DHF) were used 9. DSS and DHF class III and IV were re-classified
+   as development of severe dengue.
 
 .. raw:: html
 
@@ -436,12 +453,19 @@ no individual baseline was available [14].
             width="100%"></iframe>
 
 
-
 The d001 dataset
 ----------------
 
-.. warning:: Important things to consider...
+.. note:: No published manuscripts.
 
+**Title**: Prospective study in acute dengue
+
+.. Dengue Diagnosis:
+   Diagnosis of dengue is confirmed by detection of DENV-RNA in plasma by RT-PCR at
+   enrolment or by IgM or IgG seroconversion using methods described above
+
+.. Outcome:
+   Vascular leak and severe bleeding according to WHO 2009 dengue guidelines.
 .. raw:: html
 
     <iframe src="../_static/datasets/html-tables/features_description_d001.html"
@@ -455,13 +479,25 @@ The d001 dataset
 The 06dx dataset
 ----------------
 
-.. warning:: Important things to consider...
+.. note:: ...
+
+**Title**: Randomised control trial comparing use of steroids versus placebo in acute dengue
 
 We performed a ``randomized``, ``placebo-controlled``, ``partially blinded`` trial of early
 corticosteroid therapy in Vietnamese children and young adults with suspected dengue virus
 infection. The study took place on designated infectious diseases wards at the Hospital for
 Tropical Diseases of Ho Chi Minh City, with approval from the Ethical Committee of the
 Ministry of Health of Vietnam and the Oxford Tropical Research Ethics Committee.
+
+.. Dengue Diagnosis:
+   Diagnosis was supported through a positive rapid test for dengue nonstructural protein 1
+   (NS1 Ag-STRIP, Bio-Rad) and confirmed through either a DENV RT-PCR at enrolment or a
+   capture IgM and IgM using paired specimens (Venture Technologies, Sarawak, Malaysia) within
+   72 hours of illness onset and at day 7.
+
+.. Outcome:
+   Development of dengue shock syndrome according to WHO 2009 dengue guidelines, and severe
+   clinical bleeding as evaluated by clinician were used as outcome definitions.
 
 .. raw:: html
 
@@ -476,7 +512,9 @@ Ministry of Health of Vietnam and the Oxford Tropical Research Ethics Committee.
 The 13dx dataset
 ----------------
 
-.. warning:: Important things to consider...
+.. note:: ...
+
+**Title**: Outpatient-based study examining prognostic factors during the febrile phase
 
 Recruitment occurred in the public sector outpatient departments of Children’s Hospital No. 1
 (HCMC), Children’s Hospital No. 2 (HCMC), The Hospital for Tropical Diseases (HCMC),
@@ -493,6 +531,17 @@ another (non-dengue) diagnosis was more likely. Patient enrolment occurred conse
 during normal clinical hours on weekdays without restriction. All patients were enrolled into
 the study before the attending physician received the results of any routine laboratory tests.
 
+.. Dengue Diagnosis:
+   A diagnosis of dengue was confirmed through one of the following: positive RT- PCR for DENV, a
+   positive NS1 assay (Platelia NS1 antigen or NS1 Ag STRIP, Bio-Rad, France) at enrolment or detection
+   of IgM seroconversion.
+
+.. Outcome:
+   Dengue shock syndrome, dengue with severe bleeding, or dengue with end-organ involvement (central
+   nervous dysfunction, hepatitic dysfunction or severe respiratory dysfunction or other major organ
+   involvement) constituted study endpoints.
+
+
 .. raw:: html
 
     <iframe src="../_static/datasets/html-tables/features_description_13dx.html"
@@ -507,7 +556,7 @@ the study before the attending physician received the results of any routine lab
 The 32dx dataset
 ----------------
 
-.. warning:: Important things to consider...
+.. note:: ...
 
 We performed a STROBE-compliant prospective observational study at the National Hospital for Tropical Diseases
 (NHTD), Hanoi, Vietnam, between June 2013 and February 2014. Ethical approval was obtained from the Oxford Tropical
@@ -534,12 +583,21 @@ including ultrasonography and/or chest radiology, were performed if clinically i
 
 
 
-
-
 The 42dx dataset
 ----------------
 
-.. warning:: Important things to consider...
+.. note:: No published manuscripts.
+
+**Title**: Study of acute dengue in pregnancy during the febrile phase”
+
+.. Dengue Diagnosis:
+   Diagnosis of dengue is confirmed by detection of DENV-RNA in plasma by RT-PCR, NS1 antigen
+   detection at enrolment or by IgM or IgG seroconversion, or a positive using methods described
+   above.
+
+.. Outcomes:
+   Patient outcomes are classified according to WHO 2009 dengue guidelines which include development
+   of DSS, significant clinical bleeding or organ involvement.
 
 .. raw:: html
 
@@ -555,8 +613,9 @@ The 42dx dataset
 The 01nva dataset
 -----------------
 
-.. warning::
-
+.. note::
+        - No published manuscripts.
+        - Currently recruiting patients.
         - ``FLUIDS`` related information has not been extracted yet.
         - ``TREATMENT`` related information has not been extracted yet.
 
@@ -693,6 +752,8 @@ Serology interpretation
          :widths: 5 5 5 5 10 10 5
 
          ======== ========= ======== ========= ============= ============= =====
+            First sample      Second sample            Serology
+         ------------------ ------------------ --------------------------- -----
          igm      igg       igm      igg       single        paired        notes
          ======== ========= ======== ========= ============= ============= =====
          |hyphen| |hyphen|  |hyphen| |hyphen|  Inconclusive  Not Dengue

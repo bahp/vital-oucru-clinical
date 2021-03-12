@@ -159,3 +159,36 @@ future ...
     - if body_temperature < 37.5 there might still be an event_fever, note
       that temperature values are just collected once per day. I assume then
       keep both.
+
+
+
+Damien relevant info
+
+We think of dengue as very much a disease which follows certain phases (whether this is right or wrong!) – typically, people experience:
+
+The febrile phase (days 1-5) – they are unwell with fever, but no life threatening clinical manifestations happen.
+The critical phase (days 4-6+) – they are in danger of being critically unwell e.g. they are in shock, bleed a lot, or need therapy (fluids, ventilation etc)
+The recovery phase (after days 6+) – after the critical phase.
+
+
+The two main questions that people have typically felt are important for clinical management are:
+
+
+
+When I see someone presenting with a fever, is this dengue, or another disease (e.g. a bacterial infection)?
+Dengue doesn’t require antibiotics for bacterial infections (including sepsis) do.
+The pattern of illness and how you manage the patient also matters (e.g. do you discharge them, or admit them to hospital).
+For someone with dengue, what is the risk of them developing severe dengue (shock, bleeding, plasma leak)?
+When in the illness time-course can I reliably predict this?
+What measurements do I need?
+
+
+Of course – this shouldn’t limit how you want to approach your analyses! Be aware that the data is imperfect however, with a lot of missingness – and the time element of the observations is crucial (febrile-critical-recovery model of disease). For example: examination findings are probably more subjective and open to interpretation compared with laboratory values, and the measurement of outcomes likewise can vary between studies.
+
+
+
+Finally the studies themselves are comparable to a certain extent, but do differ in how they recruit their patients e.g. 13DX recruits patients early in illness when presenting to their local health centre, MD recruits after admission, and DF recruits after they enter intensive care. The day of illness is therefore key to aligning all the studies for comparison.
+
+
+
+I like the idea of predicting future values / handling missing values, and methods of clustering similar patients beyond the classical approaches would also give it a novel approach.
