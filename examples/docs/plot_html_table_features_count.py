@@ -51,7 +51,7 @@ def create_dataframe(data):
 # Constants
 # ---------------------------------
 # Path with data
-path_data = '../../resources/data/20210309-v0.7/'
+path_data = '../../resources/data/20210313-v0.8/'
 path_data+= 'combined/combined_tidy.csv'
 
 # Path to load the HTML table template
@@ -104,4 +104,4 @@ with open(path_html_template, 'r') as template, \
     table.close()
     template.close()
 
-a = 84
+a = 81212

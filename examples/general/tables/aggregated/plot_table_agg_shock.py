@@ -112,7 +112,8 @@ columns = ['age', 'gender', 'day_from_illness',
            'fluid_accumulation']
 
 # Categorical features
-categorical = ['gender', 'fluid_accumulation']
+categorical = ['gender',
+               'fluid_accumulation']
 
 # Groupby
 groupby = ['shock_type']

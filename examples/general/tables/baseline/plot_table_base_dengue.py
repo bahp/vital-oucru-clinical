@@ -8,7 +8,7 @@ dengue_interpretation
 
 ######################################################################################
 # .. raw:: html
-#     :file: ../../../../_static/datasets/html-tables/plot_table_agg_dengue.html
+#     :file: ../../../../_static/datasets/html-tables/plot_table_base_dengue.html
 #
 # |
 # |
@@ -23,7 +23,9 @@ import pandas as pd
 from tableone import TableOne
 
 # Import DataBlend
+from datablend.core.repair.correctors import oucru_correction
 from datablend.core.repair.correctors import oucru_dengue_interpretation_feature
+from datablend.core.repair.correctors import oucru_ns1_interpretation_feature
 
 # ---------------------------------
 # Methods
@@ -73,27 +75,36 @@ def build_html_tableone(table, tag):
 # Constants
 # ---------------------------------
 # The data filepath
-path = '../../../../resources/data/20210309-v0.7/'
+path = '../../../../resources/data/20210313-v0.8/'
 path+= 'combined/combined_tidy.csv'
 
 # TableOne
 # --------
 # Columns
-columns = ['age', 'gender', 'day_from_illness',
+columns = ['age',  'day_from_illness',
            'plt', 'wbc', 'haematocrit_percent',
            'albumin', 'ast', 'alt',
-           'fluid_accumulation']
-
-# Categorical
-categorical = ['gender', 'fluid_accumulation']
+           'fluid_accumulation',
+           'pcr_dengue_serotype',
+           'abdominal_pain',
+           'abdominal_tenderness',
+           'bleeding',
+           'bleeding_mucosal',
+           'bleeding_skin',
+           'oedema',
+           'vomiting',
+           'shock_multiple',
+           'bmi',
+           'sbp',
+           'dbp',
+           'pulse',
+           'pulse_pressure',
+           'body_temperature',
+           'ns1_interpretation',
+           'serology_interpretation']
 
 # Groupby
 groupby = ['dengue_interpretation']
-
-# Non normal
-nonnormal = ['age', 'plt', 'wbc', 'albumin',
-             'ast', 'haematocrit_percent',
-             'alt', 'day_from_illness']
 
 # Rename
 rename = {
@@ -117,6 +128,12 @@ data = pd.read_csv(path,
     low_memory=False,
     parse_dates=['date'])
 
+# Oucru correction
+#data = oucru_correction(data)
+
+# Add bmi
+data['bmi'] = data.weight / data.height.pow(2)
+
 # Add dengue interpretation
 data['dengue_interpretation'] = \
     oucru_dengue_interpretation_feature(data,
@@ -124,9 +141,15 @@ data['dengue_interpretation'] = \
         single_igm_igg=True, paired_igm_igg=True,
         default=False)
 
+data['ns1_interpretation'] = \
+    oucru_ns1_interpretation_feature(data)
+
 # Add fluid accumulation
 data['fluid_accumulation'] = \
     data.pleural_effusion | data.ascites
+
+# Keep only baseline data
+data = data[data.event_enrolment.fillna(False)]
 
 
 HTML = ""
@@ -134,12 +157,19 @@ HTML = ""
 # -------
 # Overall
 # -------
+# Define categorical
+nonnormal = list(data[columns].select_dtypes(include='number').columns)
+categorical = list(set(columns).difference(set(nonnormal)))
+columns = sorted(categorical) + sorted(nonnormal)
+order = {k: sorted(data[k].astype(str).unique()) for k in categorical}
+
+
 # Create table
-mytable = TableOne(data, columns=columns,
-    categorical=categorical, groupby=groupby,
-    nonnormal=nonnormal, pval=True, rename=rename,
-    sort=True, missing=False, htest_name=False,
-    min_max=None, label_suffix=True, limit=5)
+mytable = TableOne(data,
+    columns=columns, categorical=categorical,
+    groupby=groupby, nonnormal=nonnormal, pval=True,
+    rename=rename, order=order, sort=False, missing=False,
+    htest_name=False, min_max=None, label_suffix=True, limit=5)
 
 # Append mytable in HTML
 HTML+= build_html_tableone(mytable, 'Aggregated')
@@ -157,7 +187,7 @@ for i, df in data.groupby('dsource'):
     # TableOne
     # --------
     # Ensure they are in the df
-    df_cols = list(set(columns).intersection(df.columns))
+    df_cols = [c for c in columns if c in df.columns] # Keeps order
     df_cate = list(set(categorical).intersection(df.columns))
     df_gpby = list(set(groupby).intersection(df.columns))
     df_nonn = list(set(nonnormal).intersection(df.columns))
@@ -168,8 +198,8 @@ for i, df in data.groupby('dsource'):
         # Create table
         mytable = TableOne(df, columns=df_cols,
             categorical=df_cate, groupby=df_gpby,
-            nonnormal=df_nonn, pval=True, rename=df_rnme,
-            sort=True, missing=False, htest_name=False,
+            nonnormal=df_nonn, pval=True, rename=rename,
+            order=order, sort=False, missing=False, htest_name=False,
             min_max=None, label_suffix=True, limit=5)
 
         # Append mytable in HTML
