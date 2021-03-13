@@ -110,7 +110,11 @@ future ...
 
 .. todo::
 
-  - There should not be any date after event_death.
+  - ``event_death``
+      - There should not be any date after ``event_death``.
+      - If ``outcome`` == 'Died' set ``event_death`` == True for day of last data.
+
+  - ``gcs`` as a sum of other gcs subcategories.
 
   - There can be data after event_discharge (because of the follow ups).
 
