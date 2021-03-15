@@ -1,15 +1,22 @@
 """
-Overall monthly prevalence
-==========================
+Monthly prevalence (overall)
+============================
 
-Example using your package
+.. warning::
 
-.. warning:: At the moment a the assumption is that if the pcr_dengue_serotype
-             is present then the patient had dengue. Otherwise, the patient did
-             not suffer dengue. However, the following things should be considered:
+    - The features must be static.
+    - Would it help to print ns1_interpretation table?
+    - Should ns1 be a compound of all the ns1?
+    - Would it help to plot the prevalence graph for each dataset?
 
-               - Not all datasets had pcr_dengue_serotype variable
-               - The serology results and/or clinical notes need to be incorporated.
+
+This example computes the prevalence of dengue in the ``HTD`` as the
+proportion of patients which were diagnosed with Dengue based on any
+positive result for the ``NS1``, ``PCR`` or ``serology`` tests. The
+x-axis represents the month and the y-axis the prevalence in %. In
+addition, the number on top of each bar represents the total number
+of patients used to compute the proportion.
+
 """
 
 # Libraries
@@ -47,16 +54,22 @@ def prevalence(x):
 # Constants
 # ---------------------------------
 # The data filepath
-path = '../../resources/data/20210309-v0.7/combined/combined_tidy.csv'
+path = '../../resources/data/20210313-v0.8/combined/combined_tidy.csv'
 
 # Features
 features = ['study_no',
             'date',
             'dsource',
             'pcr_dengue_serotype',
-            'ns1_interpretation',
             'igm_interpretation',
-            'igg_interpretation']
+            'igg_interpretation',
+            'ns1_interpretation',
+            'ns1_plasma_interpretation',
+            'ns1_platelia_interpretation',
+            'ns1_urine_interpretation',
+            'serology_interpretation',
+            'serology_single_interpretation',
+            'serology_paired_interpretation']
 
 # ---------------------------------
 # Main
@@ -88,15 +101,24 @@ patients['year'] = patients.date.dt.year
 serotypes = add_totals(pd.crosstab(
     patients.pcr_dengue_serotype, patients.dsource))
 
+# Serology count per dataset
+serology = add_totals(pd.crosstab(
+    patients.serology_interpretation, patients.dsource
+))
+
 # Dengue interpretation count per dataset
 dengue = add_totals(pd.crosstab(
     patients.dengue_interpretation, patients.dsource))
 
 # Show
+print("\nColumns:")
+print(data.columns)
 print("\nPatients:")
 print(patients)
 print("\nSerotypes:")
 print(serotypes)
+print("\nSerology:")
+print(serology)
 print("\nDengue:")
 print(dengue)
 
@@ -115,7 +137,7 @@ prevalence.index = \
     [calendar.month_abbr[x] for x in prevalence.index]
 
 # Show
-print("\n:")
+print("\nPrevalence:")
 print(prevalence)
 
 

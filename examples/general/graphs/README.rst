@@ -1,4 +1,5 @@
-Graphs
-======
+Dataset description (graphs)
+============================
 
-This gallery includes a series of examples to describe ...
+This gallery describes the datasets through the use of graphs.
+

@@ -1,4 +1,4 @@
-General Insights
-================
+General Insights from datasets
+==============================
 
-This gallery ....
+This gallery contains several examples describing the datasets.

@@ -1,7 +1,7 @@
-Tables
-======
+Dataset description (tables)
+============================
 
-This gallery includes a series of examples to describe ...
+This gallery describes the datasets through the use of ``TableOne``.
 
 .. note:: Instead of creating tables with median [Q1, Q3] for each
           day of the admission, enrolment or onset it would be

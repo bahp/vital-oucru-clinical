@@ -169,7 +169,9 @@ mytable = TableOne(data,
     columns=columns, categorical=categorical,
     groupby=groupby, nonnormal=nonnormal, pval=True,
     rename=rename, order=order, sort=False, missing=False,
-    htest_name=False, min_max=None, label_suffix=True, limit=5)
+    htest_name=False, min_max=None, label_suffix=True, limit=5,
+    dip_test=True, normal_test=True, tukey_test=True)
+
 
 # Append mytable in HTML
 HTML+= build_html_tableone(mytable, 'Aggregated')
@@ -200,7 +202,8 @@ for i, df in data.groupby('dsource'):
             categorical=df_cate, groupby=df_gpby,
             nonnormal=df_nonn, pval=True, rename=rename,
             order=order, sort=False, missing=False, htest_name=False,
-            min_max=None, label_suffix=True, limit=5)
+            min_max=None, label_suffix=True, limit=5,
+            dip_test=True, normal_test=True, tukey_test=True)
 
         # Append mytable in HTML
         HTML+= build_html_tableone(mytable, i)
@@ -275,3 +278,5 @@ print(mytable.tabulate(tablefmt="fancy_grid"))
 import sys
 sys.exit()
 """
+
+a = 0

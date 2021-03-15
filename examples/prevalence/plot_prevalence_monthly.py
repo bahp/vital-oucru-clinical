@@ -1,15 +1,12 @@
 """
-Yearly monthly prevalence
-=========================
+Monthly prevalence (yearly)
+===========================
 
-Example using your package
+This example computes the prevalence of dengue in the ``HTD`` as the
+proportion of patients which were diagnosed with Dengue based on any
+positive result for the ``NS1``, ``PCR`` or ``serology`` tests for
+each year from 1999 to 2021.
 
-.. warning:: At the moment a the assumption is that if the pcr_dengue_serotype
-             is present then the patient had dengue. Otherwise, the patient did
-             not suffer dengue. However, the following things should be considered:
-
-               - Not all datasets had pcr_dengue_serotype variable
-               - The serology results and/or clinical notes need to be incorporated.
 """
 # Libraries
 import calendar
@@ -36,17 +33,22 @@ def prevalence(x):
 # Constants
 # ---------------------------------
 # The data filepath
-# The data filepath
-path = '../../resources/data/20210309-v0.7/combined/combined_tidy.csv'
+path = '../../resources/data/20210313-v0.8/combined/combined_tidy.csv'
 
 # Features
 features = ['study_no',
             'date',
             'dsource',
             'pcr_dengue_serotype',
-            'ns1_interpretation',
             'igm_interpretation',
-            'igg_interpretation']
+            'igg_interpretation',
+            'ns1_interpretation',
+            'ns1_plasma_interpretation',
+            'ns1_platelia_interpretation',
+            'ns1_urine_interpretation',
+            'serology_interpretation',
+            'serology_single_interpretation',
+            'serology_paired_interpretation']
 
 # ---------------------------------
 # Main
@@ -123,8 +125,9 @@ print(table_npatients.round(0))
 
 ###############################################################
 # Lets plot the ``boxplot`` with the monthly dengue prevalence per
-# year. In addition, let's add the prevalence values in a table
-# below.
+# year. The x-axis represents the month and the y-axis the prevalence
+# in %. In addition, to the distribution (boxplot) the single markers
+# have been displayed.
 
 # --------------------------
 # Plot boxplot
@@ -150,7 +153,8 @@ ax.set(xlabel="", ylabel="Prevalence (%)",
        title="Monthly dengue prevalence in HTD")
 
 ###############################################################
-# Let's add the prevalence values in a ``table`` below.
+# Let's create the same figure but adding the prevalence values
+# in a ``table`` below.
 
 # ----------------------
 # Plot boxplot and table
@@ -181,7 +185,7 @@ table = plt.table(cellText=aux.to_numpy(),
                   colLabels=aux.columns,
                   cellLoc='center')
 table.auto_set_font_size(False)
-table.set_fontsize(8)
+table.set_fontsize(7.5)
 table.scale(1, 3.2)
 
 # Sns config
@@ -192,12 +196,18 @@ ax.set(xlabel='', ylabel='Prevalence (%)', xticks=[],
        title="Monthly dengue prevalence in HTD")
 
 # Adjust subplots
-plt.subplots_adjust(left=0.2, bottom=0.6)
+plt.subplots_adjust(left=0.2, bottom=0.65)
 
 ###################################################################
 # Lets plot the ``heatmaps`` with (i) the monthly dengue prevalence
-# per year (ii) the number of patients with/without dengue used
-# to compute such prevalence.
+# per year and (ii) the number of patients with/without dengue used
+# to compute such prevalence. It is important to highlight that
+# in previous plots some extreme prevalence values (either 0% or
+# 100%) where found. As shown in the figure below, these correspond
+# to months in which there are not enough patients (<4) to
+# accurately describe the prevalence.
+#
+#
 
 # -----------------------
 # Plot heatmaps
@@ -224,6 +234,14 @@ ax[1].set(title="Number of patients (study) in HTD")
 
 # Adjust layout
 plt.tight_layout()
+
+
+###############################################################
+# If we want to check whether the number of patients is directly
+# affecting the prevalence seen in the HTD hospital we can plot
+# their correlation (e.g.) as shown in the picture there is no
+# strong linear correlation between the number of patients and
+# the prevalence.
 
 # ----------------
 # Plot correlation

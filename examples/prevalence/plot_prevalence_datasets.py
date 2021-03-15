@@ -1,15 +1,19 @@
 """
-Prevalence per dataset
-======================
+Rolling prevalence (by dsource)
+===============================
 
-Example using your package
+This example computes the prevalence of dengue in the ``HTD`` as the
+proportion of patients which were diagnosed with Dengue based on any
+positive result for the ``NS1``, ``PCR`` or ``serology`` tests. The
+x-axis represents the time (group by month) and the y-axis the prevalence
+in % the first graph and the number of patients used to compute the
+prevalence in the second graph.
 
-.. warning:: At the moment a the assumption is that if the pcr_dengue_serotype
-             is present then the patient had dengue. Otherwise, the patient did
-             not suffer dengue. However, the following things should be considered:
+.. warning::
 
-               - Not all datasets had pcr_dengue_serotype variable
-               - The serology results and/or clinical notes need to be incorporated.
+    - As shown in first graph, there is a patient from 14dx that appears
+      in 2019. This should be corrected in the dataset.
+
 """
 
 # Libraries
@@ -146,7 +150,7 @@ sns.set_style("whitegrid", {
 
 # Create facetgrid
 g2 = sns.FacetGrid(aux, row='dsource', hue='dsource',
-    height=1, sharex=True, aspect=15, palette=pal)
+    height=1, sharex=True, aspect=13, palette=pal)
 
 # Plot lines
 g2.map(sns.lineplot, "date", "n_patients")
