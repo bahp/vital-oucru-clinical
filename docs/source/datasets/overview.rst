@@ -1,22 +1,51 @@
 The OUCRU datasets
 ==================
 
-This repository contains an aggregation of datasets collected from prospective
-clinical studies conducted by the Oxford University Clinical Research Unit (OUCRU)
-between 2009 and 2021. All these studies have been conducted in healthcare facilities
+This repository contains the documentation of an aggregation of datasets collected from various
+prospective clinical studies which have been conducted by the Oxford University Clinical Research
+Unit (OUCRU) between 2009 and 2021. These studies have been conducted in healthcare facilities
 within the Hospital for Tropical Diseases (HTD) in Ho Chi Minh City, Vietnam.
 
-| Data collection: ``Oxford University Clinical Research Unit``
+.. Electronic data from the following studies were accessed after a data sharing agreement
+   between Imperial College London and OUCRU/HTD in March 2020. Should I also mention the
+   VITAL consortium?
+
+.. Studies were stored in an Excel format (Microsoft Corporation, Redmond, USA) and imported
+   into Python 3.7 format using the pandas library. These were then concatenated into a single
+   working dataset which consisted of data from 13,661 unique patient entries. Data was checked
+   manually for inconsistencies and outliers and entries removed or cleaned. The initial data
+   was in a “tidy” format where each row represents a unique patient/date combination.
+
+.. For patients who experienced a complication of dengue (shock, significant effusion or significant
+   bleeding) we discarded all entries obtained on, and after that date. For patients who did not
+   experience complication in dengue, we used a median illness day of 5 (i.e. up to 120 hours after
+   onset of illness where start of illness is represented by day 0) as the cut-off and discarded all
+   observations after that date (n=214).
+
+.. image:: ../_static/imgs/logo-icl-square.png
+   :width: 50
+   :align: right
+   :alt: Imperial College London
+
+.. image:: ../_static/imgs/logo-htd-hcm.png
+   :width: 60
+   :align: right
+   :alt: Hospital Tropical Diseases
+
+.. image:: ../_static/imgs/logo-oucru.jpg
+   :width: 65
+   :align: right
+   :alt: Oxford Clinical Research Unit
+
+.. Comment:
+   .. image:: ../_static/imgs/logo-vital.jpg
+      :width: 80
+      :align: right
+      :alt: VITAL
+
+| Data collection: ``OUCRU`` and ``HTD``
 | Data cleaning: ``Imperial College London``
 | Repository setup: ``Imperial College London``
-
-
-.. todo::
-    List of things:
-
-        - Improve introduction, mention vital consortium (url)
-        - [Auto-generate table with brief summary of datasets]
-        - [Include links to manuscripts and other resources] - done
 
 .. table:: Overview of clinical study aims
     :widths: 6 8 60 10
@@ -36,12 +65,11 @@ within the Hospital for Tropical Diseases (HTD) in Ho Chi Minh City, Vietnam.
     01nva   2020-2021 Clinical features of Dengue patients (wearables)  155
     ======= ========= ================================================= ========
 
-
 where:
 
-    - ``DSS`` is Dengue Shock Syndrome |
-    - ``NSD`` is Non Severe Dengue |
-    - ``CRI`` is ... |
+    - ``DSS`` is Dengue Shock Syndrome
+    - ``NSD`` is Non Severe Dengue
+    - ``CRI`` is ...
 
 
 The table below includes the manuscripts that have been published along the
@@ -111,23 +139,23 @@ manuscript for download as pdf.
      - 2017
      - |pdf-yacoub2017|
 
+Note that some of the manuscripts published might have used a subset of the whole
+dataset after following the inclusion and exclusion criteria. These criteria are
+usually described within the manuscripts and it is important have it in mind when
+comparing Patient's characteristics tables.
+
 ********
 Overview
 ********
 
-This is an overview of the overall dataset which is a compendium of all the data
-collected during the previously mentioned studies. [complete]
+The data has been combined using ``DataBlend`` library and it has been checked for
+both inconsistencies and outliers which have been either corrected or discarded. The
+final dataset has been formatted in both ``stacked`` structure (for databases) and
+``tidy`` structure (for ML/AI) formats. Note that in tidy format each row represents
+a unique patient/date combination. For more information about the corrections and
+formats see the ``DataBlend`` documentation (link).
 
-.. todo::
-
-    List of things:
-
-        - Write introduction
-        - Explain dsource
-        - Explain study_no
-        - Explain date
-        - Briefly mention DataBlend
-
+.. note:: Please report any further inconsistencies you might find!
 
 Description of features
 -----------------------
@@ -138,16 +166,18 @@ all datasets yet that information will be provided in subsequent sections.
 
 The following table includes:
 
-  - **name:** the name of the feature
-  - **dtype:** the data type of the feature
-  - **unit:** the unit of the feature (if applicable)
-  - **code:** the code of the feature (if applicable)
-  - **ctype:** the class type of the feature
-  - **description:**: brief description of the feature
-  - **categories**: The list of allowed categories
-  - **unique**: The unique values found in the data
-  - **corrections**: The corrections [pending...]
-  - **ranges**: Useful reference ranges [pending...]
+  - **name:**        The name of the feature
+  - **dtype:**       The data type of the feature (e.g. boolean)
+  - **unit:**        The unit of the feature (if applicable)
+  - **code:**        The code of the feature (if applicable)
+  - **ctype:**       The class type of the feature (e.g. vital sign)
+  - **description:** Brief description of the feature
+  - **categories:**  The list of allowed categories
+  - **nunique:**     The number of unique values found in the data
+  - **unique:**      The unique values found in the data
+  - **corrections**: The corrections applied to such feature
+  - **ranges**:      Useful reference ranges [pending...]
+  - **warning**:     Comment and/or question related to the feature (highlighted in yellow)
 
 
 .. |br| raw:: html
@@ -155,16 +185,16 @@ The following table includes:
     <br/>
 
 .. note::
-    Remember you can:
+    Remember that in the table below you can:
 
-         - ``reorder`` by any column.
-         - ``search`` using the searchbox to filter by any column. This box allows
+         - ``reorder`` the rows by any column.
+         - ``search`` using the searchbox to filter rows. This box allows
            you to search by the name of the feature (e.g. bleeding will show all
            features including bleeding) but in addition it will return any feature
-           that contains such word in its description. For instance, you can use
+           that contains the query word in its description. For instance, you can use
            it to find skin, lung, chest, blood/bleeding related features.
          - ``explore`` more information through the dropdown button (+).
-         - ``export`` the table to any of the available formats.
+         - ``export`` the table to any of the available formats (disabled for now).
 
 .. raw:: html
 
@@ -181,13 +211,12 @@ Presence of features in datasets
 As we have mentioned below, not all the features are available accross
 the studies. To provide more specific information, the table below displays
 the number of rows containing a value different from None for each feature
-an the corresponding study. At the end of the table a variable denoted
-``n_sets`` indicate the number of datasets in which the variable is present.
+an the corresponding dataset. In addition, the extra column ``n_sets`` has been
+included to indicate the total number of datasets in which the feature is
+present.
 
 .. note:: The table has been automatically generated from
-          the combined dataset in ``tidy`` structure. Thus,
-          each row contains the features recorded for a
-          single patient on a given day.
+          the combined dataset in ``tidy`` structure.
 
 .. raw:: html
 
@@ -198,18 +227,29 @@ an the corresponding study. At the end of the table a variable denoted
             width="100%"></iframe>
 
 
-Profiles table
---------------
+Detailed profile of datasets
+----------------------------
 
 For more information on each of the datasets, please visit the links below.
 
-.. warning:: Some of the links might not work because files are too long
-             to be uploaded to standard git. To solve this issue use
-             git-large-files.
+.. warning:: The following links do not work because files are too long to be
+             uploaded and hosted in the standard git repository. To solve this
+             issue the package git-large-files could be used.
+
+               - md-dataprep
+               - md-pandas-profile
+               - dr-pandas-profile
+               - 42dx-pandas-profile
+               - 01nva-pandas-profile
+
+             Note that profiles are at the moment outdated and where computed
+             with old versions of the dataset. New pofiles will be available
+             shortly.
 
 .. list-table:: Links to detailed information for each dataset
    :widths: 6 10 10
    :header-rows: 1
+   :align: center
 
    * - Name
      - ``dataprep``
@@ -303,7 +343,7 @@ For more information on each of the datasets, please visit the links below.
 
            <a href="../_static/datasets/profile-pandas/d001_data_tidy_corrected.html"
               target="_blank"> Link </a>
-   * - 0n1nva
+   * - 01nva
      -
         .. raw:: html
 
@@ -319,15 +359,19 @@ For more information on each of the datasets, please visit the links below.
 List of datasets
 ****************
 
+This section includes a summary of the details for each individual study/dataset.
+
 The df dataset
 --------------
 
 .. note:: No published manuscripts.
 
-The trial was a ``single-center``, ``randomized``, ``doubleblind`` comparison of an isotonic
+**Title**:
+
+The trial was a ``single-center``, ``randomized``, ``double-blind`` comparison of an isotonic
 crystalloid solution (Ringer’s lactate) and two isotonic colloid solutions (6% dextran 70
 [dextran] and 6% hydroxyethyl starch 200/0.5 [starch]) for emergency resuscitation of
-``children`` with ``dengue shock syndrome``. The children were stratified according to pulse
+``children`` with dengue shock syndrome ``DSS``. The children were stratified according to pulse
 pressure at admission, a marker of the severity of the vascular leak. No children in the group
 with severe shock received a crystalloid because of concerns about the potential development of
 critical fluid overload without access to advanced respiratory support. The study took place
@@ -349,6 +393,8 @@ The fl dataset
 
 .. note:: No published manuscripts.
 
+**Title**:
+
 .. raw:: html
 
     <iframe src="../_static/datasets/html-tables/features_description_fl.html"
@@ -367,7 +413,7 @@ The md dataset
 **Title**: Inpatient-based study examining prognostic factors during the febrile phase
 
 A ``prospective observational study`` of ``children`` hospitalized with ``suspected dengue`` at
-the HTD in Ho Chi Minh City, Viet Nam, was conducted between 2001 and 2009. The cohort included
+the HTD in Ho Chi Minh City, Vietnam, was conducted between 2001 and 2009. The cohort included
 any child aged between 5 and 15 years admitted to the paediatric dengue ward at HTD with
 clinically suspected dengue, whose parent/guardian gave written informed consent for them to
 be enrolled in the study following detailed explanation by a trained study doctor. Consecutive
@@ -375,10 +421,10 @@ suspected dengue cases identified during the morning ward round were approached 
 staff as potential participants; commencing on Monday morning the process continued until
 up to 10 suspected dengue cases had been enrolled for that week. Of note, the paediatric dengue
 ward is responsible for managing children with uncomplicated illness only, and HTD
-policy dictates that any child who develops DSS or about whom there is concern (typically
+policy dictates that any child who develops ``DSS`` or about whom there is concern (typically
 development of warning signs necessitating monitoring more frequently than 4–6 hourly) is
 transferred to the Paediatric Intensive Care Unit (PICU). During the study period all children
-admitted to PICU with DSS were recruited into a concurrent pediatric cohort
+admitted to PICU with ``DSS`` were recruited into a concurrent pediatric cohort
 
 .. Dengue diagnosis:
    Diagnosis of dengue is confirmed by detection of dengue virus (DENV) RNA in plasma by reverse
@@ -426,7 +472,7 @@ review 2–4 weeks from illness onset.
 
 Illness day 1 was defined as the day of reported fever onset. Defervescence day was defined as
 the first day with no history of fever since the previous day’s visit and with a measured
-temperature #37.5uC in the clinic. The following outcomes were summarised from the daily
+temperature 37.5 C in the clinic. The following outcomes were summarised from the daily
 assessments: the platelet nadir between days 3–8 of illness; the presence or absence of skin
 and/or mucosal bleeding; the percentage hemoconcentration, defined as the percentage increase in
 haematocrit comparing the maximum value recorded between days 3–8 of illness, to a baseline value
@@ -479,7 +525,10 @@ The d001 dataset
 The 06dx dataset
 ----------------
 
-.. note:: ...
+.. note::
+
+   - Patients enrolled in the intervention arm of the randomised control trial (n=150)
+     were not admitted to hospital and managed in the community (outpatients).
 
 **Title**: Randomised control trial comparing use of steroids versus placebo in acute dengue
 
@@ -512,11 +561,14 @@ Ministry of Health of Vietnam and the Oxford Tropical Research Ethics Committee.
 The 13dx dataset
 ----------------
 
-.. note:: ...
+.. note::
+
+   - The majority of patients in 13dx were outpatients since it was an outpatient-based study.
+
 
 **Title**: Outpatient-based study examining prognostic factors during the febrile phase
 
-Recruitment occurred in the public sector outpatient departments of Children’s Hospital No. 1
+Recruitment occurred in the public sector ``outpatient`` departments of Children’s Hospital No. 1
 (HCMC), Children’s Hospital No. 2 (HCMC), The Hospital for Tropical Diseases (HCMC),
 Tien Giang Provincial Hospital, Dong Nai Children’s Hospital, Binh Duong Provincial Hospital and Long
 An Provincial Hospital. These outpatient departments function as primary care
@@ -558,11 +610,13 @@ The 32dx dataset
 
 .. note:: ...
 
-We performed a STROBE-compliant prospective observational study at the National Hospital for Tropical Diseases
+**Title**:
+
+We performed a STROBE-compliant ``prospective`` ``observational`` ``study`` at the National Hospital for Tropical Diseases
 (NHTD), Hanoi, Vietnam, between June 2013 and February 2014. Ethical approval was obtained from the Oxford Tropical
 Research Ethics Committee and the Ethics Review Committee at NHTD, and written informed consent was obtained from
 all participants or the parents/guardians of children. Adults and children >5 years of age with a clinical diagnosis
-of possible dengue were eligible for enrollment into either of 2 study arms. In the outpatient arm, participants
+of ``possible dengue`` were eligible for enrollment into either of 2 study arms. In the outpatient arm, participants
 presenting within 72 hours of fever onset could be enrolled if no alternative cause for the fever was identified.
 For the inpatient arm, any patient admitted to NHTD with suspected dengue with warning signs or severe dengue was
 eligible. All patients were reviewed daily until fully recovered and afebrile, or for up to 6 days after enrollment.
@@ -588,7 +642,7 @@ The 42dx dataset
 
 .. note:: No published manuscripts.
 
-**Title**: Study of acute dengue in pregnancy during the febrile phase”
+**Title**: Study of acute dengue in pregnancy during the febrile phase
 
 .. Dengue Diagnosis:
    Diagnosis of dengue is confirmed by detection of DENV-RNA in plasma by RT-PCR, NS1 antigen
@@ -608,8 +662,6 @@ The 42dx dataset
             width="100%"></iframe>
 
 
-
-
 The 01nva dataset
 -----------------
 
@@ -618,6 +670,8 @@ The 01nva dataset
         - Currently recruiting patients.
         - ``FLUIDS`` related information has not been extracted yet.
         - ``TREATMENT`` related information has not been extracted yet.
+
+**Title**:
 
 .. raw:: html
 
@@ -631,7 +685,190 @@ The 01nva dataset
 
 
 
+******************
+Useful definitions
+******************
 
+In general we think of dengue as very much a disease which follows certain phases
+(whether this is right or wrong!) in which typically, patients experience:
+
+ - The ``febrile phase`` (days 1-5): are unwell with fever, but no life
+   threatening clinical manifestations happen.
+
+ - The ``critical phase`` (days 4-6+): are in danger of being critically
+   unwell e.g. they are in shock, bleed a lot, or need therapy (fluids,
+   ventilation etc)
+
+ - The ``recovery phase`` (after days 6+): happens after the critical phase.
+
+The two main questions that people have typically felt are important for clinical management
+are: (i) When I see someone presenting with a fever, is this dengue, or another disease (e.g.
+a bacterial infection)? Dengue does not require antibiotics but bacterial infections (including
+sepsis) do. (ii) The pattern of illness and how you manage the patient also matters (e.g. do you
+discharge them, or admit them to hospital). For someone with dengue, what is the risk of them
+developing severe dengue (shock, bleeding, plasma leak)? When in the illness time-course can
+I reliably predict this? What measurements do I need?
+
+Be aware that the data is imperfect however, with a lot of missingness – and the time
+element of the observations is crucial (febrile-critical-recovery model of disease). For
+example: examination findings are probably more subjective and open to interpretation
+compared with laboratory values, and the measurement of outcomes likewise can vary
+between studies.
+
+Finally the studies themselves are comparable to a certain extent, but do differ in how they
+recruit their patients e.g. 13dx recruits patients early in illness when presenting to their
+local health centre, md recruits after admission, and df recruits after they enter intensive
+care. The ``day of illness`` is therefore key to aligning all the studies for comparison.
+
+
+Dengue interpretation
+---------------------
+
+Dengue fever is a mosquito-borne tropical disease caused by the dengue virus. Symptoms typically
+begin three to fourteen days after infection. These may include a high fever, headache, vomiting,
+muscle and joint pains, and a characteristic skin rash. Recovery generally takes two to seven days.
+In a small proportion of cases, the disease develops into severe dengue, also known as dengue
+hemorrhagic fever, resulting in bleeding, low levels of blood platelets and blood plasma leakage,
+or into dengue shock syndrome, where dangerously low blood pressure occurs.
+
+The final dengue diagnosis can be determined according to various diagnostic criteria which might
+differ between the studies. Such criteria in general includes one of the following:
+
+  - positive ``NS1`` point of care lateral flow assay
+  - positive reverse transcriptase polymerase chain reaction (RT-``PCR``)
+  - positive dengue IgM through acute serology
+  - ``seroconversion`` of either single or paired IgM or IgG samples
+
+The overall final dengue diagnosis or ``dengue_interpretation`` has been implemented (link).
+
+.. code::
+
+  oucru_dengue_interpretation_feature(tidy,
+          pcr=True, ns1=True, igm=True, serology=True,
+          single_igm_igg=True, paired_igm_igg=True,
+          default=False, verbose=10):
+
+
+Serology interpretation
+-----------------------
+
+Serological tests are diagnostic methods that are used to identify antibodies and antigens in a patient's
+sample. Serological tests may be performed to diagnose infections and autoimmune illnesses, to check if a
+person has immunity to certain diseases, and in many other situations, such as determining an individual's
+blood type. Serological tests may also be used in forensic serology to investigate crime scene evidence.
+Several methods can be used to detect antibodies and antigens, including ``ELISA``, agglutination,
+precipitation, complement-fixation, and fluorescent antibodies and more recently chemiluminescence.
+
+The outcomes reported int the datasets have the following values:
+
+  - ``Not Dengue``: Patient did/does not suffer dengue.
+  - ``Primary``: Patient did not have dengue previously (first time).
+  - ``Secondary``: Patient had dengue previously.
+  - ``Inconclusive``: Results from the ELISA test are not clear.
+  - ``None``: Information not available (test not conducted).
+
+.. include:: <isonum.txt>
+
+.. table:: Overview of serology interpretations from igm and igg
+   :widths: 5 5 5 5 10 10 5
+
+   ======== ========= ======== ========= ============= ============= =====
+      First sample      Second sample            Serology
+   ------------------ ------------------ --------------------------- -----
+   igm      igg       igm      igg       single        paired        notes
+   ======== ========= ======== ========= ============= ============= =====
+   |hyphen| |hyphen|  |hyphen| |hyphen|  Inconclusive  Not Dengue
+   |hyphen| |hyphen|  |hyphen| |plus|    Inconclusive  Primary
+   |hyphen| |hyphen|  |plus|   |hyphen|  Inconclusive  Primary       ``1``
+   |hyphen| |hyphen|  |plus|   |plus|    Inconclusive  Primary
+
+   |hyphen| |plus|    |hyphen| |hyphen|  Inconclusive  Inconclusive  ``3``
+   |hyphen| |plus|    |hyphen| |plus|    Inconclusive  Secondary*
+   |hyphen| |plus|    |plus|   |hyphen|  Inconclusive  Inconclusive  ``3``
+   |hyphen| |plus|    |plus|   |plus|    Inconclusive  Secondary*
+
+   |plus|   |hyphen|  |hyphen| |hyphen|  Primary       Inconclusive
+   |plus|   |hyphen|  |hyphen| |plus|    Primary       Secondary*
+   |plus|   |hyphen|  |plus|   |hyphen|  Primary       Inconclusive  ``1``
+   |plus|   |hyphen|  |plus|   |plus|    Primary       Secondary*
+
+   |plus|   |plus|    |hyphen| |hyphen|  Secondary     Inconclusive  ``2``
+   |plus|   |plus|    |hyphen| |plus|    Secondary     Secondary*
+   |plus|   |plus|    |plus|   |hyphen|  Secondary     Inconclusive
+   |plus|   |plus|    |plus|   |plus|    Secondary     Secondary*
+   ======== ========= ======== ========= ============= ============= =====
+
+
+where
+
+  - |ast| indicates significant increase in igg
+  - ``1`` indicates inconclusive because igg should be |plus| by now
+  - ``2`` indicates it is odd and maybe hovering around the threshold
+  - ``3`` keep it as single outcome
+
+
+The overall serology diagnosis or ``serology_interpretation`` has been implemented (link).
+
+.. code::
+
+  oucru_serology_interpretation_feature(tidy,
+          serology_single=True, serology_paired=True,
+          serology_interpretation=True,
+          inconsistencies='coerce',
+          verbose=0):
+
+Single IgM-IgG
+~~~~~~~~~~~~~~
+
+.. todo:: Explain
+
+Paired IgM-IgG
+~~~~~~~~~~~~~~
+
+.. todo:: Explain
+
+
+NS1 interpretation
+------------------
+
+NS1 antigen test (nonstructural protein 1) is a test for dengue through enzyme-linked immunosorbent assay.
+NS1 is present in the serum of infected persons directly at the onset of clinical symptoms in primary dengue
+infection and produces a strong humoral response. It is detectable before the appearance of IgM antibodies
+(usually 5 or more days later). Additionally, NS1 assay is useful for differential diagnostics in regards to
+flaviviruses.
+
+PCR interpretation
+------------------
+
+Possible complications
+----------------------
+
+.. todo:: Explain
+
+   The main complications are ....
+
+     - shock?
+     - jaundice?
+     - ascites?
+     - bleeding?
+     - pleural_effussion?
+
+   These can also be grouped as ...
+
+      - fluid accumulation: pleural_effusion | ascites
+
+   Other notes ...
+
+      - Overload: it is a subset of effusion.
+      - Effusion
+      - Pleural Effusion (lung)
+      - Oedema (skin)
+      - Ascites (abdomen)
+
+
+
+
+.. Define substitutions (manuscripts)
 
 .. |pdf-lam2013| image:: ../_static/pdf-icon.png
    :target: ../_static/datasets/manuscripts/lam2013.pdf
@@ -698,106 +935,3 @@ The 01nva dataset
    :scale: 5%
    :alt: pdf
 
-
-******************
-Useful definitions
-******************
-
-What is a complication?
------------------------
-
-    The main complications are ....
-
-       - shock
-       - jaundice
-       - ascites
-       - any other?
-
-Dengue interpretation
----------------------
-
-    .. todo:: Write introduction and includes link to code and method documentation.
-
-
-    The dengue definition is as follows:
-
-        - positive NS1 point of care assay
-        - positive reverse transcriptase polymerase chain reaction (RT-PCR)
-        - positive dengue IgM through acute serology
-        - seroconversion of either single or paired IgM or IgG samples
-
-    And it is implemented in the following method (link to docs).
-
-    .. code::
-
-        oucru_dengue_interpretation_feature(tidy,
-                pcr=True, ns1=True, igm=True, serology=True,
-                single_igm_igg=True, paired_igm_igg=True,
-                default=False, verbose=10):
-
-
-Serology interpretation
------------------------
-
-     .. todo:: Write introduction and includes link to code and method documentation.
-     .. todo:: Primary, first time it has Dengue.
-               Secondary, patient had dengue before.
-
-     .. include:: <isonum.txt>
-
-     - First igm, igg columns represent 1st sample
-     - Second igm, igg columns represent 2nd sample
-
-     .. table:: Overview of serology interpretations from igm and igg
-         :widths: 5 5 5 5 10 10 5
-
-         ======== ========= ======== ========= ============= ============= =====
-            First sample      Second sample            Serology
-         ------------------ ------------------ --------------------------- -----
-         igm      igg       igm      igg       single        paired        notes
-         ======== ========= ======== ========= ============= ============= =====
-         |hyphen| |hyphen|  |hyphen| |hyphen|  Inconclusive  Not Dengue
-         |hyphen| |hyphen|  |hyphen| |plus|    Inconclusive  Primary
-         |hyphen| |hyphen|  |plus|   |hyphen|  Inconclusive  Primary       ``1``
-         |hyphen| |hyphen|  |plus|   |plus|    Inconclusive  Primary
-
-         |hyphen| |plus|    |hyphen| |hyphen|  Inconclusive  Inconclusive  ``3``
-         |hyphen| |plus|    |hyphen| |plus|    Inconclusive  Secondary*
-         |hyphen| |plus|    |plus|   |hyphen|  Inconclusive  Inconclusive  ``3``
-         |hyphen| |plus|    |plus|   |plus|    Inconclusive  Secondary*
-
-         |plus|   |hyphen|  |hyphen| |hyphen|  Primary       Inconclusive
-         |plus|   |hyphen|  |hyphen| |plus|    Primary       Secondary*
-         |plus|   |hyphen|  |plus|   |hyphen|  Primary       Inconclusive  ``1``
-         |plus|   |hyphen|  |plus|   |plus|    Primary       Secondary*
-
-         |plus|   |plus|    |hyphen| |hyphen|  Secondary     Inconclusive  ``2``
-         |plus|   |plus|    |hyphen| |plus|    Secondary     Secondary*
-         |plus|   |plus|    |plus|   |hyphen|  Secondary     Inconclusive
-         |plus|   |plus|    |plus|   |plus|    Secondary     Secondary*
-         ======== ========= ======== ========= ============= ============= =====
-
-
-    where
-
-        - * indicates significant increase in igg |
-        - ``1`` indicates inconclusive because igg should be |plus| by now |
-        - ``2`` indicates it is odd and maybe hovering around the threshold |
-        - ``3`` keep it as single outcome. |
-
-
-    And it is implemented in the following method (link to docs).
-
-    .. code::
-
-        oucru_serology_interpretation_feature(tidy,
-                serology_single=True, serology_paired=True,
-                serology_interpretation=True,
-                inconsistencies='coerce',
-                verbose=0):
-
-single igm_igg
-~~~~~~~~~~~~~~
-
-paired igm_igg
-~~~~~~~~~~~~~~

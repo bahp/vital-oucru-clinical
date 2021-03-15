@@ -66,15 +66,16 @@ from sphinx_gallery.sorting import FileNameSortKey
 
 # Configuration for sphinx_gallery
 sphinx_gallery_conf = {
+    'ignore_pattern': r'tests/*.py',
     # path to your example scripts
     'examples_dirs': [
-        '../../examples/docs',
+        #'../../examples/docs',
         '../../examples/prevalence',
         '../../examples/general/tables',
         '../../examples/general/graphs'],
     # path to where to save gallery generated output
     'gallery_dirs': [
-        '../source/_examples/docs',
+        #'../source/_examples/docs',
         '../source/_examples/prevalence',
         '../source/_examples/general/tables',
         '../source/_examples/general/graphs'],
