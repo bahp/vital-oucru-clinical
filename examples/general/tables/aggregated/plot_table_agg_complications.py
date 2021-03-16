@@ -206,4 +206,4 @@ f = open(PATH.format(filename()), "w+", encoding='utf8')
 f.write(HTML)
 f.close()
 
-a = 0
+a = 10

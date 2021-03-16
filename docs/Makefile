@@ -19,10 +19,6 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-clean:
-    rm -rf $(BUILDDIR)/*
-    rm -rf auto_examples/
-
 # This is to create the documentation using html and moving it to
 # the documentation branch (gh-pages). Note that this could also be
 # implemented by changing the BUILDDIR variable.
