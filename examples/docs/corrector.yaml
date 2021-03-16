@@ -89,6 +89,11 @@ features:
   # --------------------
   - name: aids
     ctype: comorbidities
+    description: The human immunodeficiency viruses (HIV) are two species of Lentivirus
+                 (a subgroup of retrovirus) that infect humans. Over time, they cause
+                 acquired immunodeficiency syndrome (AIDS),[1][2] a condition in which
+                 progressive failure of the immune system allows life-threatening opportunistic
+                 infections and cancers to thrive.
 
   - name: anorexia
     ctype: comorbidities
@@ -228,16 +233,18 @@ features:
   # ----------------------
   - name: bleeding_severe
     ctype: examination
-    warning: There are values 1, 2, False, True. Bleeding severity has changed considerably
-             along the studies. It would be wiser to define the severity based on the
-             bleeding subcategories.
+    warning: There are values 1, 2, False, True. In addition, the definition of bleeding severity
+             has changed considerably along the studies. It would be wiser to define the severity
+             based on the bleeding subcategories. Could also be merge with bleeding_severity?
 
   - name: bleeding
     ctype: examination
-    warning: How come 01nva does not have overall bleeding? Note that it does have
-             bleeding in various locations (and bleeding other).
     transformations:
       - dtype_correction: {dtype: boolean}
+    warning: Double check all datasets have bleeding.
+    description: Compound feature from bleeding subcategories, thus, it is True if any of
+                 the bleeding subcategories is True. The bleeding subcategories are skin,
+                 mucosal, nose, gum, urine, vaginal, vensite and gi.
 
   - name: bleeding_gi
     ctype: examination
@@ -295,13 +302,14 @@ features:
 
   - name: bleeding_other
     ctype: examination
-    warning: careful, it is a mix of boolean and string
+    warning: It is a mix of boolean and string. It could be renamed as bleeding_description
+             but has information that it is already incorporated in other variables such as
+             haeatoma? It is in vietnamese.
     #transformations:
     #  - dtype_correction: {dtype: boolean}
 
   - name: bleeding_other_description
-    warning: Define as bleeding_description.
-      It is in vietnamese.
+    warning: Rename as bleeding_description. It is in vietnamese.
 
   - name: epistaxis
     ctype: examination
@@ -532,7 +540,11 @@ features:
 
   - name: oedema
     ctype: examination
-    warning: Set as combination of any oedema (similar to bleeding).
+    warning: Compound feature from oedema subcategories, thus, it is True if any of
+             the oedema subcategories is True. The oedema subcategories are face,
+             feet, hands and pulmonary. In many datasets oedema is specified; not sure
+             whether it represents oedema in general (without subcategory) or it is more
+             likely to refer to a pulmonary oedema.
 
   - name: oedema_pulmonary
     ctype: examination
@@ -594,6 +606,7 @@ features:
     ctype: examination
     transformations:
       - dtype_correction: {dtype: boolean}
+    warning: Are restlessness and lethargy the same?
 
   - name: agitated
     ctype: examination
@@ -922,9 +935,10 @@ features:
       ref2: [1.71, 20.5, umol/L]
 
   - name: ddimer
-    description: A D-Dimer value of 0.5 or greater is considered positive. Why
-                 does the dataset has values from 0 to 5?
     ctype: laboratory
+    description: It is a numeric but has ',' and ',1.0'. In addition a D-Dimer value of 0.5
+                 or greater is considered positive. Why does the dataset has values from 0 to
+                 5?
 
   - name: fibrinogen
     warning: 1. Had a ',' value | Solved.
@@ -963,7 +977,10 @@ features:
       - Mixed
     transformations:
       - replace_correction:
-          to_replace: {}
+          to_replace: {
+            'Not done': null,
+            'Unknown': null
+          }
       - static_correction: {method: mode, groupby: patient}
 
   - name: pcr_dengue_interpretation                          # REVIEW
@@ -1142,6 +1159,7 @@ features:
       - Unknown
     transformations:
       - static_correction: {method: mode, groupby: patient}
+    warning: Review, might be inportant later.
 
   - name: icd_code
     ctype: outcome
@@ -1272,7 +1290,8 @@ features:
     warning: What does this feature represent?
 
   - name: rest_paint
-    warning: What does this feature represent?
+    warning: What does this feature represent? Can this be pain? If so what pain?
+             Can it be merged with painful?
 
   - name: restro_pain
     warning: What does this feature represent?
@@ -1335,16 +1354,16 @@ features:
     warning: What to do with this variable? It should be boolean (all 1).
 
   - name: bleeding_mucosal_description
-    warning: Define as bleeding_description.
+    warning: Rename as bleeding_description.
 
   - name: bleeding_mucosal_specification
-    warning: Define as bleeding_description.
+    warning: Rename as bleeding_description.
 
   - name: bleeding_site
-    warning: Define as bleeding_description.
+    warning: Rename as bleeding_description.
 
   - name: bleeding_weird
-    warning: Define as bleeding_description.
+    warning: Rename as bleeding_description.
 
   - name: blood_pressure_down
     warning: Is this dyastolic blood pressure?
@@ -1365,9 +1384,6 @@ features:
 
   - name: ddi_test
     warning: Is numeric but has '<0.5' and '>=0.8'
-
-  - name: ddimer
-    warning: Is numeric but has ',' and ',1.0'
 
   - name: admission_from_hospital_date
     warning: Remove from DataBlend!
@@ -1416,14 +1432,17 @@ features:
     warning: Merge with below (if content matches)
 
   - name: immune_status
-    warning: Merge
+    warning: Is this related with serology_interpretation? Primary/secondary/Inconclusive?
 
   - name: indirect_elisa
-    warning: Is this the igm_igg_single? igm_igg_paired?
+    warning: Is this ns1? Is this the igm_igg_single? igm_igg_paired?
+             What does the float value represent?
+    transformations:
+      - dtype_correction: {dtype: Float64, errors: coerce}
 
-  - name: indirect_elisa
-    warning: Is this the igm_igg_single? igm_igg_paired?
-             Are these the Positive, Negative, Equivocal codes?
+  - name: indirect_elisa_result
+    warning: Is this ns1? Is this the igm_igg_single? igm_igg_paired?
+             What does theint value represent? Are these the Positive, Negative or Equivocal codes?
 
   - name: lung
     warning: Related with lung_details.
@@ -1484,3 +1503,29 @@ features:
 
   - name: ward
     warning: Merge with ward_admitted below?
+
+  - name: city
+    ctype: Patient
+    transformations:
+      - string_correction: {}
+
+  - name: other
+    warning: Unclear what this is. It has also V_1 need to review.
+
+  - name: outpatient
+    warning: It has only False
+
+  - name: passing_urine
+    warning: Can it be associated/merged with any other feature?
+
+  - name: pharyngeal
+    warning: Does it refer also to pharyngeal injection?
+
+  - name: platelet_no
+    warning: what is this representing? Is not a platelet value.
+
+  - name: previous_dengue
+    waarning: Can this be renamed to immune_status?
+
+  - name: severity_status
+    warning: There was some severity variable already defined.

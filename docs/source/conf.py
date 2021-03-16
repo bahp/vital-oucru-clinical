@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('../../fyp2020-username/'))
 # -- Project information -----------------------------------------------------
 
 project = 'vital-oucru-clinical'
-copyright = '2021, <Full name>'
+copyright = '2021, Imperial College London'
 author = 'Bernard Hernandez'
 
 # The full version, including alpha/beta/rc tags
@@ -66,16 +66,19 @@ from sphinx_gallery.sorting import FileNameSortKey
 
 # Configuration for sphinx_gallery
 sphinx_gallery_conf = {
+    'ignore_pattern': r'tests/*.py',
     # path to your example scripts
     'examples_dirs': [
         '../../examples/docs',
         '../../examples/prevalence',
-        '../../examples/general/tables'],
+        '../../examples/general/tables',
+        '../../examples/general/graphs'],
     # path to where to save gallery generated output
     'gallery_dirs': [
         '../source/_examples/docs',
         '../source/_examples/prevalence',
-        '../source/_examples/general/tables'],
+        '../source/_examples/general/tables',
+        '../source/_examples/general/graphs'],
     # Other
     'line_numbers': True,
     'download_all_examples': False,

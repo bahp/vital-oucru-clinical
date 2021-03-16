@@ -20,8 +20,10 @@ Welcome to vital-oucru-clinical documentation!
    :caption: Galleries
    :hidden:
 
-   _examples/prevalence/index
    _examples/general/tables/index
+   _examples/general/graphs/index
+   _examples/prevalence/index
+
 
 Indices and tables
 ==================

@@ -14,121 +14,190 @@ The code of the project is on Github: https://github.com/bahp/datablend
 Naming conventions
 ------------------
 
-These are the naming conventions followed:
+In general, use variable names to describe the data collected using
+the most meaningful word first. Try to include further description of
+the variable if possible and avoid using acronyms (unless they are very
+well known). Words should be separated by ``_``.
 
- - **GENERAL**: Use variable names to describe the data collected using
-   the most meaningful word first. Try to include further description of
-   the variable if possible and avoid using acronyms (unless they are very
-   well known). Words should be separated by ``_``.
+.. note::
+  It is very easy to sort variable names alphabetically and using
+  good naming conventions will make them appear together. This will
+  facilitate further inspection to validate the results.
 
-   .. note::
-      It is very easy to sort variable names alphabetically and using
-      good naming conventions will make them appear together. This will
-      facilitate further inspection to validate the results.
+Example with ascites:
 
-   Example with ascites:
+.. code::
 
-   .. code::
+    ascites                  # boolean (presence of ascites)
+    ascites_level            # number or str ([1,2,3], [Low, Medium ,High])
+    ascites_description      # free-text
+    ascites_interpretation   # interpretation by clinicians
+    ascites_duration         # number (seconds, minutes)
 
-        ascites                  # boolean (presence of ascites)
-        ascites_level            # number or str ([1,2,3], [Low, Medium ,High])
-        ascites_description      # free-text
-        ascites_interpretation   # interpretation by clinicians
-        ascites_duration         # number (seconds, minutes)
+Example with bleeding:
 
-   Example with bleeding:
+.. code::
 
-   .. code::
+    bleeding          # compound feature (any bleeding)
+    bleeding_skin     # bleeding in skin
+    bleeding_gum      # bleeding in gum
+    bleeding_mucosal  # bleeding in ...
+    bleeding_gi       # bleeding in gastro-intestinal
+    bleeding_vaginal  # bleeding in vagina
+    bleeding_other    # bleeding in other site
 
-        bleeding          # compound feature (any bleeding)
-        bleeding_skin     # bleeding in skin
-        bleeding_gum      # bleeding in gum
-        bleeding_mucosal  # bleeding in ...
-        bleeding_gi       # bleeding in gastro-intestinal
-        bleeding_vaginal  # bleeding in vagina
-        bleeding_other    # bleeding in other site
+Example with shock:
 
-   Example with shock:
+.. code::
 
-   .. code::
+    shock              # whether shock happened during the stay
+    shock_multiple     # whether multiple shocks happend during the stay
+    shock_clinical     # whether ...
+    shock_resucitation # whether ...
 
-        shock              # whether shock happened during the stay
-        shock_multiple     # whether multiple shocks happend during the stay
-        shock_clinical     # whether ...
-        shock_resucitation # whether ...
+Suffixes
+~~~~~~~~
 
+level
+*****
 
- - **LEVELS**: In the scenario in which we want to indicate the level of a variable,
-   use the desired variable name and append the word level. Note that level should
-   be an Integer. Also note that the variable level already contains the boolean
-   variable since 0 can be mapped to False and any other number to True
+In the scenario in which we want to indicate the level of a variable,
+use the desired variable name and append the word level. Note that level should
+be an Integer. Also note that the variable level already contains the boolean
+variable since 0 can be mapped to False and any other number to True
 
-   .. code::
+.. code::
 
-        headache         # boolean (presence of headache)
-        headache_level   # Int64 (intensity of the headache)
+    headache         # boolean (presence of headache)
+    headache_level   # Int64 (intensity of the headache)
 
- - **PERCENTAGES**: Those laboratory results with unit expressed in percentages
-   (%) have such information appended in the variable name. This is to differentiate
-   when the biochemical marker is measured in percent or in another concentration
-   unit (e.g. mmol/L). Note that there are many different concentration units
-   that could be used.
+abnormal
+********
+Ensure to include the suffix abnormal. For example, instead of
+recording heart_sound which seems to indicate whether the heart was beating
+or not, be more specific using abnormal. Thus heard_sound_abnormal clearly
+specifies that there is some condition to investigate.
 
-   .. code::
+.. code::
 
-        monocytes            # concentration (U/mL)
-        monocytes_percent    # percentage (%)
+    heart_sound_abnormal              # There is an abnormal heard sound
+    heart_sound_abnormal_description  # Description of the abnormality
 
- - **ABNORMAL**: Ensure to include the suffix abnormal. For example, instead of
-   recording heart_sound which seems to indicate whether the heart was beating
-   or not, be more specific using abnormal. Thus heard_sound_abnormal clearly
-   specifies that there is some condition to investigate.
+description
+***********
 
-   .. code::
+.. code::
 
-        heart_sound_abnormal              # There is an abnormal heard sound
-        heart_sound_abnormal_description  # Description of the abnormality
-
-
- - **EVENTS**: The event variables have the 'event' prefix in the name.
-
-   .. note:: Ensure that laboratory dates (e.g. pcr, serology, cytokines, blood, ...)
-      are referring to the sample collection date or the date the laboratory result
-      was presented to the clinicians. In some scenarios this information is missing
-      in the datasets and other standard dates (e.g. date of enrolment or date of
-      admission) have been used. Thus collecting events in this scenarios might
-      lead to confusion.
-
-   .. code::
-
-        event_onset       # onset of disease
-        event_admission   # admitted to hospital
-        event_enrolment   # enrolled in the study
-        event_laboratory  # sample collected for laboratory test
-        event_pcr         # sample collected for pcr test
-        event_serology    # sample collected for serology
-        event_transfer    # transferred to other unit
-        event_discharge   # discharged from hospital (alive/death?)
-        event_death       # death
+    heart_sound_abnormal              # There is an abnormal heard sound
+    heart_sound_abnormal_description  # Description of the abnormality
 
 
- .. todo:: Include further considerations such as:
+interpretation
+**************
 
-        - static_correction
-        - level_correction
+.. code::
+
+    igm_interpretation # string (Positive, Negative, Equivocal)
+    igg_interpretation # string (Positive, Negative, Equivocal)
+    ns1_interpretation # string (Positive, Negative, Equivocal)
+    serology_single_interpretation # string (Primary, Secondary, Not Dengue)
+    serology_paired_interpretation # string (Primary, Secondary, Not Dengue)
+    dengue_interpretation # boolean
 
 
-   Link to ``DataBlend`` for more information.
+left/right
+**********
+
+.. code::
+
+    pleural_effusion       # Any pleural effusion.
+    pleural_effusion_left  # boolean
+    pleural_effusion_right # boolean
+    pleural_effusion_side  # Still pending (e.g. 'Left', 'Right')
+
+percent
+********
+
+Those laboratory results with unit expressed in percentages (%) have such information
+appended in the variable name. This is to differentiate when the biochemical marker
+is measured in percent or in another concentration unit (e.g. mmol/L). Note that there
+are many different concentration units that could be used.
+
+.. code::
+
+    monocytes            # concentration (U/mL)
+    monocytes_percent    # percentage (%)
+
+duration
+********
+
+.. note:: Pending...
+
+Prefixes
+~~~~~~~~
+
+event
+*****
+
+The event variables have the 'event' prefix in the name.
+
+.. note:: Ensure that laboratory dates (e.g. pcr, serology, cytokines, blood, ...)
+  are referring to the sample collection date or the date the laboratory result
+  was presented to the clinicians. In some scenarios this information is missing
+  in the datasets and other standard dates (e.g. date of enrolment or date of
+  admission) have been used. Thus collecting events in this scenarios might
+  lead to confusion.
+
+.. code::
+
+    event_onset       # onset of disease
+    event_admission   # admitted to hospital
+    event_enrolment   # enrolled in the study
+    event_laboratory  # sample collected for laboratory test
+    event_pcr         # sample collected for pcr test
+    event_serology    # sample collected for serology
+    event_transfer    # transferred to other unit
+    event_discharge   # discharged from hospital (alive/death?)
+    event_death       # death
+
+xray
+****
+
+.. note:: Pending...
+
+ultrasound (uss)
+****************
+
+.. note:: Pending... there are both uss and ultrasound at the moment?
+
+day_from
+********
+
+
+   .. todo:: Include further considerations (or just the links) related to:
+
+        - The generic corrections implemented (static_correct, level_correction,
+          compound_feature_correction, replace_correction, order_of_magnitude_correction,
+          range_correction, ...)
+        - The specific oucru corrections implemented.
 
 
 Filling empty values (NaN)
 --------------------------
 
+.. note:: Pending...
+
 Ensuring consistency
 --------------------
 
+.. note:: Pending...
+
 Notes
 -----
+
+This section includes questions for each specific dataset. The questions are divided
+for each dataset and subdivided by the excel worksheet in which the variables
+appear.
 
 The df dataset
 ~~~~~~~~~~~~~~
