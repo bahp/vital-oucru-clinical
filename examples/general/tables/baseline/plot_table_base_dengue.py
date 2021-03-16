@@ -4,6 +4,12 @@ dengue_interpretation
 
 .. todo:: Full explanation
 
+.. todo:: Would it be worth it to include
+          all this information into a datatable
+          so that we can reorder, search, ...?
+
+.. todo:: Review body mass index (BMI)
+
 """
 
 ######################################################################################
@@ -23,6 +29,7 @@ import pandas as pd
 from tableone import TableOne
 
 # Import DataBlend
+from datablend.core.repair.correctors import day_from_day_values
 from datablend.core.repair.correctors import oucru_correction
 from datablend.core.repair.correctors import oucru_dengue_interpretation_feature
 from datablend.core.repair.correctors import oucru_ns1_interpretation_feature
@@ -132,7 +139,7 @@ data = pd.read_csv(path,
 #data = oucru_correction(data)
 
 # Add bmi
-data['bmi'] = data.weight / data.height.pow(2)
+data['bmi'] = data.weight / (data.height * 0.01)**2
 
 # Add dengue interpretation
 data['dengue_interpretation'] = \

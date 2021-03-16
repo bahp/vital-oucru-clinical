@@ -608,7 +608,9 @@ the study before the attending physician received the results of any routine lab
 The 32dx dataset
 ----------------
 
-.. note:: ...
+.. note:: There are 2 studies included; In Hanoi, 22dx (76 IDAMs patients) were recruited possibly
+          corresponding to outpatients. In Ho Chi Minh 103 patients were recruited where codes from
+          32dx-03-[1000-1084] are PICU and 32dx-03-[1500-1519] are AICU. Do numbers match?
 
 **Title**:
 

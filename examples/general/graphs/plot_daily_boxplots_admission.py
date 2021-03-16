@@ -1,6 +1,6 @@
 """
-Daily biomarker per dengue_interpretation (onset)
-=================================================
+Daily biomarker per dengue_interpretation (admission)
+======================================================
 
 .. todo:: Full explanation
 
@@ -19,6 +19,13 @@ from datablend.core.repair.correctors import day_from_day_values
 # -----------------------------------
 # Configuration
 # -----------------------------------
+# Configure
+#sns.set_theme(style="ticks", palette="pastel")
+
+# Seaborn
+#sns.set_theme(style="whitegrid")
+
+
 # Update
 rcParams.update(
     {'font.size': 9,
@@ -60,14 +67,14 @@ FEATURES = [
     'ast',                   # keep
     'wbc',                   # keep
     # 'creatine_kinase',     # only beginning
-    # 'lymphocytes',         # only beginning
-    # 'monocytes',           # only beginning
-    # 'neutrophils',         # only beginning
-    # 'creatinine',          # so so
-    # 'crp',                 # not much data
-    # 'procalcitonin',       # not much data
-    # 'sbp',                 # too binary
-    # 'dbp',                 # too binary
+    # 'lymphocytes',   # only beginning
+    # 'monocytes',     # only beginning
+    # 'neutrophils',   # only beginning
+    # 'creatinine',    # so so
+    # 'crp',           # not much data
+    # 'procalcitonin', # not much data
+    # 'sbp',           # too binary
+    # 'dbp',           # too binary
     # 'pulse',
     # 'pulse_pressure',
     # 'respiratory_rate',
@@ -82,8 +89,8 @@ HUE = 'dengue_interpretation'
 #   - day_from_onset
 #   - day_from_admission
 #   - day_from_enrolment
-#   - day_from_illness (manually by clinicians)
-DAY_COLUMN = 'day_from_onset'
+#   - day_from_illness (manually inputed by clinicians)
+DAY_COLUMN = 'day_from_admission'
 
 # ------------------------------
 # Load data
