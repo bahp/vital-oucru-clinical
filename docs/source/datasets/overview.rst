@@ -509,6 +509,15 @@ The 32dx dataset
 
 .. warning:: Important things to consider...
 
+.. warning::
+
+    In Hanoi I co-enrolled 22dx (IDAMs patients – so you’ll see in the publications in Cid/JID
+    includes OPD). I think you just have the inpatient so 32dx-20-700 to 775 (32dx-20-001 to
+    090 were co-enrolled IDAMs so don’t think you have these) HCMC data 32dx-03-1000-1084 is
+    pediatric ICU and 32dx-03-1500-1519 are AICU. So total should be 74 for Hanoi (adult
+    inpatients) (I think 3 or 4 patients withdrew consent so total may be 70) and 103 for
+    HCMC (adult and Paed ICU).
+
 We performed a STROBE-compliant prospective observational study at the National Hospital for Tropical Diseases
 (NHTD), Hanoi, Vietnam, between June 2013 and February 2014. Ethical approval was obtained from the Oxford Tropical
 Research Ethics Committee and the Ethics Review Committee at NHTD, and written informed consent was obtained from
