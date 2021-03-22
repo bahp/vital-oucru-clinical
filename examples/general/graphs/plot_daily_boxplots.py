@@ -242,6 +242,7 @@ plt.tight_layout()
 # Lets plot the ``normalized`` count of samples for each individual dataset
 # and the corresponding day
 #
+# sphinx_gallery_thumbnail_number = 7
 
 # -----------------------
 # Plot heatmaps

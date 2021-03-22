@@ -234,3 +234,15 @@ ToDo
     to their local health centre, MD recruits after admission, and DF recruits after they enter
     intensive care. The day of illness is therefore key to aligning all the studies for
     comparison.
+
+Useful .rst syntax
+------------------
+
+Using literalinclude is fragile and can break easily when examples are changed (all the more when
+line numbers are used instead of start-after and end-before). Use with caution: linking directly
+to examples is a more robust alternative.
+
+.. literalinclude:: ../examples/plot_0_sin.py
+   :language: python
+   :start-after: # License: BSD 3 clause
+   :end-before: # To avoid matplotlib
