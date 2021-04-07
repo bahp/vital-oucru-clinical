@@ -5,3 +5,5 @@ sphinx-gallery
 matplotlib
 pandas
 seaborn
+imblearn
+sklearn

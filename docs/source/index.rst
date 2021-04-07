@@ -23,6 +23,7 @@ Welcome to vital-oucru-clinical documentation!
    _examples/general/tables/index
    _examples/general/graphs/index
    _examples/prevalence/index
+   _examples/inference/index
 
 
 Indices and tables
