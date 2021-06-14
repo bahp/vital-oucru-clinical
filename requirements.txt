@@ -1,9 +1,12 @@
 pytest==6.2.1
 Sphinx
-sphinx-rtd-themedir
+sphinx-rtd-theme
 sphinx-gallery
 matplotlib
 pandas
 seaborn
 imblearn
 sklearn
+pint
+pandas_schema
+tableone
