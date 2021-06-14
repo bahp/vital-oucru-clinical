@@ -73,14 +73,16 @@ sphinx_gallery_conf = {
         '../../examples/prevalence',
         '../../examples/general/tables',
         '../../examples/general/graphs',
-        '../../examples/inference'],
+        #'../../examples/inference'
+    ],
     # path to where to save gallery generated output
     'gallery_dirs': [
         '../source/_examples/docs',
         '../source/_examples/prevalence',
         '../source/_examples/general/tables',
         '../source/_examples/general/graphs',
-        '../source/_examples/inference'],
+        #'../source/_examples/inference'
+    ],
     # Other
     'line_numbers': True,
     'download_all_examples': False,

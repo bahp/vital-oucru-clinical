@@ -733,6 +733,24 @@ local health centre, md recruits after admission, and df recruits after they ent
 care. The ``day of illness`` is therefore key to aligning all the studies for comparison.
 
 
+
+.. table:: Overview of main outcomes
+   :widths: 20 20
+
+   ================= ===================
+   Outcome
+   ================= ===================
+   Shock
+   Leakage           ascites
+                     | pulmonary oedema
+                     | ventilation
+                     | overload
+                     | respirator distress
+   Bleeding
+   Organ impairment
+   ================= ===================
+
+
 Dengue interpretation
 ---------------------
 
@@ -746,10 +764,10 @@ or into dengue shock syndrome, where dangerously low blood pressure occurs.
 The final dengue diagnosis can be determined according to various diagnostic criteria which might
 differ between the studies. Such criteria in general includes one of the following:
 
-  - positive ``NS1`` point of care lateral flow assay
-  - positive reverse transcriptase polymerase chain reaction (RT-``PCR``)
-  - positive dengue IgM through acute serology
-  - ``seroconversion`` of either single or paired IgM or IgG samples
+   *  positive ``NS1`` point of care lateral flow assay
+   *  positive reverse transcriptase polymerase chain reaction (RT-``PCR``)
+   *  positive dengue IgM through acute serology
+   *  ``seroconversion`` of either single or paired IgM or IgG samples
 
 The overall final dengue diagnosis or ``dengue_interpretation`` has been implemented (link).
 
@@ -851,6 +869,44 @@ flaviviruses.
 
 PCR interpretation
 ------------------
+
+Outcomes
+--------
+
+The main outcomes are
+
+Shock
+
+Leakage
+
+Equivalences
+------------
+
+.. table:: Overview of equivalent notations
+   :widths: 5 5 5 5 10 10 5
+
+   ======== ========= ========
+   First    sample    Second
+   ======== ========= ========
+   ======== ========= ========
+
+Compound features
+-----------------
+
+.. table:: Overview of compound features
+   :widths: 5 5 5 5 10 10 5
+
+   ================== ======================================================================
+   Feature                     Individual elements composing the feature
+   ================== ======================================================================
+   ``bleeding``        Any bleeding
+   ``bleeding_gi``     ``bleeding_gi``, ``hematemesis``, ``melaena``
+   ``bleeding_nose``   ``bleeding_nose``, ``epistaxis``, ``packing_nose``
+   ``bleeding_skin``   ``bleeding_skin``, ``petechiae``, ``ecchymosis``, ``bruising``
+   ``cns_abnormal``    ``cns_abnormal``, ``meningism``, ``confusion``, ``agitation``, ``restlessness``, ``GCS``
+   ================== ======================================================================
+
+
 
 Possible complications
 ----------------------

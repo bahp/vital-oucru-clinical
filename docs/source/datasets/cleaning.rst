@@ -286,6 +286,7 @@ The dr dataset
 
     - Worksheet ``DR1_2232_ENROL`` (PCR):
 
+        - Progress bleeding has first boolean values and later numbers!
         - It needs ``reviewing``!
 
     - Worksheet ``NEGATIVE_LIST_STUDY`` (PCR):
@@ -564,6 +565,7 @@ The 01nva dataset
         might not be the exact time in which the events happened. In other worksheets the
         ``enteredtime`` columns show some delay and there are additional date columns such
         as date_sample. Anyways at the moment assume such column as the right time.
+
 
     - Worksheet ``CLI`` (Clinical)
 
