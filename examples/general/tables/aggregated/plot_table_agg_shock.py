@@ -100,7 +100,7 @@ def shock_type_faeture(tidy, default='No Shock'):
 # Constants
 # ---------------------------------
 # The data filepath
-path = '../../../../resources/data/20210313-v0.8/'
+path = '../../../../resources/data/20210313-v0.0.8/'
 path+= 'combined/combined_tidy.csv'
 
 # TableOne
