@@ -1061,6 +1061,20 @@ Below is an example on how they could be merge together.
             'melaena']].any()
 
 
+Patient care
+-----------------
+
+.. warning:: Not implemented yet!
+
+In order to define whether the patient was cared at the hospital,
+primary care or home, we have defined a new variable denoted as
+``patient_care``. This variable has the following possible values:
+``Inpatient``, ``Outpatient``, ``Transferred``, ``NA``.
+
+Look into other features that might contain this information, in
+particular: ``admission_from``, ``care_type``, ``hospital``,
+``transfer_hospital``,
+
 
 
 .. Define substitutions (manuscripts)
