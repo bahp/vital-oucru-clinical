@@ -74,7 +74,7 @@ def create_dataframe(data, features):
 # Constants
 # ---------------------------------
 # Path with data
-path_data = '../../resources/data/20210313-v0.8/'
+path_data = '../../resources/data/20210313-v0.0.8/'
 path_data+= 'combined/combined_tidy.csv'
 
 # Path with yaml configuration

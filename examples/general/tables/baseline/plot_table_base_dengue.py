@@ -22,6 +22,7 @@ dengue_interpretation
 # Libraries
 import os
 import sys
+import warnings
 import numpy as np
 import pandas as pd
 
@@ -82,7 +83,7 @@ def build_html_tableone(table, tag):
 # Constants
 # ---------------------------------
 # The data filepath
-path = '../../../../resources/data/20210313-v0.8/'
+path = '../../../../resources/data/20210313-v0.0.8/'
 path+= 'combined/combined_tidy.csv'
 
 # TableOne
@@ -204,16 +205,19 @@ for i, df in data.groupby('dsource'):
 
 
     try:
-        # Create table
-        mytable = TableOne(df, columns=df_cols,
-            categorical=df_cate, groupby=df_gpby,
-            nonnormal=df_nonn, pval=True, rename=rename,
-            order=order, sort=False, missing=False, htest_name=False,
-            min_max=None, label_suffix=True, limit=5,
-            dip_test=True, normal_test=True, tukey_test=True)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
 
-        # Append mytable in HTML
-        HTML+= build_html_tableone(mytable, i)
+            # Create table
+            mytable = TableOne(df, columns=df_cols,
+                categorical=df_cate, groupby=df_gpby,
+                nonnormal=df_nonn, pval=True, rename=rename,
+                order=order, sort=False, missing=False, htest_name=False,
+                min_max=None, label_suffix=True, limit=5,
+                dip_test=True, normal_test=True, tukey_test=True)
+
+            # Append mytable in HTML
+            HTML+= build_html_tableone(mytable, i)
     except Exception as e:
         HTML+= "<br><br>&#9726;Dataset <b>{0}</b>:<br>{1}<br>"\
             .format(i, e)
