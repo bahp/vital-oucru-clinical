@@ -12,6 +12,7 @@ Welcome to vital-oucru-clinical documentation!
 
    datasets/overview
    datasets/cleaning
+   datasets/notes
    datasets/todo
 
 
