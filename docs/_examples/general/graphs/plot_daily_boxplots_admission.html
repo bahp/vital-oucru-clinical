@@ -1,0 +1,1006 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Daily biomarker per dengue_interpretation (admission) &mdash; vital-oucru-clinical 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Daily biomarker per dengue_interpretation (illness)" href="plot_daily_boxplots_illness.html" />
+    <link rel="prev" title="Daily biomarker per dengue_interpretation (onset)" href="plot_daily_boxplots.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> vital-oucru-clinical
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/overview.html">The OUCRU datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/cleaning.html">The cleaning process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasets/todo.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tables/index.html">Dataset description (tables)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dataset description (graphs)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_daily_boxplots.html">Daily biomarker per dengue_interpretation (onset)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Daily biomarker per dengue_interpretation (admission)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_daily_boxplots_illness.html">Daily biomarker per dengue_interpretation (illness)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../prevalence/index.html">Understanding dengue prevalence</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">vital-oucru-clinical</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Dataset description (graphs)</a> &raquo;</li>
+        
+      <li>Daily biomarker per dengue_interpretation (admission)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/_examples/general/graphs/plot_daily_boxplots_admission.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-general-graphs-plot-daily-boxplots-admission-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="daily-biomarker-per-dengue-interpretation-admission">
+<span id="sphx-glr-examples-general-graphs-plot-daily-boxplots-admission-py"></span><h1>Daily biomarker per dengue_interpretation (admission)<a class="headerlink" href="#daily-biomarker-per-dengue-interpretation-admission" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Full explanation</p>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+ <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+ <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+ <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+
+ <span class="c1"># DataBlend library</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">oucru_dengue_interpretation_feature</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">day_from_day_values</span>
+
+ <span class="c1"># -----------------------------------</span>
+ <span class="c1"># Configuration</span>
+ <span class="c1"># -----------------------------------</span>
+ <span class="c1"># Configure</span>
+ <span class="c1">#sns.set_theme(style=&quot;ticks&quot;, palette=&quot;pastel&quot;)</span>
+
+ <span class="c1"># Seaborn</span>
+ <span class="c1">#sns.set_theme(style=&quot;whitegrid&quot;)</span>
+
+
+ <span class="c1"># Update</span>
+ <span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+     <span class="p">{</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+      <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;large&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;large&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;large&#39;</span>
+      <span class="p">})</span>
+
+ <span class="c1"># -----------------------------------</span>
+ <span class="c1"># Methods</span>
+ <span class="c1"># -----------------------------------</span>
+
+ <span class="c1"># -----------------------------------</span>
+ <span class="c1"># Constants</span>
+ <span class="c1"># -----------------------------------</span>
+ <span class="c1"># Path with data</span>
+ <span class="n">path_data</span> <span class="o">=</span> <span class="s1">&#39;../../../resources/data//20210313-v0.0.8/&#39;</span>
+ <span class="n">path_data</span><span class="o">+=</span> <span class="s1">&#39;combined/combined_tidy.csv&#39;</span>
+
+
+ <span class="n">rename</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s1">&#39;haematocrit_percent&#39;</span><span class="p">:</span> <span class="s1">&#39;hct&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;respiratory_rate&#39;</span><span class="p">:</span> <span class="s1">&#39;rr&#39;</span>
+ <span class="p">}</span>
+
+ <span class="n">NRR</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s1">&#39;plt&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">140</span><span class="p">,</span> <span class="mi">350</span><span class="p">],</span>
+     <span class="s1">&#39;haematocrit_percent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">49</span><span class="p">],</span>
+     <span class="s1">&#39;albumin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">55</span><span class="p">],</span>
+     <span class="s1">&#39;wbc&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">]</span>
+ <span class="p">}</span>
+
+ <span class="n">FEATURES</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="s1">&#39;plt&#39;</span><span class="p">,</span>                   <span class="c1"># keep</span>
+     <span class="s1">&#39;haematocrit_percent&#39;</span><span class="p">,</span>   <span class="c1"># keep</span>
+     <span class="c1"># &#39;haemoglobin&#39;,         # too binary</span>
+     <span class="s1">&#39;albumin&#39;</span><span class="p">,</span>               <span class="c1"># keep</span>
+     <span class="s1">&#39;alt&#39;</span><span class="p">,</span>                   <span class="c1"># keep</span>
+     <span class="s1">&#39;ast&#39;</span><span class="p">,</span>                   <span class="c1"># keep</span>
+     <span class="s1">&#39;wbc&#39;</span><span class="p">,</span>                   <span class="c1"># keep</span>
+     <span class="c1"># &#39;creatine_kinase&#39;,     # only beginning</span>
+     <span class="c1"># &#39;lymphocytes&#39;,   # only beginning</span>
+     <span class="c1"># &#39;monocytes&#39;,     # only beginning</span>
+     <span class="c1"># &#39;neutrophils&#39;,   # only beginning</span>
+     <span class="c1"># &#39;creatinine&#39;,    # so so</span>
+     <span class="c1"># &#39;crp&#39;,           # not much data</span>
+     <span class="c1"># &#39;procalcitonin&#39;, # not much data</span>
+     <span class="c1"># &#39;sbp&#39;,           # too binary</span>
+     <span class="c1"># &#39;dbp&#39;,           # too binary</span>
+     <span class="c1"># &#39;pulse&#39;,</span>
+     <span class="c1"># &#39;pulse_pressure&#39;,</span>
+     <span class="c1"># &#39;respiratory_rate&#39;,</span>
+     <span class="c1"># &#39;body_temperature&#39;,</span>
+     <span class="c1"># &#39;spo2_percent&#39;,</span>
+ <span class="p">]</span>
+
+ <span class="c1"># The due to separate</span>
+ <span class="n">HUE</span> <span class="o">=</span> <span class="s1">&#39;dengue_interpretation&#39;</span>
+
+ <span class="c1"># The day column to use</span>
+ <span class="c1">#   - day_from_onset</span>
+ <span class="c1">#   - day_from_admission</span>
+ <span class="c1">#   - day_from_enrolment</span>
+ <span class="c1">#   - day_from_illness (manually inputed by clinicians)</span>
+ <span class="n">DAY_COLUMN</span> <span class="o">=</span> <span class="s1">&#39;day_from_admission&#39;</span>
+
+ <span class="c1"># ------------------------------</span>
+ <span class="c1"># Load data</span>
+ <span class="c1"># ------------------------------</span>
+ <span class="c1"># Load data</span>
+ <span class="n">original</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path_data</span><span class="p">,</span>
+     <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+     <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+     <span class="c1">#nrows=1000000,</span>
+     <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+
+ <span class="c1"># Copy data</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">original</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">()</span>
+
+ <span class="c1"># Create dengue interpretation</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">]</span> <span class="o">=</span> \
+     <span class="n">oucru_dengue_interpretation_feature</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+         <span class="n">pcr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ns1</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">igm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">serology</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">single_igm_igg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">paired_igm_igg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+ <span class="c1"># Need to remove outliers earlier on!</span>
+ <span class="n">idxs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plt</span> <span class="o">&gt;</span> <span class="mi">1000</span>
+ <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idxs</span><span class="p">,</span> <span class="s1">&#39;plt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+ <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> # Correct day from illness</span>
+<span class="sd"> # TOO SLOW!</span>
+<span class="sd"> aux = \</span>
+<span class="sd">     data.groupby(&#39;study_no&#39;) \</span>
+<span class="sd">         .apply(day_from_day_values) \</span>
+<span class="sd">         .droplevel(level=0, axis=0) \</span>
+<span class="sd">         .dt.days</span>
+<span class="sd"> &quot;&quot;&quot;</span>
+
+ <span class="c1"># Create day for x-axis.</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">DAY_COLUMN</span><span class="p">]</span>
+ <span class="n">data</span><span class="o">.</span><span class="n">day</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">2000</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)]</span>
+
+ <span class="c1"># Drop columns with all NaN.</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+ <span class="c1"># Show information</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dengue count:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dengue_interpretation</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+ <span class="c1"># Rename this variables...</span>
+ <span class="n">a</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="n">FEATURES</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">]]</span>
+ <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+ <span class="n">b</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="n">FEATURES</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;dsource&#39;</span><span class="p">]]</span>
+ <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;dsource&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+ <span class="c1"># --------------------------------</span>
+ <span class="c1"># Plot the biomarker distributions</span>
+ <span class="c1"># --------------------------------</span>
+ <span class="c1"># .. note:: Could this be done nicely without a loop by using</span>
+ <span class="c1">#           some of the seaborn functionality such as the</span>
+ <span class="c1">#           FaceGrid? Note we can also incorporate the hue.</span>
+
+ <span class="c1"># Loop</span>
+ <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">FEATURES</span><span class="p">):</span>
+
+     <span class="c1"># Draw</span>
+     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  Drawing... </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">c</span><span class="p">)</span>
+
+     <span class="c1"># Create figure</span>
+     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> \
+         <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+     <span class="c1"># Configuration and plot</span>
+     <span class="n">sns</span><span class="o">.</span><span class="n">set_color_codes</span><span class="p">(</span><span class="s2">&quot;muted&quot;</span><span class="p">)</span>
+     <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="n">whis</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+                 <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">,</span>
+                 <span class="n">fliersize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+                 <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Set3&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+     <span class="c1"># Draw normal reference range</span>
+     <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">NRR</span><span class="p">:</span>
+         <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+              <span class="n">y1</span><span class="o">=</span><span class="n">NRR</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">y2</span><span class="o">=</span><span class="n">NRR</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#D3D3D3&#39;</span><span class="p">,</span>
+              <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+     <span class="c1"># Create aux table for visualization</span>
+     <span class="n">aux</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;nan&#39;</span><span class="p">:</span> <span class="s1">&#39;-&#39;</span><span class="p">})</span>
+
+     <span class="c1"># Draw table</span>
+     <span class="n">table</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">cellText</span><span class="o">=</span><span class="n">aux</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
+                       <span class="n">rowLabels</span><span class="o">=</span><span class="n">aux</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                       <span class="n">colLabels</span><span class="o">=</span><span class="n">aux</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+                       <span class="n">cellLoc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+     <span class="n">table</span><span class="o">.</span><span class="n">auto_set_font_size</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+     <span class="n">table</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+     <span class="n">table</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">)</span>
+
+     <span class="c1"># Sns plot config</span>
+     <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+     <span class="c1"># Configure axes</span>
+     <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">xticklabels</span><span class="o">=</span><span class="p">[],</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&lt;</span><span class="si">{0}</span><span class="s1">&gt; distribution group by &lt;</span><span class="si">{1}</span><span class="s1">&gt; for &lt;</span><span class="si">{2}</span><span class="s1">&gt;&#39;</span> \
+             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">HUE</span><span class="p">,</span> <span class="n">DAY_COLUMN</span><span class="p">))</span>
+     <span class="c1">#axes[i].get_legend().remove()</span>
+
+     <span class="c1"># Adjust subplots</span>
+     <span class="c1">#plt.legend(loc=&#39;upper left&#39;)</span>
+     <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+     <span class="c1">#plt.tight_layout()</span>
+</pre></div>
+</td></tr></table></div>
+<ul class="sphx-glr-horizontal">
+<li><img alt="&lt;plt&gt; distribution group by &lt;dengue_interpretation&gt; for &lt;day_from_admission&gt;" class="sphx-glr-multi-img" src="../../../_images/sphx_glr_plot_daily_boxplots_admission_001.png" />
+</li>
+<li><img alt="&lt;haematocrit_percent&gt; distribution group by &lt;dengue_interpretation&gt; for &lt;day_from_admission&gt;" class="sphx-glr-multi-img" src="../../../_images/sphx_glr_plot_daily_boxplots_admission_002.png" />
+</li>
+<li><img alt="&lt;albumin&gt; distribution group by &lt;dengue_interpretation&gt; for &lt;day_from_admission&gt;" class="sphx-glr-multi-img" src="../../../_images/sphx_glr_plot_daily_boxplots_admission_003.png" />
+</li>
+<li><img alt="&lt;alt&gt; distribution group by &lt;dengue_interpretation&gt; for &lt;day_from_admission&gt;" class="sphx-glr-multi-img" src="../../../_images/sphx_glr_plot_daily_boxplots_admission_004.png" />
+</li>
+<li><img alt="&lt;ast&gt; distribution group by &lt;dengue_interpretation&gt; for &lt;day_from_admission&gt;" class="sphx-glr-multi-img" src="../../../_images/sphx_glr_plot_daily_boxplots_admission_005.png" />
+</li>
+<li><img alt="&lt;wbc&gt; distribution group by &lt;dengue_interpretation&gt; for &lt;day_from_admission&gt;" class="sphx-glr-multi-img" src="../../../_images/sphx_glr_plot_daily_boxplots_admission_006.png" />
+</li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Applying... oucru_dengue_interpretation_feature.
+
+Dengue count:
+True     25523
+False    22539
+Name: dengue_interpretation, dtype: Int64
+  Drawing... plt.
+  Drawing... haematocrit_percent.
+  Drawing... albumin.
+  Drawing... alt.
+  Drawing... ast.
+  Drawing... wbc.
+</pre></div>
+</div>
+<p>Lets plot the <code class="docutils literal notranslate"><span class="pre">overall</span></code> count of samples for each dataset and day. Note
+that some datasets (13dx and md) have a much larger number of patients
+and therefore the colors are “biased” towards them.</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Configuration</span>
+ <span class="n">n_cols</span> <span class="o">=</span> <span class="mi">2</span>
+ <span class="n">n_rows</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">FEATURES</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_cols</span><span class="p">)</span>
+
+ <span class="c1"># -----------------------</span>
+ <span class="c1"># Plot heatmaps</span>
+ <span class="c1"># ----------------------</span>
+ <span class="c1"># Create figure</span>
+ <span class="n">f</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span>
+     <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+ <span class="c1"># Flatten</span>
+ <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+ <span class="c1"># Loop</span>
+ <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">FEATURES</span><span class="p">):</span>
+
+     <span class="c1"># Show</span>
+     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="si">%s</span><span class="s2">:&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="p">)</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+     <span class="c1"># Draw a heatmap with the numeric values in each cell</span>
+     <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.0f&#39;</span><span class="p">,</span>
+         <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span> <span class="n">linewidths</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
+         <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rocket_r</span><span class="p">)</span>
+
+     <span class="c1"># Configure axes</span>
+     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&lt;</span><span class="si">%s</span><span class="s1">&gt;&#39;</span> <span class="o">%</span> <span class="n">f</span><span class="p">)</span>
+
+ <span class="c1"># Adjust</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<img alt="&lt;plt&gt;, &lt;haematocrit_percent&gt;, &lt;albumin&gt;, &lt;alt&gt;, &lt;ast&gt;, &lt;wbc&gt;" class="sphx-glr-single-img" src="../../../_images/sphx_glr_plot_daily_boxplots_admission_007.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>plt:
+day          0       1       2       3       4      5      6      7     8     9     10    11    12    13    14    15    16    17    18    19    20
+dsource
+01nva      80.0   140.0   120.0   101.0    72.0   46.0   19.0   11.0   9.0   8.0   5.0   8.0   8.0   7.0   7.0   3.0   1.0   2.0   3.0   4.0   3.0
+06dx      147.0   216.0   222.0   219.0   220.0  195.0  146.0   70.0  20.0   5.0   2.0   0.0   NaN   0.0   0.0   NaN   NaN   NaN   NaN   NaN   NaN
+13dx      886.0    38.0   112.0   288.0   331.0  367.0  289.0  100.0  19.0   5.0   0.0   1.0   0.0   1.0   0.0   0.0   0.0   1.0   0.0   0.0   0.0
+32dx        5.0    60.0    66.0    65.0    50.0   38.0   11.0    4.0   6.0   1.0   1.0   0.0   2.0   0.0   2.0   2.0   3.0   4.0   3.0   3.0   2.0
+42dx      553.0   642.0   638.0   604.0   530.0  374.0  196.0   67.0  20.0  22.0  39.0  91.0  89.0  84.0  66.0  40.0  19.0  13.0   6.0   1.0   3.0
+d001       65.0    67.0    60.0    64.0    57.0   41.0   24.0    6.0   1.0   0.0   0.0   0.0   1.0   1.0   0.0   NaN   NaN   1.0   NaN   NaN   1.0
+df       1673.0     0.0     0.0     0.0     0.0    0.0    0.0    0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN
+dr         66.0    62.0    56.0    52.0    28.0   16.0    4.0    1.0   NaN   NaN   1.0   1.0   NaN   NaN   1.0   NaN   NaN   NaN   NaN   NaN   1.0
+fl        677.0   665.0   666.0   612.0   485.0  274.0  129.0   60.0  29.0  14.0  10.0   5.0   5.0   0.0   5.0   6.0   9.0  23.0  44.0  32.0  33.0
+md       2441.0  2443.0  2411.0  2218.0  1485.0  781.0  264.0   42.0   9.0   2.0   1.0   1.0   1.0   0.0   0.0   NaN   0.0   NaN   NaN   NaN   0.0
+
+
+haematocrit_percent:
+day          0       1       2       3       4       5      6     7     8     9     10    11    12    13    14    15    16    17    18    19    20
+dsource
+01nva      97.0   142.0   120.0   101.0    72.0    48.0   21.0  13.0  10.0   8.0   5.0   8.0   8.0   7.0   7.0   3.0   1.0   2.0   3.0   4.0   3.0
+06dx      147.0   216.0   222.0   219.0   220.0   195.0  146.0  70.0  20.0   6.0   2.0   0.0   NaN   0.0   0.0   NaN   NaN   NaN   NaN   NaN   NaN
+13dx      886.0    42.0   139.0   277.0   368.0   360.0  260.0  80.0  16.0   4.0   2.0   3.0   0.0   1.0   1.0   0.0   0.0   0.0   0.0   0.0   0.0
+32dx        5.0    60.0    66.0    65.0    50.0    38.0   11.0   4.0   6.0   1.0   1.0   0.0   2.0   0.0   2.0   2.0   3.0   4.0   3.0   3.0   2.0
+42dx      553.0   642.0   638.0   604.0   530.0   374.0  196.0  67.0  20.0  22.0  39.0  92.0  89.0  84.0  66.0  40.0  19.0  13.0   6.0   1.0   3.0
+d001       55.0    55.0    59.0    62.0    58.0    41.0   24.0   6.0   1.0   0.0   0.0   0.0   1.0   1.0   0.0   NaN   NaN   1.0   NaN   NaN   1.0
+df       1706.0     0.0     0.0     0.0     0.0     0.0    0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN
+dr         65.0    61.0    58.0    53.0    28.0    18.0    4.0   1.0   NaN   NaN   1.0   1.0   NaN   NaN   1.0   NaN   NaN   NaN   NaN   NaN   1.0
+fl        675.0   665.0   667.0   613.0   487.0   274.0  128.0  61.0  29.0  15.0   9.0   5.0   6.0   1.0   5.0   7.0   9.0  22.0  44.0  32.0  33.0
+md       2991.0  3008.0  2981.0  2784.0  1997.0  1127.0  405.0  66.0  19.0   7.0   1.0   1.0   1.0   0.0   0.0   NaN   0.0   NaN   NaN   NaN   0.0
+
+
+albumin:
+day         0      1      2      3      4      5     6    7    8     9     10    11    12    13    14    15    16    17    18    19    20
+dsource
+01nva      0.0    0.0    0.0    0.0    0.0    0.0   0.0  0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0
+06dx     147.0   71.0    5.0   83.0  107.0   29.0   1.0  0.0  0.0   0.0   0.0   0.0   NaN   0.0   0.0   NaN   NaN   NaN   NaN   NaN   NaN
+13dx     879.0    8.0    0.0    0.0    1.0    0.0   0.0  0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0
+32dx       4.0   18.0    4.0    4.0    1.0    3.0   2.0  0.0  1.0   1.0   1.0   0.0   2.0   0.0   2.0   0.0   3.0   4.0   3.0   3.0   2.0
+42dx     309.0  274.0  302.0  314.0  289.0  221.0  66.0  8.0  8.0  19.0  37.0  92.0  88.0  84.0  66.0  41.0  19.0  13.0   6.0   1.0   3.0
+d001      13.0    9.0    1.0    1.0    1.0    0.0   0.0  0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN   NaN   0.0   NaN   NaN   0.0
+df         0.0    0.0    0.0    0.0    0.0    0.0   0.0  0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN
+dr         0.0    0.0    0.0    0.0    0.0    0.0   0.0  0.0  NaN   NaN   0.0   0.0   NaN   NaN   0.0   NaN   NaN   NaN   NaN   NaN   0.0
+fl       361.0  267.0  174.0  318.0  145.0   36.0  14.0  8.0  2.0   2.0   1.0   2.0   1.0   0.0   2.0   3.0   5.0  17.0  34.0  28.0  24.0
+md         0.0    0.0    0.0    0.0    0.0    0.0   0.0  0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN   0.0   NaN   NaN   NaN   0.0
+
+
+alt:
+day         0      1      2      3      4      5     6     7    8     9     10    11    12    13    14    15    16    17    18    19    20
+dsource
+01nva     79.0   86.0   25.0   18.0    6.0    5.0   2.0   6.0  2.0   1.0   1.0   2.0   2.0   2.0   1.0   2.0   0.0   0.0   0.0   0.0   0.0
+06dx     148.0   72.0    7.0   86.0  114.0   34.0   6.0   7.0  1.0   1.0   1.0   0.0   NaN   0.0   0.0   NaN   NaN   NaN   NaN   NaN   NaN
+13dx     879.0    8.0    0.0    0.0    1.0    0.0   0.0   0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0
+32dx       5.0   33.0    2.0    6.0    1.0    3.0   2.0   0.0  1.0   1.0   1.0   0.0   2.0   0.0   2.0   1.0   3.0   4.0   3.0   3.0   2.0
+42dx     309.0  274.0  302.0  314.0  289.0  221.0  67.0   8.0  8.0  19.0  37.0  92.0  88.0  84.0  66.0  41.0  19.0  13.0   6.0   1.0   3.0
+d001      19.0   13.0    3.0    3.0    3.0    0.0   1.0   0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN   NaN   1.0   NaN   NaN   0.0
+df         0.0    0.0    0.0    0.0    0.0    0.0   0.0   0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN
+dr         0.0    0.0    0.0    0.0    0.0    0.0   0.0   0.0  NaN   NaN   0.0   0.0   NaN   NaN   0.0   NaN   NaN   NaN   NaN   NaN   0.0
+fl       435.0  242.0  182.0  332.0  150.0   46.0  15.0  11.0  3.0   3.0   5.0   3.0   1.0   0.0   3.0   6.0   8.0  22.0  40.0  31.0  31.0
+md         0.0    0.0    0.0    0.0    0.0    0.0   0.0   0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN   0.0   NaN   NaN   NaN   0.0
+
+
+ast:
+day          0      1      2      3      4      5     6     7    8     9     10    11    12    13    14    15    16    17    18    19    20
+dsource
+01nva      79.0   86.0   25.0   18.0    6.0    6.0   2.0   6.0  2.0   1.0   1.0   2.0   2.0   2.0   1.0   2.0   0.0   0.0   0.0   0.0   0.0
+06dx      148.0   72.0    7.0   86.0  114.0   34.0   6.0   7.0  1.0   1.0   1.0   0.0   NaN   0.0   0.0   NaN   NaN   NaN   NaN   NaN   NaN
+13dx      879.0    8.0    0.0    0.0    1.0    0.0   0.0   0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0
+32dx        5.0   33.0    2.0    6.0    1.0    3.0   2.0   0.0  1.0   1.0   1.0   0.0   2.0   0.0   2.0   1.0   3.0   4.0   3.0   3.0   2.0
+42dx      309.0  274.0  302.0  314.0  289.0  221.0  67.0   8.0  8.0  19.0  37.0  92.0  88.0  84.0  66.0  41.0  19.0  13.0   6.0   1.0   3.0
+d001       19.0   13.0    3.0    3.0    3.0    0.0   1.0   0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN   NaN   1.0   NaN   NaN   0.0
+df       1030.0    0.0    0.0    0.0    0.0    0.0   0.0   0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN
+dr          0.0    0.0    0.0    0.0    0.0    0.0   0.0   0.0  NaN   NaN   0.0   0.0   NaN   NaN   0.0   NaN   NaN   NaN   NaN   NaN   0.0
+fl        434.0  242.0  183.0  332.0  150.0   45.0  15.0  11.0  3.0   3.0   5.0   3.0   1.0   0.0   3.0   6.0   8.0  22.0  40.0  31.0  31.0
+md          0.0    0.0    0.0    0.0    0.0    0.0   0.0   0.0  0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN   0.0   NaN   NaN   NaN   0.0
+
+
+wbc:
+day         0      1      2      3      4      5      6     7     8     9     10    11    12    13    14    15    16    17    18    19    20
+dsource
+01nva     81.0  140.0  120.0  101.0   72.0   46.0   19.0  11.0   9.0   8.0   5.0   8.0   8.0   7.0   7.0   3.0   1.0   2.0   3.0   4.0   3.0
+06dx     147.0  216.0  222.0  219.0  220.0  194.0  146.0  69.0  20.0   5.0   2.0   0.0   NaN   0.0   0.0   NaN   NaN   NaN   NaN   NaN   NaN
+13dx     886.0    2.0    0.0    0.0    1.0    0.0    0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0
+32dx       5.0   60.0   66.0   65.0   50.0   38.0   11.0   4.0   6.0   1.0   1.0   0.0   2.0   0.0   2.0   2.0   3.0   4.0   3.0   3.0   2.0
+42dx     553.0  642.0  638.0  604.0  530.0  374.0  196.0  67.0  20.0  22.0  39.0  92.0  89.0  84.0  66.0  40.0  19.0  13.0   6.0   1.0   3.0
+d001      55.0   55.0   59.0   62.0   57.0   41.0   24.0   6.0   1.0   0.0   0.0   0.0   1.0   1.0   0.0   NaN   NaN   1.0   NaN   NaN   1.0
+df         0.0    0.0    0.0    0.0    0.0    0.0    0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN
+dr        30.0    4.0    3.0    2.0    1.0    0.0    0.0   1.0   NaN   NaN   1.0   1.0   NaN   NaN   1.0   NaN   NaN   NaN   NaN   NaN   1.0
+fl       671.0  640.0  636.0  601.0  465.0  263.0  118.0  53.0  23.0  11.0   9.0   4.0   5.0   0.0   4.0   7.0  10.0  21.0  43.0  32.0  33.0
+md         0.0    0.0    0.0    0.0    0.0    0.0    0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   0.0   NaN   0.0   NaN   NaN   NaN   0.0
+</pre></div>
+</div>
+<p>Lets plot the <code class="docutils literal notranslate"><span class="pre">normalized</span></code> count of samples for each individual dataset
+and the corresponding day</p>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># -----------------------</span>
+ <span class="c1"># Plot heatmaps</span>
+ <span class="c1"># ----------------------</span>
+ <span class="c1"># Create figure</span>
+ <span class="n">f</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_rows</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span>
+     <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+ <span class="c1"># Flatten</span>
+ <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+ <span class="c1"># Loop</span>
+ <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">FEATURES</span><span class="p">):</span>
+
+     <span class="c1"># Compute normalised</span>
+     <span class="n">norm</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">.</span><span class="n">T</span>
+
+     <span class="c1"># Print</span>
+     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="si">%s</span><span class="s2">:&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="p">)</span>
+     <span class="nb">print</span><span class="p">(</span><span class="n">norm</span><span class="p">)</span>
+
+     <span class="c1"># Draw a heatmap with the numeric values in each cell</span>
+     <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">norm</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.0f&#39;</span><span class="p">,</span>
+         <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span> <span class="n">linewidths</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
+         <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rocket_r</span><span class="p">)</span>
+
+     <span class="c1"># Configure axes</span>
+     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&lt;</span><span class="si">%s</span><span class="s1">&gt;&#39;</span> <span class="o">%</span> <span class="n">f</span><span class="p">)</span>
+
+ <span class="c1"># Adjust</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+ <span class="c1"># Plot</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+ <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</td></tr></table></div>
+<img alt="&lt;plt&gt;, &lt;haematocrit_percent&gt;, &lt;albumin&gt;, &lt;alt&gt;, &lt;ast&gt;, &lt;wbc&gt;" class="sphx-glr-single-img" src="../../../_images/sphx_glr_plot_daily_boxplots_admission_008.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>plt:
+day            0         1         2         3         4         5         6         7         8         9   ...        11        12        13        14        15        16        17        18        19        20
+dsource                                                                                                      ...
+01nva    0.571429  1.000000  0.857143  0.721429  0.514286  0.328571  0.135714  0.078571  0.064286  0.057143  ...  0.057143  0.057143  0.050000  0.050000  0.021429  0.007143  0.014286  0.021429  0.028571  0.021429
+06dx     0.662162  0.972973  1.000000  0.986486  0.990991  0.878378  0.657658  0.315315  0.090090  0.022523  ...  0.000000       NaN  0.000000  0.000000       NaN       NaN       NaN       NaN       NaN       NaN
+13dx     1.000000  0.042889  0.126411  0.325056  0.373589  0.414221  0.326185  0.112867  0.021445  0.005643  ...  0.001129  0.000000  0.001129  0.000000  0.000000  0.000000  0.001129  0.000000  0.000000  0.000000
+32dx     0.075758  0.909091  1.000000  0.984848  0.757576  0.575758  0.166667  0.060606  0.090909  0.015152  ...  0.000000  0.030303  0.000000  0.030303  0.030303  0.045455  0.060606  0.045455  0.045455  0.030303
+42dx     0.861371  1.000000  0.993769  0.940810  0.825545  0.582555  0.305296  0.104361  0.031153  0.034268  ...  0.141745  0.138629  0.130841  0.102804  0.062305  0.029595  0.020249  0.009346  0.001558  0.004673
+d001     0.970149  1.000000  0.895522  0.955224  0.850746  0.611940  0.358209  0.089552  0.014925  0.000000  ...  0.000000  0.014925  0.014925  0.000000       NaN       NaN  0.014925       NaN       NaN  0.014925
+df       1.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000       NaN
+dr       1.000000  0.939394  0.848485  0.787879  0.424242  0.242424  0.060606  0.015152       NaN       NaN  ...  0.015152       NaN       NaN  0.015152       NaN       NaN       NaN       NaN       NaN  0.015152
+fl       1.000000  0.982275  0.983752  0.903988  0.716396  0.404727  0.190547  0.088626  0.042836  0.020679  ...  0.007386  0.007386  0.000000  0.007386  0.008863  0.013294  0.033973  0.064993  0.047267  0.048744
+md       0.999181  1.000000  0.986901  0.907900  0.607859  0.319689  0.108064  0.017192  0.003684  0.000819  ...  0.000409  0.000409  0.000000  0.000000       NaN  0.000000       NaN       NaN       NaN  0.000000
+
+[10 rows x 21 columns]
+
+
+haematocrit_percent:
+day            0         1         2         3         4         5         6         7         8         9   ...        11        12        13        14        15        16        17        18        19        20
+dsource                                                                                                      ...
+01nva    0.683099  1.000000  0.845070  0.711268  0.507042  0.338028  0.147887  0.091549  0.070423  0.056338  ...  0.056338  0.056338  0.049296  0.049296  0.021127  0.007042  0.014085  0.021127  0.028169  0.021127
+06dx     0.662162  0.972973  1.000000  0.986486  0.990991  0.878378  0.657658  0.315315  0.090090  0.027027  ...  0.000000       NaN  0.000000  0.000000       NaN       NaN       NaN       NaN       NaN       NaN
+13dx     1.000000  0.047404  0.156885  0.312641  0.415350  0.406321  0.293454  0.090293  0.018059  0.004515  ...  0.003386  0.000000  0.001129  0.001129  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+32dx     0.075758  0.909091  1.000000  0.984848  0.757576  0.575758  0.166667  0.060606  0.090909  0.015152  ...  0.000000  0.030303  0.000000  0.030303  0.030303  0.045455  0.060606  0.045455  0.045455  0.030303
+42dx     0.861371  1.000000  0.993769  0.940810  0.825545  0.582555  0.305296  0.104361  0.031153  0.034268  ...  0.143302  0.138629  0.130841  0.102804  0.062305  0.029595  0.020249  0.009346  0.001558  0.004673
+d001     0.887097  0.887097  0.951613  1.000000  0.935484  0.661290  0.387097  0.096774  0.016129  0.000000  ...  0.000000  0.016129  0.016129  0.000000       NaN       NaN  0.016129       NaN       NaN  0.016129
+df       1.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000       NaN
+dr       1.000000  0.938462  0.892308  0.815385  0.430769  0.276923  0.061538  0.015385       NaN       NaN  ...  0.015385       NaN       NaN  0.015385       NaN       NaN       NaN       NaN       NaN  0.015385
+fl       1.000000  0.985185  0.988148  0.908148  0.721481  0.405926  0.189630  0.090370  0.042963  0.022222  ...  0.007407  0.008889  0.001481  0.007407  0.010370  0.013333  0.032593  0.065185  0.047407  0.048889
+md       0.994348  1.000000  0.991024  0.925532  0.663896  0.374668  0.134641  0.021941  0.006316  0.002327  ...  0.000332  0.000332  0.000000  0.000000       NaN  0.000000       NaN       NaN       NaN  0.000000
+
+[10 rows x 21 columns]
+
+
+albumin:
+day            0         1         2         3         4         5         6         7         8         9   ...        11        12        13        14        15        16        17        18        19        20
+dsource                                                                                                      ...
+01nva         NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+06dx     1.000000  0.482993  0.034014  0.564626  0.727891  0.197279  0.006803  0.000000  0.000000  0.000000  ...  0.000000       NaN  0.000000  0.000000       NaN       NaN       NaN       NaN       NaN       NaN
+13dx     1.000000  0.009101  0.000000  0.000000  0.001138  0.000000  0.000000  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+32dx     0.222222  1.000000  0.222222  0.222222  0.055556  0.166667  0.111111  0.000000  0.055556  0.055556  ...  0.000000  0.111111  0.000000  0.111111  0.000000  0.166667  0.222222  0.166667  0.166667  0.111111
+42dx     0.984076  0.872611  0.961783  1.000000  0.920382  0.703822  0.210191  0.025478  0.025478  0.060510  ...  0.292994  0.280255  0.267516  0.210191  0.130573  0.060510  0.041401  0.019108  0.003185  0.009554
+d001     1.000000  0.692308  0.076923  0.076923  0.076923  0.000000  0.000000  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000       NaN       NaN  0.000000       NaN       NaN  0.000000
+df            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+dr            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+fl       1.000000  0.739612  0.481994  0.880886  0.401662  0.099723  0.038781  0.022161  0.005540  0.005540  ...  0.005540  0.002770  0.000000  0.005540  0.008310  0.013850  0.047091  0.094183  0.077562  0.066482
+md            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+
+[10 rows x 21 columns]
+
+
+alt:
+day            0         1         2         3         4         5         6         7         8         9   ...        11        12        13        14        15        16        17        18        19        20
+dsource                                                                                                      ...
+01nva    0.918605  1.000000  0.290698  0.209302  0.069767  0.058140  0.023256  0.069767  0.023256  0.011628  ...  0.023256  0.023256  0.023256  0.011628  0.023256  0.000000  0.000000  0.000000  0.000000  0.000000
+06dx     1.000000  0.486486  0.047297  0.581081  0.770270  0.229730  0.040541  0.047297  0.006757  0.006757  ...  0.000000       NaN  0.000000  0.000000       NaN       NaN       NaN       NaN       NaN       NaN
+13dx     1.000000  0.009101  0.000000  0.000000  0.001138  0.000000  0.000000  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+32dx     0.151515  1.000000  0.060606  0.181818  0.030303  0.090909  0.060606  0.000000  0.030303  0.030303  ...  0.000000  0.060606  0.000000  0.060606  0.030303  0.090909  0.121212  0.090909  0.090909  0.060606
+42dx     0.984076  0.872611  0.961783  1.000000  0.920382  0.703822  0.213376  0.025478  0.025478  0.060510  ...  0.292994  0.280255  0.267516  0.210191  0.130573  0.060510  0.041401  0.019108  0.003185  0.009554
+d001     1.000000  0.684211  0.157895  0.157895  0.157895  0.000000  0.052632  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000       NaN       NaN  0.052632       NaN       NaN  0.000000
+df            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+dr            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+fl       1.000000  0.556322  0.418391  0.763218  0.344828  0.105747  0.034483  0.025287  0.006897  0.006897  ...  0.006897  0.002299  0.000000  0.006897  0.013793  0.018391  0.050575  0.091954  0.071264  0.071264
+md            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+
+[10 rows x 21 columns]
+
+
+ast:
+day            0         1         2         3         4         5         6         7         8         9   ...        11        12        13        14        15        16        17        18        19        20
+dsource                                                                                                      ...
+01nva    0.918605  1.000000  0.290698  0.209302  0.069767  0.069767  0.023256  0.069767  0.023256  0.011628  ...  0.023256  0.023256  0.023256  0.011628  0.023256  0.000000  0.000000  0.000000  0.000000  0.000000
+06dx     1.000000  0.486486  0.047297  0.581081  0.770270  0.229730  0.040541  0.047297  0.006757  0.006757  ...  0.000000       NaN  0.000000  0.000000       NaN       NaN       NaN       NaN       NaN       NaN
+13dx     1.000000  0.009101  0.000000  0.000000  0.001138  0.000000  0.000000  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+32dx     0.151515  1.000000  0.060606  0.181818  0.030303  0.090909  0.060606  0.000000  0.030303  0.030303  ...  0.000000  0.060606  0.000000  0.060606  0.030303  0.090909  0.121212  0.090909  0.090909  0.060606
+42dx     0.984076  0.872611  0.961783  1.000000  0.920382  0.703822  0.213376  0.025478  0.025478  0.060510  ...  0.292994  0.280255  0.267516  0.210191  0.130573  0.060510  0.041401  0.019108  0.003185  0.009554
+d001     1.000000  0.684211  0.157895  0.157895  0.157895  0.000000  0.052632  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000       NaN       NaN  0.052632       NaN       NaN  0.000000
+df       1.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000       NaN
+dr            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+fl       1.000000  0.557604  0.421659  0.764977  0.345622  0.103687  0.034562  0.025346  0.006912  0.006912  ...  0.006912  0.002304  0.000000  0.006912  0.013825  0.018433  0.050691  0.092166  0.071429  0.071429
+md            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+
+[10 rows x 21 columns]
+
+
+wbc:
+day            0         1         2         3         4         5         6         7         8         9   ...        11        12        13        14        15        16        17        18        19        20
+dsource                                                                                                      ...
+01nva    0.578571  1.000000  0.857143  0.721429  0.514286  0.328571  0.135714  0.078571  0.064286  0.057143  ...  0.057143  0.057143  0.050000  0.050000  0.021429  0.007143  0.014286  0.021429  0.028571  0.021429
+06dx     0.662162  0.972973  1.000000  0.986486  0.990991  0.873874  0.657658  0.310811  0.090090  0.022523  ...  0.000000       NaN  0.000000  0.000000       NaN       NaN       NaN       NaN       NaN       NaN
+13dx     1.000000  0.002257  0.000000  0.000000  0.001129  0.000000  0.000000  0.000000  0.000000  0.000000  ...  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000  0.000000
+32dx     0.075758  0.909091  1.000000  0.984848  0.757576  0.575758  0.166667  0.060606  0.090909  0.015152  ...  0.000000  0.030303  0.000000  0.030303  0.030303  0.045455  0.060606  0.045455  0.045455  0.030303
+42dx     0.861371  1.000000  0.993769  0.940810  0.825545  0.582555  0.305296  0.104361  0.031153  0.034268  ...  0.143302  0.138629  0.130841  0.102804  0.062305  0.029595  0.020249  0.009346  0.001558  0.004673
+d001     0.887097  0.887097  0.951613  1.000000  0.919355  0.661290  0.387097  0.096774  0.016129  0.000000  ...  0.000000  0.016129  0.016129  0.000000       NaN       NaN  0.016129       NaN       NaN  0.016129
+df            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+dr       1.000000  0.133333  0.100000  0.066667  0.033333  0.000000  0.000000  0.033333       NaN       NaN  ...  0.033333       NaN       NaN  0.033333       NaN       NaN       NaN       NaN       NaN  0.033333
+fl       1.000000  0.953800  0.947839  0.895678  0.692996  0.391952  0.175857  0.078987  0.034277  0.016393  ...  0.005961  0.007452  0.000000  0.005961  0.010432  0.014903  0.031297  0.064083  0.047690  0.049180
+md            NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN  ...       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+
+[10 rows x 21 columns]
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  29.335 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-general-graphs-plot-daily-boxplots-admission-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/ca1ac2b27adcacdf6d72b4b21f36083e/plot_daily_boxplots_admission.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_daily_boxplots_admission.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/fb6524d3c5c4ea59fcd5576dcb173f70/plot_daily_boxplots_admission.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_daily_boxplots_admission.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="plot_daily_boxplots_illness.html" class="btn btn-neutral float-right" title="Daily biomarker per dengue_interpretation (illness)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="plot_daily_boxplots.html" class="btn btn-neutral float-left" title="Daily biomarker per dengue_interpretation (onset)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Imperial College London.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

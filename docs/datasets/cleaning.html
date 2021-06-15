@@ -1,0 +1,955 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>The cleaning process &mdash; vital-oucru-clinical 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Notes" href="notes.html" />
+    <link rel="prev" title="The OUCRU datasets" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> vital-oucru-clinical
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">The OUCRU datasets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The cleaning process</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#naming-conventions">Naming conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#suffixes">Suffixes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#level">level</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#abnormal">abnormal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpretation">interpretation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#left-right">left/right</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#percent">percent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#duration">duration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#prefixes">Prefixes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#event">event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xray">xray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ultrasound-uss">ultrasound (uss)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#day-from">day_from</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#filling-empty-values-nan">Filling empty values (NaN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ensuring-consistency">Ensuring consistency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-df-dataset">The df dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-fl-dataset">The fl dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-md-dataset">The md dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-dr-dataset">The dr dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-d001-dataset">The d001 dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-06dx-dataset">The 06dx dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-13dx-dataset">The 13dx dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-32dx-dataset">The 32dx dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-42dx-dataset">The 42dx dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-01nva-dataset">The 01nva dataset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notes.html">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Galleries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/general/tables/index.html">Dataset description (tables)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/general/graphs/index.html">Dataset description (graphs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/prevalence/index.html">Understanding dengue prevalence</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">vital-oucru-clinical</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>The cleaning process</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/datasets/cleaning.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-cleaning-process">
+<h1>The cleaning process<a class="headerlink" href="#the-cleaning-process" title="Permalink to this headline">¶</a></h1>
+<p>For this purpose <code class="docutils literal notranslate"><span class="pre">DataBlend</span></code> was used.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DataBlend</span></code> is a lightweight library to format manually collected data. It allows
+to perform common transformations (e.g. rename or replace) and conversions to various
+data structures such as <strong>stacked</strong> data structure used in databases or <strong>tidy</strong> data
+structure used in AI/ML libraries.</p>
+<p>The code of the project is on Github: <a class="reference external" href="https://github.com/bahp/datablend">https://github.com/bahp/datablend</a></p>
+<div class="section" id="naming-conventions">
+<h2>Naming conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this headline">¶</a></h2>
+<p>In general, use variable names to describe the data collected using
+the most meaningful word first. Try to include further description of
+the variable if possible and avoid using acronyms (unless they are very
+well known). Words should be separated by <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is very easy to sort variable names alphabetically and using
+good naming conventions will make them appear together. This will
+facilitate further inspection to validate the results.</p>
+</div>
+<p>Example with ascites:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ascites</span>                  <span class="c1"># boolean (presence of ascites)</span>
+<span class="n">ascites_level</span>            <span class="c1"># number or str ([1,2,3], [Low, Medium ,High])</span>
+<span class="n">ascites_description</span>      <span class="c1"># free-text</span>
+<span class="n">ascites_interpretation</span>   <span class="c1"># interpretation by clinicians</span>
+<span class="n">ascites_duration</span>         <span class="c1"># number (seconds, minutes)</span>
+</pre></div>
+</div>
+<p>Example with bleeding:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bleeding</span>          <span class="c1"># compound feature (any bleeding)</span>
+<span class="n">bleeding_skin</span>     <span class="c1"># bleeding in skin</span>
+<span class="n">bleeding_gum</span>      <span class="c1"># bleeding in gum</span>
+<span class="n">bleeding_mucosal</span>  <span class="c1"># bleeding in ...</span>
+<span class="n">bleeding_gi</span>       <span class="c1"># bleeding in gastro-intestinal</span>
+<span class="n">bleeding_vaginal</span>  <span class="c1"># bleeding in vagina</span>
+<span class="n">bleeding_other</span>    <span class="c1"># bleeding in other site</span>
+</pre></div>
+</div>
+<p>Example with shock:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shock</span>              <span class="c1"># whether shock happened during the stay</span>
+<span class="n">shock_multiple</span>     <span class="c1"># whether multiple shocks happend during the stay</span>
+<span class="n">shock_clinical</span>     <span class="c1"># whether ...</span>
+<span class="n">shock_resucitation</span> <span class="c1"># whether ...</span>
+</pre></div>
+</div>
+<div class="section" id="suffixes">
+<h3>Suffixes<a class="headerlink" href="#suffixes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="level">
+<h4>level<a class="headerlink" href="#level" title="Permalink to this headline">¶</a></h4>
+<p>In the scenario in which we want to indicate the level of a variable,
+use the desired variable name and append the word level. Note that level should
+be an Integer. Also note that the variable level already contains the boolean
+variable since 0 can be mapped to False and any other number to True</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">headache</span>         <span class="c1"># boolean (presence of headache)</span>
+<span class="n">headache_level</span>   <span class="c1"># Int64 (intensity of the headache)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="abnormal">
+<h4>abnormal<a class="headerlink" href="#abnormal" title="Permalink to this headline">¶</a></h4>
+<p>Ensure to include the suffix abnormal. For example, instead of
+recording heart_sound which seems to indicate whether the heart was beating
+or not, be more specific using abnormal. Thus heard_sound_abnormal clearly
+specifies that there is some condition to investigate.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heart_sound_abnormal</span>              <span class="c1"># There is an abnormal heard sound</span>
+<span class="n">heart_sound_abnormal_description</span>  <span class="c1"># Description of the abnormality</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h4>description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heart_sound_abnormal</span>              <span class="c1"># There is an abnormal heard sound</span>
+<span class="n">heart_sound_abnormal_description</span>  <span class="c1"># Description of the abnormality</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interpretation">
+<h4>interpretation<a class="headerlink" href="#interpretation" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">igm_interpretation</span> <span class="c1"># string (Positive, Negative, Equivocal)</span>
+<span class="n">igg_interpretation</span> <span class="c1"># string (Positive, Negative, Equivocal)</span>
+<span class="n">ns1_interpretation</span> <span class="c1"># string (Positive, Negative, Equivocal)</span>
+<span class="n">serology_single_interpretation</span> <span class="c1"># string (Primary, Secondary, Not Dengue)</span>
+<span class="n">serology_paired_interpretation</span> <span class="c1"># string (Primary, Secondary, Not Dengue)</span>
+<span class="n">dengue_interpretation</span> <span class="c1"># boolean</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="left-right">
+<h4>left/right<a class="headerlink" href="#left-right" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pleural_effusion</span>       <span class="c1"># Any pleural effusion.</span>
+<span class="n">pleural_effusion_left</span>  <span class="c1"># boolean</span>
+<span class="n">pleural_effusion_right</span> <span class="c1"># boolean</span>
+<span class="n">pleural_effusion_side</span>  <span class="c1"># Still pending (e.g. &#39;Left&#39;, &#39;Right&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="percent">
+<h4>percent<a class="headerlink" href="#percent" title="Permalink to this headline">¶</a></h4>
+<p>Those laboratory results with unit expressed in percentages (%) have such information
+appended in the variable name. This is to differentiate when the biochemical marker
+is measured in percent or in another concentration unit (e.g. mmol/L). Note that there
+are many different concentration units that could be used.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">monocytes</span>            <span class="c1"># concentration (U/mL)</span>
+<span class="n">monocytes_percent</span>    <span class="c1"># percentage (%)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="duration">
+<h4>duration<a class="headerlink" href="#duration" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pending…</p>
+</div>
+</div>
+</div>
+<div class="section" id="prefixes">
+<h3>Prefixes<a class="headerlink" href="#prefixes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="event">
+<h4>event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h4>
+<p>The event variables have the ‘event’ prefix in the name.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ensure that laboratory dates (e.g. pcr, serology, cytokines, blood, …)
+are referring to the sample collection date or the date the laboratory result
+was presented to the clinicians. In some scenarios this information is missing
+in the datasets and other standard dates (e.g. date of enrolment or date of
+admission) have been used. Thus collecting events in this scenarios might
+lead to confusion.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">event_onset</span>       <span class="c1"># onset of disease</span>
+<span class="n">event_admission</span>   <span class="c1"># admitted to hospital</span>
+<span class="n">event_enrolment</span>   <span class="c1"># enrolled in the study</span>
+<span class="n">event_laboratory</span>  <span class="c1"># sample collected for laboratory test</span>
+<span class="n">event_pcr</span>         <span class="c1"># sample collected for pcr test</span>
+<span class="n">event_serology</span>    <span class="c1"># sample collected for serology</span>
+<span class="n">event_transfer</span>    <span class="c1"># transferred to other unit</span>
+<span class="n">event_discharge</span>   <span class="c1"># discharged from hospital (alive/death?)</span>
+<span class="n">event_death</span>       <span class="c1"># death</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="xray">
+<h4>xray<a class="headerlink" href="#xray" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pending…</p>
+</div>
+</div>
+<div class="section" id="ultrasound-uss">
+<h4>ultrasound (uss)<a class="headerlink" href="#ultrasound-uss" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pending… there are both uss and ultrasound at the moment?</p>
+</div>
+</div>
+<div class="section" id="day-from">
+<h4>day_from<a class="headerlink" href="#day-from" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Include further considerations (or just the links) related to:</p>
+<ul class="simple">
+<li><p>The generic corrections implemented (static_correct, level_correction,
+compound_feature_correction, replace_correction, order_of_magnitude_correction,
+range_correction, …)</p></li>
+<li><p>The specific oucru corrections implemented.</p></li>
+</ul>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="filling-empty-values-nan">
+<h2>Filling empty values (NaN)<a class="headerlink" href="#filling-empty-values-nan" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pending…</p>
+</div>
+</div>
+<div class="section" id="ensuring-consistency">
+<h2>Ensuring consistency<a class="headerlink" href="#ensuring-consistency" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pending…</p>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>This section includes questions for each specific dataset. The questions are divided
+for each dataset and subdivided by the excel worksheet in which the variables
+appear.</p>
+<div class="section" id="the-df-dataset">
+<h3>The df dataset<a class="headerlink" href="#the-df-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">DF</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Need to clarify when things happened, there are various dates (e.g., admission,
+enrolment, …) and all the features for the patient have been included in this
+worksheet. Need to understand what date to assign to each feature.</p></li>
+<li><p>The features <code class="docutils literal notranslate"><span class="pre">new_xxxx</span></code> are being also associated with date_admission.</p></li>
+<li><p>There are follow up features but no date_followup.</p></li>
+<li><p>What are <code class="docutils literal notranslate"><span class="pre">hemo</span></code> and <code class="docutils literal notranslate"><span class="pre">hemo2</span></code>?</p></li>
+<li><p>What are <code class="docutils literal notranslate"><span class="pre">d1</span></code> and <code class="docutils literal notranslate"><span class="pre">d2</span></code>?</p></li>
+<li><p>It needs <code class="docutils literal notranslate"><span class="pre">reviewing</span></code>!</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-fl-dataset">
+<h3>The fl dataset<a class="headerlink" href="#the-fl-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">FL_CLINICAL_SUM</span></code> (clinical summary):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">vomitHis</span></code>, <code class="docutils literal notranslate"><span class="pre">vomitExam</span></code> and <code class="docutils literal notranslate"><span class="pre">vomit</span></code>. Should they be assigned
+to date_onset, date_admission and date_enrolment respectively? Or maybe
+we should swap date_enrolment and date_admission?</p></li>
+<li><p>It needs <code class="docutils literal notranslate"><span class="pre">reviewing</span></code>!</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Not all worksheets have been included!</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-md-dataset">
+<h3>The md dataset<a class="headerlink" href="#the-md-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">MD_lab</span></code> (laboratory):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>What is <code class="docutils literal notranslate"><span class="pre">from_adm</span></code>? It is probably day_from_admission.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">MD_clinical</span></code> (clinical):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">day_ill</span></code> with respect to date_admission? date_enrolment? date_fever?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bleeding</span></code> contains categories (No, skin only and mucosal) wich have
+just been converted to booleans. However, not sure what date to use. Since
+it is a compound we are not retrieving it as we have the subcategories
+(Skin, mucosal).</p></li>
+<li><p>Do the variables <code class="docutils literal notranslate"><span class="pre">sigbled</span></code>, <code class="docutils literal notranslate"><span class="pre">sigbled_s</span></code>, <code class="docutils literal notranslate"><span class="pre">bleed_hos</span></code>, <code class="docutils literal notranslate"><span class="pre">overload</span></code>
+and others around refer to date_admission or date_discharge?</p></li>
+<li><p>what is <code class="docutils literal notranslate"><span class="pre">d2shock</span></code>?</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">MD_PCR</span></code> (PCR):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Only extracting the summary columns serotype and viremia.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">MD_Tien_hist</span></code> (history) :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ignored, such data looks like it is already in the second sheet (MD_clinical).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">MD_Tien_exam</span></code> (examination):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ignored, such data looks like it is already in the second sheet (MD_clinical).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">MD_Tien_DRvalue</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Does this data refer to the DR dataset? If so ignore worksheet.</p></li>
+<li><p>Ignored, such data looks like it is already in the third sheet (MD_PCR).</p></li>
+<li><p>It has 6100 rows!, while clinical has only 3020. Maybe contains DR, DF and MD.</p></li>
+<li><p>It is missing a datetime column.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">MD_Tien_invest</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ignored, such data looks like it is already in the second sheet (MD_clinical).</p></li>
+<li><p>It has 3400 rows! while clinical has only 3020.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-dr-dataset">
+<h3>The dr dataset<a class="headerlink" href="#the-dr-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">DR1_2232_ENROL</span></code> (PCR):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Progress bleeding has first boolean values and later numbers!</p></li>
+<li><p>It needs <code class="docutils literal notranslate"><span class="pre">reviewing</span></code>!</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">NEGATIVE_LIST_STUDY</span></code> (PCR):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>has <code class="docutils literal notranslate"><span class="pre">day</span> <span class="pre">of</span> <span class="pre">illness</span></code> not clear what datetime to assign it. It only has
+the datetime columns date_fu and date_fever?</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-d001-dataset">
+<h3>The d001 dataset<a class="headerlink" href="#the-d001-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">D001_CLINICAL</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>has <code class="docutils literal notranslate"><span class="pre">day</span> <span class="pre">of</span> <span class="pre">illness</span></code> not clear what datetime to assign it, should it be
+date_admission or date_enrolment?</p></li>
+<li><p>No categories specified for <code class="docutils literal notranslate"><span class="pre">outcome</span></code> with encoded values 1, 2, 3, 4.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">D001_LAB</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Is the <code class="docutils literal notranslate"><span class="pre">inmune</span> <span class="pre">status</span></code> related with the serology interpretations? In
+particular with the value secondary taht indicates whether the patient
+had suffered from dengue before.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">D001_SERO_DATA</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Unfortunately it does not have a datetime64[ns] columns. Thus, unless the
+day of illness is present there is no reference date to include it.</p></li>
+<li><p>It needs <code class="docutils literal notranslate"><span class="pre">reviewing</span></code>! Only basic extracted.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">D001_SERO_DATA_INMUNE</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Unfortunately it does not have a datetime64[ns] columns. Thus, unless the
+day of illness is present there is no reference date to include it.</p></li>
+<li><p>It needs <code class="docutils literal notranslate"><span class="pre">reviewing</span></code>! Only basic extracted.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">D001_SERO_DEMO</span></code> (PCR):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ignored, repeated from first sheet.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-06dx-dataset">
+<h3>The 06dx dataset<a class="headerlink" href="#the-06dx-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Bleeding severity (1 - only skin, 2 mild mucosal +/- skin and 3 severe either mucosal or skin)</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">SCR</span></code> (???)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">Pregnant</span></code> and <code class="docutils literal notranslate"><span class="pre">PregnancyPos</span></code>. All the values for both are 2,
+which I assume is False (based on other datasets). However, it has been
+collected that they might actually represent only those who were
+pregnant?</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">HIST</span></code> (History)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">Dayillness</span></code>, match with date_admission or date_enrolment?</p></li>
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">HeartSound</span></code> with all values as 1. Then because the variable
+<code class="docutils literal notranslate"><span class="pre">HeartSoundDesc</span></code> is all blank, a value of 1 in HeartSound means
+that the heart sound was normal (heart_sound_abnormal; 1:False, 2:True).</p></li>
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">CNS</span></code> with all values as 1. Then because the variable
+<code class="docutils literal notranslate"><span class="pre">CNSDesc</span></code> is all blank, a value of 1 in CNS means
+that the CNS was normal (cns_abnormal; 1:False, 2:True).</p></li>
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">Diagnosis</span></code> which also appears in <code class="docutils literal notranslate"><span class="pre">SUM</span></code> as final diagnosis?</p></li>
+<li><p>One date has a bad time format (24:00 should be 00:00).</p></li>
+<li><p>The date of fever has been used for all the history symptoms.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">SUM</span></code> (Summary)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It is not being extracted yet.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">AE</span></code> (???)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It is not being extracted yet.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">EVO</span></code> (???)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>What is <code class="docutils literal notranslate"><span class="pre">Pulse20</span></code> and how it relates with <code class="docutils literal notranslate"><span class="pre">MaxPulse</span></code>?</p></li>
+<li><p>What is <code class="docutils literal notranslate"><span class="pre">Heart</span></code> and <code class="docutils literal notranslate"><span class="pre">HeartDetails</span></code>? The <code class="docutils literal notranslate"><span class="pre">Heart</span></code> variable
+has boolean values (1, 2) amd heart details is in Vietnamese with
+values such as fast. Could it be heart_sound_abnormal? Note that
+the <code class="docutils literal notranslate"><span class="pre">HeartDetails</span></code> values NHANH appears with both 1 and 2.</p></li>
+<li><p>What is <code class="docutils literal notranslate"><span class="pre">Lung</span></code> and <code class="docutils literal notranslate"><span class="pre">LungDetails</span></code>? Could it be chest_sound or
+chest_sound_right and chest_sound_left?</p></li>
+<li><p>What does the <code class="docutils literal notranslate"><span class="pre">R</span></code> mean in ascites, ascitesR, jaundice, jaundiceR,
+vomiting, vomitingR, abdopain, abdopainR? At the moment assume level.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">ULTRA</span></code> (Ultrasound)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">side</span></code> probably referred to <code class="docutils literal notranslate"><span class="pre">PleuralEffusion</span></code> with values 2
+and 3. However, there is no conversion to know which one refers to
+left and which one to right.</p></li>
+<li><p>Because these variables are collected from an ultrasound, should
+they be renamed different (e.g. ultrasound_ascites) compared to
+others in which they are suspected but not verified with ultrasound?</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">MGMT</span></code> (Management)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It is not being extracted yet.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">DRUG</span></code> (Drug)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It is not being extracted yet.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">FU</span></code> (Follow-up)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It needs <code class="docutils literal notranslate"><span class="pre">reviewing</span></code>!</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-13dx-dataset">
+<h3>The 13dx dataset<a class="headerlink" href="#the-13dx-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>I could not find <code class="docutils literal notranslate"><span class="pre">event_death</span></code>? There is the option if using the outcome (‘Died’) and
+the date of discharge. But this is still pending on having such information in
+the dataset (check).</p></li>
+<li><p>Does it have enough laboratory? Is these data only for those admitted?</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">ENROL</span></code> (enrolment):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>For those variables with Hist used DateIllness for the others DateEnrolment.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">DAILY</span></code> (daily):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>has <code class="docutils literal notranslate"><span class="pre">StudyDay</span></code> which probably counts from enrolment?</p></li>
+<li><p>has <code class="docutils literal notranslate"><span class="pre">StudyDay</span></code> which is different from DayIllness.</p></li>
+<li><p>has <code class="docutils literal notranslate"><span class="pre">NoSymp</span></code>, what is this?</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">INPFU</span></code> (inpatient followup):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>has <code class="docutils literal notranslate"><span class="pre">SignCNS</span></code> which is similar to <code class="docutils literal notranslate"><span class="pre">CNS</span></code>.</p></li>
+<li><p>has <code class="docutils literal notranslate"><span class="pre">CNS</span></code> which I think it is either <code class="docutils literal notranslate"><span class="pre">SignCNS</span></code> or <code class="docutils literal notranslate"><span class="pre">LowerGCS</span></code>. The latter
+is calculated with the other glasgow comma score related columns for eye,
+motor and xxxx.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">SEROLOGY</span></code> (serology):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>what is <code class="docutils literal notranslate"><span class="pre">DateIllness</span></code> and <code class="docutils literal notranslate"><span class="pre">SampleDOI</span></code>? Is DateIllness the event_onset?
+Never mind, they are all blank values.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-32dx-dataset">
+<h3>The 32dx dataset<a class="headerlink" href="#the-32dx-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>No DayIllness</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">HIS</span></code> (history) …</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Other</span></code> is boolean. It represents other comorbidities and
+these are specified in the <code class="docutils literal notranslate"><span class="pre">Detail</span></code> variable.</p></li>
+<li><p>Assumed <code class="docutils literal notranslate"><span class="pre">DateFever</span></code> as <code class="docutils literal notranslate"><span class="pre">event_onset</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">HIS</span></code> (history) …</p>
+<ul class="simple">
+<li><p>Has <code class="docutils literal notranslate"><span class="pre">HeartSound</span></code> with all values as 1. Then because the variable
+<code class="docutils literal notranslate"><span class="pre">HeartSoundDesc</span></code> is all blank, a value of 1 in HeartSound means
+that the heart sound was normal (heart_sound_abnormal; 1:False, 2:True).</p></li>
+<li><p>Assumed <code class="docutils literal notranslate"><span class="pre">ifPal1</span></code> refers to liver_palpation_size</p></li>
+<li><p>ASsumed <code class="docutils literal notranslate"><span class="pre">ifPal2</span></code> refers to spleen_palpation_size.</p></li>
+</ul>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">EVO</span></code> (evolution) …</p>
+<ul class="simple">
+<li><p>Assumed that <code class="docutils literal notranslate"><span class="pre">IsFever</span></code> refers to whether the patient has fever
+on such date and therefore recorded as <code class="docutils literal notranslate"><span class="pre">event_fever</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">SUM</span></code> (summary) …</p>
+<ul class="simple">
+<li><p>Not extracted yet.</p></li>
+</ul>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">LAB</span></code> (summary) …</p>
+<ul class="simple">
+<li><p>StudyDay probably refers to date_admission (or date_enrolment).</p></li>
+</ul>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">FU</span></code> (follow up) …</p>
+<ul class="simple">
+<li><p>DayFinalAss (only values from 2 to 4.</p></li>
+<li><p>Not extracted yet.</p></li>
+</ul>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">NS1</span></code> (ns1)…</p>
+<ul class="simple">
+<li><p>It is completely empty.</p></li>
+</ul>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">LAB_DIAGNOSIS</span></code> (ns1)…</p>
+<ul class="simple">
+<li><p>Contains data that mostly can be extracted from other tabs.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-42dx-dataset">
+<h3>The 42dx dataset<a class="headerlink" href="#the-42dx-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>Needs thorough reporting as the others.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-01nva-dataset">
+<h3>The 01nva dataset<a class="headerlink" href="#the-01nva-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FLUIDS</span></code> related information has not been extracted yet.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TREATMENT</span></code> related information has not been extracted yet.</p></li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">DM</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>stands for …? DM =</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">HIST</span></code> (History)</p>
+<blockquote>
+<div><ul>
+<li><p>Has the following fever related columns (<code class="docutils literal notranslate"><span class="pre">FEVERDTC</span></code>, <code class="docutils literal notranslate"><span class="pre">FEVERTIME</span></code> and <code class="docutils literal notranslate"><span class="pre">FEVERDAY</span></code>).
+What does <code class="docutils literal notranslate"><span class="pre">FEVERDAY</span></code> represent with respect to the others? Note that <code class="docutils literal notranslate"><span class="pre">FEVERDAY</span></code> has
+(almost) always a value whereas the others are only filled for a few of the patients. In
+addition, fever day is only missing in some cells when fever day is actually available…?</p>
+<p>In general, it looks like these columns might match the equation (date_fever + day_fever =
+date_admission) but there are some cases in which it does not (e.g. …):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>003-2232 - fever 12/12/20 - day fever 5 - admission 12/15/20</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Most of the date columns are not available in all the rows (patients) except for the
+<code class="docutils literal notranslate"><span class="pre">date_gemonitor</span></code> and <code class="docutils literal notranslate"><span class="pre">enteredtime</span></code>. Therefore, how can I assign a date to the
+vital signs collected and/or the day of fever? Ideally day of fever or day of admission
+but they are often missing. At the moment copied admission from ED worksheet because
+the <code class="docutils literal notranslate"><span class="pre">enteredtime</span></code> time in many occasions has delays (e.g. ED worksheet).</p></li>
+<li><p>The admission date from the worksheets <code class="docutils literal notranslate"><span class="pre">HIST</span></code> and <code class="docutils literal notranslate"><span class="pre">ED</span></code> does not match.</p></li>
+<li><p>The GE monitors have <code class="docutils literal notranslate"><span class="pre">date_start</span></code> but not <code class="docutils literal notranslate"><span class="pre">date_end</span></code> (maybe because it is ongoing?)</p></li>
+<li><p>Has entered time which …</p>
+<blockquote>
+<div><p>003-1101 - enteredtime 6/05/20</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">ED</span></code> (Emergency Deparment)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>has <code class="docutils literal notranslate"><span class="pre">NS1AG</span></code>. Any form of getting the igm/igg date, value and interpretation?
+Also it has the values ‘NA’, ‘Pos’, ‘Neg’, 1 and 2. I have assumed that 1 also
+represents ‘Positive’ and 2 represents ‘Negative’. What is AG?</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">ES</span></code> (??????)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>does not have other date column than <code class="docutils literal notranslate"><span class="pre">enteredtime</span></code>. However, this <code class="docutils literal notranslate"><span class="pre">enteredtime</span></code></p></li>
+</ul>
+<p>might not be the exact time in which the events happened. In other worksheets the
+<code class="docutils literal notranslate"><span class="pre">enteredtime</span></code> columns show some delay and there are additional date columns such
+as date_sample. Anyways at the moment assume such column as the right time.</p>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">CLI</span></code> (Clinical)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Remember to double check that all date_start entries have date_end.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">DIS</span></code> (Discharge)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Can <code class="docutils literal notranslate"><span class="pre">DATEASSES</span></code> be interpreted as date_discharge?</p></li>
+<li><p>has <code class="docutils literal notranslate"><span class="pre">NS1IGM</span></code>. Any form of getting the igm/igg date, value and interpretation? Is
+this NS1 representing both IGM/IGM single/paired results? For instance the
+igm_interpretation and igg_interpretation would be useful to compute both the single
+and the paired interpretations.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Worksheet <code class="docutils literal notranslate"><span class="pre">DAY</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>has the column <code class="docutils literal notranslate"><span class="pre">DAY</span></code>. Is it day from admission? day from enrolment? day from onset?</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="notes.html" class="btn btn-neutral float-right" title="Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="The OUCRU datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Imperial College London.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

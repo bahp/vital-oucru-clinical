@@ -1,0 +1,16 @@
+
+:orphan:
+
+.. _sphx_glr__examples_inference_sg_execution_times:
+
+Computation times
+=================
+**00:40.575** total execution time for **_examples_inference** files:
+
++-----------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_inference_plot_inference_example_ann.py` (``plot_inference_example_ann.py``)     | 00:40.575 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_inference_plot_inference_complications.py` (``plot_inference_complications.py``) | 00:00.000 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_inference_plot_inference_example_lr.py` (``plot_inference_example_lr.py``)       | 00:00.000 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------+-----------+--------+

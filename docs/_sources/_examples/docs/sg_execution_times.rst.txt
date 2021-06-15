@@ -1,0 +1,16 @@
+
+:orphan:
+
+.. _sphx_glr__examples_docs_sg_execution_times:
+
+Computation times
+=================
+**00:57.468** total execution time for **_examples_docs** files:
+
++----------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_docs_plot_html_table_features_description.py` (``plot_html_table_features_description.py``) | 00:48.045 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_docs_plot_html_table_features_count.py` (``plot_html_table_features_count.py``)             | 00:09.422 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_docs_plot_html_dataset_profiles.py` (``plot_html_dataset_profiles.py``)                     | 00:00.001 | 0.0 MB |
++----------------------------------------------------------------------------------------------------------------------+-----------+--------+

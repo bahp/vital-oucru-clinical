@@ -1,0 +1,16 @@
+
+:orphan:
+
+.. _sphx_glr__examples_general_graphs_sg_execution_times:
+
+Computation times
+=================
+**01:24.336** total execution time for **_examples_general_graphs** files:
+
++------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_graphs_plot_daily_boxplots.py` (``plot_daily_boxplots.py``)                     | 00:30.308 | 0.0 MB |
++------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_graphs_plot_daily_boxplots_admission.py` (``plot_daily_boxplots_admission.py``) | 00:29.335 | 0.0 MB |
++------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_graphs_plot_daily_boxplots_illness.py` (``plot_daily_boxplots_illness.py``)     | 00:24.692 | 0.0 MB |
++------------------------------------------------------------------------------------------------------------------+-----------+--------+

@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr__examples_general_tables_baseline_sg_execution_times:
+
+Computation times
+=================
+**00:16.295** total execution time for **_examples_general_tables_baseline** files:
+
++-------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_tables_baseline_plot_table_base_dengue.py` (``plot_table_base_dengue.py``) | 00:16.295 | 0.0 MB |
++-------------------------------------------------------------------------------------------------------------+-----------+--------+

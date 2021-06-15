@@ -1,0 +1,1399 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Dengue - ANN &mdash; vital-oucru-clinical 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Dengue - LR" href="plot_inference_example_lr.html" />
+    <link rel="prev" title="Pending…" href="plot_inference_complications.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> vital-oucru-clinical
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/overview.html">The OUCRU datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/cleaning.html">The cleaning process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/todo.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/tables/index.html">Dataset description (tables)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/graphs/index.html">Dataset description (graphs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prevalence/index.html">Understanding dengue prevalence</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Inference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_inference_complications.html">Pending…</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dengue - ANN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_inference_example_lr.html">Dengue - LR</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">vital-oucru-clinical</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Inference</a> &raquo;</li>
+        
+      <li>Dengue - ANN</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/_examples/inference/plot_inference_example_ann.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-inference-plot-inference-example-ann-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="dengue-ann">
+<span id="sphx-glr-examples-inference-plot-inference-example-ann-py"></span><h1>Dengue - ANN<a class="headerlink" href="#dengue-ann" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Full explanation</p>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Use column transformer.</p>
+<dl class="simple">
+<dt>ctf = ColumnTransformer(</dt><dd><p>[(‘gender’, LabelBinarizer())]</p>
+</dd>
+</dl>
+<p>)</p>
+<p>data = ctf.fit_transform(data)</p>
+</div>
+<img alt="aucroc in HTD by month, sens in HTD by month, spec in HTD by month, prevalence in HTD by month" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_inference_example_ann_001.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Applying... oucru_dengue_interpretation_feature.
+
+
+Data rows: 11967
+
+by dsource:
+md       5971
+df       1661
+fl       1338
+42dx     1195
+13dx      917
+06dx      363
+01nva     221
+dr        126
+d001      110
+32dx       65
+Name: dsource, dtype: int64
+
+by outcome:
+0    6271
+1    5696
+Name: outcome, dtype: int64
+
+by sets:
+cvs    8975
+hos    2992
+Name: sets, dtype: int64
+
+
+[Pipeline] ............... (step 1 of 2) Processing std, total=   0.0s
+[Pipeline] ............... (step 2 of 2) Processing ann, total=   6.7s
+[Pipeline] ............... (step 1 of 2) Processing std, total=   0.0s
+[Pipeline] ............... (step 2 of 2) Processing ann, total=   8.4s
+[Pipeline] ............... (step 1 of 2) Processing std, total=   0.0s
+[Pipeline] ............... (step 2 of 2) Processing ann, total=   5.9s
+[Pipeline] ............... (step 1 of 2) Processing std, total=   0.0s
+[Pipeline] ............... (step 2 of 2) Processing ann, total=   5.1s
+[Pipeline] ............... (step 1 of 2) Processing std, total=   0.0s
+[Pipeline] ............... (step 2 of 2) Processing ann, total=   7.2s
+[Pipeline] ............... (step 1 of 2) Processing std, total=   0.0s
+[Pipeline] ............... (step 2 of 2) Processing ann, total=   5.4s
+
+
+Grid Search ALL scores (CVS):
+                              0
+mean_fit_time             6.688
+std_fit_time              1.126
+mean_score_time           0.009
+std_score_time            0.001
+param_ann__activation      relu
+...                         ...
+split2_train_specificity  0.743
+split3_train_specificity  0.704
+split4_train_specificity   0.69
+mean_train_specificity    0.699
+std_train_specificity     0.028
+
+[62 rows x 1 columns]
+
+Grid Search MEAN scores (CVS):
+                                        0
+mean_fit_time                       6.688
+mean_score_time                     0.009
+mean_test_aucroc                    0.761
+mean_test_sensitivity               0.661
+mean_test_specificity               0.694
+mean_train_aucroc                   0.771
+mean_train_sensitivity              0.667
+mean_train_specificity              0.699
+param_ann__activation                relu
+param_ann__alpha                    0.001
+param_ann__batch_size                auto
+param_ann__hidden_layer_sizes  (100, 100)
+param_ann__learning_rate         constant
+param_ann__learning_rate_init       0.001
+param_ann__max_iter                 10000
+param_ann__momentum                   0.9
+param_ann__power_t                    0.5
+param_ann__solver                    adam
+param_ann__tol                     0.0001
+param_ann__warm_start               False
+
+Best estimator HOS scores:
+AUCROC         0.755
+Sensitivity    0.584
+Specificity    0.742
+dtype: float64
+       aucroc    sens    spec  prevalence     n
+month
+1      78.224  62.893  76.215      44.852   709
+2      72.354  58.333  73.611      29.412   408
+3      76.798  61.433  73.515      42.037   697
+4      71.104  52.047  78.497      30.700   557
+5      74.377  57.273  75.730      33.083   665
+6      79.715  63.613  79.630      37.752  1041
+7      75.664  58.942  74.488      46.730  1376
+8      78.618  56.469  79.412      56.212  1320
+9      78.963  58.916  77.487      55.024  1274
+10     75.055  63.402  69.949      56.850  1365
+11     73.851  59.578  70.776      50.227  1320
+12     75.569  60.366  74.439      53.117  1235
+
+Monthly scores:
+     aucroc    sens    spec  prevalence     n
+Jan  78.224  62.893  76.215      44.852   709
+Feb  72.354  58.333  73.611      29.412   408
+Mar  76.798  61.433  73.515      42.037   697
+Apr  71.104  52.047  78.497      30.700   557
+May  74.377  57.273  75.730      33.083   665
+Jun  79.715  63.613  79.630      37.752  1041
+Jul  75.664  58.942  74.488      46.730  1376
+Aug  78.618  56.469  79.412      56.212  1320
+Sep  78.963  58.916  77.487      55.024  1274
+Oct  75.055  63.402  69.949      56.850  1365
+Nov  73.851  59.578  70.776      50.227  1320
+Dec  75.569  60.366  74.439      53.117  1235
+
+Monthly scores (stacked):
+   month      metric    result
+0    Jan      aucroc    78.224
+1    Jan        sens    62.893
+2    Jan        spec    76.215
+3    Jan  prevalence    44.852
+4    Jan           n   709.000
+5    Feb      aucroc    72.354
+6    Feb        sens    58.333
+7    Feb        spec    73.611
+8    Feb  prevalence    29.412
+9    Feb           n   408.000
+10   Mar      aucroc    76.798
+11   Mar        sens    61.433
+12   Mar        spec    73.515
+13   Mar  prevalence    42.037
+14   Mar           n   697.000
+15   Apr      aucroc    71.104
+16   Apr        sens    52.047
+17   Apr        spec    78.497
+18   Apr  prevalence    30.700
+19   Apr           n   557.000
+20   May      aucroc    74.377
+21   May        sens    57.273
+22   May        spec    75.730
+23   May  prevalence    33.083
+24   May           n   665.000
+25   Jun      aucroc    79.715
+26   Jun        sens    63.613
+27   Jun        spec    79.630
+28   Jun  prevalence    37.752
+29   Jun           n  1041.000
+30   Jul      aucroc    75.664
+31   Jul        sens    58.942
+32   Jul        spec    74.488
+33   Jul  prevalence    46.730
+34   Jul           n  1376.000
+35   Aug      aucroc    78.618
+36   Aug        sens    56.469
+37   Aug        spec    79.412
+38   Aug  prevalence    56.212
+39   Aug           n  1320.000
+40   Sep      aucroc    78.963
+41   Sep        sens    58.916
+42   Sep        spec    77.487
+43   Sep  prevalence    55.024
+44   Sep           n  1274.000
+45   Oct      aucroc    75.055
+46   Oct        sens    63.402
+47   Oct        spec    69.949
+48   Oct  prevalence    56.850
+49   Oct           n  1365.000
+50   Nov      aucroc    73.851
+51   Nov        sens    59.578
+52   Nov        spec    70.776
+53   Nov  prevalence    50.227
+54   Nov           n  1320.000
+55   Dec      aucroc    75.569
+56   Dec        sens    60.366
+57   Dec        spec    74.439
+58   Dec  prevalence    53.117
+59   Dec           n  1235.000
+
+Correlation with prevalence (pearson):
+            prevalence         n
+aucroc        0.496461  0.418802
+sens          0.350345  0.276866
+spec         -0.225155 -0.167932
+prevalence    1.000000  0.874446
+n             0.874446  1.000000
+
+Correlation with prevalence (spearman):
+            prevalence         n
+aucroc        0.405594  0.353766
+sens          0.244755  0.283713
+spec         -0.174825 -0.171629
+prevalence    1.000000  0.844134
+n             0.844134  1.000000
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+ <span class="kn">import</span> <span class="nn">os</span>
+ <span class="kn">import</span> <span class="nn">sys</span>
+ <span class="kn">import</span> <span class="nn">calendar</span>
+ <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+ <span class="c1">#import modin.pandas as pd</span>
+
+ <span class="c1"># Libraries imblearn</span>
+ <span class="kn">from</span> <span class="nn">imblearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+ <span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+
+ <span class="c1"># Libraries sklearn</span>
+ <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+ <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+ <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+ <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+ <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+ <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelBinarizer</span>
+ <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+ <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+ <span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+ <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
+ <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+ <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">recall_score</span>
+ <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+
+ <span class="c1"># Import DataBlend</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">oucru_dengue_interpretation_feature</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">static_correction</span>
+
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Methods</span>
+ <span class="c1"># ---------------------------------</span>
+ <span class="k">def</span> <span class="nf">cvs_hos_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;This method labels the dataframe hos and cvs sets.</span>
+
+<span class="sd">     Parameters</span>
+<span class="sd">     ----------</span>
+<span class="sd">     data: np.array or pd.DataFrame</span>
+<span class="sd">         The data to be divided into HOS/CVS.</span>
+
+<span class="sd">     Returns</span>
+<span class="sd">     -------</span>
+<span class="sd">     np.array:</span>
+<span class="sd">         The outcome is a numpy array with rows labelled as</span>
+<span class="sd">         cvs (cross-validation set) and hos (hold-out set).</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+     <span class="c1"># Length</span>
+     <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+
+     <span class="c1"># Create indexes to use for splitting</span>
+     <span class="n">idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+     <span class="c1"># Split in hos and training sets</span>
+     <span class="n">cvs</span><span class="p">,</span> <span class="n">hos</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">idxs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+     <span class="c1"># Create result</span>
+     <span class="n">empty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+     <span class="n">empty</span><span class="p">[</span><span class="n">cvs</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cvs&#39;</span>
+     <span class="n">empty</span><span class="p">[</span><span class="n">hos</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;hos&#39;</span>
+
+     <span class="c1"># Convert to series</span>
+     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+         <span class="n">empty</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">empty</span><span class="p">)</span>
+
+     <span class="c1"># Return</span>
+     <span class="k">return</span> <span class="n">empty</span>
+
+ <span class="c1"># .. note: This is computationally expensive because it</span>
+ <span class="c1">#          calls the same method (confusion_matrix) four</span>
+ <span class="c1">#          times. But scorer functions need to be created</span>
+ <span class="c1">#          for GridSearchCV.</span>
+
+ <span class="k">def</span> <span class="nf">tp</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Return the true positives&quot;&quot;&quot;</span>
+     <span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+     <span class="k">return</span> <span class="n">tp</span>
+
+ <span class="k">def</span> <span class="nf">tn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Return the true negatives&quot;&quot;&quot;</span>
+     <span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+     <span class="k">return</span> <span class="n">tn</span>
+
+ <span class="k">def</span> <span class="nf">fp</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Return the false positives&quot;&quot;&quot;</span>
+     <span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+     <span class="k">return</span> <span class="n">fp</span>
+
+ <span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Return the false negatives&quot;&quot;&quot;</span>
+     <span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+     <span class="k">return</span> <span class="n">fn</span>
+
+
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Constants</span>
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># The data filepath</span>
+ <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../../resources/data/20210313-v0.0.8/&#39;</span>
+ <span class="n">path</span><span class="o">+=</span> <span class="s1">&#39;combined/combined_tidy.csv&#39;</span>
+
+ <span class="c1"># Features</span>
+ <span class="n">features</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="s1">&#39;age&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;gender&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;plt&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;haematocrit_percent&#39;</span><span class="p">])</span>
+
+ <span class="c1"># Usecols</span>
+ <span class="n">usecols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;study_no&#39;</span><span class="p">,</span> <span class="s1">&#39;dsource&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;day_from_admission&#39;</span><span class="p">,</span> <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;pcr_dengue_load&#39;</span><span class="p">,</span> <span class="s1">&#39;ns1_interpretation&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;igm_interpretation&#39;</span><span class="p">,</span> <span class="s1">&#39;igg_interpretation&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;serology_single_interpretation&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;serology_paired_interpretation&#39;</span><span class="p">]</span>
+ <span class="n">usecols</span><span class="o">+=</span> <span class="n">features</span>
+
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Main</span>
+ <span class="c1"># ---------------------------------</span>
+
+ <span class="c1"># ---------</span>
+ <span class="c1"># Load data</span>
+ <span class="c1"># ---------</span>
+ <span class="c1"># Read data</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span>
+     <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+     <span class="c1">#nrows=50000,</span>
+     <span class="n">usecols</span><span class="o">=</span><span class="n">usecols</span><span class="p">,</span>
+     <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+
+ <span class="c1"># Reset index</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+ <span class="c1"># Remove columns with all NaN</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+
+ <span class="c1"># Add dengue interpretation</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">]</span> <span class="o">=</span> \
+     <span class="n">oucru_dengue_interpretation_feature</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+         <span class="n">pcr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ns1</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">igm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">serology</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+         <span class="n">single_igm_igg</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">paired_igm_igg</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+         <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+ <span class="c1"># Create outcome</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;outcome&#39;</span><span class="p">]</span> <span class="o">=</span> \
+     <span class="n">data</span><span class="o">.</span><span class="n">dengue_interpretation</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+ <span class="c1"># Add month</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+
+ <span class="c1"># -----------</span>
+ <span class="c1"># Format data</span>
+ <span class="c1"># -----------</span>
+
+ <span class="c1"># Keep only day_from_admission == 0 data</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">day_from_admission</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])]</span>
+
+ <span class="c1"># Keep only certain months</span>
+ <span class="c1">#data = data[data.month.isin([2, 3, 4])]</span>
+
+ <span class="c1"># Drop any without interpretation</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">data</span><span class="o">.</span><span class="n">dengue_interpretation</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+
+ <span class="c1"># Do this with sklearn column transformer</span>
+ <span class="n">data</span><span class="o">.</span><span class="n">gender</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">gender</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Male&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Female&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+ <span class="c1"># -----------</span>
+ <span class="c1"># Add splits</span>
+ <span class="c1"># -----------</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sets&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cvs_hos_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">outcome</span><span class="p">)</span>
+
+ <span class="c1"># Show information</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Data rows: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">by dsource:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dsource</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">by outcome:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">outcome</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="s1">&#39;False&#39;</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">by sets:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">sets</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="s1">&#39;False&#39;</span><span class="p">))</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+ <span class="c1"># ----------</span>
+ <span class="c1"># Train</span>
+ <span class="c1"># ----------</span>
+ <span class="c1"># Estimator</span>
+ <span class="n">estimator</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">()</span>
+
+ <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s1">&#39;ann__hidden_layer_sizes&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="p">],</span>
+     <span class="s1">&#39;ann__activation&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;relu&#39;</span><span class="p">],</span>
+     <span class="s1">&#39;ann__solver&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;adam&#39;</span><span class="p">],</span>
+     <span class="s1">&#39;ann__alpha&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">],</span>
+     <span class="s1">&#39;ann__batch_size&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;auto&#39;</span><span class="p">],</span>
+     <span class="s1">&#39;ann__learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;constant&#39;</span><span class="p">],</span>
+     <span class="s1">&#39;ann__learning_rate_init&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">],</span>
+     <span class="s1">&#39;ann__power_t&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span>
+     <span class="s1">&#39;ann__max_iter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10000</span><span class="p">],</span>
+     <span class="s1">&#39;ann__tol&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1e-4</span><span class="p">],</span>
+     <span class="s1">&#39;ann__warm_start&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">],</span>
+     <span class="s1">&#39;ann__momentum&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">],</span>
+ <span class="p">}</span>
+
+ <span class="c1"># Scoring</span>
+ <span class="n">scoring</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s1">&#39;aucroc&#39;</span><span class="p">:</span> <span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;sensitivity&#39;</span><span class="p">:</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">recall_score</span><span class="p">),</span>
+     <span class="s1">&#39;specificity&#39;</span><span class="p">:</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">recall_score</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+     <span class="c1">#&#39;tp&#39;: make_scorer(tp),</span>
+     <span class="c1">#&#39;tn&#39;: make_scorer(tn),</span>
+     <span class="c1">#&#39;fp&#39;: make_scorer(fp),</span>
+     <span class="c1">#&#39;fn&#39;: make_scorer(fn),</span>
+ <span class="p">}</span>
+
+ <span class="c1"># Create pipeline</span>
+ <span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[</span><span class="c1">#(&#39;smt&#39;, SMOTE(random_state=42)),</span>
+                        <span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+                        <span class="p">(</span><span class="s1">&#39;ann&#39;</span><span class="p">,</span> <span class="n">estimator</span><span class="p">)],</span>
+                 <span class="n">memory</span><span class="o">=</span><span class="s1">&#39;./outputs&#39;</span><span class="p">,</span>
+                 <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+ <span class="c1"># Create k-folds</span>
+ <span class="n">kf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+ <span class="c1"># Create grid search</span>
+ <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kf</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring</span><span class="p">,</span>
+     <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+     <span class="n">refit</span><span class="o">=</span><span class="s1">&#39;aucroc&#39;</span><span class="p">)</span>
+
+ <span class="c1"># Define</span>
+ <span class="n">features</span> <span class="o">=</span> <span class="n">features</span>
+ <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;outcome&#39;</span>
+
+ <span class="c1"># Get train data</span>
+ <span class="n">train</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">sets</span> <span class="o">==</span> <span class="s1">&#39;cvs&#39;</span><span class="p">]</span>
+ <span class="n">train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">features</span> <span class="o">+</span> <span class="p">[</span><span class="n">target</span><span class="p">]]</span>
+ <span class="c1">#train = train.dropna(how=&#39;any&#39;) # done already</span>
+
+ <span class="c1"># Get X and y</span>
+ <span class="n">X</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+ <span class="n">y</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+ <span class="c1"># Fit</span>
+ <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+
+ <span class="c1"># ----------------</span>
+ <span class="c1"># Show scores</span>
+ <span class="c1"># ----------------</span>
+ <span class="c1"># Show results</span>
+ <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+
+ <span class="c1">#print(&quot;\nResult columns:&quot;)</span>
+ <span class="c1">#print(results.columns.values)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Grid Search ALL scores (CVS):&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+ <span class="c1"># Select columns</span>
+ <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;param_&#39;</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span>
+ <span class="n">columns</span><span class="o">+=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;mean_&#39;</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span>
+ <span class="n">columns</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span>
+
+ <span class="c1"># Show</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Grid Search MEAN scores (CVS):&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+ <span class="c1"># -------------------</span>
+ <span class="c1"># Best estimator</span>
+ <span class="c1"># -------------------</span>
+ <span class="c1"># .. note: It is possible to evaluate the estimator</span>
+ <span class="c1">#          only in HOS. In addition, we would like to</span>
+ <span class="c1">#          see how the predictions and metrics vary</span>
+ <span class="c1">#          according to the seasonality.</span>
+ <span class="c1"># Get best estimator</span>
+ <span class="n">best_estimator</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+ <span class="c1"># -----------------</span>
+ <span class="c1"># Evaluation in HOS</span>
+ <span class="c1"># -----------------</span>
+ <span class="c1"># Evaluate best estimator on HOS</span>
+ <span class="n">hos</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">sets</span> <span class="o">==</span> <span class="s1">&#39;hos&#39;</span><span class="p">]</span>
+
+ <span class="c1"># Get X and y</span>
+ <span class="n">X</span> <span class="o">=</span> <span class="n">hos</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+ <span class="n">y</span> <span class="o">=</span> <span class="n">hos</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+ <span class="c1"># Do predictions</span>
+ <span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+ <span class="n">y_score</span> <span class="o">=</span> <span class="n">best_estimator</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+ <span class="c1"># Scores</span>
+ <span class="n">aucroc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_score</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+ <span class="n">sensitivity</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+ <span class="n">specificity</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+ <span class="c1"># Create series</span>
+ <span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>\
+     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AUCROC&#39;</span><span class="p">,</span> <span class="s1">&#39;Sensitivity&#39;</span><span class="p">,</span> <span class="s1">&#39;Specificity&#39;</span><span class="p">],</span>
+     <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">aucroc</span><span class="p">,</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">specificity</span><span class="p">])</span>
+
+ <span class="c1"># Show</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Best estimator HOS scores:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+
+ <span class="c1"># --------------------------------</span>
+ <span class="c1"># Evaluation of seasonality effect</span>
+ <span class="c1"># --------------------------------</span>
+ <span class="c1"># Get X and y</span>
+ <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+ <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+ <span class="c1"># Add columns to data</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y_pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;y_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_estimator</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+ <span class="c1">#</span>
+ <span class="k">def</span> <span class="nf">_aucroc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">try</span><span class="p">:</span>
+         <span class="k">return</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">outcome</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">y_score</span><span class="p">)</span>
+     <span class="k">except</span><span class="p">:</span>
+         <span class="k">return</span> <span class="kc">None</span>
+
+ <span class="k">def</span> <span class="nf">_sens</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">try</span><span class="p">:</span>
+         <span class="k">return</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">outcome</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">y_pred</span><span class="p">)</span>
+     <span class="k">except</span><span class="p">:</span>
+         <span class="k">return</span> <span class="kc">None</span>
+
+ <span class="k">def</span> <span class="nf">_spec</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">try</span><span class="p">:</span>
+         <span class="k">return</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">outcome</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+     <span class="k">except</span><span class="p">:</span>
+         <span class="k">return</span> <span class="kc">None</span>
+
+ <span class="k">def</span> <span class="nf">prevalence</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+ <span class="c1"># Outputs</span>
+ <span class="n">aucroc</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">_aucroc</span><span class="p">)</span>
+ <span class="n">sensitivity</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">_sens</span><span class="p">)</span>
+ <span class="n">specificity</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">_spec</span><span class="p">)</span>
+ <span class="n">prevalence</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">outcome</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">prevalence</span><span class="p">)</span>
+
+ <span class="c1"># Scores</span>
+ <span class="n">scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+ <span class="n">scores</span><span class="p">[</span><span class="s1">&#39;aucroc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">aucroc</span> <span class="o">*</span> <span class="mi">100</span>
+ <span class="n">scores</span><span class="p">[</span><span class="s1">&#39;sens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sensitivity</span> <span class="o">*</span> <span class="mi">100</span>
+ <span class="n">scores</span><span class="p">[</span><span class="s1">&#39;spec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">specificity</span> <span class="o">*</span> <span class="mi">100</span>
+ <span class="n">scores</span><span class="p">[</span><span class="s1">&#39;prevalence&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prevalence</span>
+ <span class="n">scores</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">study_no</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+ <span class="c1">#scores[&#39;sens_prev_ratio&#39;] = scores.sens / scores.prevalence</span>
+ <span class="c1">#scores[&#39;spec_prev_ratio&#39;] = scores.spec / scores.prevalence</span>
+ <span class="c1">#scores[&#39;spec_prev_ratio&#39;] = scores.spec / scores.prevalence</span>
+ <span class="c1">#scores[&#39;spec_n_ratio&#39;] = scores.spec / scores.n</span>
+ <span class="n">scores</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+ <span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+
+ <span class="c1"># Add legible labels</span>
+ <span class="n">scores</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> \
+      <span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_abbr</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">scores</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+ <span class="c1"># Create stacked version (seaborn)</span>
+ <span class="n">scores_stacked</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="n">scores_stacked</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">]</span>
+
+ <span class="c1"># Show</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Monthly scores:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Monthly scores (stacked):&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">scores_stacked</span><span class="p">)</span>
+
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Correlation with prevalence (pearson):&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">corr</span><span class="p">()[[</span><span class="s1">&#39;prevalence&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">]])</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Correlation with prevalence (spearman):&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;spearman&#39;</span><span class="p">)[[</span><span class="s1">&#39;prevalence&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">]])</span>
+
+ <span class="c1"># ------------------------------------------------</span>
+ <span class="c1"># Plot</span>
+ <span class="c1"># ------------------------------------------------</span>
+ <span class="c1"># Libraries</span>
+ <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+ <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+ <span class="c1"># Seaborn</span>
+ <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+
+ <span class="c1"># --------------</span>
+ <span class="c1"># Plot FacetGrid</span>
+ <span class="c1"># --------------</span>
+ <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> sns.set_color_codes(&quot;muted&quot;)</span>
+<span class="sd"> sns.despine(left=True, bottom=True)</span>
+
+<span class="sd"> # Create facet grid</span>
+<span class="sd"> g = sns.FacetGrid(scores_stacked,</span>
+<span class="sd">     col=&quot;metric&quot;, col_wrap=3, sharey=False,</span>
+<span class="sd">     aspect=1.5)</span>
+
+<span class="sd"> # Plot sns plots</span>
+<span class="sd"> g.map_dataframe(sns.barplot, x=&quot;month&quot;,</span>
+<span class="sd">     y=&quot;result&quot;, linewidth=0.76)</span>
+<span class="sd"> &quot;&quot;&quot;</span>
+
+ <span class="c1"># ---------------</span>
+ <span class="c1"># Plot main</span>
+ <span class="c1"># ---------------</span>
+ <span class="c1"># Colors</span>
+ <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
+
+ <span class="c1"># Initialize the figure</span>
+ <span class="n">f</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+ <span class="c1"># Plot</span>
+ <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;aucroc&#39;</span><span class="p">,</span> <span class="s1">&#39;sens&#39;</span><span class="p">,</span> <span class="s1">&#39;spec&#39;</span><span class="p">,</span> <span class="s1">&#39;prevalence&#39;</span><span class="p">]):</span>
+
+     <span class="c1"># Plot barplot</span>
+     <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+     <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">scores</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+              <span class="n">y</span><span class="o">=</span><span class="n">scores</span><span class="p">[</span><span class="n">c</span><span class="p">],</span>
+              <span class="n">label</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
+              <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+              <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+              <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+     <span class="c1"># Add a legend and informative axis label</span>
+     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> in HTD by month&quot;</span> <span class="o">%</span> <span class="n">c</span><span class="p">)</span>
+
+ <span class="c1"># Tight layout</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+
+ <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> # --------------------</span>
+<span class="sd"> # Plot others</span>
+<span class="sd"> # --------------------</span>
+<span class="sd"> # Initialize the figure</span>
+<span class="sd"> f, axes = plt.subplots(1, 4, figsize=(12, 2.5))</span>
+<span class="sd"> axes = axes.flatten()</span>
+
+<span class="sd"> # Plot</span>
+<span class="sd"> for i, c in enumerate([&#39;aucroc&#39;,</span>
+<span class="sd">                        &#39;sens&#39;,</span>
+<span class="sd">                        &#39;spec&#39;]):</span>
+
+<span class="sd">     # Plot barplot</span>
+<span class="sd">     sns.despine(left=True, bottom=True)</span>
+<span class="sd">     sns.barplot(x=scores.index,</span>
+<span class="sd">              y=scores[c] / scores.prevalence,</span>
+<span class="sd">              label=c,</span>
+<span class="sd">              color=&#39;b&#39;,</span>
+<span class="sd">              ax=axes[i],</span>
+<span class="sd">              linewidth=0.75)</span>
+
+<span class="sd">     # Add a legend and informative axis label</span>
+<span class="sd">     axes[i].legend(ncol=2, loc=&quot;lower right&quot;, frameon=True)</span>
+<span class="sd">     axes[i].set(xlabel=&quot;&quot;, ylabel=&quot;&quot;,</span>
+<span class="sd">         title=&quot;%s in HTD by month&quot; % c)</span>
+
+<span class="sd"> plt.tight_layout()</span>
+<span class="sd"> &quot;&quot;&quot;</span>
+
+ <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  42.183 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-inference-plot-inference-example-ann-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/dd35a1c9d7df3c3f05f304b371fa7cf5/plot_inference_example_ann.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_inference_example_ann.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/4041e763e1313d53bcf9b6f6a62bb5f0/plot_inference_example_ann.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_inference_example_ann.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="plot_inference_example_lr.html" class="btn btn-neutral float-right" title="Dengue - LR" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="plot_inference_complications.html" class="btn btn-neutral float-left" title="Pending…" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Imperial College London.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

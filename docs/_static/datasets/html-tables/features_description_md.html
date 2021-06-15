@@ -1,0 +1,1476 @@
+<html>
+
+<head>
+    <!-- Comment -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css"/>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+
+    <style>
+
+        /* Set the arrow down or right (not working yet) */
+        td.details-control {
+          background: url('./arrow_right.jpg') no-repeat center center;
+          cursor: pointer;
+        }
+        tr.shown td.details-control {
+            background: url('./arrow_down.jpg') no-repeat center center;
+        }
+
+        /* Set whole row in yellow */
+        .redClass  {
+          background-color: #ffffcc !important;
+        }
+        .redClass .sorting_1 {
+          background-color: #ffffcc !important;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<table border="0" class="dataframe display" id="example">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>dtype</th>
+      <th>unit</th>
+      <th>code</th>
+      <th>ctype</th>
+      <th>categories</th>
+      <th>description</th>
+      <th>unique</th>
+      <th>nunique</th>
+      <th>transformations</th>
+      <th>range</th>
+      <th>warning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Unnamed: 0</td>
+      <td>Int64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>33975</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>study_no</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>utils</td>
+      <td>-</td>
+      <td>Patient ID number during the study.</td>
+      <td>-</td>
+      <td>3044</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>date</td>
+      <td>datetime64[ns]</td>
+      <td>-</td>
+      <td>-</td>
+      <td>utils</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>3109</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>abdominal_pain</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>abdominal_tenderness</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>age</td>
+      <td>Float64</td>
+      <td>year</td>
+      <td>-</td>
+      <td>demographics</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['10.0', '10.46', '10.92', '11.0', '11.08', '11.085', '11.125', '11.17', '11.25', '11.29', '11.5', '11.58', '12.0', '12.04', '12.08', '12.085', '12.165', '12.17', '12.21', '12.29', '12.33', '12.415', '12.42', '12.5', '12.58', '12.83', '13.0', '13.04', '13.08', '13.125', '13.25', '13.29', '13.5', '13.58', '14.0', '14.04', '14.08', '14.125', '14.25', '14.29', '14.375', '14.5', '14.58', '14.75', '15.0', '16.0', '2.0', '3.0', '4.0', '5.0', '5.415', '5.83', '6.0', '7.0', '7.04', '7.08', '7.125', '7.25', '8.0', '8.125', '8.25', '8.5', '88.0', '9.0', '9.04', '9.08', '9.165', '9.33', '9.415', '9.5', '9.83', '&lt;NA&gt;']</td>
+      <td>72</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64'}}, {'range_correction': {'range': [0, 120]}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>{'absolute': [0, 120, 'year']}</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ascites</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>Ascites is the abnormal buildup of fluid in the abdomen. Technically, it is more than 25 ml of fluid in the peritoneal cavity, although volumes greater than one liter may occur. Symptoms may include increased abdominal size, increased weight, abdominal discomfort, and shortness of breath.</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>bleeding_gum</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>bleeding_mucosal</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>bleeding_skin</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>bleeding_vaginal</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>body_temperature</td>
+      <td>Float64</td>
+      <td>celsius</td>
+      <td>-</td>
+      <td>vital sign</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['36.8', '37.0', '37.2', '37.3', '37.4', '37.5', '37.6', '37.7', '37.8', '37.9', '38.0', '38.1', '38.2', '38.3', '38.4', '38.5', '38.6', '38.7', '38.8', '38.9', '39.0', '39.1', '39.2', '39.3', '39.4', '39.5', '39.6', '39.7', '39.8', '39.9', '40.0', '40.1', '40.2', '40.3', '40.4', '40.5', '40.6', '41.0', '41.5', '&lt;NA&gt;']</td>
+      <td>40</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64'}}, {'order_magnitude_correction': {'range': [35, 43], 'orders': [10, 100]}}, {'range_correction': {'range': [10, 45]}}]</td>
+      <td>{'absolute': [35, 43, 'celsius'], 'reference': [36, 37.5, 'celsius'], 'hypotermia': [10, 35, 'celsius']}</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>bruising</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>A bruise, or contusion, appears on the skin due to trauma. Examples of trauma are a cut or a blow to an area of the body. The injury causes tiny blood vessels called capillaries to burst. Blood gets trapped below the skin's surface, which causes a bruise.</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>Could it be merged with hematoma or viceversa?</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>chills</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>cns_abnormal</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>cough</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>day_from_illness</td>
+      <td>Float64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['-1.0', '-2.0', '-324.0', '-327.0', '-6.0', '0.0', '1.0', '1.5', '10.0', '10.5', '11.0', '12.0', '13.0', '14.0', '15.0', '16.0', '19.0', '19.5', '2.0', '2.5', '22.0', '22.5', '25.0', '3.0', '3.5', '30.0', '307.0', '309.0', '31.0', '32.0', '33.0', '34.0', '35.0', '355.0', '36.0', '37.0', '373.0', '374.0', '38.0', '39.0', '4.0', '4.5', '40.0', '41.0', '42.0', '43.0', '44.0', '45.0', '46.0', '47.0', '48.0', '49.0', '5.0', '5.5', '50.0', '51.0', '52.0', '53.0', '54.0', '56.0', '57.0', '58.0', '6.0', '6.5', '60.0', '62.0', '63.0', '66.0', '68.0', '69.0', '7.0', '7.5', '75.0', '8.0', '8.5', '9.0', '9.5', '&lt;NA&gt;']</td>
+      <td>78</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>dbp</td>
+      <td>Int64</td>
+      <td>mmHg</td>
+      <td>-</td>
+      <td>vital sign</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['40', '50', '55', '58', '60', '65', '70', '75', '78', '80', '90', '95', '&lt;NA&gt;']</td>
+      <td>13</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64'}}, {'range_correction': {'range': [10, 100]}}]</td>
+      <td>{'absolute': [40, 100, 'mmHg'], 'reference': [60, 80, 'mmHg']}</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>diarrhoea</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>district</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['1', '10', '11', '12', '2', '3', '4', '5', '6', '7', '8', '9', '&lt;NA&gt;', 'An Bien', 'An Lac', 'An Phu', 'Ben Luc', 'Bien Hoa', 'Binh Chanh', 'Binh Son', 'Binh Tan', 'Binh Thanh', 'Bu Dang', 'Cai Be', 'Cai Lay', 'Cam My', 'Can Duoc', 'Can Gio', 'Can Giuoc', 'Can Long', 'Cau Ke', 'Chau Doc', 'Chau Thanh', 'Cho Moi', 'Chon Thanh', 'Cu Chi', 'Da Teh', 'Di An', 'Dinh Quan', 'Dong Nai', 'Dong Phu', 'Dong Xoai', 'Dong Xuan', 'Duc Hoa', 'Giong Trom', 'Go Cong', 'Go Cong Dong', 'Go Cong Tay', 'Go Dau', 'Go Vap', 'Hau Nghia', 'Hiep Ninh', 'Hoa Thanh', 'Hoc Mon', 'Hong Dan', 'Khanh Hau', 'Lap Vo', 'Long Dat', 'Long Khanh', 'Long Phung', 'Long Xuyen', 'Mo Cay', 'Moc Hoa', 'My Duc', 'Nga 5', 'Nha Be', 'Nhon Trach', 'Phu Giao', 'Phu Nhuan', 'Phu Tan', 'Phu Van', 'Phuoc Long', 'Phuoc Sang', 'Tan An', 'Tan Bien', 'Tan Binh', 'Tan Phu', 'Tan Thanh', 'Tan Tru', 'Tan Uyen', 'Thieu My', 'Thu Dau Mot', 'Thu Duc', 'Thuan Nam', 'Trang Bang', 'Vinh Cuu', 'Vinh Loi', 'Vung Tau', 'Xuan Hung', 'Xuan Loc']</td>
+      <td>90</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>event_admission</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>event</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'unique_true_value_correction': {'keep': 'first', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>event_discharge</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>event</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'unique_true_value_correction': {'keep': 'first', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>event_enrolment</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>event</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'unique_true_value_correction': {'keep': 'first', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>event_onset</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>event</td>
+      <td>-</td>
+      <td>Date of disease onset (first fever if not found)</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'unique_true_value_correction': {'keep': 'first', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>event_shock</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>event</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>gender</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>demographics</td>
+      <td>['Male', 'Female']</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'Female', 'Male']</td>
+      <td>3</td>
+      <td>[{'static_correction': {'method': 'mode', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>haematocrit_percent</td>
+      <td>Float64</td>
+      <td>percent</td>
+      <td>-</td>
+      <td>laboratory</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['21.4', '23.0', '23.1', '23.9', '24.0', '24.4', '25.0', '25.1', '25.5', '25.6', '26.0', '26.1', '26.3', '26.4', '26.5', '27.0', '27.5', '27.6', '27.7', '27.8', '27.9', '28.0', '28.1', '28.3', '28.4', '28.5', '28.8', '28.9', '29.0', '29.1', '29.2', '29.3', '29.4', '29.5', '29.6', '29.7', '29.9', '30.0', '30.1', '30.2', '30.3', '30.4', '30.5', '30.6', '30.7', '30.8', '30.9', '31.0', '31.1', '31.2', '31.3', '31.4', '31.5', '31.6', '31.7', '31.8', '31.9', '32.0', '32.1', '32.2', '32.3', '32.4', '32.45', '32.5', '32.6', '32.7', '32.8', '32.9', '33.0', '33.1', '33.2', '33.3', '33.4', '33.5', '33.6', '33.7', '33.8', '33.9', '34.0', '34.1', '34.2', '34.3', '34.4', '34.5', '34.6', '34.7', '34.8', '34.9', '35.0', '35.1', '35.2', '35.25', '35.3', '35.4', '35.5', '35.6', '35.7', '35.8', '35.9', '36.0', '36.1', '36.2', '36.3', '36.4', '36.5', '36.6', '36.7', '36.8', '36.9', '37.0', '37.1', '37.2', '37.3', '37.4', '37.5', '37.6', '37.7', '37.8', '37.9', '38.0', '38.1', '38.2', '38.3', '38.4', '38.5', '38.6', '38.7', '38.8', '38.9', '39.0', '39.1', '39.2', '39.3', '39.4', '39.5', '39.6', '39.7', '39.8', '39.9', '40.0', '40.1', '40.2', '40.3', '40.4', '40.5', '40.6', '40.7', '40.8', '40.9', '41.0', '41.05', '41.1', '41.2', '41.3', '41.4', '41.5', '41.6', '41.7', '41.8', '41.9', '41.900000000000006', '42.0', '42.1', '42.2', '42.3', '42.4', '42.5', '42.6', '42.7', '42.8', '42.9', '43.0', '43.1', '43.2', '43.3', '43.4', '43.5', '43.6', '43.7', '43.8', '43.9', '44.0', '44.1', '44.2', '44.3', '44.4', '44.5', '44.6', '44.7', '44.8', '44.9', '45.0', '45.1', '45.2', '45.3', '45.4', '45.5', '45.6', '45.7', '45.8', '45.9', '46.0', '46.1', '46.2', '46.3', '46.4', '46.5', '46.6', '46.7', '46.8', '46.9', '47.0', '47.1', '47.2', '47.3', '47.4', '47.5', '47.6', '47.7', '47.8', '47.9', '48.0', '48.1', '48.2', '48.3', '48.4', '48.5', '48.6', '48.7', '48.8', '48.9', '49.0', '49.1', '49.2', '49.3', '49.4', '49.5', '49.6', '49.7', '49.8', '49.9', '50.0', '50.1', '50.2', '50.3', '50.4', '50.5', '50.6', '50.7', '50.8', '50.9', '51.0', '51.1', '51.2', '51.3', '51.4', '51.5', '51.6', '51.7', '51.8', '51.9', '52.0', '52.1', '52.2', '52.3', '52.4', '52.5', '52.7', '52.8', '52.9', '53.0', '53.1', '53.2', '53.3', '53.4', '53.5', '53.6', '53.7', '53.8', '53.9', '54.0', '54.3', '54.4', '54.5', '54.6', '54.8', '55.0', '55.1', '55.2', '55.4', '55.5', '55.6', '55.7', '55.9', '56.0', '56.3', '56.7', '56.8', '56.9', '57.0', '57.1', '57.2', '57.3', '57.5', '57.9', '58.0', '58.5', '58.7', '59.0', '59.3', '59.4', '59.7', '59.9', '60.0', '61.0', '64.0', '66.0', '&lt;NA&gt;']</td>
+      <td>318</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64', 'errors': 'coerce'}}, {'range_correction': {'range': [0, 100]}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>headache</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>liver_palpation_size</td>
+      <td>Float64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['0.0', '0.5', '1.0', '1.5', '11.0', '2.0', '3.0', '5.0', '8.0', '&lt;NA&gt;']</td>
+      <td>10</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>outcome</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>outcome</td>
+      <td>['Full recovery', 'Self discharge', 'Transferred', 'Died', 'Unknown']</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'Full recovery', 'Unknown']</td>
+      <td>3</td>
+      <td>[{'static_correction': {'method': 'mode', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>Review, might be inportant later.</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>petechiae</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>Petechiae are tiny purple, red, or brown spots on the skin. They usually appear on your arms, legs, stomach, and buttocks. You might also find them inside your mouth or on your eyelids.</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>plt</td>
+      <td>Float64</td>
+      <td>kilocount/uL</td>
+      <td>-</td>
+      <td>laboratory</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>1853</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64'}}, {'range_correction': {'range': [0, 1000000000000]}}]</td>
+      <td>{'absolute': [1, 1600, 'kilocount/uL'], 'reference': [140, 350, 'gigacount/L']}</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>pulse</td>
+      <td>Int64</td>
+      <td>beat/minute</td>
+      <td>-</td>
+      <td>vital sign</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['100', '102', '104', '105', '106', '108', '110', '112', '115', '116', '117', '118', '120', '122', '123', '124', '125', '126', '128', '130', '135', '136', '140', '76', '80', '82', '84', '85', '86', '88', '89', '90', '92', '93', '94', '95', '96', '98', '&lt;NA&gt;']</td>
+      <td>39</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64'}}, {'range_correction': {'range': [50, 200]}}]</td>
+      <td>{'absolute': [50, 200, 'beat/minute'], 'reference': [60, 100, 'beat/minute']}</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>respiratory_rate</td>
+      <td>Int64</td>
+      <td>breath/minute</td>
+      <td>-</td>
+      <td>vital sign</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['12', '16', '17', '18', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '34', '36', '&lt;NA&gt;']</td>
+      <td>20</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64'}}, {'range_correction': {'range': [5, 200]}}]</td>
+      <td>{'absolute': [10, 60, 'breath/minute'], 'reference': [12, 25, 'breath/minute']}</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>sbp</td>
+      <td>Int64</td>
+      <td>mmHg</td>
+      <td>-</td>
+      <td>vital sign</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['100', '105', '110', '115', '120', '130', '199', '80', '85', '88', '90', '95', '96', '&lt;NA&gt;']</td>
+      <td>14</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64'}}, {'range_correction': {'range': [10, 200]}}]</td>
+      <td>{'absolute': [50, 200, 'mmHg'], 'reference': [90, 120, 'mmHg']}</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>shock_multiple</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>outcome</td>
+      <td>-</td>
+      <td>Whether the patient suffered multiple shocks during the stay</td>
+      <td>['False']</td>
+      <td>1</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'static_correction': {'method': 'max', 'groupby': 'patient'}}, {'fillna_correction': {'value': False}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>shortness_of_breath</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>skin_rash</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>spleen_palpation_size</td>
+      <td>Int64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['0', '1', '8', '&lt;NA&gt;']</td>
+      <td>4</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>vomiting</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>weight</td>
+      <td>Float64</td>
+      <td>kg</td>
+      <td>-</td>
+      <td>demographics</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['10.0', '11.0', '12.0', '13.0', '13.5', '14.0', '15.0', '16.0', '16.5', '17.0', '17.5', '18.0', '18.5', '19.0', '19.5', '19.8', '20.0', '20.5', '20.6', '21.0', '21.5', '22.0', '22.5', '23.0', '23.5', '24.0', '24.5', '25.0', '25.3', '25.5', '26.0', '26.5', '26.8', '27.0', '27.5', '28.0', '28.5', '29.0', '29.5', '30.0', '30.5', '31.0', '31.5', '32.0', '32.5', '33.0', '33.5', '34.0', '34.3', '34.5', '35.0', '35.5', '36.0', '36.5', '37.0', '37.5', '38.0', '38.5', '39.0', '39.5', '40.0', '40.5', '41.0', '41.5', '42.0', '42.5', '43.0', '43.5', '44.0', '44.5', '45.0', '45.5', '46.0', '46.5', '47.0', '47.5', '48.0', '49.0', '50.0', '50.5', '51.0', '51.5', '52.0', '52.5', '53.0', '54.0', '54.5', '55.0', '55.7', '56.0', '57.0', '58.0', '59.0', '60.0', '60.5', '61.0', '61.5', '62.0', '63.0', '64.0', '64.5', '65.0', '66.0', '67.0', '68.0', '69.0', '70.0', '71.0', '72.0', '74.0', '74.5', '75.0', '76.0', '80.0', '85.0', '86.0', '88.0', '&lt;NA&gt;']</td>
+      <td>118</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64', 'errors': 'coerce'}}, {'range_correction': {'range': [0.5, 120]}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>{'absolute': [0.5, 120, 'kg']}</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>bleeding</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>Compound feature from bleeding subcategories, thus, it is True if any of the bleeding subcategories is True. The bleeding subcategories are skin, mucosal, nose, gum, urine, vaginal, vensite and gi.</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>Double check all datasets have bleeding.</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>shock</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>outcome</td>
+      <td>-</td>
+      <td>Whether the patient suffered at least one shock during the stay</td>
+      <td>['False', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'static_correction': {'method': 'max', 'groupby': 'patient'}}, {'fillna_correction': {'value': False}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>day_from_enrolment</td>
+      <td>Int64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>utils</td>
+      <td>-</td>
+      <td>Day count from patient's enrolment (computed from event_enrolment)</td>
+      <td>['-1', '-107', '-109', '-110', '-111', '-112', '-113', '-114', '-115', '-116', '-117', '-118', '-119', '-120', '-121', '-122', '-123', '-124', '-125', '-127', '-132', '-134', '-135', '-137', '-138', '-139', '-14', '-140', '-141', '-142', '-143', '-144', '-145', '-146', '-147', '-148', '-149', '-150', '-151', '-152', '-153', '-164', '-165', '-166', '-168', '-169', '-17', '-170', '-171', '-172', '-173', '-174', '-175', '-176', '-177', '-178', '-179', '-18', '-180', '-181', '-182', '-188', '-189', '-190', '-191', '-194', '-198', '-199', '-2', '-20', '-200', '-201', '-202', '-203', '-204', '-205', '-206', '-207', '-208', '-209', '-21', '-210', '-211', '-212', '-22', '-226', '-227', '-228', '-229', '-23', '-230', '-231', '-232', '-233', '-234', '-235', '-236', '-237', '-238', '-239', '-24', '-240', '-241', '-242', '-247', '-25', '-255', '-256', '-257', '-258', '-259', '-26', '-260', '-261', '-262', '-263', '-264', '-265', '-266', '-267', '-268', '-269', '-27', '-270', '-28', '-283', '-284', '-285', '-286', '-287', '-288', '-289', '-29', '-290', '-291', '-292', '-293', '-294', '-295', '-296', '-297', '-298', '-299', '-3', '-30', '-300', '-31', '-316', '-317', '-318', '-319', '-32', '-320', '-321', '-322', '-323', '-324', '-325', '-326', '-328', '-33', '-34', '-35', '-36', '-37', '-4', '-47', '-48', '-49', '-5', '-50', '-51', '-52', '-53', '-54', '-55', '-56', '-57', '-58', '-59', '-6', '-60', '-61', '-62', '-63', '-64', '-65', '-66', '-7', '-75', '-77', '-78', '-79', '-8', '-80', '-81', '-82', '-83', '-84', '-85', '-86', '-87', '-88', '-89', '-9', '-90', '-91', '-92', '-93', '-94', '-95', '-96', '-97', '0', '1', '10', '100', '101', '102', '11', '111', '112', '113', '114', '115', '116', '117', '118', '119', '12', '120', '121', '122', '123', '124', '125', '126', '127', '128', '129', '13', '131', '133', '135', '14', '140', '141', '142', '143', '144', '145', '146', '147', '148', '149', '15', '150', '151', '152', '153', '154', '155', '156', '157', '16', '162', '169', '170', '171', '172', '173', '174', '175', '176', '177', '178', '179', '180', '181', '182', '183', '184', '185', '186', '187', '199', '2', '20', '200', '201', '202', '203', '204', '205', '206', '207', '208', '209', '21', '210', '211', '212', '213', '214', '215', '217', '218', '22', '229', '23', '230', '231', '232', '233', '234', '235', '236', '237', '238', '239', '24', '240', '241', '242', '243', '244', '245', '246', '25', '259', '26', '260', '261', '262', '263', '264', '265', '266', '267', '268', '269', '27', '270', '271', '272', '273', '274', '277', '28', '287', '289', '29', '290', '291', '292', '293', '294', '295', '296', '297', '298', '299', '3', '30', '300', '301', '302', '303', '304', '306', '307', '309', '31', '313', '317', '318', '319', '32', '320', '321', '322', '323', '324', '325', '326', '327', '328', '329', '33', '330', '331', '332', '333', '335', '34', '342', '35', '352', '357', '358', '36', '363', '37', '373', '374', '38', '39', '4', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '5', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '6', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '7', '70', '71', '75', '8', '82', '83', '84', '85', '86', '87', '88', '89', '9', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '&lt;NA&gt;']</td>
+      <td>465</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>day_from_admission</td>
+      <td>Int64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>utils</td>
+      <td>-</td>
+      <td>Day count from patient's admission (computed from event_admission)</td>
+      <td>['-1', '-104', '-106', '-107', '-108', '-109', '-110', '-111', '-112', '-113', '-114', '-115', '-116', '-117', '-118', '-119', '-120', '-121', '-122', '-123', '-124', '-135', '-136', '-137', '-138', '-139', '-14', '-140', '-141', '-142', '-143', '-144', '-145', '-146', '-147', '-148', '-149', '-150', '-151', '-152', '-153', '-154', '-155', '-166', '-167', '-168', '-169', '-17', '-170', '-171', '-172', '-173', '-174', '-175', '-176', '-177', '-178', '-179', '-18', '-180', '-181', '-182', '-183', '-184', '-186', '-19', '-195', '-197', '-198', '-199', '-2', '-20', '-200', '-201', '-202', '-203', '-204', '-205', '-206', '-207', '-208', '-209', '-21', '-210', '-211', '-212', '-213', '-22', '-225', '-226', '-227', '-228', '-229', '-23', '-230', '-231', '-232', '-233', '-234', '-235', '-236', '-237', '-238', '-239', '-24', '-240', '-241', '-242', '-243', '-25', '-255', '-256', '-257', '-258', '-259', '-26', '-260', '-261', '-262', '-263', '-264', '-265', '-266', '-267', '-268', '-269', '-27', '-270', '-271', '-272', '-28', '-284', '-285', '-286', '-287', '-288', '-289', '-29', '-290', '-291', '-292', '-293', '-294', '-295', '-296', '-297', '-298', '-299', '-3', '-30', '-31', '-312', '-315', '-316', '-317', '-318', '-319', '-32', '-320', '-321', '-323', '-324', '-325', '-326', '-327', '-328', '-329', '-33', '-330', '-34', '-35', '-37', '-39', '-4', '-43', '-48', '-49', '-5', '-50', '-51', '-52', '-53', '-54', '-55', '-56', '-57', '-58', '-59', '-6', '-60', '-61', '-62', '-63', '-64', '-65', '-66', '-7', '-77', '-78', '-79', '-8', '-80', '-81', '-82', '-83', '-84', '-85', '-86', '-87', '-88', '-89', '-9', '-90', '-91', '-92', '-93', '-94', '-95', '-96', '0', '1', '10', '11', '111', '112', '113', '114', '115', '116', '117', '118', '119', '12', '120', '121', '122', '123', '124', '125', '126', '127', '128', '129', '13', '14', '141', '142', '143', '144', '145', '146', '147', '148', '149', '150', '151', '152', '153', '154', '155', '156', '157', '16', '169', '170', '171', '172', '173', '174', '175', '176', '177', '178', '179', '180', '181', '182', '183', '184', '185', '186', '199', '2', '20', '200', '201', '202', '203', '204', '205', '206', '207', '208', '209', '21', '210', '211', '212', '213', '214', '215', '216', '22', '221', '23', '230', '231', '232', '233', '234', '235', '236', '237', '238', '239', '24', '240', '241', '242', '243', '244', '246', '247', '249', '25', '259', '26', '261', '262', '263', '264', '265', '266', '267', '268', '269', '27', '270', '271', '272', '273', '274', '28', '289', '29', '290', '291', '292', '293', '294', '295', '296', '297', '298', '299', '3', '30', '300', '301', '302', '303', '307', '309', '31', '317', '318', '319', '32', '320', '321', '322', '323', '324', '326', '328', '329', '33', '330', '331', '34', '35', '352', '36', '37', '373', '374', '38', '39', '4', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '5', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '6', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '7', '70', '71', '75', '8', '81', '82', '83', '84', '85', '86', '87', '88', '89', '9', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '&lt;NA&gt;']</td>
+      <td>447</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>day_from_onset</td>
+      <td>Int64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>utils</td>
+      <td>-</td>
+      <td>Day count from patient's onset (compute from event_onset)</td>
+      <td>['-1', '-100', '-101', '-103', '-104', '-105', '-106', '-107', '-108', '-109', '-11', '-110', '-111', '-112', '-113', '-114', '-115', '-116', '-117', '-118', '-119', '-120', '-121', '-13', '-131', '-133', '-134', '-135', '-136', '-137', '-138', '-139', '-140', '-141', '-142', '-143', '-144', '-145', '-146', '-147', '-148', '-149', '-15', '-150', '-16', '-162', '-163', '-164', '-165', '-166', '-167', '-168', '-169', '-17', '-170', '-171', '-172', '-173', '-174', '-175', '-176', '-177', '-178', '-179', '-18', '-180', '-181', '-19', '-191', '-192', '-193', '-194', '-195', '-196', '-197', '-198', '-199', '-2', '-20', '-200', '-201', '-202', '-203', '-204', '-205', '-206', '-207', '-208', '-209', '-21', '-22', '-222', '-223', '-224', '-225', '-226', '-227', '-228', '-229', '-23', '-230', '-231', '-232', '-233', '-234', '-235', '-236', '-237', '-238', '-239', '-24', '-25', '-251', '-252', '-253', '-254', '-255', '-256', '-257', '-258', '-259', '-26', '-260', '-261', '-262', '-263', '-264', '-265', '-266', '-267', '-268', '-27', '-279', '-28', '-281', '-282', '-283', '-284', '-285', '-286', '-287', '-288', '-289', '-29', '-290', '-291', '-292', '-293', '-294', '-295', '-3', '-30', '-31', '-310', '-311', '-312', '-313', '-314', '-315', '-316', '-317', '-319', '-32', '-320', '-321', '-322', '-323', '-324', '-325', '-326', '-327', '-37', '-4', '-41', '-43', '-44', '-45', '-46', '-47', '-48', '-49', '-50', '-51', '-52', '-53', '-54', '-55', '-56', '-57', '-58', '-59', '-60', '-61', '-62', '-74', '-75', '-76', '-77', '-78', '-79', '-80', '-81', '-82', '-83', '-84', '-85', '-86', '-87', '-88', '-89', '-90', '-91', '0', '1', '10', '100', '101', '102', '103', '104', '11', '115', '116', '117', '118', '119', '12', '120', '121', '122', '123', '124', '125', '126', '127', '128', '129', '13', '130', '131', '132', '133', '14', '146', '147', '148', '149', '15', '150', '151', '152', '153', '154', '155', '156', '157', '158', '159', '16', '160', '161', '162', '17', '173', '174', '175', '176', '177', '178', '179', '180', '181', '182', '183', '184', '185', '186', '187', '188', '189', '19', '190', '2', '204', '205', '206', '207', '208', '209', '210', '211', '212', '213', '214', '215', '216', '217', '218', '219', '220', '221', '224', '233', '234', '235', '236', '237', '238', '239', '240', '241', '242', '243', '244', '245', '246', '247', '248', '249', '25', '251', '252', '253', '263', '264', '265', '266', '267', '268', '269', '27', '270', '271', '272', '273', '274', '276', '277', '278', '28', '29', '292', '293', '294', '295', '296', '297', '298', '299', '3', '30', '300', '301', '302', '303', '304', '305', '306', '308', '31', '311', '313', '32', '321', '322', '323', '324', '325', '326', '327', '328', '329', '33', '330', '331', '332', '333', '334', '335', '336', '34', '35', '355', '36', '37', '375', '377', '38', '39', '4', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '5', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '6', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '7', '70', '71', '72', '73', '74', '75', '79', '8', '85', '86', '87', '88', '89', '9', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '&lt;NA&gt;']</td>
+      <td>448</td>
+      <td>-</td>
+      <td>-</td>
+      <td>There should not be any negative value!</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>dsource</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>utils</td>
+      <td>-</td>
+      <td>It describes the data source (e.g. study 06dx).</td>
+      <td>['md']</td>
+      <td>1</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>abdominal_distension</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>event_followup</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>event</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>event_pcr</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>event</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>event_serology</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>event_transferred_icu</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>fever</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>Think overlapping with event_fever and body_temperature</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>haemoglobin</td>
+      <td>Float64</td>
+      <td>g/dL</td>
+      <td>hgb</td>
+      <td>laboratory</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>1223</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64'}}, {'range_correction': {'range': [0, 1000000000000]}}]</td>
+      <td>{'absolute': [1, 30, 'g/dL'], 'ref1_male': [130, 162, 'g/L'], 'ref2_female': [120, 150, 'g/L'], 'ref3': [12, 18, 'g/dL']}</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>heart_sound_abnormal</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>igg</td>
+      <td>Float64</td>
+      <td>g/L</td>
+      <td>-</td>
+      <td>serology</td>
+      <td>-</td>
+      <td>This is the most common antibody. It's in blood and other body fluids, and protects against bacterial and viral infections. IgG can take time to form after an infection or immunization.</td>
+      <td>-</td>
+      <td>4910</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64', 'errors': 'coerce'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>igg_interpretation</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>serology</td>
+      <td>['Positive', 'Negative', 'Equivocal']</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'Equivocal', 'Equivocal,Negative', 'Negative', 'Negative,Positive', 'Positive']</td>
+      <td>6</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>igm</td>
+      <td>Float64</td>
+      <td>g/L</td>
+      <td>-</td>
+      <td>serology</td>
+      <td>-</td>
+      <td>Found mainly in blood and lymph fluid, this is the first antibody the body makes when it fights a new infection.</td>
+      <td>-</td>
+      <td>4517</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64', 'errors': 'coerce'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>muscle_pain</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>parental_fluid</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'static_correction': {'method': 'max', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>parental_fluid_period</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['10', '10.0', '104.0', '11.0', '12', '12.0', '120', '13.0', '14', '14.0', '140.0', '15', '15.0', '16', '16.0', '17', '17.0', '18', '18.0', '19', '19.0', '2.5', '20', '20.0', '21.0', '22.0', '23.0', '24', '24.0', '25.0', '26.0', '27.0', '28', '28.0', '3', '3.0', '30.0', '32.0', '34', '34.0', '35.0', '36', '36.0', '37.0', '4', '4 days', '4.0', '42.0', '44.0', '48', '48.0', '5', '5.0', '5.5', '52', '52.0', '56', '56.0', '57.0', '6', '6.0', '60', '62.0', '7', '7.0', '70.0', '71', '72', '72.0', '8', '8.0', '888', '9', '9.0', '90.0', '92', '96', '96.0', '&lt;NA&gt;']</td>
+      <td>79</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>parental_fluid_volume</td>
+      <td>Int64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['100', '1000', '1030', '1050', '1060', '1100', '1120', '1130', '1140', '1150', '1160', '120', '1200', '1250', '1280', '1300', '1350', '1370', '1430', '1450', '150', '1500', '1550', '1560', '1600', '1650', '1700', '1740', '1750', '1785', '1800', '1840', '1850', '1860', '1900', '200', '2000', '2050', '2060', '2080', '2100', '2120', '2150', '2160', '2170', '2200', '2250', '2270', '2300', '2340', '2400', '2420', '2435', '250', '2500', '2530', '2550', '2570', '2580', '2600', '2645', '2650', '2700', '2720', '2740', '2800', '2900', '2950', '300', '3000', '3050', '3060', '3080', '3100', '3160', '3300', '3340', '3400', '3470', '3500', '3650', '3700', '3900', '3960', '400', '4000', '4400', '4450', '4670', '4700', '50', '500', '5000', '530', '540', '550', '556', '560', '580', '5820', '600', '610', '620', '630', '650', '660', '700', '740', '750', '800', '850', '870', '900', '&lt;NA&gt;']</td>
+      <td>114</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>pcr_dengue_load</td>
+      <td>Float64</td>
+      <td>copies/mL</td>
+      <td>-</td>
+      <td>PCR</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>1597</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64', 'errors': 'coerce'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>pcr_dengue_reaction</td>
+      <td>Float64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>PCR</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>1577</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64', 'errors': 'coerce'}}]</td>
+      <td>-</td>
+      <td>What are the units of a PCR reaction?</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>pcr_dengue_serotype</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>PCR</td>
+      <td>['&lt;LOD', 'DENV-1', 'DENV-2', 'DENV-3', 'DENV-4', 'Mixed']</td>
+      <td>-</td>
+      <td>['&lt;LOD', '&lt;NA&gt;', 'DENV-1', 'DENV-2', 'DENV-3', 'DENV-4', 'Mixed']</td>
+      <td>7</td>
+      <td>[{'replace_correction': {'to_replace': {'Not done': None, 'Unknown': None}}}, {'static_correction': {'method': 'mode', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>province</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'An Giang', 'BRVT,Ba Ria Vung Tau', 'Ba Ria Vung Tau,Bà Rịa Vũng Tàu', 'Ba Ria Vung Tau,Bà Rịa', 'Ba Ria Vung Tau,Vũng Tàu', 'Bac Lieu,Bạc Liêu', 'Ben Tre', 'Ben Tre,Bến Tre', 'Binh Duong', 'Binh Duong,Bình Dương', 'Binh Duong,Bình Dương', 'Binh Phuoc', 'Binh Phuoc,Bình Phước', 'Binh Phuoc,Bình Phước', 'Binh Thuan', 'Binh Thuan,Bình Thuận', 'Bình Dương', 'Bình Phước', 'Bến Tre', 'Bình Phước', 'Bến Tre', 'Ca Mau', 'Can Tho', 'Cà Mau', 'Cà Mau', 'Dong Nai', 'Dong Nai,Đồng Nai', 'Dong Nai,Đồng Nai', 'Dong Thap', 'Dong Thap,Đồng Tháp', 'Hau Giang', 'Ho Chi Minh', 'Ho Chi Minh,Hồ Chí Minh', 'Ho Chi Minh,ho Chi Minh', 'Hue', 'Hậu Giang', 'Hồ Chi Minh', 'Hồ Chí Minh', 'Kien Giang', 'Lam Dong', 'Long An', 'Lâm Đồng', 'Quang Ngai', 'Quang Ngai,Quảng Ngãi', 'Soc Trang,Sóc Trăng', 'Tay Ninh', 'Tay Ninh,Tây Ninh', 'Tien Giang', 'Tien Giang,Tiền Giang', 'Tien Giang,Tiền Giang', 'Tiền Giang', 'Tiền Giang', 'Tra Vinh', 'Tra Vinh,Trà Vinh', 'Trà Vinh', 'Tây Ninh', 'ho Chi Minh', 'Đồng Nai', 'Đồng Nai']</td>
+      <td>60</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>restlessness</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'True']</td>
+      <td>2</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>Are restlessness and lethargy the same?</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>skin_rash_description</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['.', '8', '88', '999', '&lt;NA&gt;', 'A FEW PETECHIAE ON THE LEGS', 'All the body', 'Generalised', 'Hong ban rai rac', 'PETECHIAE ON THE EXTREMITIES', 'PETECHIAE ON THE LOWER LIMBS', 'Papular generalised rash', 'Petechiae', 'Petechiae on  extremitries', 'Petechiae on extremities', 'Petechiae on legs', 'Petechiae on the arm', 'Petechiae on the extremities', 'Petechiae on the lower limbs', 'Petechiae, Rash', 'RASH ALL BODY', 'RASH ALL LIMBS', 'RASH ON LOWER LIMBS', 'RASH ON THE LEGS', 'RASH ON THE UPPER LIMBS AND CHEST', 'RED LEG SKIN', 'Rash', 'Rash (flush on face)', 'Rash all  limbs', 'Rash on arms', 'Rash on extrimities', 'Rash on face,chest and upper limbs', 'Rash on limbs', 'Rash on lower limbs', 'Rash on the Extre', 'Rash on the extremities', 'Rash on the lower limbs', 'Rash on the lower limbs, itch', 'Rash on upper and lower limbs', 'Rash scatered over the body', 'Rash, scattered everywhere on the body', 'San do ngoai da', 'Very small rash on the thighs', 'no description', 'rash all over the body', 'rash on 2 legs', 'rash on arms &amp; abdomen', 'rash on arms and legs', 'rash on legs', 'rash on limbs', 'rash on the body', 'rash on the lower limbs and scattered urticaria', 'rash, itch', 'rash, petechiae all  limbs', 't∆∞Ãâ ban raÃâi raÃÅc 2 caÃÅnh tay, tr√™n n√™ÃÄn da ƒëoÃâ ∆∞Ãâng vaÃÄ ch√¢ÃÅm s√¢Ãân ƒëoÃâ 2 tay', 'vaÃÄi ch√¢ÃÅm vuÃÄng khuyÃâu n√™ÃÅp g√¢ÃÅp caÃÅnh tay']</td>
+      <td>56</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>bleeding_gi</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}, {'fillna_correction': {'method': 'fbfill', 'groupby': 'patient'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>lymphadenopathy</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>chest_indrawing</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>chest_sound_left</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False']</td>
+      <td>2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>chest_sound_right</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>dengue_interpretation</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>[{'dtype_correction': {'dtype': 'boolean'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>epistaxis</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>examination</td>
+      <td>-</td>
+      <td>Bleeding from the nose, caused by damage to the blood vessels of the nasal mucosa.</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>Could it be merged with bleeding_nose?</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>past_medical_history</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>past_medical_history_description</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>[' infectious Diarrhoea', ' younger brother has DHF at Nhi A', '&lt;NA&gt;', 'ASTHMA, now is less than before', 'Asthma', "Cold' 7d before Admission", 'Convulsion', 'DENGUE 2008', 'DHF', 'DHF  10days ago', 'DHF IN 2006', 'DHF WHEN SHE WAS 5Y OLD', 'DHF grade I two years ago', 'DHF in 1994', 'DHF in 1999', 'DHF in 2004', 'DHF in 2006. Be treated at Nhi A, HTD', 'DHF on Aug 2007', 'Dengue', 'Dengue 2 in 1998', 'Dengue 3 years ago', 'Dengue when 6 years old', 'Epilepsy', 'Epilepsy for a year', 'Epistaxis', 'Febril convulsion at 1 year old', 'Follow up epilepsy', 'Frequent epistaxis', 'HAY CHAY MAU CAM', 'HEP B', 'Haemorrhoid', 'Heart problem in Infancy', 'Hemorrhagic Dengue F', 'Hemorrhagic dengue F', 'Her parents had DF a week ago', 'Intussupception at 11 month of age', 'Mild Dengue fever in 199 at NhicHTD', 'SOT XUAT HUYEN 2004', 'Some episodes of epistaxis', 'TO BE BORN BLIND AND DEAF', 'Tonsils taken out  three years ago', 'T√© ƒë·∫≠p ng·ª±c c√°ch nh·∫≠p vi·ªán  3 ng√†y', 'VIEM TAI GIUA CAP BE', 'Viem gan sieu vi B when 3 years old', 'dengue 1year ago', 'varicella 10 d ago']</td>
+      <td>46</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>pulse_pressure</td>
+      <td>Int64</td>
+      <td>mmHg</td>
+      <td>-</td>
+      <td>vital sign</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['10', '104', '20', '25', '30', '32', '35', '36', '38', '40', '45', '50', '60', '&lt;NA&gt;']</td>
+      <td>14</td>
+      <td>[{'dtype_correction': {'dtype': 'Float64', 'errors': 'coerce'}}]</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>tourniquet_test_interpretation</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'Equivocal', 'Equivocal,Negative', 'Equivocal,Negative,Positive', 'Equivocal,Positive', 'Negative', 'Negative,Positive', 'Positive']</td>
+      <td>8</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>heart_sound_abnormal_description</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'V_1']</td>
+      <td>2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>medication_regular</td>
+      <td>boolean</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'False', 'True']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>parental_fluid_volumne</td>
+      <td>Int64</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['1000', '10000', '1030', '1050', '1080', '1100', '1110', '1120', '1130', '1140', '1150', '1160', '1200', '1250', '1290', '1300', '1350', '1500', '15000', '1550', '1600', '1650', '1680', '1690', '1700', '1750', '1800', '1820', '1850', '2000', '2050', '2100', '2150', '2200', '2250', '2350', '2370', '2400', '250', '2500', '2600', '2650', '2700', '2740', '2750', '2810', '2930', '2950', '3000', '3050', '3100', '3150', '3170', '3200', '3210', '3240', '3250', '3290', '3300', '3400', '3450', '3500', '3550', '3650', '3700', '3720', '3750', '3770', '3790', '3800', '3810', '3850', '3860', '3900', '4000', '4050', '4100', '4120', '4125', '4150', '4200', '4250', '4280', '4300', '4330', '4360', '4370', '4380', '4400', '4430', '4450', '4470', '4500', '4550', '4570', '4600', '4650', '4700', '4720', '4750', '4800', '4850', '4900', '4950', '500', '5000', '5050', '5060', '5160', '5220', '5290', '530', '5350', '540', '5400', '550', '5500', '556', '560', '5600', '5645', '5700', '5720', '5750', '580', '5800', '5810', '5900', '600', '6000', '620', '6420', '650', '6500', '6850', '700', '7000', '7050', '750', '7500', '7600', '800', '8000', '8800', '900', '9620', '&lt;NA&gt;']</td>
+      <td>147</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>rur_urb</td>
+      <td>string</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>['&lt;NA&gt;', 'Rural', 'Urban']</td>
+      <td>3</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+
+/* Formatting function for row details - modify as you need */
+function format ( d ) {
+
+    // Description
+    html_description = ''
+    if (d.description != '-') {
+        html_description += '<tr>'
+        html_description += '<td> Description: </td>'
+        html_description += '<td>' + d.description + '</td>'
+    }
+
+    // Categories
+    html_categories = ''
+    if (d.categories != '-') {
+        html_categories += '<tr>'
+        html_categories += '<td> Categories: </td>'
+        html_categories += '<td>' + d.categories + '</td>'
+    }
+
+    // Categories
+    html_unique = ''
+    if (d.unique != '-') {
+        html_unique += '<tr>'
+        html_unique += '<td> Unique </td>'
+        html_unique += '<td>' + d.unique + '</td>'
+    }
+
+    html_nunique = ''
+    html_nunique += '<tr>'
+    html_nunique += '<td> N. Unique </td>'
+    html_nunique += '<td>' + d.nunique + '</td>'
+
+
+    // Transformations
+    html_transformations = ''
+    if (d.transformations != '-') {
+        html_transformations += '<tr>'
+        html_transformations += '<td> Transformations: </td>'
+        html_transformations += '<td>'
+
+
+        var tf = d.transformations.slice(1, -1).replace('}, {', '}|{').split('|')
+
+        $.each(tf, function(index, value) {
+        	html_transformations += value + '<br>'
+        });
+
+        html_transformations += '</td>'
+    }
+
+    html_range = ''
+    if (d.range != '-') {
+        html_range += '<tr>'
+        html_range += '<td> Ranges: </td>'
+        html_range += '<td>' + d.range
+
+        /*$.each($.parseJSON(d.range),
+          function(index, value) {
+             var min = value[0]
+            var max = value[1]
+            var unit = value[2]
+            html_range += '{0}: [{1}, {2}, {3}] <br>'.format(index, min, max, unit)
+        });*/
+
+        html_range += '<td>'
+    }
+
+    // Extra information
+    html_extra = ''
+
+    html_warning = ''
+    if (d.warning != '-') {
+        html_warning += '<tr>'
+        html_warning += '<td> Warning: </td>'
+        html_warning += '<td>' + d.warning + '</td>'
+    }
+
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+            html_description +
+            html_categories +
+            html_transformations +
+            html_range +
+            html_warning +
+            html_extra +
+            html_nunique +
+            html_unique
+    '</table>';
+}
+
+
+ String.prototype.format = function() {
+      a = this;
+      for (k in arguments) {
+        a = a.replace("{" + k + "}", arguments[k])
+      }
+      return a
+    }
+
+  $(document).ready(function() {
+
+        /* Create table */
+        var table = $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            "scrollY": "600px",
+            "scrollCollapse": true,
+            "paging": false,
+            "autoWidth": true,
+            "columns": [
+                {
+                    "className": 'details-control',
+                    "orderable": false,
+                    "data": null,
+                    "defaultContent": '+'
+                },
+                { "data": "name" },
+                { "data": "dtype" },
+                { "data": "unit" },
+                { "data": "code" },
+                { "data": "type"},
+                { "data": "categories",  "visible": false},
+                { "data": "description", "visible": false},
+                { "data": "unique",  "visible": false},
+                { "data": "nunique",  "visible": false},
+                { "data": "transformations", "visible": false},
+                { "data": "range", "visible": false},
+                { "data": "warning", "visible": false}
+
+            ],
+            "order": [[1, 'asc']],
+            "createdRow": function(row, data, dataIndex) {
+              if (data['warning'] != '-') {
+                $(row).addClass('redClass');
+              }
+            }
+        });
+
+
+        // Add event listener for opening and closing details
+        $('#example tbody .details-control').on('click', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row( tr );
+
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child( format(row.data()) ).show();
+                tr.addClass('shown');
+            }
+        });
+  });
+</script>
+
+</body>

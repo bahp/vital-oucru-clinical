@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr__examples_prevalence_baseline_sg_execution_times:
+
+Computation times
+=================
+**00:14.071** total execution time for **_examples_prevalence_baseline** files:
+
++---------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_prevalence_baseline_plot_table_base_dengue.py` (``plot_table_base_dengue.py``) | 00:14.071 | 0.0 MB |
++---------------------------------------------------------------------------------------------------------+-----------+--------+

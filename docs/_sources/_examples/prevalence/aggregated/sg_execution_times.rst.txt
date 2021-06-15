@@ -1,0 +1,16 @@
+
+:orphan:
+
+.. _sphx_glr__examples_prevalence_aggregated_sg_execution_times:
+
+Computation times
+=================
+**00:45.224** total execution time for **_examples_prevalence_aggregated** files:
+
++-----------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_prevalence_aggregated_plot_table_agg_complications.py` (``plot_table_agg_complications.py``) | 00:16.144 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_prevalence_aggregated_plot_table_agg_shock.py` (``plot_table_agg_shock.py``)                 | 00:15.101 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_prevalence_aggregated_plot_table_agg_dengue.py` (``plot_table_agg_dengue.py``)               | 00:13.979 | 0.0 MB |
++-----------------------------------------------------------------------------------------------------------------------+-----------+--------+

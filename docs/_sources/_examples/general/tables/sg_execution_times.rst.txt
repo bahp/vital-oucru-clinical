@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr__examples_general_tables_sg_execution_times:
+
+Computation times
+=================
+**00:30.837** total execution time for **_examples_general_tables** files:
+
++----------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_general_tables_plot_daily_boxplots.py` (``plot_daily_boxplots.py``) | 00:30.837 | 0.0 MB |
++----------------------------------------------------------------------------------------------+-----------+--------+

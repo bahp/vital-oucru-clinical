@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Monthly prevalence (overall) &mdash; vital-oucru-clinical 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Monthly prevalence (yearly)" href="plot_prevalence_monthly.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> vital-oucru-clinical
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/overview.html">The OUCRU datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/cleaning.html">The cleaning process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../datasets/todo.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/tables/index.html">Dataset description (tables)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/graphs/index.html">Dataset description (graphs)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Understanding dengue prevalence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_prevalence_datasets.html">Rolling prevalence (by dsource)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_prevalence_monthly.html">Monthly prevalence (yearly)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Monthly prevalence (overall)</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">vital-oucru-clinical</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Understanding dengue prevalence</a> &raquo;</li>
+        
+      <li>Monthly prevalence (overall)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/_examples/prevalence/plot_prevalence_overall.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-prevalence-plot-prevalence-overall-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="monthly-prevalence-overall">
+<span id="sphx-glr-examples-prevalence-plot-prevalence-overall-py"></span><h1>Monthly prevalence (overall)<a class="headerlink" href="#monthly-prevalence-overall" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p>The features must be static.</p></li>
+<li><p>Would it help to print ns1_interpretation table?</p></li>
+<li><p>Should ns1 be a compound of all the ns1?</p></li>
+<li><p>Would it help to plot the prevalence graph for each dataset?</p></li>
+</ul>
+</div>
+<p>This example computes the prevalence of dengue in the <code class="docutils literal notranslate"><span class="pre">HTD</span></code> as the
+proportion of patients which were diagnosed with Dengue based on any
+positive result for the <code class="docutils literal notranslate"><span class="pre">NS1</span></code>, <code class="docutils literal notranslate"><span class="pre">PCR</span></code> or <code class="docutils literal notranslate"><span class="pre">serology</span></code> tests. The
+x-axis represents the month and the y-axis the prevalence in %. In
+addition, the number on top of each bar represents the total number
+of patients used to compute the proportion.</p>
+<img alt="Overall dengue prevalence in HTD" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_prevalence_overall_001.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Applying... oucru_dengue_interpretation_feature.
+
+Columns:
+Index([&#39;study_no&#39;, &#39;date&#39;, &#39;dsource&#39;, &#39;pcr_dengue_serotype&#39;,
+       &#39;igm_interpretation&#39;, &#39;igg_interpretation&#39;, &#39;ns1_interpretation&#39;,
+       &#39;ns1_plasma_interpretation&#39;, &#39;ns1_platelia_interpretation&#39;,
+       &#39;ns1_urine_interpretation&#39;, &#39;serology_interpretation&#39;,
+       &#39;serology_single_interpretation&#39;, &#39;serology_paired_interpretation&#39;,
+       &#39;dengue_interpretation&#39;],
+      dtype=&#39;object&#39;)
+
+Patients:
+                     date dsource pcr_dengue_serotype igm_interpretation igg_interpretation  ... serology_single_interpretation serology_paired_interpretation dengue_interpretation month  year
+study_no                                                                                     ...
+01nva-003-1001 2020-06-13   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;  ...                           &lt;NA&gt;                           &lt;NA&gt;                 False     6  2020
+01nva-003-1002 2020-06-23   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;  ...                           &lt;NA&gt;                           &lt;NA&gt;                 False     6  2020
+01nva-003-1003 2020-07-04   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;  ...                           &lt;NA&gt;                           &lt;NA&gt;                 False     7  2020
+01nva-003-1004 2020-06-24   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;  ...                           &lt;NA&gt;                           &lt;NA&gt;                 False     6  2020
+01nva-003-1005 2020-07-25   01nva                &lt;NA&gt;               &lt;NA&gt;               &lt;NA&gt;  ...                           &lt;NA&gt;                           &lt;NA&gt;                 False     7  2020
+...                   ...     ...                 ...                ...                ...  ...                            ...                            ...                   ...   ...   ...
+md-995         2003-08-27      md              DENV-2               &lt;NA&gt;           Positive  ...                           &lt;NA&gt;                           &lt;NA&gt;                  True     8  2003
+md-996         2003-07-29      md                &lt;LOD               &lt;NA&gt;           Positive  ...                           &lt;NA&gt;                           &lt;NA&gt;                 False     7  2003
+md-997         2003-08-30      md                &lt;LOD               &lt;NA&gt;           Positive  ...                           &lt;NA&gt;                           &lt;NA&gt;                 False     8  2003
+md-998         2003-08-29      md                &lt;LOD               &lt;NA&gt;           Positive  ...                           &lt;NA&gt;                           &lt;NA&gt;                 False     8  2003
+md-999         2003-08-29      md              DENV-4               &lt;NA&gt;           Positive  ...                           &lt;NA&gt;                           &lt;NA&gt;                  True     8  2003
+
+[16489 rows x 15 columns]
+
+Serotypes:
+dsource              06dx  13dx  32dx  d001    df  dr   fl    md  Total
+pcr_dengue_serotype
+&lt;LOD                    0  6032    21    37   438   0  446   458   7432
+DENV-1                136   840    12    23   675  47  108   942   2783
+DENV-1,DENV-2           0     0     0     2     4   3    0     0      9
+DENV-1,DENV-3           0     0     0     1     1   0    0     0      2
+DENV-1,DENV-4           0     0     0     1     1   0    0     0      2
+DENV-2                 57   453    10    23   367  24   65   437   1436
+DENV-2,DENV-3           0     0     0     0     0   1    0     0      1
+DENV-2,DENV-4           0     0     0     0     3   0    0     0      3
+DENV-3                 23   198    16     4    48   6   30   184    509
+DENV-4                  7   576    13     4   109   1    4    49    763
+Mixed                   0     0     0     0     0   0    0     8      8
+Total                 223  8099    72    95  1646  82  653  2078  12948
+
+Serology:
+dsource                  06dx  13dx  32dx  d001   dr   fl  Total
+serology_interpretation
+Inconclusive                8   923    13    21   39  111   1115
+Not Dengue                  0   201     0     4   31   18    254
+Primary                    16   342    12    11   27   27    435
+Secondary                 200   587    47    51   65  584   1534
+Total                     224  2053    72    87  162  740   3338
+
+Dengue:
+dsource                01nva  06dx  13dx  32dx  42dx  d001    df    dr   fl    md  Total
+dengue_interpretation
+False                    110   107  5864     7   664    37   511  1434  105  1424  10263
+True                      45   223  2244    68     0    75  1208   108  635  1620   6226
+Total                    155   330  8108    75   664   112  1719  1542  740  3044  16489
+
+Prevalence:
+     prevalence  n_patients
+Jan   43.184297         917
+Feb   27.320490         571
+Mar   25.058824         850
+Apr   19.789227         854
+May   21.576763         964
+Jun   29.102668        1237
+Jul   41.974522        1570
+Aug   46.334639        1787
+Sep   46.071653        1591
+Oct   39.561644        1825
+Nov   39.689072        2187
+Dec   42.790262        2136
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+ <span class="kn">import</span> <span class="nn">calendar</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+ <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+ <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+ <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+ <span class="c1"># DataBlend library</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">oucru_dengue_interpretation_feature</span>
+
+ <span class="c1"># Seaborn</span>
+ <span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Methods</span>
+ <span class="c1"># ---------------------------------</span>
+ <span class="k">def</span> <span class="nf">add_totals</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+     <span class="sd">&quot;&quot;&quot;Adds total sum for rows/cols.&quot;&quot;&quot;</span>
+     <span class="c1"># Add columns</span>
+     <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+     <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+     <span class="c1"># Return</span>
+     <span class="k">return</span> <span class="n">df</span>
+
+
+ <span class="k">def</span> <span class="nf">prevalence</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
+
+
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Constants</span>
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># The data filepath</span>
+ <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../../resources/data/20210313-v0.0.8/combined/combined_tidy.csv&#39;</span>
+
+ <span class="c1"># Features</span>
+ <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;study_no&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;date&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;dsource&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;igm_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;igg_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;ns1_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;ns1_plasma_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;ns1_platelia_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;ns1_urine_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;serology_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;serology_single_interpretation&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;serology_paired_interpretation&#39;</span><span class="p">]</span>
+
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Main</span>
+ <span class="c1"># ---------------------------------</span>
+ <span class="c1"># Read data</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                          <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span>
+                          <span class="n">usecols</span><span class="o">=</span><span class="n">features</span><span class="p">)</span>
+
+ <span class="c1"># Format</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">()</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+
+ <span class="c1"># Define positive dengue</span>
+ <span class="c1">#data = dengue_interpretation(data)</span>
+
+ <span class="c1"># Add dengue interpretation</span>
+ <span class="n">data</span><span class="p">[</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">]</span> <span class="o">=</span> \
+     <span class="n">oucru_dengue_interpretation_feature</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+         <span class="n">pcr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ns1</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">igm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">paired_igm_igg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+ <span class="c1"># Overall outcome for patient</span>
+ <span class="n">patients</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;study_no&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+ <span class="n">patients</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+ <span class="n">patients</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+
+ <span class="c1"># PCR serotypes count per dataset</span>
+ <span class="n">serotypes</span> <span class="o">=</span> <span class="n">add_totals</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>
+     <span class="n">patients</span><span class="o">.</span><span class="n">pcr_dengue_serotype</span><span class="p">,</span> <span class="n">patients</span><span class="o">.</span><span class="n">dsource</span><span class="p">))</span>
+
+ <span class="c1"># Serology count per dataset</span>
+ <span class="n">serology</span> <span class="o">=</span> <span class="n">add_totals</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>
+     <span class="n">patients</span><span class="o">.</span><span class="n">serology_interpretation</span><span class="p">,</span> <span class="n">patients</span><span class="o">.</span><span class="n">dsource</span>
+ <span class="p">))</span>
+
+ <span class="c1"># Dengue interpretation count per dataset</span>
+ <span class="n">dengue</span> <span class="o">=</span> <span class="n">add_totals</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span>
+     <span class="n">patients</span><span class="o">.</span><span class="n">dengue_interpretation</span><span class="p">,</span> <span class="n">patients</span><span class="o">.</span><span class="n">dsource</span><span class="p">))</span>
+
+ <span class="c1"># Show</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Columns:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Patients:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">patients</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Serotypes:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">serotypes</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Serology:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">serology</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dengue:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">dengue</span><span class="p">)</span>
+
+ <span class="c1"># Compute prevalence</span>
+ <span class="c1"># ------------------</span>
+ <span class="c1"># Datasets where serotype has non-null values.</span>
+ <span class="n">idxs</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">dsource</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">serotypes</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+ <span class="c1"># Compute prevalence</span>
+ <span class="n">prevalence</span> <span class="o">=</span> <span class="n">patients</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+     <span class="n">prevalence</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;dengue_interpretation&#39;</span><span class="p">,</span> <span class="n">prevalence</span><span class="p">),</span>
+     <span class="n">n_patients</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;study_no&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">))</span>
+
+ <span class="c1"># Add legible labels</span>
+ <span class="n">prevalence</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> \
+     <span class="p">[</span><span class="n">calendar</span><span class="o">.</span><span class="n">month_abbr</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">prevalence</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+ <span class="c1"># Show</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Prevalence:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">prevalence</span><span class="p">)</span>
+
+
+ <span class="c1"># ------------------------------------------------</span>
+ <span class="c1"># Plot</span>
+ <span class="c1"># ------------------------------------------------</span>
+ <span class="c1"># Initialize the figure</span>
+ <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+ <span class="c1"># Plot</span>
+ <span class="n">sns</span><span class="o">.</span><span class="n">set_color_codes</span><span class="p">(</span><span class="s2">&quot;muted&quot;</span><span class="p">)</span>
+ <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">prevalence</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+             <span class="n">y</span><span class="o">=</span><span class="n">prevalence</span><span class="o">.</span><span class="n">prevalence</span><span class="p">,</span>
+             <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dengue prevalence&quot;</span><span class="p">,</span>
+             <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+             <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+ <span class="c1"># Add a legend and informative axis label</span>
+ <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Prevalence (%)&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Overall dengue prevalence in HTD&quot;</span><span class="p">)</span>
+
+ <span class="c1"># Add number of patients considered</span>
+ <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prevalence</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()):</span>
+     <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">row</span><span class="o">.</span><span class="n">prevalence</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">n_patients</span><span class="p">),</span>
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+ <span class="c1"># Show</span>
+ <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  14.700 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-prevalence-plot-prevalence-overall-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/fa47bf6ff6e85805920dff77544639c0/plot_prevalence_overall.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_prevalence_overall.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/c4deb0d28d83dca36654214a5ea1e352/plot_prevalence_overall.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_prevalence_overall.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="plot_prevalence_monthly.html" class="btn btn-neutral float-left" title="Monthly prevalence (yearly)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Imperial College London.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

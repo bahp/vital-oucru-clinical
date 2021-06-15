@@ -1,0 +1,16 @@
+
+:orphan:
+
+.. _sphx_glr__examples_prevalence_sg_execution_times:
+
+Computation times
+=================
+**00:41.333** total execution time for **_examples_prevalence** files:
+
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_prevalence_plot_prevalence_monthly.py` (``plot_prevalence_monthly.py``)   | 00:16.281 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_prevalence_plot_prevalence_overall.py` (``plot_prevalence_overall.py``)   | 00:14.700 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_prevalence_plot_prevalence_datasets.py` (``plot_prevalence_datasets.py``) | 00:10.351 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
