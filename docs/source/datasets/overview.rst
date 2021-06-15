@@ -140,9 +140,9 @@ manuscript for download as pdf.
      - |pdf-yacoub2017|
 
 Note that some of the manuscripts published might have used a subset of the whole
-dataset after following the inclusion and exclusion criteria. These criteria are
-usually described within the manuscripts and it is important have it in mind when
-comparing Patient's characteristics tables.
+dataset after following their corresponding inclusion and exclusion criteria. These
+criteria are usually described within the manuscripts and it is important have it
+in mind when comparing Patient's characteristics tables.
 
 ********
 Overview
@@ -162,7 +162,8 @@ Description of features
 
 The list of features available in the aggregated dataset is included in the
 table below. Please note that some features might not be available across
-all datasets yet that information will be provided in subsequent sections.
+all datasets yet that information will be provided in the following section
+`Presence of features in datasets`_.
 
 The following table includes:
 
@@ -701,37 +702,139 @@ The 01nva dataset
 Useful definitions
 ******************
 
-In general we think of dengue as very much a disease which follows certain phases
-(whether this is right or wrong!) in which typically, patients experience:
+Dengue overview
+---------------
 
- - The ``febrile phase`` (days 1-5): are unwell with fever, but no life
-   threatening clinical manifestations happen.
+.. _Dengue: https://en.wikipedia.org/wiki/Dengue_fever
 
- - The ``critical phase`` (days 4-6+): are in danger of being critically
-   unwell e.g. they are in shock, bleed a lot, or need therapy (fluids,
-   ventilation etc)
+In general, clinicians consider `Dengue`_ as very much a disease which follows
+certain well defined phases which are described in the Figure below. Firstly, in
+the ``febrile`` phase (days 1-5) the patients are unwell with fever, however, no
+life threatening clinical manifestations happen. In the ``critical`` phase (days
+4-6+) the patients are in danger of being critically unwell e.g. they develop
+shock, bleed a lot, or need therapy (fluids, ventilation, ...). Finally, the
+``recovery`` phase (after day 6+) which happens after the critical phase.
 
- - The ``recovery phase`` (after days 6+): happens after the critical phase.
+.. image:: ../_static/imgs/dengue-illness-course.png
+   :width: 400
+   :align: center
+   :alt: Dengue illness course (Wikipedia)
 
-The two main questions that people have typically felt are important for clinical management
-are: (i) When I see someone presenting with a fever, is this dengue, or another disease (e.g.
-a bacterial infection)? Dengue does not require antibiotics but bacterial infections (including
-sepsis) do. (ii) The pattern of illness and how you manage the patient also matters (e.g. do you
-discharge them, or admit them to hospital). For someone with dengue, what is the risk of them
-developing severe dengue (shock, bleeding, plasma leak)? When in the illness time-course can
-I reliably predict this? What measurements do I need?
+The two main questions that people have typically felt are important for clinical
+management are:
 
-Be aware that the data is imperfect however, with a lot of missingness – and the time
+   - **Classification:** When I see someone presenting with a fever, is this dengue, or
+     another disease (e.g. a bacterial infection)? Note that dengue does not require
+     antibiotics but bacterial infections (including sepsis) do.
+
+
+   - **Stratification:** For someone with dengue, what is the risk of them developing
+     severe dengue (shock, bleeding, plasma leakage)? The pattern of illness and how you
+     manage the patient also matters (e.g. do you discharge them, or admit them to
+     hospital). Therefore, when in the illness time-course can I reliably predict this?
+     What features do I need?
+
+The majority of the studies (``MD``, ``DR``, ``D001``, ``13DX``, ``42DX`` and ``06DX``)
+recruit patients when they are generally in the febrile phase (but not always). Therefore,
+the typical dengue disease progression following the three phases explained before applies.
+However, there are other studies (``FL``, ``32DX`` and some of ``01NVA``) include patients
+already in shock or with severe dengue. These patients are recruited from Intensive Care
+Units and are followed up. This is very important, specially if you want to have a predictor
+for dengue, then you should use the first dataset of patients to ensure that they have not
+developed shock already. In addition, note that studies are comparable to a certain extent,
+but do differ in how they recruit their patients. For instance, ``13DX`` recruits patients
+early in illness when presenting to their local health centre, ``MD`` recruits after admission,
+and ``DF`` recruits after they enter intensive care. Therefore, the ``day_of_illness`` is
+key to aligning all the studies for comparison.
+
+Also, be aware that the data is imperfect, with a lot of missingness – and the time
 element of the observations is crucial (febrile-critical-recovery model of disease). For
-example: examination findings are probably more subjective and open to interpretation
-compared with laboratory values, and the measurement of outcomes likewise can vary
-between studies.
+instance, examination findings are probably more subjective and open to interpretation
+compared with laboratory values, and the measurement of outcomes likewise can vary between
+studies.
 
-Finally the studies themselves are comparable to a certain extent, but do differ in how they
-recruit their patients e.g. 13dx recruits patients early in illness when presenting to their
-local health centre, md recruits after admission, and df recruits after they enter intensive
-care. The ``day of illness`` is therefore key to aligning all the studies for comparison.
+Dengue outcomes
+---------------
 
+Outcomes in dengue are classified according to the 2009 WHO criteria which is followed by
+most of the studies. For a patient with dengue (see `Dengue interpretation`_), the final
+classifications includes: (i) dengue without warning signs (uncomplicated
+disease), (ii) dengue with warning signs (have some clinical features which make them at risk
+of severe dengue) and (iii) severe dengue (one or more of DSS, fluid accumulation, severe
+bleeding or severe organ impairment). A description of these three classes is presented
+in the Figure below.
+
+.. image:: ../_static/imgs/dengue-who-2009.png
+   :width: 600
+   :align: center
+   :alt: Dengue illness course (Wikipedia)
+
+As the dataset is made up from different studies done in different ways, you might find
+that one or more of these outcomes are missing. However ``DSS`` or ``shock`` should always
+be there – it’s by far the least subjective and well-recorded outcome.
+
+To provide additional help, the following table shows features that can be combined to
+create interpretable outcomes (e.g. severe_dengue_leakage) that can be used to identify
+severe dengue, denoted as ``sd``. For more information, see the list os possible features
+for further consideration.
+
+
+.. table:: Overview of main outcomes associated with severe dengue
+   :widths: 8 8
+
+   ========================= ==================================== =====================
+   Outcome                   Features                             Notes
+   ========================= ==================================== =====================
+   ``sd_shock``              ``shock``
+   ``sd_leakage``            | ``ascites``
+                             | ``overload``
+                             | ``oedema_pulmonary``
+                             | ``respiratory_distress``
+                             | ``ventilation``
+                             | ``diuretics``
+   ``sd_bleeding``           | ``bleeding_gi`` |ast|
+                             | ``bleeding_urine`` |ast|
+                             | ``bleeding_severe``
+   ``sd_organ_impairment``   | ``cns_abnormal`` |ast|
+                             | ``liver_abnormal`` |ast|
+                             | ``kidney_abnormal`` |ast|
+   ========================= ==================================== =====================
+
+where
+
+   - |ast| see section `Compound features`_
+   - ``ascites``: fluid accumulation - severe dengue (?)
+   - ``oedema``: fluid accumulation, so a spectrum - probably just a warning sign
+   - ``oedema_pulmonary``: fluid accumulation in lungs, respiratory distress, severe dengue
+   - ``effusion``: fluid accumulation, so a spectrum - severe fluid in chest
+   - ``pleural_effusion``: fluid accumulation, so a spectrum - some might indicate severe dengue
+   - ``bleeding``: Some bleeding can be normal and part of the warning signs.
+   - ``bleeding_gi``: gastrointestinal bleeding is important - severe dengue
+   - ``bleeding_urine``: Severe dengue
+   - ``bleeding_severity``: high severity indicates severe dengue
+   - ``bleeding_gum``: warning sign and therefore does not fulfill the outcome definition.
+   - ``bleeding_mucosal``: warning sign and therefore does not fulfill the outcome definition.
+   - ``inotrope``: drugs used to increase blood pressure in shock - associated with severe dengue
+   - ``respiratory_distress``: Severe dengue
+   - ``meche``: indication of respiratory distress - severe dengue
+   - ``oxygen_mask``: indication of respiratory distress - severe dengue
+   - ``ventilation``: indication of respiratory distress
+   - ``jaundice``: might indicates liver impairment - severe dengue
+   - ``cns_abnormal``: central nervous system abnormal - severe dengue
+   - any ``shock`` related feature is associated with severe dengue.
+   - any ``unconsciousness`` indicates cns_abnormal.
+   - any ``respiratory_distress`` is associated with severe dengue.
+
+Note that ``unconsciousness`` is always associated with abnormalities in the
+central neural system. Also, any signs of ``respiratory_distress`` such as the
+use of ventilation support, oxygen masks, presence of fluids in the lungs, ...
+are associated with severe dengue.
+
+In addition, there is a definition that was established in 1997 and therefore affect a few
+of the previously described studies. This definition describes two categories: dengue
+severe shock (DSS) and dengue haemorragic fever (DHF). The latter has four different
+levels (1-4) from which 3 and 4 can be considered equivalent to severe dengue. This information
+is collected in DR/MD within the final diagnosis variable but has not yet been extracted.
 
 Dengue interpretation
 ---------------------
@@ -746,10 +849,10 @@ or into dengue shock syndrome, where dangerously low blood pressure occurs.
 The final dengue diagnosis can be determined according to various diagnostic criteria which might
 differ between the studies. Such criteria in general includes one of the following:
 
-  - positive ``NS1`` point of care lateral flow assay
-  - positive reverse transcriptase polymerase chain reaction (RT-``PCR``)
-  - positive dengue IgM through acute serology
-  - ``seroconversion`` of either single or paired IgM or IgG samples
+   *  positive ``NS1`` point of care lateral flow assay
+   *  positive reverse transcriptase polymerase chain reaction (RT-``PCR``)
+   *  positive dengue IgM through acute serology
+   *  ``seroconversion`` of either single or paired IgM or IgG samples
 
 The overall final dengue diagnosis or ``dengue_interpretation`` has been implemented (link).
 
@@ -843,39 +946,119 @@ Paired IgM-IgG
 NS1 interpretation
 ------------------
 
-NS1 antigen test (nonstructural protein 1) is a test for dengue through enzyme-linked immunosorbent assay.
-NS1 is present in the serum of infected persons directly at the onset of clinical symptoms in primary dengue
-infection and produces a strong humoral response. It is detectable before the appearance of IgM antibodies
-(usually 5 or more days later). Additionally, NS1 assay is useful for differential diagnostics in regards to
-flaviviruses.
+The ``NS1`` antigen test (nonstructural protein 1) is a test for dengue through enzyme-linked
+immunosorbent assay. NS1 is present in the serum of infected persons directly at the onset of
+clinical symptoms in primary dengue infection and produces a strong humoral response. It is
+detectable before the appearance of IgM antibodies (usually 5 or more days later). Additionally,
+NS1 assay is useful for differential diagnostics in regards to flaviviruses.
+
+There are various ns1 related features such as ``ns1_interpretation``.
+
+  - ``Equivocal``: Inconclusive.
+  - ``Positive``: Positive ns1 test.
+  - ``Negative``: Negative ns1 test.
+  - ``NA``: Not available.
 
 PCR interpretation
 ------------------
 
-Possible complications
-----------------------
+.. _[REF_1]: https://www.nature.com/scitable/topicpage/dengue-viruses-22400925/
 
-.. todo:: Explain
+Polymerase chain reaction (``PCR``) is a method widely used to rapidly make millions to billions
+of copies (complete copies or partial copies) of a specific DNA sample, allowing scientists to take
+a very small sample of DNA and amplify it (or a part of it) to a large enough amount to study
+in detail.
 
-   The main complications are ....
+Dengue infections are caused by four closely related viruses named DENV-1, DENV-2, DENV-3,
+and DENV-4. These four viruses are called serotypes because each has different interactions
+with the antibodies in human blood serum. The four dengue viruses are similar — they share
+approximately 65% of their genomes — but even within a single serotype, there is some genetic
+variation. Despite these variations, infection with each of the dengue serotypes results in
+the same disease and range of clinical symptoms. All four dengue serotypes circulate together
+in tropical and subtropical regions around the world with all serotypes being present in
+Southeast Asia.
 
-     - shock?
-     - jaundice?
-     - ascites?
-     - bleeding?
-     - pleural_effussion?
+After recovering from an infection with one dengue serotype, a person has immunity against that
+particular serotype. After that short period, a person can be infected with any of the remaining
+three dengue serotypes. Researchers have noticed that subsequent infections can put individuals
+at a greater risk for severe dengue illnesses than those who have not been previously infected.
 
-   These can also be grouped as ...
+``pcr_dengue_serotype``
+``pcr_dengue_load``
+``pcr_dengue_reaction``
+``pcr_dengue_interpretation``
 
-      - fluid accumulation: pleural_effusion | ascites
 
-   Other notes ...
+Compound features
+-----------------
 
-      - Overload: it is a subset of effusion.
-      - Effusion
-      - Pleural Effusion (lung)
-      - Oedema (skin)
-      - Ascites (abdomen)
+The table below presents some terminology that has been used on the
+different trials but refer to the same symptom; hence, they are
+equivalent. Some of this terminology might be merged on future
+releases of the dataset.
+
+.. table:: Overview of equivalences
+   :widths: 5 25
+
+   =================== ================== ========
+   Term                Other synonyms
+   =================== ================== ========
+   ``agitation``       ``restlessness``      ??
+   ``bruising``        ``hematoma``          ??
+   ``anorexia``        ``appetite_lost``     ??
+   =================== ================== ========
+
+The features collected between the studies might vary. In order to combine
+features that might be similar from the clinical point of view, we have
+included below a table with features that could be merge into the same
+class.
+
+.. table:: Overview of compound features
+   :widths: 5 25
+
+   ====================== ============================= =============================================
+   Feature                 Individual elements                           Note
+   ====================== ============================= =============================================
+   ``bleeding``           Any bleeding
+   ``bleeding_gi``        | ``bleeding_gi``
+                          | ``hematemesis``
+                          | ``melaena``
+   ``bleeding_nose``      | ``bleeding_nose``
+                          | ``epistaxis``
+                          | ``packing_nose``
+   ``bleeding_skin``      | ``bleeding_skin``
+                          | ``petechiae``
+                          | ``ecchymosis``
+                          | ``bruising``
+   ``bleeding_urine``     | ``bleeding_urine``
+                          | ``hematuria``
+   ``bleeding_mucosal``   | ``bleeding_urine``
+   ``cns_abnormal``       | ``cns_abnormal``
+                          | ``meningism``
+                          | ``confusion``
+                          | ``agitation``
+                          | ``restlessness``
+                          | ``GCS``
+                          | ``neurology_abnormal``
+   ``liver_abnormal``     |
+   ``kidney_abnormal``    |
+   ====================== ============================= =============================================
+
+Below is an example on how they could be merge together.
+
+.. code-block::
+
+   # Combine features (I)
+   data.bleeding_gi = \
+      data.bleeding_gi | \
+      data.hematemesis | \
+      data.melaena
+
+   # Combine features (II)
+   data.bleeding_gi = \
+      data[['bleeding_gi',
+            'hematemesis',
+            'melaena']].any()
 
 
 
@@ -946,4 +1129,3 @@ Possible complications
    :target: ../_static/datasets/manuscripts/yacoub2017.pdf
    :scale: 5%
    :alt: pdf
-
