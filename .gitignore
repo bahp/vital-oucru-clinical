@@ -11,6 +11,8 @@
 **/.csv
 **/.xlsx
 **/.xls
+**/.json
+**/.pkl
 
 # Log files
 **/*.log
@@ -28,6 +30,7 @@ docs/source/_static/datasets/profile-dataprep
 docs/source/_static/datasets/profile-pandas
 
 # Folders with sensitive data
+examples/inference/temporal/outputs/joblib/*
 
 # -------------------------------------------------
 
